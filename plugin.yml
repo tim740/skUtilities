@@ -1,0 +1,5 @@
+name: skConvert
+author: tim740
+main: uk.tim740.skConvert.Main
+version: 0.2.0
+depend: [Skript]
