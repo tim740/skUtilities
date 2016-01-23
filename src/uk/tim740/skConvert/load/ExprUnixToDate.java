@@ -2,7 +2,6 @@ package uk.tim740.skConvert.load;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimeZone;
 
 import javax.annotation.Nullable;
 
@@ -45,8 +44,7 @@ public class ExprUnixToDate extends SimpleExpression <String>{
 		String s = (i+"a").replace("000a", "").replace("a", "");
 		long unix = Long.valueOf(s).longValue();
 		Date date = new Date(unix*1000L);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss z");
-		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-		return new String[]{sdf.format(date).toString()};
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
+		return new String[]{sdf.format(date)};
 	}
 }

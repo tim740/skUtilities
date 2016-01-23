@@ -4,15 +4,14 @@ import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
-import uk.tim740.skConvert.load.Binary.BinInvalid;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
 public class ExprBinConvert extends SimpleExpression<String> {
-	private int toBin;
 	private Expression<String> string;
+	private int fromBin;
 
 	@Override
 	public Class<? extends String> getReturnType() {
@@ -26,47 +25,40 @@ public class ExprBinConvert extends SimpleExpression<String> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-		if (arg3.mark == 0){
-			toBin = 0;
-		}else if (arg3.mark == 1){
-			toBin = 1;
-		}else if (arg3.mark == 2){
-			toBin = 2;
-		}else{
-			toBin = 3;
-		}
+		fromBin = arg3.mark;
 		this.string = (Expression<String>) arg0[0];
 		return true;
 	}
 
 	@Override
 	public String toString(@Nullable Event arg0, boolean arg1) {
-		return "convert bin[ary] %string% to (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal)";
+		return "convert (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal) %string% to bin[ary]";
 	}
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		Binary bin = null;
-		try {
-			bin = new Binary(this.string.getSingle(arg0));
-		} catch (BinInvalid e) {
-			e.printStackTrace();
-			return null;
-		}
-		if (toBin == 0){
-			String[] ss = bin.toString().split(" ");
-			StringBuilder sb = new StringBuilder();
-			for ( int i = 0; i < ss.length; i++ ) { 
-				sb.append( (char)Integer.parseInt( ss[i], 2 ) );                                                                                                                                                        
-			}   
-			return new String[]{sb.toString()};
-		}else if (toBin == 1){
-			return new String[]{Integer.toString(Integer.parseInt(bin.toString(), 2))};
-		}else if (toBin == 2){
-			return new String[]{Integer.toHexString(Integer.parseInt(bin.toString(), 2))};
-		}else if (toBin == 3){
-			return new String[]{Integer.toOctalString(Integer.parseInt(bin.toString(), 2))};
+		if (fromBin == 0){
+			 String s = this.string.getSingle(arg0);
+			  byte[] by = s.getBytes();
+			  StringBuilder bin = new StringBuilder();
+			  for (byte b : by)
+			  {
+			     int val = b;
+			     for (int i = 0; i < 8; i++)
+			     {
+			        bin.append((val & 128) == 0 ? 0 : 1);
+			        val <<= 1;
+			     }
+			     bin.append(' ');
+			}
+			return new String[]{bin.toString()};
+		}else if (fromBin == 1){
+			return new String[]{Integer.toBinaryString(Integer.parseInt(this.string.getSingle(arg0)))};
+		}else if (fromBin == 2){
+			return new String[]{Integer.toBinaryString(Integer.parseInt(this.string.getSingle(arg0), 16))};
+		}else if (fromBin == 3){
+			return new String[]{Integer.toBinaryString(Integer.parseInt(this.string.getSingle(arg0), 8))};
 		}else{
 			return null;
 		}
