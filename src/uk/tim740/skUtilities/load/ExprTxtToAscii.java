@@ -1,15 +1,16 @@
-package uk.tim740.skConvert.load;
+package uk.tim740.skUtilities.load;
 
 import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
+import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
-public class ExprHexaToNum extends SimpleExpression<String>{
+public class ExprTxtToAscii  extends SimpleExpression<String>{
 	private Expression<String> string;
 
 	@Override
@@ -31,12 +32,20 @@ public class ExprHexaToNum extends SimpleExpression<String>{
 
 	@Override
 	public String toString(@Nullable Event arg0, boolean arg1) {
-		return "convert hexa[decimal] %string% to num[ber]";
+		return "convert (text|string) %string% to ascii";
 	}
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		return new String[]{Integer.toString(Integer.parseInt(this.string.getSingle(arg0), 16))};
+		String s = this.string.getSingle(arg0);
+		if (s.length() == 1){
+			char c = s.charAt(0);
+			return new String[]{Integer.toString(c)};
+		}else{
+			Skript.warning("[skConvert] Error: (TxtToAscii) Only 1 char at a time is supported!");
+			return null;
+		}
 	}
+
 }

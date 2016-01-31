@@ -1,2 +1,2 @@
-# skConvert
-skConvert: https://forums.skunity.com/t/addon-skconvert-v0-1-0/3099
+# skUtilities
+skUtilities: https://forums.skunity.com/t/3099

@@ -1,4 +1,4 @@
-package uk.tim740.skConvert.load;
+package uk.tim740.skUtilities.load;
 
 public class Binary {
 

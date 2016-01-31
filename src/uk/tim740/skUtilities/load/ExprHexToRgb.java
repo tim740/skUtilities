@@ -1,4 +1,6 @@
-package uk.tim740.skConvert.load;
+package uk.tim740.skUtilities.load;
+
+import java.awt.Color;
 
 import javax.annotation.Nullable;
 
@@ -10,7 +12,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
-public class ExprTxtToAscii  extends SimpleExpression<String>{
+public class ExprHexToRgb extends SimpleExpression<String>{
 	private Expression<String> string;
 
 	@Override
@@ -32,20 +34,21 @@ public class ExprTxtToAscii  extends SimpleExpression<String>{
 
 	@Override
 	public String toString(@Nullable Event arg0, boolean arg1) {
-		return "convert (text|string) %string% to ascii";
+		return "convert hex %string% to rgb";
 	}
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		String s = this.string.getSingle(arg0);
-		if (s.length() == 1){
-			char c = s.charAt(0);
-			return new String[]{Integer.toString(c)};
+		if (this.string.getSingle(arg0).contains("#")){
+			this.string.getSingle(arg0).replace("#", "");
+		}
+		if (this.string.getSingle(arg0).length() == 6){
+			Color ohex = Color.decode("#" + this.string.getSingle(arg0));
+			return new String[]{ohex.toString().replace("java.awt.Color[", "").replace("r=", "").replace("g=", " ").replace("b=", " ").replace("]", "")};
 		}else{
-			Skript.warning("[skConvert] Error: (TxtToAscii) Only 1 char at a time is supported!");
+			Skript.warning("[skConvert] Error: (HexToRgb) Length must be 6 (FFFFFF)!");
 			return null;
 		}
 	}
-
 }
