@@ -17,7 +17,7 @@ import ch.njol.util.Kleenean;
 /**
  * Made by @Sashie - Tweaked and Optimised by @tim740
  */
-public class EffPacketTrialEnded extends Effect {
+public class EffPacketTrial extends Effect {
 	private Expression<Player> player;
 	@SuppressWarnings("unchecked")
 	@Override

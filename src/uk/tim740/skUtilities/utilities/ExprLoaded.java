@@ -54,9 +54,9 @@ public class ExprLoaded extends SimpleExpression<Number>{
 			return new Number[]{Skript.getStatements().size()};
 		}else if (type == 5){
 			return new Number[]{Variables.numVariables()};
-		}else if (type == 6){//TODO
+/*		}else if (type == 6){//TODO
 			System.out.println("aliases loaded " + ScriptLoader.getScriptAliases());
-			return new Number[]{ScriptLoader.getScriptAliases().size()};
+			return new Number[]{ScriptLoader.getScriptAliases().size()};*/
 		}else if (type == 7){
 			return new Number[]{Bukkit.getServer().getPluginManager().getPlugins().length};
 		}else if (type == 8){
@@ -65,13 +65,13 @@ public class ExprLoaded extends SimpleExpression<Number>{
 			return new Number[]{Skript.getEvents().size()};
 		}else if (type == 10){
 			return new Number[]{Skript.getEffects().size()};
-		}else if (type == 11){//TODO
+/*		}else if (type == 11){//TODO
 			Class[] reTy = null;
 			reTy[0] = String.class;
 	        reTy[1] = Number.class;
 			System.out.println("-" + Skript.getExpressions(String.class));
 			int i = Integer.parseInt(Skript.getExpressions(String.class).toString()) + Integer.parseInt(Skript.getExpressions(Number.class).toString()) + Integer.parseInt(Skript.getExpressions(Integer.class).toString()) + Integer.parseInt(Skript.getExpressions(Object.class).toString());
-			return new Number[]{((CharSequence) Skript.getExpressions(reTy)).length()};
+			return new Number[]{((CharSequence) Skript.getExpressions(reTy)).length()};*/
 		}else{
 			return new Number[]{Skript.getConditions().size()};
 		}
