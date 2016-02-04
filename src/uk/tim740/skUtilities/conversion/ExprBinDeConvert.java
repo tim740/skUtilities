@@ -1,10 +1,10 @@
-package uk.tim740.skUtilities.load;
+package uk.tim740.skUtilities.conversion;
 
 import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
-import uk.tim740.skUtilities.load.Binary.BinInvalid;
+import uk.tim740.skUtilities.conversion.Binary.BinInvalid;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
@@ -33,7 +33,7 @@ public class ExprBinDeConvert extends SimpleExpression<String> {
 
 	@Override
 	public String toString(@Nullable Event arg0, boolean arg1) {
-		return "convert bin[ary] %string% to (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal)";
+		return this.getClass().getName();
 	}
 
 	@Override

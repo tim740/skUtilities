@@ -1,7 +1,4 @@
-package uk.tim740.skUtilities.load;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+package uk.tim740.skUtilities.conversion;
 
 import javax.annotation.Nullable;
 
@@ -12,7 +9,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
-public class ExprUnixToDate extends SimpleExpression <String>{
+public class ExprHexaToNum extends SimpleExpression<String>{
 	private Expression<String> string;
 
 	@Override
@@ -34,17 +31,12 @@ public class ExprUnixToDate extends SimpleExpression <String>{
 
 	@Override
 	public String toString(@Nullable Event arg0, boolean arg1) {
-		return "convert unix[ date] %string% to date";
+		return this.getClass().getName();
 	}
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		String i = this.string.getSingle(arg0);
-		String s = (i+"a").replace("000a", "").replace("a", "");
-		long unix = Long.valueOf(s).longValue();
-		Date date = new Date(unix*1000L);
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
-		return new String[]{sdf.format(date)};
+		return new String[]{Integer.toString(Integer.parseInt(this.string.getSingle(arg0), 16))};
 	}
 }

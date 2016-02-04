@@ -1,4 +1,7 @@
-package uk.tim740.skUtilities.load;
+package uk.tim740.skUtilities.conversion;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.annotation.Nullable;
 
@@ -9,7 +12,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
-public class ExprNumToHexa extends SimpleExpression<String>{
+public class ExprUnixToDate extends SimpleExpression <String>{
 	private Expression<String> string;
 
 	@Override
@@ -31,12 +34,15 @@ public class ExprNumToHexa extends SimpleExpression<String>{
 
 	@Override
 	public String toString(@Nullable Event arg0, boolean arg1) {
-		return "convert num[ber] %string% to hexa[decimal]";
+		return this.getClass().getName();
 	}
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		return new String[]{Integer.toHexString(Integer.parseInt(this.string.getSingle(arg0)))};
+//	    return new Date[]{new Date(Long.valueOf(this.string.getSingle(arg0)).longValue() * 1000L)};
+		String s = (this.string.getSingle(arg0)+"a").replace("000a", "").replace("a", "");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
+		return new String[]{sdf.format(new Date(Long.valueOf(s).longValue()*1000L))};
 	}
 }
