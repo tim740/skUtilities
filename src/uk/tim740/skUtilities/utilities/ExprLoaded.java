@@ -1,15 +1,11 @@
 package uk.tim740.skUtilities.utilities;
 
-import java.util.Collection;
-
 import javax.annotation.Nullable;
-
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.ScriptLoader;
 import ch.njol.skript.Skript;
-import ch.njol.skript.SkriptAddon;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
@@ -54,9 +50,9 @@ public class ExprLoaded extends SimpleExpression<Number>{
 			return new Number[]{Skript.getStatements().size()};
 		}else if (type == 5){
 			return new Number[]{Variables.numVariables()};
-/*		}else if (type == 6){//TODO
-			System.out.println("aliases loaded " + ScriptLoader.getScriptAliases());
-			return new Number[]{ScriptLoader.getScriptAliases().size()};*/
+		}else if (type == 6){
+			System.out.println("aliases loaded " + ScriptLoader.getScriptAliases().values());
+			return new Number[]{ScriptLoader.getScriptAliases().values().size()};
 		}else if (type == 7){
 			return new Number[]{Bukkit.getServer().getPluginManager().getPlugins().length};
 		}else if (type == 8){

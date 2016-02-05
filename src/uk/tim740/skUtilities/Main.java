@@ -28,12 +28,14 @@ public class Main extends JavaPlugin {
 
 		Skript.registerExpression(ExprHexaToNum.class,String.class,ExpressionType.PROPERTY,"convert hexa[decimal] %string% to num[ber]");
 		Skript.registerExpression(ExprNumToHexa.class,String.class,ExpressionType.PROPERTY,"convert num[ber] %string% to hexa[decimal]");
-
 		Skript.registerExpression(ExprHexToRgb.class,String.class,ExpressionType.PROPERTY,"convert hex %string% to rgb");
 		Skript.registerExpression(ExprUnixToDate.class,String.class,ExpressionType.PROPERTY,"convert unix[ date] %string% to date");
 		Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded conversions 50% loaded!");
 
 		Skript.registerExpression(ExprLoaded.class,Number.class,ExpressionType.PROPERTY,"number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦plugins|8¦addons|9¦events|10¦effects|11¦expressions|12¦conditions)");
+		Skript.registerExpression(ExprLowestValue.class,String.class,ExpressionType.PROPERTY,"(0¦first|1¦second|2¦third|3¦forth|4¦fifth|5¦sixth|6¦seventh|7¦eighth|8¦ninth|9¦tenth) lowest value from %object%");
+		Skript.registerExpression(ExprHighestValue.class,String.class,ExpressionType.PROPERTY,"(0¦first|1¦second|2¦third|3¦forth|4¦fifth|5¦sixth|6¦seventh|7¦eighth|8¦ninth|9¦tenth) highest value from %object%");
+		
 		Skript.registerEffect(EffPacketTrial.class,new String[] {"send[ fake] trial packet to %player%"});
 		Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded utilities 100% loaded!");
 		}
