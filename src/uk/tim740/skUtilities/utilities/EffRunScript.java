@@ -1,12 +1,11 @@
 package uk.tim740.skUtilities.utilities;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
 import java.util.regex.Matcher;
-
 import javax.annotation.Nullable;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.Skript;
@@ -20,8 +19,8 @@ public class EffRunScript extends Effect{
 	private Expression<String> path;
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult){
-		this.path = (Expression<String>) exprs[0];
+	public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+		this.path = (Expression<String>) arg0[0];
 		return true;
 	}
 
@@ -32,10 +31,15 @@ public class EffRunScript extends Effect{
 
 	@Override
 	protected void execute(Event arg0) {
-		String pth = Bukkit.getServer().getWorldContainer().getAbsolutePath().replace(".", "") + "plugins\\" + this.path.getSingle(arg0).replaceAll("/", Matcher.quoteReplacement(File.separator));
-		System.out.println("value " + pth);
+		String pth = new File("plugins\\", this.path.getSingle(arg0)).getPath().replaceAll("/", Matcher.quoteReplacement(File.separator));
 		try{
-			Runtime.getRuntime().exec(pth);
+			IOException e = new IOException();
+			if(!new File(pth).exists()){
+				throw e;
+				
+			}else{
+				Desktop.getDesktop().open(new File(pth));
+			}
 		}catch (IOException e){
 			Skript.warning("[skUtilities] Error: (RunScript) '" + pth + "' isn't a valid path.");
 		}
