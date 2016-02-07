@@ -14,6 +14,7 @@ import ch.njol.util.Kleenean;
 
 public class ExprUnixToDate extends SimpleExpression <String>{
 	private Expression<String> string;
+	private Expression<String> format;
 
 	@Override
 	public Class<? extends String> getReturnType() {
@@ -29,6 +30,7 @@ public class ExprUnixToDate extends SimpleExpression <String>{
 	@Override
 	public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
 		this.string = (Expression<String>) arg0[0];
+		this.format = (Expression<String>) arg0[1];
 		return true;
 	}
 
@@ -40,9 +42,11 @@ public class ExprUnixToDate extends SimpleExpression <String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-//	    return new Date[]{new Date(Long.valueOf(this.string.getSingle(arg0)).longValue() * 1000L)};
-		String s = (this.string.getSingle(arg0)+"a").replace("000a", "").replace("a", "");
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
-		return new String[]{sdf.format(new Date(Long.valueOf(s).longValue()*1000L))};
+		String si = "dd/MM/yy HH:mm";
+        if (format != null){
+            si = this.format.getSingle(arg0);
+        }
+		SimpleDateFormat sdf = new SimpleDateFormat(si);
+		return new String[]{sdf.format(new Date(Long.valueOf((this.string.getSingle(arg0)+"a").replace("000a", "").replace("a", "")).longValue()*1000L))};
 	}
 }
