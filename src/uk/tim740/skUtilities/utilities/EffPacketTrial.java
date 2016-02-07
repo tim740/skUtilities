@@ -21,7 +21,7 @@ public class EffPacketTrial extends Effect {
 	private Expression<Player> player;
 	@SuppressWarnings("unchecked")
 	@Override
-	public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult) {
+	public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult){
 		this.player = (Expression<Player>) exprs[0];
 		return true;
 	}
@@ -44,11 +44,11 @@ public class EffPacketTrial extends Effect {
                 Method getHandleMethod = craftPlayer.getMethod("getHandle", (Class<?>[])new Class[0]);
                 Object handle = getHandleMethod.invoke(craftPlayerObject, new Object[0]);
                 Object pc = handle.getClass().getField("playerConnection").get(handle);
-                Method sendPacketMethod = pc.getClass().getMethod("sendPacket", Packet);
-                sendPacketMethod.invoke(pc, packet);
+                Method sPM = pc.getClass().getMethod("sendPacket", Packet);
+                sPM.invoke(pc, packet);
             }
             catch (Exception ex) {
-            	Skript.warning("[skUtilities] Error: (PacketTrialEnded) Player didn't have a compatible version of Minecraft.");
+            	Skript.warning("[skUtilities] Error: (PacketTrial) Player didn't have a compatible version of Minecraft.");
             }
 	}
 }

@@ -34,6 +34,7 @@ public class Main extends JavaPlugin {
 
 		Skript.registerExpression(ExprLoaded.class,Number.class,ExpressionType.PROPERTY,"number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦plugins|8¦addons|9¦events|10¦effects|11¦expressions|12¦conditions)");
 		Skript.registerEffect(EffPacketTrial.class,new String[] {"send[ fake] trial packet to %player%"});
+		Skript.registerEffect(EffRunScript.class,new String[] {"run script at %string%"});
 		Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded utilities 100% loaded!");
 		}
 }

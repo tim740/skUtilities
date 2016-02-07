@@ -51,8 +51,8 @@ public class ExprLoaded extends SimpleExpression<Number>{
 		}else if (type == 5){
 			return new Number[]{Variables.numVariables()};
 		}else if (type == 6){
-			System.out.println("aliases loaded " + ScriptLoader.getScriptAliases().values());
-			return new Number[]{ScriptLoader.getScriptAliases().values().size()};
+			System.out.println("aliases loaded " + (ScriptLoader.getScriptAliases()).getClass());
+			return new Number[]{ScriptLoader.getScriptAliases().size()};
 		}else if (type == 7){
 			return new Number[]{Bukkit.getServer().getPluginManager().getPlugins().length};
 		}else if (type == 8){
