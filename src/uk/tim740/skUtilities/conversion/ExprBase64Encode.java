@@ -40,15 +40,14 @@ public class ExprBase64Encode extends SimpleExpression<String> {
 	@Nullable
 	protected String[] get(Event arg0) {
 		String s = this.string.getSingle(arg0);
+		byte[] auby = null;
 		if (bEncode == 0){
-			byte[] auby = s.getBytes(StandardCharsets.UTF_8);
-			return new String[]{Base64.getEncoder().encodeToString(auby)};
+			auby = s.getBytes(StandardCharsets.UTF_8);
 		}else if (bEncode == 1){
-			byte[] auby = s.getBytes(StandardCharsets.US_ASCII);
-			return new String[]{Base64.getEncoder().encodeToString(auby)};
+			auby = s.getBytes(StandardCharsets.US_ASCII);
 		}else{
-			byte[] auby = s.getBytes(StandardCharsets.ISO_8859_1);
-			return new String[]{Base64.getEncoder().encodeToString(auby)};
+			auby  = s.getBytes(StandardCharsets.ISO_8859_1);	
 		}
+		return new String[]{Base64.getEncoder().encodeToString(auby)};
 	}
 }

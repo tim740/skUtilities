@@ -36,7 +36,6 @@ public class EffRunScript extends Effect{
 			IOException e = new IOException();
 			if(!new File(pth).exists()){
 				throw e;
-				
 			}else{
 				Desktop.getDesktop().open(new File(pth));
 			}

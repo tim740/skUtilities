@@ -40,9 +40,7 @@ public class ExprHexToRgb extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		if (this.string.getSingle(arg0).contains("#")){
-			this.string.getSingle(arg0).replace("#", "");
-		}
+		this.string.getSingle(arg0).replace("#", "");
 		if (this.string.getSingle(arg0).length() == 6){
 			Color ohex = Color.decode("#" + this.string.getSingle(arg0));
 			return new String[]{ohex.toString().replace("java.awt.Color[", "").replace("r=", "").replace("g=", " ").replace("b=", " ").replace("]", "")};

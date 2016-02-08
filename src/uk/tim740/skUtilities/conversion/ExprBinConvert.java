@@ -39,8 +39,7 @@ public class ExprBinConvert extends SimpleExpression<String> {
 	@Nullable
 	protected String[] get(Event arg0) {
 		if (fromBin == 0){
-			 String s = this.string.getSingle(arg0);
-			 byte[] by = s.getBytes();
+			 byte[] by = this.string.getSingle(arg0).getBytes();
 			 StringBuilder bin = new StringBuilder();
 			 for (byte b : by)
 			 {
