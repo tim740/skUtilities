@@ -4,7 +4,6 @@ import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
-import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
@@ -38,17 +37,15 @@ public class ExprTxtToAscii  extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		String s = this.string.getSingle(arg0);
-		String[] sSplit = s.split("");
-		String out = null;
-		for(String c : sSplit) {
-			if(out == null) {
-				out = c.charAt(0);
-			} else {
-				out = out.concat(c.charAt(0))
+		String out = "";
+		for(String c : this.string.getSingle(arg0).split("")) {
+			if (out == ""){
+				out = (Integer.toString(c.charAt(0)));
+			}else{
+				out = (out + "," + Integer.toString(c.charAt(0)));
 			}
 		}
-		return new String[] { out };
+		return new String[]{out};
 	}
 
 }
