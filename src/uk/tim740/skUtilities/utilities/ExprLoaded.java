@@ -1,12 +1,16 @@
 package uk.tim740.skUtilities.utilities;
 
+import java.util.Iterator;
+
 import javax.annotation.Nullable;
+
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.ScriptLoader;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
+import ch.njol.skript.lang.ExpressionInfo;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.skript.variables.Variables;
@@ -61,13 +65,15 @@ public class ExprLoaded extends SimpleExpression<Number>{
 			return new Number[]{Skript.getEvents().size()};
 		}else if (type == 10){
 			return new Number[]{Skript.getEffects().size()};
-/*		}else if (type == 11){//TODO
-			Class[] reTy = null;
-			reTy[0] = String.class;
-	        reTy[1] = Number.class;
-			System.out.println("-" + Skript.getExpressions(String.class));
-			int i = Integer.parseInt(Skript.getExpressions(String.class).toString()) + Integer.parseInt(Skript.getExpressions(Number.class).toString()) + Integer.parseInt(Skript.getExpressions(Integer.class).toString()) + Integer.parseInt(Skript.getExpressions(Object.class).toString());
-			return new Number[]{((CharSequence) Skript.getExpressions(reTy)).length()};*/
+		}else if (type == 11){
+			int size = 0;
+			Iterator<ExpressionInfo<?, ?>> expressions = Skript.getExpressions();
+			while(expressions.hasNext())
+			{
+			  expressions.next();
+			  size += 1;
+			}
+			return new Number[]{size};
 		}else{
 			return new Number[]{Skript.getConditions().size()};
 		}
