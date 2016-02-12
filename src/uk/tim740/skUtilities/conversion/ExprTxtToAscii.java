@@ -39,13 +39,16 @@ public class ExprTxtToAscii  extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event arg0) {
 		String s = this.string.getSingle(arg0);
-		if (s.length() == 1){
-			char c = s.charAt(0);
-			return new String[]{Integer.toString(c)};
-		}else{
-			Skript.warning("[skUtilities] Error: (TxtToAscii) Only 1 char at a time is supported!");
-			return null;
+		String[] sSplit = s.split("");
+		String out = null;
+		for(String c : sSplit) {
+			if(out == null) {
+				out = c.charAt(0);
+			} else {
+				out = out.concat(c.charAt(0))
+			}
 		}
+		return new String[] { out };
 	}
 
 }
