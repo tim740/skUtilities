@@ -16,11 +16,14 @@ public class Main extends JavaPlugin {
 		if (plugin == null){
 			plugin = this;
 		}
-	Skript.registerExpression(ExprBinDeConvert.class,String.class,ExpressionType.PROPERTY,"convert bin[ary] %string% to (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal)");
-	Skript.registerExpression(ExprBinConvert.class,String.class,ExpressionType.PROPERTY,"convert (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal) %string% to bin[ary]");
+	Skript.registerExpression(ExprBinDeConvert.class,String.class,ExpressionType.PROPERTY,"convert bin[ary] %string% to (0Â¦(text|string)|1Â¦decimal|2Â¦hexa[decimal]|3Â¦octal)");
+	Skript.registerExpression(ExprBinConvert.class,String.class,ExpressionType.PROPERTY,"convert (0Â¦(text|string)|1Â¦decimal|2Â¦hexa[decimal]|3Â¦octal) %string% to bin[ary]");
 
-	Skript.registerExpression(ExprBase64Encode.class,String.class,ExpressionType.PROPERTY,"encode %string% to base[ ]64 using (0¦utf-8|1¦ascii|2¦ISO-8859-1)");
-	Skript.registerExpression(ExprBase64Decode.class,String.class,ExpressionType.PROPERTY,"decode %string% from base[ ]64 using (0¦utf-8|1¦ascii|2¦ISO-8859-1)");
+	Skript.registerExpression(ExprMorseConvert.class,String.class,ExpressionType.PROPERTY,"convert morse[ code] %string% to (text|string)");
+	Skript.registerExpression(ExprMorseDeConvert.class,String.class,ExpressionType.PROPERTY,"convert (text|string) %string% to morse[ code]");
+
+	Skript.registerExpression(ExprBase64Encode.class,String.class,ExpressionType.PROPERTY,"encode %string% to base[ ]64 using (0Â¦utf-8|1Â¦ascii|2Â¦ISO-8859-1)");
+	Skript.registerExpression(ExprBase64Decode.class,String.class,ExpressionType.PROPERTY,"decode %string% from base[ ]64 using (0Â¦utf-8|1Â¦ascii|2Â¦ISO-8859-1)");
 
 	Skript.registerExpression(ExprAsciiToTxt.class,String.class,ExpressionType.PROPERTY,"convert ascii %number% to (text|string)");
 	Skript.registerExpression(ExprTxtToAscii.class,String.class,ExpressionType.PROPERTY,"convert (text|string) %string% to ascii");
@@ -31,7 +34,7 @@ public class Main extends JavaPlugin {
 	Skript.registerExpression(ExprMirrorTxt.class,String.class,ExpressionType.PROPERTY,"mirror[ed] %string%");
 	Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded conversions (50% loaded)!");
 
-	Skript.registerExpression(ExprLoaded.class,Number.class,ExpressionType.PROPERTY,"number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦plugins|8¦addons|9¦events|10¦effects|11¦expressions|12¦conditions)");
+	Skript.registerExpression(ExprLoaded.class,Number.class,ExpressionType.PROPERTY,"number of[ loaded] (0Â¦(commands|cmds)|1Â¦functions|2Â¦s(c|k)ripts|3Â¦triggers|4Â¦statements|5Â¦variables|6Â¦aliases|7Â¦plugins|8Â¦addons|9Â¦events|10Â¦effects|11Â¦expressions|12Â¦conditions)");
 	Skript.registerExpression(ExprGenerateTxt.class,String.class,ExpressionType.PROPERTY,"generate[ random] string with length %integer%");
 	Skript.registerEffect(EffPacketTrial.class,new String[] {"send[ fake] trial packet to %player%"});
 	Skript.registerEffect(EffRunScript.class,new String[] {"run script at %string%"});
