@@ -68,8 +68,7 @@ public class ExprLoaded extends SimpleExpression<Number>{
 		}else if (type == 11){
 			int size = 0;
 			Iterator<ExpressionInfo<?, ?>> expressions = Skript.getExpressions();
-			while(expressions.hasNext())
-			{
+			while(expressions.hasNext()) {
 			  expressions.next();
 			  size += 1;
 			}
