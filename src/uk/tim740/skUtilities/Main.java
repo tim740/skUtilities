@@ -22,6 +22,9 @@ public class Main extends JavaPlugin {
 	Skript.registerExpression(ExprBase64Encode.class,String.class,ExpressionType.PROPERTY,"encode %string% to base[ ]64 using (0¦utf-8|1¦ascii|2¦ISO-8859-1)");
 	Skript.registerExpression(ExprBase64Decode.class,String.class,ExpressionType.PROPERTY,"decode %string% from base[ ]64 using (0¦utf-8|1¦ascii|2¦ISO-8859-1)");
 
+    Skript.registerExpression(ExprMorseEncode.class,String.class,ExpressionType.PROPERTY,"encode %string% to morse[ code]");
+    Skript.registerExpression(ExprMorseDecode.class,String.class,ExpressionType.PROPERTY,"decode %string% from morse[ code]");
+
 	Skript.registerExpression(ExprAsciiToTxt.class,String.class,ExpressionType.PROPERTY,"convert ascii %number% to (text|string)");
 	Skript.registerExpression(ExprTxtToAscii.class,String.class,ExpressionType.PROPERTY,"convert (text|string) %string% to ascii");
 	Skript.registerExpression(ExprHexaToNum.class,String.class,ExpressionType.PROPERTY,"convert hexa[decimal] %string% to num[ber]");
@@ -29,7 +32,6 @@ public class Main extends JavaPlugin {
 	Skript.registerExpression(ExprHexToRgb.class,String.class,ExpressionType.PROPERTY,"convert hex %string% to rgb");
 	Skript.registerExpression(ExprUnixToDate.class,String.class,ExpressionType.PROPERTY,"convert unix[ date] %string% to date[ formatted as %-string%]");
 	Skript.registerExpression(ExprMirrorTxt.class,String.class,ExpressionType.PROPERTY,"mirror[ed] %string%");
-	Skript.registerExpression(ExprMorse.class,String.class,ExpressionType.PROPERTY,"(0¦encode %string% to|1¦decode %-string% from) morse[ code]");
 	Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded conversions (50% loaded)!");
 
 	Skript.registerExpression(ExprLoaded.class,Number.class,ExpressionType.PROPERTY,"number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦plugins|8¦addons|9¦events|10¦effects|11¦expressions|12¦conditions)");
