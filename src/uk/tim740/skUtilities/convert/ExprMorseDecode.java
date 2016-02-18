@@ -22,7 +22,7 @@ public class ExprMorseDecode extends SimpleExpression<String> {
                 "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.", "-----", "--..--", ".-.-.-"};
         char[] eng = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.'};*/
-        String out = "";
+        String out = "";//todo
 /*        String[] s = this.string.getSingle(arg0).replaceAll("|", " ").split(" ");
 
         for (int i = 0; i < s.length; i++){
