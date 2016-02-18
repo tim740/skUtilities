@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util;
+package uk.tim740.skUtilities.utilities;
 
 import java.util.Iterator;
 
@@ -16,11 +16,28 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.skript.variables.Variables;
 import ch.njol.util.Kleenean;
 
-/**
- * Created by tim740.
- */
 public class ExprLoaded extends SimpleExpression<Number>{
 	private int type;
+
+	@Override
+	public Class<? extends Number> getReturnType() {
+		return Number.class;
+	}
+
+	@Override
+	public boolean isSingle() {
+		return true;
+	}
+	@Override
+	public boolean init(Expression<?>[] exprs, int arg1, Kleenean arg2, ParseResult arg3) {
+		type = arg3.mark;
+		return true;
+	}
+
+	@Override
+	public String toString(@Nullable Event arg0, boolean arg1) {
+		return this.getClass().getName();
+	}
 
 	@Override
 	@Nullable
@@ -60,22 +77,4 @@ public class ExprLoaded extends SimpleExpression<Number>{
 			return new Number[]{Skript.getConditions().size()};
 		}
 	}
-
-    @Override
-    public Class<? extends Number> getReturnType() {
-        return Number.class;
-    }
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
-    @Override
-    public boolean init(Expression<?>[] exprs, int arg1, Kleenean arg2, ParseResult arg3) {
-        type = arg3.mark;
-        return true;
-    }
-    @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
-        return this.getClass().getName();
-    }
 }

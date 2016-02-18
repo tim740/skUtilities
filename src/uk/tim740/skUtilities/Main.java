@@ -5,8 +5,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
-import uk.tim740.skUtilities.convert.*;
-import uk.tim740.skUtilities.util.*;
+import uk.tim740.skUtilities.conversion.*;
+import uk.tim740.skUtilities.utilities.*;
 
 public class Main extends JavaPlugin {
 
@@ -38,7 +38,6 @@ public class Main extends JavaPlugin {
 	Skript.registerExpression(ExprGenerateTxt.class,String.class,ExpressionType.PROPERTY,"generate[ random] string with length %integer%");
 	Skript.registerEffect(EffPacketTrial.class,new String[] {"send[ fake] trial packet to %player%"});
 	Skript.registerEffect(EffRunScript.class,new String[] {"run script at %string%"});
-    Skript.registerEffect(EffVillagerProfession.class,new String[] {"spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%"});
-	Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded util (100% loaded)!");
+	Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded utilities (100% loaded)!");
 	}
 }

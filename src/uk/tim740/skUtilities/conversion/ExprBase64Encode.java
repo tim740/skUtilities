@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.convert;
+package uk.tim740.skUtilities.conversion;
 
 import javax.annotation.Nullable;
 import java.util.Base64;
@@ -11,13 +11,31 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
-/**
- * Created by tim740.
- */
 public class ExprBase64Encode extends SimpleExpression<String> {
 	private int bEncode;
 	private Expression<String> string;
 
+	@Override
+	public Class<? extends String> getReturnType() {
+		return String.class;
+	}
+	@Override
+	public boolean isSingle() {
+		return true;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+		bEncode = arg3.mark;
+		this.string = (Expression<String>) arg0[0];
+		return true;
+	}
+
+	@Override
+	public String toString(@Nullable Event arg0, boolean arg1) {
+		return this.getClass().getName();
+	}
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
@@ -32,24 +50,4 @@ public class ExprBase64Encode extends SimpleExpression<String> {
 		}
 		return new String[]{Base64.getEncoder().encodeToString(auby)};
 	}
-
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        bEncode = arg3.mark;
-        this.string = (Expression<String>) arg0[0];
-        return true;
-    }
-    @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
-        return this.getClass().getName();
-    }
 }

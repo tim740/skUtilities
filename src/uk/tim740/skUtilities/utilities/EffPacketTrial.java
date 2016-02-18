@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util;
+package uk.tim740.skUtilities.utilities;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -19,6 +19,17 @@ import ch.njol.util.Kleenean;
  */
 public class EffPacketTrial extends Effect {
 	private Expression<Player> player;
+	@SuppressWarnings("unchecked")
+	@Override
+	public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult){
+		this.player = (Expression<Player>) exprs[0];
+		return true;
+	}
+
+	@Override
+	public String toString(@Nullable Event e, boolean arg1) {
+		return this.getClass().getName();
+	}
 	@Override
 	protected void execute(@Nullable Event e) {
             String p = Bukkit.getServer().getClass().getPackage().getName();
@@ -40,16 +51,4 @@ public class EffPacketTrial extends Effect {
             	Skript.warning("[skUtilities] Error: (PacketTrial) Player didn't have a compatible version of Minecraft.");
             }
 	}
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult){
-        this.player = (Expression<Player>) exprs[0];
-        return true;
-    }
-
-    @Override
-    public String toString(@Nullable Event e, boolean arg1) {
-        return this.getClass().getName();
-    }
 }
