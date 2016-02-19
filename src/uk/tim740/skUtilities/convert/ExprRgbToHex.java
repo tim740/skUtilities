@@ -7,7 +7,7 @@ import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Created by tim740 on 19/02/2016.
