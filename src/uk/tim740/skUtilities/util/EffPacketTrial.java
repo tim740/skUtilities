@@ -6,7 +6,6 @@ import org.bukkit.event.Event;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-
 import javax.annotation.Nullable;
 
 import ch.njol.skript.Skript;

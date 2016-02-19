@@ -1,7 +1,6 @@
 package uk.tim740.skUtilities.util;
 
 import java.util.Iterator;
-
 import javax.annotation.Nullable;
 
 import org.bukkit.Bukkit;

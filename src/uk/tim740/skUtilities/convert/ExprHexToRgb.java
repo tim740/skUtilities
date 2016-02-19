@@ -1,7 +1,6 @@
 package uk.tim740.skUtilities.convert;
 
 import java.awt.Color;
-
 import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;

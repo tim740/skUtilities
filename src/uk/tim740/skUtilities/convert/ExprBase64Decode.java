@@ -2,7 +2,6 @@ package uk.tim740.skUtilities.convert;
 
 import javax.annotation.Nullable;
 import javax.xml.bind.DatatypeConverter;
-
 import java.nio.charset.StandardCharsets;
 
 import org.bukkit.event.Event;

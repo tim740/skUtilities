@@ -7,7 +7,6 @@ import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
-import java.util.StringTokenizer;
 
 /**
  * Created by tim740.

@@ -2,7 +2,6 @@ package uk.tim740.skUtilities.convert;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
