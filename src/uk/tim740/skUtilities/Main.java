@@ -40,6 +40,7 @@ public class Main extends JavaPlugin {
 	Skript.registerEffect(EffPacketTrial.class,new String[] {"send[ fake] trial packet to %player%"});
 	Skript.registerEffect(EffRunScript.class,new String[] {"run script at %string%"});
     Skript.registerEffect(EffVillagerProfession.class,new String[] {"spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%"});
-	Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded util (100% loaded)!");
+	Skript.registerEffect(EffGiveAttribute.class,new String[] {"give %itemstack% attribute %string% %number%"});
+    Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded util (100% loaded)!");
 	}
 }
