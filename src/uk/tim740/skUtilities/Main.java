@@ -1,10 +1,14 @@
 package uk.tim740.skUtilities;
 
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
-
+import ch.njol.skript.lang.util.SimpleEvent;
+import ch.njol.skript.registrations.EventValues;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
+
+import org.bukkit.Bukkit;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.java.JavaPlugin;
+
 import uk.tim740.skUtilities.convert.*;
 import uk.tim740.skUtilities.util.*;
 
@@ -40,7 +44,7 @@ public class Main extends JavaPlugin {
 	Skript.registerEffect(EffPacketTrial.class,new String[] {"send[ fake] trial packet to %player%"});
 	Skript.registerEffect(EffRunScript.class,new String[] {"run script at %string%"});
     Skript.registerEffect(EffVillagerProfession.class,new String[] {"spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%"});
-	Skript.registerEffect(EffGiveAttribute.class,new String[] {"give %itemstack% attribute %string% %number%"});
+    Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class,"on cauldron[ water] level change");
     Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded util (100% loaded)!");
 	}
 }
