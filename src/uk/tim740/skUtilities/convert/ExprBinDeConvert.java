@@ -31,7 +31,7 @@ public class ExprBinDeConvert extends SimpleExpression<String> {
 		if (toBin == 0){
 			StringBuilder sb = new StringBuilder();
             for (String s : bin.toString().split(" ")) {
-                sb.append(Integer.parseInt(s, 2));
+                sb.append((char) Integer.parseInt(s, 2));
             }
 			return new String[]{sb.toString()};
 		}else if (toBin == 1){
