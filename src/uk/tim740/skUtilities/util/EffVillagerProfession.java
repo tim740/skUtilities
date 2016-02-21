@@ -21,21 +21,16 @@ public class EffVillagerProfession extends Effect{
     @Override
     protected void execute(Event arg0) {
         Location loc = this.location.getSingle(arg0);
+        Villager.Profession[] s = Villager.Profession.values();
         if (entity.toString().contains("zombie villager")){
-            //TODO zombie villager Coming in 1.9
-        }else if (entity.toString().contains("villager")){
-            Villager villager = (Villager) loc.getWorld().spawnEntity(loc, EntityType.VILLAGER);
-            if (prof == 0){
-                villager.setProfession(Villager.Profession.FARMER);
-            }else if (prof == 1){
-                villager.setProfession(Villager.Profession.LIBRARIAN);
-            }else if (prof == 2){
-                villager.setProfession(Villager.Profession.PRIEST);
-            }else if (prof == 3){
-                villager.setProfession(Villager.Profession.BLACKSMITH);
-            }else{
-                villager.setProfession(Villager.Profession.BUTCHER);
+/*            Villager zom = (Villager) loc.getWorld().spawnEntity(loc, EntityType.ZOMBIE);
+            if (zom.isVillager() != true){
+                zom.setVillager(true);
             }
+            zom.setProfession(s[prof]);*/
+        }else if (entity.toString().contains("villager")){
+            Villager vil = (Villager) loc.getWorld().spawnEntity(loc, EntityType.VILLAGER);
+            vil.setProfession(s[prof]);
         }else{
             Main.prErr("Only (Villager & Zombie Villager) are supported!");
         }
