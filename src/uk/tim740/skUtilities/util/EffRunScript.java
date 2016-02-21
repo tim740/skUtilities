@@ -13,6 +13,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
+import uk.tim740.skUtilities.Main;
 
 /**
  * Created by tim740
@@ -30,7 +31,7 @@ public class EffRunScript extends Effect{
 				Desktop.getDesktop().open(new File(pth));
 			}
 		}catch (IOException e){
-			Skript.warning("[skUtilities] Error: (RunScript) '" + pth + "' isn't a valid path.");
+            Main.prErr("'" + pth + "' isn't a valid path!");
 		}
 	}
 

@@ -8,6 +8,7 @@ import ch.njol.util.Kleenean;
 import org.bukkit.Location;
 import org.bukkit.entity.*;
 import org.bukkit.event.Event;
+import uk.tim740.skUtilities.Main;
 
 /**
  * Created by tim740 on 18/02/2016
@@ -36,7 +37,7 @@ public class EffVillagerProfession extends Effect{
                 villager.setProfession(Villager.Profession.BUTCHER);
             }
         }else{
-            Skript.error("[skUtilities] Error: (VillagerProfession) Only (Villager & Zombie Villager) are supported!");
+            Main.prErr("Only (Villager & Zombie Villager) are supported!");
         }
     }
 

@@ -4,6 +4,7 @@ import ch.njol.skript.lang.util.SimpleEvent;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
 
+import net.minecraft.server.v1_8_R3.MinecraftServer;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -44,5 +45,8 @@ public class Main extends JavaPlugin {
     Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
     //Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class,"on cauldron[ water] level change");
     Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded util (100% loaded)!");
-	}
+    }
+    public static void prErr(String s) {
+        Bukkit.getServer().getLogger().severe("[skUtilities] " + s);
+    }
 }

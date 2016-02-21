@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import ch.njol.skript.Skript;
 import org.bukkit.event.Event;
 
+import uk.tim740.skUtilities.Main;
 import uk.tim740.skUtilities.convert.Binary.BinInvalid;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -25,7 +26,7 @@ public class ExprBinDeConvert extends SimpleExpression<String> {
 		try{
 			bin = new Binary(this.string.getSingle(arg0));
 		}catch (BinInvalid e){
-            Skript.error("[skUtilities] Binary Strings can only contain 1's, 0's or spaces!");
+            Main.prErr("Binary Strings can only contain 1's, 0's or spaces!");
             return null;
 		}
 		if (toBin == 0){
