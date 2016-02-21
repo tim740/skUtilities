@@ -1,6 +1,7 @@
 package uk.tim740.skUtilities.util;
 
 import javax.annotation.Nullable;
+import java.util.Objects;
 import java.util.Random;
 
 import org.bukkit.event.Event;
@@ -23,7 +24,7 @@ public class ExprGenerateTxt extends SimpleExpression<String>{
 		Random ranGen = new Random();
 		String out = "";
 		for (int i=0; i<this.integer.getSingle(arg0); i++){
-			if (out == ""){
+			if (Objects.equals(out, "")){
 				out = (chl[ranGen.nextInt(chl.length)]);
 			}else{
 				out = (out + chl[ranGen.nextInt(chl.length)]);

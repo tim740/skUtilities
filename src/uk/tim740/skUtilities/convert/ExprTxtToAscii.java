@@ -9,6 +9,8 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
+import java.util.Objects;
+
 /**
  * Created by tim740.
  */
@@ -20,7 +22,7 @@ public class ExprTxtToAscii  extends SimpleExpression<String>{
 	protected String[] get(Event arg0) {
 		String out = "";
 		for(String c : this.string.getSingle(arg0).split("")) {
-			if (out == ""){
+			if (Objects.equals(out, "")){
 				out = (Integer.toString(c.charAt(0)));
 			}else{
 				out = (out + "," + Integer.toString(c.charAt(0)));

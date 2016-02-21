@@ -10,7 +10,7 @@ import org.bukkit.entity.*;
 import org.bukkit.event.Event;
 
 /**
- * Created by tim740 on 18/02/2016.
+ * Created by tim740 on 18/02/2016
  */
 public class EffVillagerProfession extends Effect{
     private int prof;
@@ -45,6 +45,7 @@ public class EffVillagerProfession extends Effect{
         return this.getClass().getName();
     }
     @Override
+    @SuppressWarnings("unchecked")
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         prof = arg3.mark;
         this.entity = (Expression<Entity>) arg0[0];

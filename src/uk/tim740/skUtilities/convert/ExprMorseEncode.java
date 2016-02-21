@@ -24,10 +24,9 @@ public class ExprMorseEncode extends SimpleExpression<String> {
         char[] eng = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.'};
         String out = "";
-        char[] s = this.string.getSingle(arg0).toLowerCase().toCharArray();
-        for (int i = 0; i < s.length; i++){
-            for (int j = 0; j < eng.length; j++){
-                if (eng[j] == s[i]){
+        for (char value : this.string.getSingle(arg0).toLowerCase().toCharArray()) {
+            for (int j = 0; j < eng.length; j++) {
+                if (eng[j] == value) {
                     out = out + morse[j] + " ";
                 }
             }

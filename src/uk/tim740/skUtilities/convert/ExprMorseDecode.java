@@ -21,15 +21,10 @@ public class ExprMorseDecode extends SimpleExpression<String> {
     @Nullable
     protected String[] get(Event arg0) {
         String out = "";
-        String s = this.string.getSingle(arg0);
-        String userphrase = s;
-        String[] words = userphrase.split("\\s\\s\\s");
-        String[] wordamt = words;
-        for(int i =0; i<wordamt.length; i++){
-            String[] letters = words[i].split("\\s");
-            for(int in=0; in<letters.length; in++){
-                for(int j=0; j<MorseLet.length; j++){
-                    if(letters[in].equals(MorseLet[j])){
+        for (String word : this.string.getSingle(arg0).split("\\s\\s\\s")) {
+            for (String letter : word.split("\\s")) {
+                for (int j = 0; j < MorseLet.length; j++) {
+                    if (letter.equals(MorseLet[j])) {
                         out = out + Letters[j];
                     }
                 }

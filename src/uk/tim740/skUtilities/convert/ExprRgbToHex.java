@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 import java.awt.Color;
 
 /**
- * Created by tim740 on 19/02/2016.
+ * Created by tim740 on 19/02/2016
  */
 public class ExprRgbToHex extends SimpleExpression<String> {
     private Expression<Number> r;

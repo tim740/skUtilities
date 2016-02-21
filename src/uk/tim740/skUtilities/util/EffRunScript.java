@@ -15,7 +15,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 
 /**
- * Created by tim740.
+ * Created by tim740
  */
 public class EffRunScript extends Effect{
 	private Expression<String> path;

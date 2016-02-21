@@ -37,10 +37,8 @@ public class ExprBinConvert extends SimpleExpression<String> {
 			return new String[]{Integer.toBinaryString(Integer.parseInt(this.string.getSingle(arg0)))};
 		}else if (fromBin == 2){
 			return new String[]{Integer.toBinaryString(Integer.parseInt(this.string.getSingle(arg0), 16))};
-		}else if (fromBin == 3){
-			return new String[]{Integer.toBinaryString(Integer.parseInt(this.string.getSingle(arg0), 8))};
 		}else{
-			return null;
+			return new String[]{Integer.toBinaryString(Integer.parseInt(this.string.getSingle(arg0), 8))};
 		}
 	}
 

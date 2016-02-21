@@ -30,7 +30,7 @@ public class EffPacketTrial extends Effect {
                 Object packet = playOutConstructor.newInstance(5, 0);
                 Object craftPlayerObject = craftPlayer.cast(player.getSingle(e));
                 Method getHandleMethod = craftPlayer.getMethod("getHandle", (Class<?>[])new Class[0]);
-                Object handle = getHandleMethod.invoke(craftPlayerObject, new Object[0]);
+                Object handle = getHandleMethod.invoke(craftPlayerObject);
                 Object pc = handle.getClass().getField("playerConnection").get(handle);
                 Method sPM = pc.getClass().getMethod("sendPacket", Packet);
                 sPM.invoke(pc, packet);

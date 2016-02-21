@@ -20,9 +20,9 @@ public class ExprHexToRgb extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		this.string.getSingle(arg0).replace("#", "");
-		if (this.string.getSingle(arg0).length() == 6){
-			Color ohex = Color.decode("#" + this.string.getSingle(arg0));
+		String s = this.string.getSingle(arg0).replace("#", "");
+		if (s.length() == 6){
+			Color ohex = Color.decode("#" + s);
 			return new String[]{ohex.toString().replace("java.awt.Color[", "").replace("r=", "").replace("g=", " ").replace("b=", " ").replace("]", "")};
 		}else{
 			Skript.warning("[skUtilities] Error: (HexToRgb) Length must be 6. (FFFFFF)");

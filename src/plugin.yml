@@ -1,5 +1,5 @@
 name: skUtilities
 author: tim740
 main: uk.tim740.skUtilities.Main
-version: 0.3.3
+version: 0.3.4
 depend: [Skript]
