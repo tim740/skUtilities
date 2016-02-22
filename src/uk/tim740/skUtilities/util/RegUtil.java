@@ -2,6 +2,7 @@ package uk.tim740.skUtilities.util;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
+import ch.njol.skript.lang.util.SimpleEvent;
 import org.bukkit.Bukkit;
 
 /**
