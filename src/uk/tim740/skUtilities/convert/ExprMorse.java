@@ -1,7 +1,7 @@
 package uk.tim740.skUtilities.convert;
 
 import ch.njol.skript.lang.Expression;
-import ch.njol.skript.lang.SkriptParser.ParseResult;
+import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
@@ -9,9 +9,10 @@ import org.bukkit.event.Event;
 import javax.annotation.Nullable;
 
 /**
- * Created by tim740.
+ * Created by tim740 on 22/02/2016
  */
-public class ExprMorseDecode extends SimpleExpression<String> {
+public class ExprMorse extends SimpleExpression<String> {
+    private int morseTy;
     private Expression<String> string;
     private static final char[] Letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     private static final String[] MorseLet = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---",
@@ -21,11 +22,21 @@ public class ExprMorseDecode extends SimpleExpression<String> {
     @Nullable
     protected String[] get(Event arg0) {
         String out = "";
-        for (String word : this.string.getSingle(arg0).split("\\s\\s\\s")) {
-            for (String letter : word.split("\\s")) {
-                for (int j = 0; j < MorseLet.length; j++) {
-                    if (letter.equals(MorseLet[j])) {
-                        out = out + Letters[j];
+        if(morseTy == 0){
+            for (char value : this.string.getSingle(arg0).toLowerCase().toCharArray()) {
+                for (int j = 0; j < Letters.length; j++) {
+                    if (Letters[j] == value) {
+                        out = out + MorseLet[j] + " ";
+                    }
+                }
+            }
+        }else{
+            for (String word : this.string.getSingle(arg0).split("\\s\\s\\s")) {
+                for (String letter : word.split("\\s")) {
+                    for (int j = 0; j < MorseLet.length; j++) {
+                        if (letter.equals(MorseLet[j])) {
+                            out = out + Letters[j];
+                        }
                     }
                 }
             }
@@ -43,7 +54,8 @@ public class ExprMorseDecode extends SimpleExpression<String> {
     }
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
+        morseTy = arg3.mark;
         this.string = (Expression<String>) arg0[0];
         return true;
     }
