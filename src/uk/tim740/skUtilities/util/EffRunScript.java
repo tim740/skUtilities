@@ -8,7 +8,6 @@ import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
 
-import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -24,7 +23,7 @@ public class EffRunScript extends Effect{
 	@Override
 	protected void execute(Event arg0) {
 		String pth = new File("plugins\\", this.path.getSingle(arg0)).getPath().replaceAll("/", Matcher.quoteReplacement(File.separator));
-		try{
+        try{
 			if(!new File(pth).exists()){
 				throw new IOException();
 			}else{
