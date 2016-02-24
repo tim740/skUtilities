@@ -13,9 +13,7 @@ import java.awt.Color;
  * Created by tim740 on 19/02/2016
  */
 public class ExprRgbToHex extends SimpleExpression<String> {
-    private Expression<Number> r;
-    private Expression<Number> g;
-    private Expression<Number> b;
+    private Expression<Number> r, g, b;
 
     @Override
     @Nullable

@@ -15,8 +15,7 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprUnixToDate extends SimpleExpression <String>{
-	private Expression<String> string;
-	private Expression<String> format;
+	private Expression<String> string, format;
 
 	@Override
 	@Nullable
