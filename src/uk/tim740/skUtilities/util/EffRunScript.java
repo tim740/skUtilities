@@ -30,7 +30,7 @@ public class EffRunScript extends Effect{
 				Desktop.getDesktop().open(new File(pth));
 			}
 		}catch (IOException e){
-            Main.prErr("'" + pth + "' isn't a valid path!");
+            Main.prErr("'" + pth + "' isn't a valid path!", getClass().getSimpleName());
 		}
 	}
 
@@ -42,6 +42,6 @@ public class EffRunScript extends Effect{
     }
     @Override
     public String toString(@Nullable Event arg0, boolean arg1) {
-        return this.getClass().getName();
+        return getClass().getName();
     }
 }

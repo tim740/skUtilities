@@ -8,7 +8,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import javax.annotation.Nullable;
 
-import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -38,7 +37,7 @@ public class EffPacketTrial extends Effect {
                 sPM.invoke(pc, packet);
             }
             catch (Exception ex) {
-                Main.prErr("Player didn't have a compatible version of Minecraft!");
+                Main.prErr("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName());
             }
 	}
 
@@ -51,6 +50,6 @@ public class EffPacketTrial extends Effect {
 
     @Override
     public String toString(@Nullable Event e, boolean arg1) {
-        return this.getClass().getName();
+        return getClass().getName();
     }
 }

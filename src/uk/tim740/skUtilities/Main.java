@@ -14,7 +14,7 @@ public class Main extends JavaPlugin {
         RegConvert.regC();
         RegUtil.regU();
     }
-    public static void prErr(String s) {
-        Bukkit.getServer().getLogger().severe("[skUtilities] " + s);
+    public static void prErr(String s, String c) {
+        Bukkit.getServer().getLogger().severe("[skUtilities] " + s + " ("+ c +")");
     }
 }

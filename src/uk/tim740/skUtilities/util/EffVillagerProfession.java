@@ -1,6 +1,5 @@
 package uk.tim740.skUtilities.util;
 
-import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
@@ -32,13 +31,13 @@ public class EffVillagerProfession extends Effect{
             Villager vil = (Villager) loc.getWorld().spawnEntity(loc, EntityType.VILLAGER);
             vil.setProfession(s[prof]);
         }else{
-            Main.prErr("Only (Villager & Zombie Villager) are supported!");
+            Main.prErr("Only (Villager & Zombie Villager) are supported!", getClass().getSimpleName());
         }
     }
 
     @Override
     public String toString(Event event, boolean b) {
-        return this.getClass().getName();
+        return getClass().getName();
     }
     @Override
     @SuppressWarnings("unchecked")

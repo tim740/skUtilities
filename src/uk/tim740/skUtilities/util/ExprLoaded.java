@@ -75,6 +75,6 @@ public class ExprLoaded extends SimpleExpression<Number>{
     }
     @Override
     public String toString(@Nullable Event arg0, boolean arg1) {
-        return this.getClass().getName();
+        return getClass().getName();
     }
 }

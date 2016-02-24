@@ -26,7 +26,7 @@ public class ExprHexToRgb extends SimpleExpression<String>{
 			Color ohex = Color.decode("#" + s);
 			return new String[]{ohex.toString().replace("java.awt.Color[", "").replace("r=", "").replace("g=", " ").replace("b=", " ").replace("]", "")};
 		}else{
-            Main.prErr("Length must be 6. (FFFFFF)!");
+            Main.prErr("Length must be 6. (FFFFFF)!", getClass().getSimpleName());
 			return null;
 		}
 	}
@@ -47,6 +47,6 @@ public class ExprHexToRgb extends SimpleExpression<String>{
     }
     @Override
     public String toString(@Nullable Event arg0, boolean arg1) {
-        return this.getClass().getName();
+        return getClass().getName();
     }
 }

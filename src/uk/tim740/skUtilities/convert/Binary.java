@@ -12,8 +12,6 @@ public class Binary {
         binary = toBinary.trim();
         for (char character : binary.toCharArray()){
             if (character !='0' && character !='1' && character !=' ') throw new BinInvalid("");
-                 Main.prErr("Only (Villager & Zombie Villager) are supported!");
-
         }
     }
     @Override
