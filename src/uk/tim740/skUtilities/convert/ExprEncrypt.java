@@ -42,7 +42,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
         } catch (NoSuchAlgorithmException e) {
             Main.prErr("NoSuchAlgorithm '"+ cipher +"'", getClass().getSimpleName());
         } catch (NoSuchPaddingException e) {
-            Main.prErr("NoSuchPadding'"+ cipher +"'", getClass().getSimpleName());
+            Main.prErr("NoSuchPadding '"+ cipher +"'", getClass().getSimpleName());
         }
         if (type == 0){
             byte[] encry = new byte[0];
@@ -52,7 +52,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
                     encry = c.doFinal(iString.getBytes());
                 }
             }catch (InvalidKeyException e) {
-                Main.prErr("InvalidKey", getClass().getSimpleName());
+                Main.prErr("InvalidKey '"+ Ekey.toString() +"'", getClass().getSimpleName());
             }catch (IllegalBlockSizeException e) {
                 Main.prErr("IllegalBlockSize", getClass().getSimpleName());
             }catch (BadPaddingException e) {
@@ -70,7 +70,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
                     out = c.doFinal(decry);
                 }
             }catch (InvalidKeyException e){
-                Main.prErr("InvalidKey", getClass().getSimpleName());
+                Main.prErr("InvalidKey '"+ Ekey.toString() +"'", getClass().getSimpleName());
             }catch (IOException e){
                 Main.prErr("IOException", getClass().getSimpleName());
             }catch (IllegalBlockSizeException e) {
