@@ -10,15 +10,10 @@ import sun.misc.BASE64Encoder;
 import uk.tim740.skUtilities.Main;
 
 import javax.annotation.Nullable;
-import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.SecretKeySpec;
-import java.io.IOException;
 import java.security.InvalidKeyException;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 /**
@@ -31,7 +26,6 @@ public class ExprEncrypt extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event arg0) {
-       // String[] keySpl = this.key.getSingle(arg0).split("");
         byte[] iKey = this.key.getSingle(arg0).getBytes();
         String iCipher = this.cipher.getSingle(arg0).toUpperCase();
         String iString = this.string.getSingle(arg0);
@@ -39,10 +33,8 @@ public class ExprEncrypt extends SimpleExpression<String> {
         Cipher c = null;
         try {
             c = Cipher.getInstance(iCipher);
-        } catch (NoSuchAlgorithmException e) {
-            Main.prErr("NoSuchAlgorithm '"+ cipher +"'", getClass().getSimpleName());
-        } catch (NoSuchPaddingException e) {
-            Main.prErr("NoSuchPadding '"+ cipher +"'", getClass().getSimpleName());
+        }catch (Exception e) {
+            Main.prErr(e.getMessage() + " '"+ cipher +"'", getClass().getSimpleName());
         }
         if (type == 0){
             byte[] encry = new byte[0];
@@ -52,11 +44,9 @@ public class ExprEncrypt extends SimpleExpression<String> {
                     encry = c.doFinal(iString.getBytes());
                 }
             }catch (InvalidKeyException e) {
-                Main.prErr("InvalidKey '"+ Ekey.toString() +"'", getClass().getSimpleName());
-            }catch (IllegalBlockSizeException e) {
-                Main.prErr("IllegalBlockSize", getClass().getSimpleName());
-            }catch (BadPaddingException e) {
-                Main.prErr("BadPadding", getClass().getSimpleName());
+                Main.prErr(e.getMessage() + " '"+ Ekey +"'", getClass().getSimpleName());
+            }catch (Exception e) {
+                Main.prErr(e.getMessage(), getClass().getSimpleName());
             }
             String out = new BASE64Encoder().encode(encry);
             return new String[]{out};
@@ -70,13 +60,9 @@ public class ExprEncrypt extends SimpleExpression<String> {
                     out = c.doFinal(decry);
                 }
             }catch (InvalidKeyException e){
-                Main.prErr("InvalidKey '"+ Ekey.toString() +"'", getClass().getSimpleName());
-            }catch (IOException e){
-                Main.prErr("IOException", getClass().getSimpleName());
-            }catch (IllegalBlockSizeException e) {
-                Main.prErr("IllegalBlockSize", getClass().getSimpleName());
-            }catch (BadPaddingException e) {
-                Main.prErr("BadPadding", getClass().getSimpleName());
+                Main.prErr(e.getMessage() + " '"+ Ekey +"'", getClass().getSimpleName());
+            }catch (Exception e) {
+                Main.prErr(e.getMessage(), getClass().getSimpleName());
             }
             return new String[]{Arrays.toString(out)};
         }
