@@ -12,13 +12,18 @@ import ch.njol.util.Kleenean;
 /**
  * Created by tim740 on 28/02/2016
  */
-public class ExprWorldType extends SimpleExpression<String> {
+public class ExprWorldUtil extends SimpleExpression<String> {
     private Expression<World> world;
+    private int Wty;
 
     @Override
     @Nullable
     protected String[] get(Event arg0) {
-        return new String[]{this.world.getSingle(arg0).getWorldType().toString()};
+        if (Wty == 0){
+            return new String[]{this.world.getSingle(arg0).getEnvironment().toString()};
+        }else {
+            return new String[]{this.world.getSingle(arg0).getWorldType().toString()};
+        }
     }
 
     @Override
@@ -33,6 +38,7 @@ public class ExprWorldType extends SimpleExpression<String> {
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
         this.world = (Expression<World>) arg0[0];
+        Wty = arg3.mark;
         return true;
     }
     @Override

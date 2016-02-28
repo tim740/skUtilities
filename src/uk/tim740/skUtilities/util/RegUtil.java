@@ -12,8 +12,7 @@ public class RegUtil {
     public static void regU() {
         Skript.registerExpression(ExprLoaded.class,Number.class, ExpressionType.PROPERTY,"number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦plugins|8¦addons|9¦events|10¦effects|11¦expressions|12¦conditions)");
         Skript.registerExpression(ExprGenerateTxt.class,String.class,ExpressionType.PROPERTY,"generate[ random] string with length %integer%");
-        Skript.registerExpression(ExprWorldEnvironment.class,String.class,ExpressionType.PROPERTY,"[world ](dimension|environment) of %world%", "%world%'s [world ](dimension|environment)");
-        Skript.registerExpression(ExprWorldType.class,String.class,ExpressionType.PROPERTY,"[world ]type of %world%", "%world%'s [world ]type");
+        Skript.registerExpression(ExprWorldUtil.class,String.class,ExpressionType.PROPERTY,"[world ](0¦(dimension|environment)|1¦type) of %world%", "%world%'s [world ](0¦(dimension|environment)|1¦type)");
         Skript.registerEffect(EffPacketTrial.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffRunScript.class, "run script at %string%");
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
