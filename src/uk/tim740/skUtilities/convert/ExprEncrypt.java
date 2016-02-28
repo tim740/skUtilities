@@ -13,8 +13,6 @@ import javax.annotation.Nullable;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
-import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * Created by tim740 on 23/02/2016
@@ -59,8 +57,8 @@ public class ExprEncrypt extends SimpleExpression<String> {
                 }
             }catch (Exception e) {
                 Main.prErr(e.getMessage(), getClass().getSimpleName());
-            }for (int i=0; i<cout.length; i++){
-                out = (out + Character.toString((char) new Byte(cout[i]).intValue()));
+            }for (byte aCout : cout) {
+                out = (out + Character.toString((char) new Byte(aCout).intValue()));
             }
             return new String[]{out};
         }
