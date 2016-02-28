@@ -24,10 +24,9 @@ public class ExprEncrypt extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event arg0) {
-        byte[] iKey = this.key.getSingle(arg0).getBytes();
         String iCipher = this.cipher.getSingle(arg0).toUpperCase();
         String iString = this.string.getSingle(arg0);
-        Key Ekey = new SecretKeySpec(iKey, iCipher);
+        Key Ekey = new SecretKeySpec(this.key.getSingle(arg0).getBytes(), iCipher);
         Cipher c = null;
         try{
             c = Cipher.getInstance(iCipher);
