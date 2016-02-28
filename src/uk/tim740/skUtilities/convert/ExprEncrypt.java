@@ -10,7 +10,6 @@ import sun.misc.BASE64Encoder;
 import uk.tim740.skUtilities.Main;
 
 import javax.annotation.Nullable;
-import java.security.InvalidKeyException;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
@@ -43,8 +42,6 @@ public class ExprEncrypt extends SimpleExpression<String> {
                     c.init(Cipher.ENCRYPT_MODE, Ekey);
                     encry = c.doFinal(iString.getBytes());
                 }
-            }catch (InvalidKeyException e) {
-                Main.prErr(e.getMessage() + " '"+ Ekey +"'", getClass().getSimpleName());
             }catch (Exception e) {
                 Main.prErr(e.getMessage(), getClass().getSimpleName());
             }
@@ -59,8 +56,6 @@ public class ExprEncrypt extends SimpleExpression<String> {
                     c.init(Cipher.DECRYPT_MODE, Ekey);
                     out = c.doFinal(decry);
                 }
-            }catch (InvalidKeyException e){
-                Main.prErr(e.getMessage() + " '"+ Ekey +"'", getClass().getSimpleName());
             }catch (Exception e) {
                 Main.prErr(e.getMessage(), getClass().getSimpleName());
             }
