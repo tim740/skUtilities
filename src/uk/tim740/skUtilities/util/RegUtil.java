@@ -12,7 +12,7 @@ public class RegUtil {
     public static void regU() {
         Skript.registerExpression(ExprLoaded.class,Number.class, ExpressionType.PROPERTY,"number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦plugins|8¦addons|9¦events|10¦effects|11¦expressions|12¦conditions)");
         Skript.registerExpression(ExprGenerateTxt.class,String.class,ExpressionType.PROPERTY,"generate[ random] string with length %integer%");
-        Skript.registerExpression(ExprWorldEnvironment.class,String.class,ExpressionType.PROPERTY,"(dimension|environment) of %world%", "%world%'s (dimension|environment)");
+        Skript.registerExpression(ExprWorldEnvironment.class,String.class,ExpressionType.PROPERTY,"[world ](dimension|environment) of %world%", "%world%'s [world ](dimension|environment)");
         Skript.registerExpression(ExprWorldType.class,String.class,ExpressionType.PROPERTY,"[world ]type of %world%", "%world%'s [world ]type");
         Skript.registerEffect(EffPacketTrial.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffRunScript.class, "run script at %string%");
