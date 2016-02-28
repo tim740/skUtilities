@@ -14,6 +14,7 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Created by tim740 on 23/02/2016
@@ -30,36 +31,38 @@ public class ExprEncrypt extends SimpleExpression<String> {
         String iString = this.string.getSingle(arg0);
         Key Ekey = new SecretKeySpec(iKey, iCipher);
         Cipher c = null;
-        try {
+        try{
             c = Cipher.getInstance(iCipher);
-        }catch (Exception e) {
+        }catch (Exception e){
             Main.prErr(e.getMessage() + " '"+ cipher +"'", getClass().getSimpleName());
         }
         if (type == 0){
             byte[] encry = new byte[0];
-            try {
+            try{
                 if (c != null) {
                     c.init(Cipher.ENCRYPT_MODE, Ekey);
                     encry = c.doFinal(iString.getBytes());
                 }
-            }catch (Exception e) {
+            }catch (Exception e){
                 Main.prErr(e.getMessage(), getClass().getSimpleName());
             }
-            String out = new BASE64Encoder().encode(encry);
-            return new String[]{out};
+            return new String[]{new BASE64Encoder().encode(encry)};
         }else{
             byte[] decry;
-            byte[] out = new byte[0];
-            try {
+            byte[] cout = new byte[0];
+            String out = "";
+            try{
                 decry = new BASE64Decoder().decodeBuffer(iString);
                 if (c != null) {
                     c.init(Cipher.DECRYPT_MODE, Ekey);
-                    out = c.doFinal(decry);
+                    cout = c.doFinal(decry);
                 }
             }catch (Exception e) {
                 Main.prErr(e.getMessage(), getClass().getSimpleName());
+            }for (int i=0; i<cout.length; i++){
+                out = (out + Character.toString((char) new Byte(cout[i]).intValue()));
             }
-            return new String[]{Arrays.toString(out)};
+            return new String[]{out};
         }
     }
 
