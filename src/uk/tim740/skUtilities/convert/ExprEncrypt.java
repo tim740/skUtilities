@@ -27,31 +27,30 @@ public class ExprEncrypt extends SimpleExpression<String> {
         String iCipher = this.cipher.getSingle(arg0).toUpperCase();
         String iString = this.string.getSingle(arg0);
         Key Ekey = new SecretKeySpec(this.key.getSingle(arg0).getBytes(), iCipher);
+        byte[] cout = new byte[0];
         Cipher c = null;
         try{
             c = Cipher.getInstance(iCipher);
+            c.init(type, Ekey);
         }catch (Exception e){
             Main.prErr(e.getMessage() + " '"+ cipher +"'", getClass().getSimpleName());
         }
-        if (type == 0){
-            byte[] encry = new byte[0];
+
+        if (type == Cipher.ENCRYPT_MODE){
             try{
                 if (c != null) {
-                    c.init(Cipher.ENCRYPT_MODE, Ekey);
-                    encry = c.doFinal(iString.getBytes());
+                    cout = c.doFinal(iString.getBytes());
                 }
             }catch (Exception e){
                 Main.prErr(e.getMessage(), getClass().getSimpleName());
             }
-            return new String[]{new BASE64Encoder().encode(encry)};
+            return new String[]{new BASE64Encoder().encode(cout)};
         }else{
             byte[] decry;
-            byte[] cout = new byte[0];
             String out = "";
             try{
                 decry = new BASE64Decoder().decodeBuffer(iString);
                 if (c != null) {
-                    c.init(Cipher.DECRYPT_MODE, Ekey);
                     cout = c.doFinal(decry);
                 }
             }catch (Exception e) {
@@ -74,7 +73,11 @@ public class ExprEncrypt extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        type = arg3.mark;
+        if (arg3.mark == 0){
+            type = Cipher.ENCRYPT_MODE;
+        }else{
+            type = Cipher.DECRYPT_MODE;
+        }
         this.string = (Expression<String>) arg0[0];
         this.cipher = (Expression<String>) arg0[1];
         this.key = (Expression<String>) arg0[2];
