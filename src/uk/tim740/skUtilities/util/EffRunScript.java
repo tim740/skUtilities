@@ -22,7 +22,7 @@ public class EffRunScript extends Effect{
 
 	@Override
 	protected void execute(Event arg0) {
-		String pth = new File("plugins\\", this.path.getSingle(arg0)).getPath().replaceAll("/", Matcher.quoteReplacement(File.separator));
+		String pth = new File("plugins\\", path.getSingle(arg0)).getPath().replaceAll("/", Matcher.quoteReplacement(File.separator));
         try{
 			if(!new File(pth).exists()){
 				throw new IOException();
@@ -37,7 +37,7 @@ public class EffRunScript extends Effect{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        this.path = (Expression<String>) arg0[0];
+        path = (Expression<String>) arg0[0];
         return true;
     }
     @Override

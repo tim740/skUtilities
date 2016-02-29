@@ -69,7 +69,7 @@ public class ExprLoaded extends SimpleExpression<Number>{
         return true;
     }
     @Override
-    public boolean init(Expression<?>[] exprs, int arg1, Kleenean arg2, ParseResult arg3) {
+    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
         type = arg3.mark;
         return true;
     }

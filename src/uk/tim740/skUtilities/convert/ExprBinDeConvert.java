@@ -2,7 +2,6 @@ package uk.tim740.skUtilities.convert;
 
 import javax.annotation.Nullable;
 
-import ch.njol.skript.Skript;
 import org.bukkit.event.Event;
 
 import uk.tim740.skUtilities.Main;
@@ -17,16 +16,16 @@ import ch.njol.util.Kleenean;
  */
 public class ExprBinDeConvert extends SimpleExpression<String> {
 	private int toBin;
-	private Expression<String> string;
+	private Expression<String> str;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0){
 		Binary bin;
 		try{
-			bin = new Binary(this.string.getSingle(arg0));
+			bin = new Binary(str.getSingle(arg0));
 		}catch (BinInvalid e){
-            Main.prErr("Binary Strings can only contain 1's, 0's or spaces!", this.getClass().getSimpleName());
+            Main.prErr("Binary Strings can only contain 1's, 0's or spaces!", getClass().getSimpleName());
             return null;
 		}
 		if (toBin == 0){
@@ -56,7 +55,7 @@ public class ExprBinDeConvert extends SimpleExpression<String> {
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
         toBin = arg3.mark;
-        this.string = (Expression<String>) arg0[0];
+        str= (Expression<String>) arg0[0];
         return true;
     }
     @Override

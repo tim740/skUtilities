@@ -12,30 +12,30 @@ import javax.annotation.Nullable;
  * Created by tim740 on 22/02/2016
  */
 public class ExprMorse extends SimpleExpression<String> {
-    private int morseTy;
-    private Expression<String> string;
-    private static final char[] Letters = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-    private static final String[] MorseLet = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---",
+    private int morTy;
+    private Expression<String> str;
+    private static final char[] engLe = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+    private static final String[] morseLe = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---",
             ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
 
     @Override
     @Nullable
     protected String[] get(Event arg0) {
         String out = "";
-        if(morseTy == 0){
-            for (char value : this.string.getSingle(arg0).toLowerCase().toCharArray()) {
-                for (int j = 0; j < Letters.length; j++) {
-                    if (Letters[j] == value) {
-                        out = out + MorseLet[j] + " ";
+        if(morTy == 0){
+            for (char value : str.getSingle(arg0).toLowerCase().toCharArray()) {
+                for (int j = 0; j < engLe.length; j++) {
+                    if (engLe[j] == value) {
+                        out = out + morseLe[j] + " ";
                     }
                 }
             }
         }else{
-            for (String word : this.string.getSingle(arg0).split("\\s\\s\\s")) {
+            for (String word : str.getSingle(arg0).split("\\s\\s\\s")) {
                 for (String letter : word.split("\\s")) {
-                    for (int j = 0; j < MorseLet.length; j++) {
-                        if (letter.equals(MorseLet[j])) {
-                            out = out + Letters[j];
+                    for (int j = 0; j < morseLe.length; j++) {
+                        if (letter.equals(morseLe[j])) {
+                            out = out + engLe[j];
                         }
                     }
                 }
@@ -55,8 +55,8 @@ public class ExprMorse extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        morseTy = arg3.mark;
-        this.string = (Expression<String>) arg0[0];
+        morTy = arg3.mark;
+        str = (Expression<String>) arg0[0];
         return true;
     }
     @Override

@@ -18,7 +18,7 @@ public class ExprRgbToHex extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event arg0) {
-        String rgb = Integer.toHexString(new Color(Integer.parseInt(this.r.getSingle(arg0).toString()),Integer.parseInt(this.g.getSingle(arg0).toString()),Integer.parseInt(this.b.getSingle(arg0).toString())).getRGB());
+        String rgb = Integer.toHexString(new Color(Integer.parseInt(r.getSingle(arg0).toString()),Integer.parseInt(g.getSingle(arg0).toString()),Integer.parseInt(b.getSingle(arg0).toString())).getRGB());
         return new String[]{rgb.substring(2, rgb.length())};
     }
 
@@ -33,9 +33,9 @@ public class ExprRgbToHex extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        this.r = (Expression<Number>) arg0[0];
-        this.g = (Expression<Number>) arg0[1];
-        this.b = (Expression<Number>) arg0[2];
+        r = (Expression<Number>) arg0[0];
+        g = (Expression<Number>) arg0[1];
+        b = (Expression<Number>) arg0[2];
         return true;
     }
     @Override

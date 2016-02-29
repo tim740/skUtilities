@@ -14,12 +14,12 @@ import uk.tim740.skUtilities.Main;
  */
 public class EffVillagerProfession extends Effect{
     private int prof;
-    private Expression<Location> location;
+    private Expression<Location> loca;
     private Expression<Entity> entity;
 
     @Override
     protected void execute(Event arg0) {
-        Location loc = this.location.getSingle(arg0);
+        Location loc = loca.getSingle(arg0);
         Villager.Profession[] s = Villager.Profession.values();
         if (entity.toString().contains("zombie villager")){
 /*            Villager zom = (Villager) loc.getWorld().spawnEntity(loc, EntityType.ZOMBIE);
@@ -43,8 +43,8 @@ public class EffVillagerProfession extends Effect{
     @SuppressWarnings("unchecked")
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         prof = arg3.mark;
-        this.entity = (Expression<Entity>) arg0[0];
-        this.location = (Expression<Location>) arg0[1];
+        entity = (Expression<Entity>) arg0[0];
+        loca = (Expression<Location>) arg0[1];
         return true;
     }
 }

@@ -15,13 +15,13 @@ import java.util.Objects;
  * Created by tim740.
  */
 public class ExprTxtToAscii  extends SimpleExpression<String>{
-	private Expression<String> string;
+	private Expression<String> str;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
 		String out = "";
-		for(String c : this.string.getSingle(arg0).split("")) {
+		for(String c : str.getSingle(arg0).split("")) {
 			if (Objects.equals(out, "")){
 				out = (Integer.toString(c.charAt(0)));
 			}else{
@@ -42,7 +42,7 @@ public class ExprTxtToAscii  extends SimpleExpression<String>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        this.string = (Expression<String>) arg0[0];
+        str = (Expression<String>) arg0[0];
         return true;
     }
     @Override

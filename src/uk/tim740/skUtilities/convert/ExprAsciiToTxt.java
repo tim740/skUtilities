@@ -13,12 +13,12 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprAsciiToTxt extends SimpleExpression<String>{
-	private Expression<Number> number;
+	private Expression<Number> num;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		return new String[]{Character.toString ((char) Integer.parseInt(this.number.getSingle(arg0).toString()))};
+		return new String[]{Character.toString ((char) Integer.parseInt(num.getSingle(arg0).toString()))};
 	}
 
     @Override
@@ -32,7 +32,7 @@ public class ExprAsciiToTxt extends SimpleExpression<String>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        this.number = (Expression<Number>) arg0[0];
+        num = (Expression<Number>) arg0[0];
         return true;
     }
     @Override

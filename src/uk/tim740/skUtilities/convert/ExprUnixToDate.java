@@ -15,17 +15,17 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprUnixToDate extends SimpleExpression <String>{
-	private Expression<String> string, format;
+	private Expression<String> str, format;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
 		String si = "dd/MM/yy HH:mm";
         if (format != null){
-            si = this.format.getSingle(arg0);
+            si = format.getSingle(arg0);
         }
 		SimpleDateFormat sdf = new SimpleDateFormat(si);
-        return new String[]{sdf.format(new Date(Long.valueOf((this.string.getSingle(arg0) + "a").replace("000a", "").replace("a", "")) *1000L))};
+        return new String[]{sdf.format(new Date(Long.valueOf((str.getSingle(arg0) + "a").replace("000a", "").replace("a", "")) *1000L))};
 	}
 
     @Override
@@ -39,8 +39,8 @@ public class ExprUnixToDate extends SimpleExpression <String>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        this.string = (Expression<String>) arg0[0];
-        this.format = (Expression<String>) arg0[1];
+        str = (Expression<String>) arg0[0];
+        format = (Expression<String>) arg0[1];
         return true;
     }
     @Override

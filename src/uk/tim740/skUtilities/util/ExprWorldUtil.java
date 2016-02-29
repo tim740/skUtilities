@@ -20,9 +20,9 @@ public class ExprWorldUtil extends SimpleExpression<String> {
     @Nullable
     protected String[] get(Event arg0) {
         if (Wty == 0){
-            return new String[]{this.world.getSingle(arg0).getEnvironment().toString()};
+            return new String[]{world.getSingle(arg0).getEnvironment().toString()};
         }else {
-            return new String[]{this.world.getSingle(arg0).getWorldType().toString()};
+            return new String[]{world.getSingle(arg0).getWorldType().toString()};
         }
     }
 
@@ -37,7 +37,7 @@ public class ExprWorldUtil extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        this.world = (Expression<World>) arg0[0];
+        world = (Expression<World>) arg0[0];
         Wty = arg3.mark;
         return true;
     }

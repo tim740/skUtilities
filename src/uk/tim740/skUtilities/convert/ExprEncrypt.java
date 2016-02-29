@@ -24,9 +24,9 @@ public class ExprEncrypt extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event arg0) {
-        String iCipher = this.cipher.getSingle(arg0).toUpperCase();
-        String iString = this.string.getSingle(arg0);
-        Key Ekey = new SecretKeySpec(this.key.getSingle(arg0).getBytes(), iCipher);
+        String iCipher = cipher.getSingle(arg0).toUpperCase();
+        String iString = string.getSingle(arg0);
+        Key Ekey = new SecretKeySpec(key.getSingle(arg0).getBytes(), iCipher);
         byte[] cout = new byte[0];
         Cipher c = null;
         try{
@@ -35,7 +35,6 @@ public class ExprEncrypt extends SimpleExpression<String> {
         }catch (Exception e){
             Main.prErr(e.getMessage() + " '"+ cipher +"'", getClass().getSimpleName());
         }
-
         if (type == Cipher.ENCRYPT_MODE){
             try{
                 if (c != null) {
@@ -78,8 +77,8 @@ public class ExprEncrypt extends SimpleExpression<String> {
         }else{
             type = Cipher.DECRYPT_MODE;
         }
-        this.string = (Expression<String>) arg0[0];
-        this.cipher = (Expression<String>) arg0[1];
+        string = (Expression<String>) arg0[0];
+        cipher = (Expression<String>) arg0[1];
         this.key = (Expression<String>) arg0[2];
         return true;
     }

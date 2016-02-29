@@ -13,12 +13,12 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprHexaToNum extends SimpleExpression<String>{
-	private Expression<String> string;
+	private Expression<String> str;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		return new String[]{Integer.toString(Integer.parseInt(this.string.getSingle(arg0), 16))};
+		return new String[]{Integer.toString(Integer.parseInt(str.getSingle(arg0), 16))};
 	}
 
     @Override
@@ -32,7 +32,7 @@ public class ExprHexaToNum extends SimpleExpression<String>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        this.string = (Expression<String>) arg0[0];
+        str = (Expression<String>) arg0[0];
         return true;
     }
     @Override

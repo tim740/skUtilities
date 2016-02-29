@@ -15,17 +15,17 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprBase64Encode extends SimpleExpression<String> {
-	private int bEncode;
-	private Expression<String> string;
+	private int bEnc;
+	private Expression<String> b64;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		String s = this.string.getSingle(arg0);
+		String s = b64.getSingle(arg0);
 		byte[] auby;
-		if (bEncode == 0){
+		if (bEnc == 0){
 			auby = s.getBytes(StandardCharsets.UTF_8);
-		}else if (bEncode == 1){
+		}else if (bEnc == 1){
 			auby = s.getBytes(StandardCharsets.US_ASCII);
 		}else{
 			auby  = s.getBytes(StandardCharsets.ISO_8859_1);	
@@ -44,8 +44,8 @@ public class ExprBase64Encode extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        bEncode = arg3.mark;
-        this.string = (Expression<String>) arg0[0];
+        bEnc = arg3.mark;
+        b64 = (Expression<String>) arg0[0];
         return true;
     }
     @Override

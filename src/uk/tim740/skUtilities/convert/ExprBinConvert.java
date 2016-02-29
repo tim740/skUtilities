@@ -13,14 +13,14 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprBinConvert extends SimpleExpression<String> {
-	private Expression<String> string;
+	private Expression<String> str;
 	private int fromBin;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
 		if (fromBin == 0){
-			 byte[] by = this.string.getSingle(arg0).getBytes();
+			 byte[] by = str.getSingle(arg0).getBytes();
 			 StringBuilder bin = new StringBuilder();
 			 for (byte b : by)
 			 {
@@ -34,11 +34,11 @@ public class ExprBinConvert extends SimpleExpression<String> {
 			}
 			return new String[]{bin.toString()};
 		}else if (fromBin == 1){
-			return new String[]{Integer.toBinaryString(Integer.parseInt(this.string.getSingle(arg0)))};
+			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(arg0)))};
 		}else if (fromBin == 2){
-			return new String[]{Integer.toBinaryString(Integer.parseInt(this.string.getSingle(arg0), 16))};
+			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(arg0), 16))};
 		}else{
-			return new String[]{Integer.toBinaryString(Integer.parseInt(this.string.getSingle(arg0), 8))};
+			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(arg0), 8))};
 		}
 	}
 
@@ -54,7 +54,7 @@ public class ExprBinConvert extends SimpleExpression<String> {
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
         fromBin = arg3.mark;
-        this.string = (Expression<String>) arg0[0];
+        str = (Expression<String>) arg0[0];
         return true;
     }
     @Override

@@ -1,7 +1,5 @@
 package uk.tim740.skUtilities.convert;
 
-import uk.tim740.skUtilities.Main;
-
 /**
  * Created by tim740/Headshot.
  */

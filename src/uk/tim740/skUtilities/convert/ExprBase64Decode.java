@@ -15,16 +15,16 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprBase64Decode extends SimpleExpression<String> {
-	private int bDeco;
-	private Expression<String> string;
+	private int bDec;
+	private Expression<String> b64;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		byte[] by = DatatypeConverter.parseBase64Binary(this.string.getSingle(arg0));
-		if (bDeco == 0){
+		byte[] by = DatatypeConverter.parseBase64Binary(b64.getSingle(arg0));
+		if (bDec == 0){
 			return new String[]{new String(by, StandardCharsets.UTF_8)};
-		}else if (bDeco == 1){
+		}else if (bDec == 1){
 			return new String[]{new String(by, StandardCharsets.US_ASCII)};
 		}else{
 			return new String[]{new String(by, StandardCharsets.ISO_8859_1)};
@@ -42,8 +42,8 @@ public class ExprBase64Decode extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        bDeco = arg3.mark;
-        this.string = (Expression<String>) arg0[0];
+        bDec = arg3.mark;
+        b64 = (Expression<String>) arg0[0];
         return true;
     }
     @Override

@@ -44,7 +44,7 @@ public class EffPacketTrial extends Effect {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult){
-        this.player = (Expression<Player>) exprs[0];
+        player = (Expression<Player>) exprs[0];
         return true;
     }
 
