@@ -4,8 +4,10 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.util.SimpleEvent;
 import ch.njol.skript.registrations.EventValues;
+import ch.njol.skript.util.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
+import org.bukkit.event.block.CauldronLevelChangeEvent;
 
 import javax.annotation.Nullable;
 
@@ -20,7 +22,7 @@ public class RegUtil {
         Skript.registerEffect(EffPacketTrial.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffRunScript.class, "run script at %string%");
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
-        /*Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class,"on cauldron[ water] level change");
+        Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class,"on cauldron[ water] level change");
         EventValues.registerEventValue(CauldronLevelChangeEvent.class, Integer.class, new Getter<Integer,CauldronLevelChangeEvent>() {
             @Nullable
             @Override
@@ -28,13 +30,13 @@ public class RegUtil {
                 return e.getNewLevel();
             }
         }, 0);
-        EventValues.registerEventValue(CauldronLevelChangeEvent.class, String.class, new Getter<Entity, CauldronLevelChangeEvent>(){
+        EventValues.registerEventValue(CauldronLevelChangeEvent.class, Entity.class, new Getter<Entity, CauldronLevelChangeEvent>(){
             @Nullable
             @Override
-            public String get(CauldronLevelChangeEvent e) {
+            public Entity get(CauldronLevelChangeEvent e) {
                 return e.getEntity();
             }
-        }, 0);*/
+        }, 0);
 
         Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded util (100% loaded)!");
     }
