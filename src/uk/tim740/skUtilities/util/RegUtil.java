@@ -7,6 +7,7 @@ import ch.njol.skript.registrations.EventValues;
 import ch.njol.skript.util.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.block.CauldronLevelChangeEvent;
 
 import javax.annotation.Nullable;
@@ -22,12 +23,19 @@ public class RegUtil {
         Skript.registerEffect(EffPacketTrial.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffRunScript.class, "run script at %string%");
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
-        Skript.registerEvent("On Cauldron Level Change", SimpleEvent.class, CauldronLevelChangeEvent.class,"on cauldron[ water] level change");
+        Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class, "cauldron[ water] level change");
         EventValues.registerEventValue(CauldronLevelChangeEvent.class, Integer.class, new Getter<Integer,CauldronLevelChangeEvent>() {
             @Nullable
             @Override
             public Integer get(CauldronLevelChangeEvent e) {
                 return e.getNewLevel();
+            }
+        }, 0);
+        EventValues.registerEventValue(CauldronLevelChangeEvent.class, Player.class, new Getter<Player, CauldronLevelChangeEvent>(){
+            @Nullable
+            @Override
+            public Player get(CauldronLevelChangeEvent e) {
+                return ((Player) e.getEntity());
             }
         }, 0);
         EventValues.registerEventValue(CauldronLevelChangeEvent.class, Entity.class, new Getter<Entity, CauldronLevelChangeEvent>(){

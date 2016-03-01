@@ -22,7 +22,7 @@ public class EffRunScript extends Effect{
 
 	@Override
 	protected void execute(Event arg0) {
-		String pth = new File("plugins\\", path.getSingle(arg0)).getPath().replaceAll("/", Matcher.quoteReplacement(File.separator));
+		String pth = new File("plugins\\", path.getSingle(arg0)).getPath().replaceAll("/", "\\");
         try{
 			if(!new File(pth).exists()){
 				throw new IOException();
