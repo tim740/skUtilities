@@ -22,7 +22,7 @@ public class RegUtil {
         Skript.registerEffect(EffPacketTrial.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffRunScript.class, "run script at %string%");
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
-        Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class,"on cauldron[ water] level change");
+        Skript.registerEvent("On Cauldron Level Change", SimpleEvent.class, CauldronLevelChangeEvent.class,"on cauldron[ water] level change");
         EventValues.registerEventValue(CauldronLevelChangeEvent.class, Integer.class, new Getter<Integer,CauldronLevelChangeEvent>() {
             @Nullable
             @Override

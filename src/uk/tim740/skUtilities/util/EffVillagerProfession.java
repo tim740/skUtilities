@@ -4,9 +4,14 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
-import org.bukkit.Location;
-import org.bukkit.entity.*;
+
 import org.bukkit.event.Event;
+import org.bukkit.Location;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Villager;
+import org.bukkit.entity.Zombie;
+
 import uk.tim740.skUtilities.Main;
 
 /**
@@ -21,12 +26,9 @@ public class EffVillagerProfession extends Effect{
     protected void execute(Event arg0) {
         Location loc = loca.getSingle(arg0);
         Villager.Profession[] s = Villager.Profession.values();
-        if (entity.toString().contains("zombie villager")){
-/*            Villager zom = (Villager) loc.getWorld().spawnEntity(loc, EntityType.ZOMBIE);
-            if (zom.isVillager() != true){
-                zom.setVillager(true);
-            }
-            zom.setProfession(s[prof]);*/
+        if (entity.toString().contains("zombie")){
+            Zombie zom = (Zombie) loc.getWorld().spawnEntity(loc, EntityType.ZOMBIE);
+            zom.setVillagerProfession(s[prof]);
         }else if (entity.toString().contains("villager")){
             Villager vil = (Villager) loc.getWorld().spawnEntity(loc, EntityType.VILLAGER);
             vil.setProfession(s[prof]);
