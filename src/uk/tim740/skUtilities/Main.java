@@ -16,5 +16,6 @@ public class Main extends JavaPlugin {
     }
     public static void prErr(String s, String c) {
         Bukkit.getServer().getLogger().severe("[skUtilities] " + s + " ("+ c +")");
+        Bukkit.broadcast("[skUtilities - ERROR] " + s + " ("+ c +")", "skUtilities.error");
     }
 }
