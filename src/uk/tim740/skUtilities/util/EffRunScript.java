@@ -3,7 +3,6 @@ package uk.tim740.skUtilities.util;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
-import java.util.regex.Matcher;
 import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
