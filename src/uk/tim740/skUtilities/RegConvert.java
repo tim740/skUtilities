@@ -7,7 +7,7 @@ import uk.tim740.skUtilities.convert.*;
 /**
  * Created by tim740 on 22/02/2016
  */
-public class RegConv {
+public class RegConvert {
     public static void regC() {
         Skript.registerExpression(ExprBinDeConvert.class, String.class, ExpressionType.PROPERTY, "convert bin[ary] %string% to (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal)");
         Skript.registerExpression(ExprBinConvert.class, String.class, ExpressionType.PROPERTY, "convert (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal) %string% to bin[ary]");
