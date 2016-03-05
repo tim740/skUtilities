@@ -60,6 +60,6 @@ public class ExprBinDeConvert extends SimpleExpression<String> {
     }
     @Override
     public String toString(@Nullable Event arg0, boolean arg1) {
-        return this.getClass().getName();
+        return getClass().getName();
     }
 }

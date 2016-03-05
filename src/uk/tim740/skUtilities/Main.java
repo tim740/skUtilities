@@ -13,6 +13,7 @@ public class Main extends JavaPlugin {
         Skript.registerAddon(this);
         RegConvert.regC();
         RegUtil.regU();
+        Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " has fully loaded!");
     }
     public static void prErr(String s, String c) {
         Bukkit.getServer().getLogger().severe("[skUtilities] " + s + " ("+ c +")");

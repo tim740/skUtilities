@@ -2,7 +2,6 @@ package uk.tim740.skUtilities.convert;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
-import org.bukkit.Bukkit;
 
 /**
  * Created by tim740 on 22/02/2016
@@ -28,6 +27,5 @@ public class RegConvert {
         Skript.registerExpression(ExprMirrorTxt.class, String.class, ExpressionType.PROPERTY, "mirror[ed] %string%");
         Skript.registerExpression(ExprMorse.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)code morse[ code] %string%");
         Skript.registerExpression(ExprEncrypt.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)crypt %string% using %-string% with key %-string%");
-        Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " loaded conversions (50% loaded)!");
     }
 }
