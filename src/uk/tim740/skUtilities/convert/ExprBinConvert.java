@@ -42,19 +42,19 @@ public class ExprBinConvert extends SimpleExpression<String> {
 		}
 	}
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+        fromBin = arg3.mark;
+        str = (Expression<String>) arg0[0];
+        return true;
+    }
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
     @Override
     public boolean isSingle() {
-        return true;
-    }
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        fromBin = arg3.mark;
-        str = (Expression<String>) arg0[0];
         return true;
     }
     @Override

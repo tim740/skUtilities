@@ -44,19 +44,19 @@ public class ExprMorse extends SimpleExpression<String> {
         return new String[]{out};
     }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
+        morTy = arg3.mark;
+        str = (Expression<String>) arg0[0];
+        return true;
+    }
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
     @Override
     public boolean isSingle() {
-        return true;
-    }
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        morTy = arg3.mark;
-        str = (Expression<String>) arg0[0];
         return true;
     }
     @Override

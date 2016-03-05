@@ -38,15 +38,15 @@ public class EffVillagerProfession extends Effect{
     }
 
     @Override
-    public String toString(Event event, boolean b) {
-        return getClass().getName();
-    }
-    @Override
     @SuppressWarnings("unchecked")
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         prof = arg3.mark;
         entity = (Expression<Entity>) arg0[0];
         loca = (Expression<Location>) arg0[1];
         return true;
+    }
+    @Override
+    public String toString(Event event, boolean b) {
+        return getClass().getName();
     }
 }

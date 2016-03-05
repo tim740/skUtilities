@@ -22,20 +22,20 @@ public class ExprRgbToHex extends SimpleExpression<String> {
         return new String[]{rgb.substring(2, rgb.length())};
     }
 
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         r = (Expression<Number>) arg0[0];
         g = (Expression<Number>) arg0[1];
         b = (Expression<Number>) arg0[2];
+        return true;
+    }
+    @Override
+    public Class<? extends String> getReturnType() {
+        return String.class;
+    }
+    @Override
+    public boolean isSingle() {
         return true;
     }
     @Override

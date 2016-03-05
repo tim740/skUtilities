@@ -28,19 +28,19 @@ public class ExprUnixToDate extends SimpleExpression <String>{
         return new String[]{sdf.format(new Date(Long.valueOf((str.getSingle(arg0) + "a").replace("000a", "").replace("a", "")) *1000L))};
 	}
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+        str = (Expression<String>) arg0[0];
+        format = (Expression<String>) arg0[1];
+        return true;
+    }
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
     @Override
     public boolean isSingle() {
-        return true;
-    }
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
-        format = (Expression<String>) arg0[1];
         return true;
     }
     @Override

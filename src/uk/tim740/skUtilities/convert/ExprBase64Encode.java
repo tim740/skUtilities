@@ -15,8 +15,8 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprBase64Encode extends SimpleExpression<String> {
-	private int bEnc;
 	private Expression<String> b64;
+    private int bEnc;
 
 	@Override
 	@Nullable
@@ -33,19 +33,19 @@ public class ExprBase64Encode extends SimpleExpression<String> {
 		return new String[]{Base64.getEncoder().encodeToString(auby)};
 	}
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+        bEnc = arg3.mark;
+        b64 = (Expression<String>) arg0[0];
+        return true;
+    }
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
     @Override
     public boolean isSingle() {
-        return true;
-    }
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        bEnc = arg3.mark;
-        b64 = (Expression<String>) arg0[0];
         return true;
     }
     @Override

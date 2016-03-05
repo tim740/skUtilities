@@ -15,8 +15,8 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprBinDeConvert extends SimpleExpression<String> {
-	private int toBin;
-	private Expression<String> str;
+    private Expression<String> str;
+    private int toBin;
 
 	@Override
 	@Nullable
@@ -43,19 +43,19 @@ public class ExprBinDeConvert extends SimpleExpression<String> {
 		}
 	}
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+        toBin = arg3.mark;
+        str = (Expression<String>) arg0[0];
+        return true;
+    }
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
     @Override
     public boolean isSingle() {
-        return true;
-    }
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        toBin = arg3.mark;
-        str= (Expression<String>) arg0[0];
         return true;
     }
     @Override

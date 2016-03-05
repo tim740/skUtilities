@@ -47,7 +47,6 @@ public class EffPacketTrial extends Effect {
         player = (Expression<Player>) exprs[0];
         return true;
     }
-
     @Override
     public String toString(@Nullable Event e, boolean arg1) {
         return getClass().getName();

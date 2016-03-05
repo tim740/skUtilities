@@ -61,16 +61,16 @@ public class ExprLoaded extends SimpleExpression<Number>{
 	}
 
     @Override
+    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+        type = arg3.mark;
+        return true;
+    }
+    @Override
     public Class<? extends Number> getReturnType() {
         return Number.class;
     }
     @Override
     public boolean isSingle() {
-        return true;
-    }
-    @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        type = arg3.mark;
         return true;
     }
     @Override

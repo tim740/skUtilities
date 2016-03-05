@@ -61,14 +61,6 @@ public class ExprEncrypt extends SimpleExpression<String> {
         }
     }
 
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
@@ -79,7 +71,15 @@ public class ExprEncrypt extends SimpleExpression<String> {
         }
         string = (Expression<String>) arg0[0];
         cipher = (Expression<String>) arg0[1];
-        this.key = (Expression<String>) arg0[2];
+        key = (Expression<String>) arg0[2];
+        return true;
+    }
+    @Override
+    public Class<? extends String> getReturnType() {
+        return String.class;
+    }
+    @Override
+    public boolean isSingle() {
         return true;
     }
     @Override
