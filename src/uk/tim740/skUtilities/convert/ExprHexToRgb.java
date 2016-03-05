@@ -9,7 +9,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import uk.tim740.skUtilities.Main;
+import uk.tim740.skUtilities.skUtilities;
 
 /**
  * Created by tim740.
@@ -25,7 +25,7 @@ public class ExprHexToRgb extends SimpleExpression<String>{
 			Color ohex = Color.decode("#" + s);
 			return new String[]{ohex.toString().replace("java.awt.Color[", "").replace("r=", "").replace("g=", " ").replace("b=", " ").replace("]", "")};
 		}else{
-            Main.prErr("Length must be 6. (FFFFFF)!", getClass().getSimpleName());
+            skUtilities.prErr("Length must be 6. (FFFFFF)!", getClass().getSimpleName());
 			return null;
 		}
 	}

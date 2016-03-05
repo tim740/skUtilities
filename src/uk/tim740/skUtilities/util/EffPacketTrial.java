@@ -12,7 +12,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import uk.tim740.skUtilities.Main;
+import uk.tim740.skUtilities.skUtilities;
 
 /**
  * Made by @Sashie - Tweaked and Optimised by @tim740
@@ -37,7 +37,7 @@ public class EffPacketTrial extends Effect {
                 sPM.invoke(pc, packet);
             }
             catch (Exception ex) {
-                Main.prErr("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName());
+                skUtilities.prErr("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName());
             }
 	}
 

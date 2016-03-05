@@ -12,7 +12,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Villager;
 import org.bukkit.entity.Zombie;
 
-import uk.tim740.skUtilities.Main;
+import uk.tim740.skUtilities.skUtilities;
 
 /**
  * Created by tim740 on 18/02/2016
@@ -33,7 +33,7 @@ public class EffVillagerProfession extends Effect{
             Villager vil = (Villager) loc.getWorld().spawnEntity(loc, EntityType.VILLAGER);
             vil.setProfession(s[prof]);
         }else{
-            Main.prErr("Only (Villager & Zombie Villager) are supported!", getClass().getSimpleName());
+            skUtilities.prErr("Only (Villager & Zombie Villager) are supported!", getClass().getSimpleName());
         }
     }
 

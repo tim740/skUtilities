@@ -11,7 +11,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
-import uk.tim740.skUtilities.Main;
+import uk.tim740.skUtilities.skUtilities;
 
 /**
  * Created by tim740
@@ -29,7 +29,7 @@ public class EffRunScript extends Effect{
 				Desktop.getDesktop().open(new File(pth));
 			}
 		}catch (IOException e){
-            Main.prErr("'" + pth + "' isn't a valid path!", getClass().getSimpleName());
+            skUtilities.prErr("'" + pth + "' isn't a valid path!", getClass().getSimpleName());
 		}
 	}
 

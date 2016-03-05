@@ -7,7 +7,7 @@ import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
-import uk.tim740.skUtilities.Main;
+import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import javax.crypto.Cipher;
@@ -33,7 +33,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
             c = Cipher.getInstance(iCipher);
             c.init(type, Ekey);
         }catch (Exception e){
-            Main.prErr(e.getMessage() + " '"+ cipher +"'", getClass().getSimpleName());
+            skUtilities.prErr(e.getMessage() + " '"+ cipher +"'", getClass().getSimpleName());
         }
         if (type == Cipher.ENCRYPT_MODE){
             try{
@@ -41,7 +41,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
                     cout = c.doFinal(iString.getBytes());
                 }
             }catch (Exception e){
-                Main.prErr(e.getMessage(), getClass().getSimpleName());
+                skUtilities.prErr(e.getMessage(), getClass().getSimpleName());
             }
             return new String[]{new BASE64Encoder().encode(cout)};
         }else{
@@ -53,7 +53,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
                     cout = c.doFinal(decry);
                 }
             }catch (Exception e) {
-                Main.prErr(e.getMessage(), getClass().getSimpleName());
+                skUtilities.prErr(e.getMessage(), getClass().getSimpleName());
             }for (byte aCout : cout) {
                 out = (out + Character.toString((char) new Byte(aCout).intValue()));
             }

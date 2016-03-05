@@ -1,12 +1,13 @@
-package uk.tim740.skUtilities.convert;
+package uk.tim740.skUtilities;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
+import uk.tim740.skUtilities.convert.*;
 
 /**
  * Created by tim740 on 22/02/2016
  */
-public class RegConvert {
+public class RegConv {
     public static void regC() {
         Skript.registerExpression(ExprBinDeConvert.class, String.class, ExpressionType.PROPERTY, "convert bin[ary] %string% to (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal)");
         Skript.registerExpression(ExprBinConvert.class, String.class, ExpressionType.PROPERTY, "convert (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal) %string% to bin[ary]");
