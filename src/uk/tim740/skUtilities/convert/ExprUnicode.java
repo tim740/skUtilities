@@ -10,8 +10,6 @@ import uk.tim740.skUtilities.skUtilities;
 import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.StringReader;
-import java.io.UnsupportedEncodingException;
-import java.util.Objects;
 import java.util.Properties;
 
 /**
@@ -24,40 +22,18 @@ public class ExprUnicode extends SimpleExpression<String> {
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
+        String out;
         if (ucTy == 0) {
-           /* Properties p = new Properties();
-            try {
-                p.load(new StringReader("value="+str.getSingle(arg0)));
-            } catch (IOException e) {
-                skUtilities.prErr(e.getMessage(), getClass().getSimpleName());
+            char ch = str.getSingle(arg0).charAt(0);
+            if (ch < 0x10){
+                out = "\\u000" + Integer.toHexString(ch);
+            }else if (ch < 0x100){
+                out = "\\u00" + Integer.toHexString(ch);
+            }else if (ch < 0x1000){
+                out = "\\u0" + Integer.toHexString(ch);
+            }else{
+                out = "\\u" + Integer.toHexString(ch);
             }
-            return new String[]{p.getProperty("value")};*/
-            //public static void main(String args[]) throws Exception {
-            //String s = "0123456789";
-/*            byte ptext[] = new byte[0];
-            String out = "";
-            try {
-                ptext = str.getSingle(arg0).getBytes("UTF8");
-            } catch (UnsupportedEncodingException e) {
-                skUtilities.prErr(e.getMessage(), getClass().getSimpleName());
-            }
-            for (byte aPtext : ptext) {
-                if (Objects.equals(out, "")){
-                    out = Character.toString((char) new Byte(aPtext));
-                }else{
-                    out = (out + "," + aPtext);
-                }
-                //System.out.print(aPtext + ",");
-            }
-            return new String[]{out};*/
-           // Charset s = Charset.defaultCharset();
-           // StandardCharsets.
-            //byte[] bytes = str.getSingle(arg0).getBytes(Charset.forName("UTF-8"));
-           // byte[] bytes = str.getSingle(arg0).getBytes();
-            //String str = new String(bytes, Charset.forName("UTF-8"));
-            //System.out.println(str);
-            return new String[]{str.getSingle(arg0), "UTF-16"};
-            //return new String[]{Character.toString(str.getSingle(arg0).charAt(0))};//Character.toString( str.getSingle(arg0).charAt(0))};
         }else{
             Properties p = new Properties();
             try {
@@ -65,8 +41,9 @@ public class ExprUnicode extends SimpleExpression<String> {
             } catch (IOException e) {
                 skUtilities.prErr(e.getMessage(), getClass().getSimpleName());
             }
-            return new String[]{p.getProperty("key")};
+            out = p.getProperty("key");
         }
+        return new String[]{out};
 	}
 
     @SuppressWarnings("unchecked")
