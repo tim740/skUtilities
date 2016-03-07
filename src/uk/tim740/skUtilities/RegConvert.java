@@ -12,9 +12,6 @@ public class RegConvert {
         Skript.registerExpression(ExprBinDeConvert.class, String.class, ExpressionType.PROPERTY, "convert bin[ary] %string% to (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal)");
         Skript.registerExpression(ExprBinConvert.class, String.class, ExpressionType.PROPERTY, "convert (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal) %string% to bin[ary]");
 
-        Skript.registerExpression(ExprBase64Encode.class, String.class, ExpressionType.PROPERTY, "encode %string% to base[ ]64 using (0¦utf-8|1¦ascii|2¦ISO-8859-1)");
-        Skript.registerExpression(ExprBase64Decode.class, String.class, ExpressionType.PROPERTY, "decode %string% from base[ ]64 using (0¦utf-8|1¦ascii|2¦ISO-8859-1)");
-
         Skript.registerExpression(ExprAsciiToTxt.class, String.class, ExpressionType.PROPERTY, "convert ascii %number% to (text|string)");
         Skript.registerExpression(ExprTxtToAscii.class, String.class, ExpressionType.PROPERTY, "convert (text|string) %string% to ascii");
 
@@ -26,6 +23,8 @@ public class RegConvert {
 
         Skript.registerExpression(ExprUnixToDate.class, String.class, ExpressionType.PROPERTY, "convert unix[ date] %string% to date[ formatted as %-string%]");
         Skript.registerExpression(ExprMirrorTxt.class, String.class, ExpressionType.PROPERTY, "mirror[ed] %string%");
+
+        Skript.registerExpression(ExprBase64.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)code base[ ]64 %string%");
         Skript.registerExpression(ExprMorse.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)code morse[ code] %string%");
         Skript.registerExpression(ExprEncrypt.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)crypt %string% using %-string% with key %-string%");
     }

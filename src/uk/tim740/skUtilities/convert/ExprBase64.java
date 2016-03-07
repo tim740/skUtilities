@@ -1,6 +1,7 @@
 package uk.tim740.skUtilities.convert;
 
 import javax.annotation.Nullable;
+import javax.xml.bind.DatatypeConverter;
 import java.util.Base64;
 import java.nio.charset.StandardCharsets;
 
@@ -14,29 +15,24 @@ import ch.njol.util.Kleenean;
 /**
  * Created by tim740.
  */
-public class ExprBase64Encode extends SimpleExpression<String> {
+public class ExprBase64 extends SimpleExpression<String> {
 	private Expression<String> b64;
-    private int bEnc;
+    private int b64Ty;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		String s = b64.getSingle(arg0);
-		byte[] auby;
-		if (bEnc == 0){
-			auby = s.getBytes(StandardCharsets.UTF_8);
-		}else if (bEnc == 1){
-			auby = s.getBytes(StandardCharsets.US_ASCII);
-		}else{
-			auby  = s.getBytes(StandardCharsets.ISO_8859_1);	
-		}
-		return new String[]{Base64.getEncoder().encodeToString(auby)};
+        if (b64Ty == 0) {
+            return new String[]{Base64.getEncoder().encodeToString(b64.getSingle(arg0).getBytes(StandardCharsets.UTF_8))};
+        }else{
+            return new String[]{new String(DatatypeConverter.parseBase64Binary(b64.getSingle(arg0)), StandardCharsets.UTF_8)};
+        }
 	}
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        bEnc = arg3.mark;
+        b64Ty = arg3.mark;
         b64 = (Expression<String>) arg0[0];
         return true;
     }
