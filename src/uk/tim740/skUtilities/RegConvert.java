@@ -16,7 +16,7 @@ public class RegConvert {
         Skript.registerExpression(ExprTxtToAscii.class, String.class, ExpressionType.PROPERTY, "convert (text|string) %string% to ascii");
 
         Skript.registerExpression(ExprHexaToNum.class, String.class, ExpressionType.PROPERTY, "convert hexa[decimal] %string% to num[ber]");
-        Skript.registerExpression(ExprNumToHexa.class, String.class, ExpressionType.PROPERTY, "convert num[ber] %string% to hexa[decimal]");
+        Skript.registerExpression(ExprNumToHexa.class, String.class, ExpressionType.PROPERTY, "convert num[ber] %number% to hexa[decimal]");
 
         Skript.registerExpression(ExprHexToRgb.class, String.class, ExpressionType.PROPERTY, "convert hex %string% to rgb");
         Skript.registerExpression(ExprRgbToHex.class, String.class, ExpressionType.PROPERTY, "convert rgb %number%, %number%, %number% to hex");
@@ -24,6 +24,7 @@ public class RegConvert {
         Skript.registerExpression(ExprUnixToDate.class, String.class, ExpressionType.PROPERTY, "convert unix[ date] %string% to date[ formatted as %-string%]");
         Skript.registerExpression(ExprMirrorTxt.class, String.class, ExpressionType.PROPERTY, "mirror[ed] %string%");
 
+        Skript.registerExpression(ExprUnicode.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)code unicode %string%");
         Skript.registerExpression(ExprBase64.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)code base[ ]64 %string%");
         Skript.registerExpression(ExprMorse.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)code morse[ code] %string%");
         Skript.registerExpression(ExprEncrypt.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)crypt %string% using %-string% with key %-string%");

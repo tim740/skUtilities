@@ -13,7 +13,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
 /**
- * Created by tim740.
+ * Created by tim740 on 07/03/16
  */
 public class ExprBase64 extends SimpleExpression<String> {
 	private Expression<String> b64;
