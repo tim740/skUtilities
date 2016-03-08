@@ -14,7 +14,7 @@ public class RegConvert {
         Skript.registerExpression(ExprToString.class, String.class, ExpressionType.PROPERTY, "convert (text|string) %string% to (0¦ascii|1¦unicode)");
 
         Skript.registerExpression(ExprFromBin.class, String.class, ExpressionType.PROPERTY, "convert bin[ary] %string% to (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal)");
-        Skript.registerExpression(ExprFromUnicode.class, String.class, ExpressionType.PROPERTY, "convert unicode %string% to (0¦(text|string)|1¦ascii)");//"(0¦en|1¦de)code unicode %string%");
+        Skript.registerExpression(ExprFromUnicode.class, String.class, ExpressionType.PROPERTY, "convert unicode %string% to (0¦(text|string)|1¦ascii)");
 
         Skript.registerExpression(ExprHexaToNum.class, String.class, ExpressionType.PROPERTY, "convert hexa[decimal] %string% to num[ber]");
         Skript.registerExpression(ExprNumToHexa.class, String.class, ExpressionType.PROPERTY, "convert num[ber] %number% to hexa[decimal]");
