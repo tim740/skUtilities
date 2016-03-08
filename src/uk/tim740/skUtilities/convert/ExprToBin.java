@@ -12,7 +12,7 @@ import ch.njol.util.Kleenean;
 /**
  * Created by tim740.
  */
-public class ExprBinConvert extends SimpleExpression<String> {
+public class ExprToBin extends SimpleExpression<String> {
 	private Expression<String> str;
 	private int fromBin;
 

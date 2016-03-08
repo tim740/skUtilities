@@ -14,7 +14,7 @@ import ch.njol.util.Kleenean;
 /**
  * Created by tim740.
  */
-public class ExprBinDeConvert extends SimpleExpression<String> {
+public class ExprFromBin extends SimpleExpression<String> {
     private Expression<String> str;
     private int toBin;
 
