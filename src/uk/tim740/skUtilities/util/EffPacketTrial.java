@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util.eff;
+package uk.tim740.skUtilities.util;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

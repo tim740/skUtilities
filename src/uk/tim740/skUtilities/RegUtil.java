@@ -8,8 +8,7 @@ import ch.njol.skript.util.Getter;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.CauldronLevelChangeEvent;
-import uk.tim740.skUtilities.util.eff.*;
-import uk.tim740.skUtilities.util.expr.*;
+import uk.tim740.skUtilities.util.*;
 
 import javax.annotation.Nullable;
 
