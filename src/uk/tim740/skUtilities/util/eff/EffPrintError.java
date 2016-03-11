@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util;
+package uk.tim740.skUtilities.util.eff;
 
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;

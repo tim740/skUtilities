@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util;
+package uk.tim740.skUtilities.util.expr;
 
 import java.util.Iterator;
 import javax.annotation.Nullable;

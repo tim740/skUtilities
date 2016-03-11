@@ -1,9 +1,7 @@
-package uk.tim740.skUtilities.util;
+package uk.tim740.skUtilities.util.expr;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
-import java.util.Random;
-
+import org.bukkit.World;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Expression;
@@ -12,31 +10,27 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 
 /**
- * Created by tim740.
+ * Created by tim740 on 28/02/2016
  */
-public class ExprGenerateTxt extends SimpleExpression<String>{
-	private Expression<Integer> inte;
+public class ExprWorldUtil extends SimpleExpression<String> {
+    private Expression<World> world;
+    private int Wty;
 
-	@Override
-	@Nullable
-	protected String[] get(Event arg0) {
-		String[] chl = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
-		Random ranGen = new Random();
-		String out = "";
-		for (int i=0; i<inte.getSingle(arg0); i++){
-			if (Objects.equals(out, "")){
-				out = (chl[ranGen.nextInt(chl.length)]);
-			}else{
-				out = (out + chl[ranGen.nextInt(chl.length)]);
-			}
-		}
-		return new String[]{out};
-	}
+    @Override
+    @Nullable
+    protected String[] get(Event arg0) {
+        if (Wty == 0){
+            return new String[]{world.getSingle(arg0).getEnvironment().toString()};
+        }else {
+            return new String[]{world.getSingle(arg0).getWorldType().toString()};
+        }
+    }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        inte = (Expression<Integer>) arg0[0];
+        world = (Expression<World>) arg0[0];
+        Wty = arg3.mark;
         return true;
     }
     @Override
