@@ -2,15 +2,7 @@ package uk.tim740.skUtilities;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
-import ch.njol.skript.lang.util.SimpleEvent;
-import ch.njol.skript.registrations.EventValues;
-import ch.njol.skript.util.Getter;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.block.CauldronLevelChangeEvent;
 import uk.tim740.skUtilities.util.*;
-
-import javax.annotation.Nullable;
 
 /**
  * Created by tim740 on 22/02/2016
@@ -27,28 +19,8 @@ public class RegUtil {
         Skript.registerEffect(EffRunScript.class, "run script at %string%");
         Skript.registerEffect(EffPrintError.class, "print (0¦info|1¦warning|2¦error) %string% to console");
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
+        Skript.registerEffect(EffToggleGlide.class, "set %entity%'s glide (state|ability|mode) to %boolean%");
 
-        Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class, "cauldron[ water] level change");
-        EventValues.registerEventValue(CauldronLevelChangeEvent.class, Integer.class, new Getter<Integer,CauldronLevelChangeEvent>() {
-            @Nullable
-            @Override
-            public Integer get(CauldronLevelChangeEvent e) {
-                return e.getNewLevel();
-            }
-        }, 0);
-        EventValues.registerEventValue(CauldronLevelChangeEvent.class, Player.class, new Getter<Player, CauldronLevelChangeEvent>(){
-            @Nullable
-            @Override
-            public Player get(CauldronLevelChangeEvent e) {
-                return ((Player) e.getEntity());
-            }
-        }, 0);
-        EventValues.registerEventValue(CauldronLevelChangeEvent.class, Entity.class, new Getter<Entity, CauldronLevelChangeEvent>(){
-            @Nullable
-            @Override
-            public Entity get(CauldronLevelChangeEvent e) {
-                return e.getEntity();
-            }
-        }, 0);
+        Skript.registerCondition(CondGliding.class, "%entity% is gliding");
     }
 }
