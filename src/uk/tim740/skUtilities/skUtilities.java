@@ -11,7 +11,9 @@ public class skUtilities extends JavaPlugin {
         Skript.registerAddon(this);
         RegConvert.regC();
         RegUtil.regU();
-        RegEvent.regE();
+        if(Bukkit.getVersion().contains("(MC: 1.9)")) {
+            RegEvent.regE();
+        }
         Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " has fully loaded!");
     }
     public static void prErr(String s, String c) {

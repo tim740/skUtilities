@@ -2,6 +2,7 @@ package uk.tim740.skUtilities;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
+import org.bukkit.Bukkit;
 import uk.tim740.skUtilities.util.*;
 
 /**
@@ -19,8 +20,14 @@ public class RegUtil {
         Skript.registerEffect(EffRunScript.class, "run script at %string%");
         Skript.registerEffect(EffPrintError.class, "print (0¦info|1¦warning|2¦error) %string% to console");
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
-        Skript.registerEffect(EffToggleGlide.class, "set %entity%'s glide (state|ability|mode) to %boolean%");
 
-        Skript.registerCondition(CondGliding.class, "%entity% is gliding");
+
+        Skript.registerCondition(CondHasPaid.class, "%player% (has paid|is premium)");
+
+        if(Bukkit.getVersion().contains("(MC: 1.9)")) {
+            Skript.registerEffect(EffToggleGlide.class, "set %entity%'s glide (state|ability|mode) to %boolean%");
+
+            Skript.registerCondition(CondGliding.class, "%entity% is gliding");
+        }
     }
 }
