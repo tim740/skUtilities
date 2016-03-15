@@ -33,7 +33,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
             c = Cipher.getInstance(iCipher);
             c.init(type, Ekey);
         }catch (Exception e){
-            skUtilities.prErr(e.getMessage() + " '"+ cipher +"'", getClass().getSimpleName());
+            skUtilities.prErr(e.getMessage() + " '"+ cipher +"'", getClass().getSimpleName(), 1);
         }
         if (type == Cipher.ENCRYPT_MODE){
             try{
@@ -41,7 +41,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
                     cout = c.doFinal(iString.getBytes());
                 }
             }catch (Exception e){
-                skUtilities.prErr(e.getMessage(), getClass().getSimpleName());
+                skUtilities.prErr(e.getMessage(), getClass().getSimpleName(), 1);
             }
             return new String[]{new BASE64Encoder().encode(cout)};
         }else{
@@ -53,7 +53,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
                     cout = c.doFinal(decry);
                 }
             }catch (Exception e) {
-                skUtilities.prErr(e.getMessage(), getClass().getSimpleName());
+                skUtilities.prErr(e.getMessage(), getClass().getSimpleName(), 1);
             }for (byte aCout : cout) {
                 out = (out + Character.toString((char) new Byte(aCout).intValue()));
             }

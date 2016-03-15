@@ -1,28 +1,32 @@
-package uk.tim740.skUtilities.util;
+package uk.tim740.skUtilities.convert;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
-import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 
 /**
- * Created by tim740 on 10/03/2016
+ * Created by tim740 on 14/03/2016
  */
-public class ExprVersion extends SimpleExpression<String> {
-    private Expression<String> str;
+public class ExprHash extends SimpleExpression<String> {
+    private Expression<String> str, hash;
 
     @Override
     @Nullable
     protected String[] get(Event arg0) {
+        MessageDigest hashStr;
         try {
-            return new String[]{Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
-        }catch(Exception e){
-            skUtilities.prErr("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), 1);
+            hashStr = MessageDigest.getInstance(hash.getSingle(arg0).toUpperCase());
+            hashStr.update(str.getSingle(arg0).getBytes(), 0, str.getSingle(arg0).length());
+            return new String[]{new BigInteger(1, hashStr.digest()).toString(16)};
+        } catch (Exception e) {
+            skUtilities.prErr(e.getMessage(), getClass().getSimpleName(), 1);
             return null;
         }
     }
@@ -31,6 +35,7 @@ public class ExprVersion extends SimpleExpression<String> {
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         str = (Expression<String>) arg0[0];
+        hash = (Expression<String>) arg0[1];
         return true;
     }
     @Override

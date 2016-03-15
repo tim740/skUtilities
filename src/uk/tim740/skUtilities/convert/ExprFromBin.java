@@ -5,7 +5,6 @@ import javax.annotation.Nullable;
 import org.bukkit.event.Event;
 
 import uk.tim740.skUtilities.skUtilities;
-import uk.tim740.skUtilities.convert.Binary.BinInvalid;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
@@ -21,25 +20,26 @@ public class ExprFromBin extends SimpleExpression<String> {
 	@Override
 	@Nullable
 	protected String[] get(Event arg0){
-		Binary bin;
-		try{
-			bin = new Binary(str.getSingle(arg0));
-		}catch (BinInvalid e){
-            skUtilities.prErr("Binary Strings can only contain 1's, 0's or spaces!", getClass().getSimpleName());
-            return null;
-		}
+        String binV = str.getSingle(arg0).trim();
+        for (char character : binV.toCharArray()){
+            if (character !='0' && character !='1' && character !=' '){
+                skUtilities.prErr("Binary Strings can only contain 1's, 0's or spaces!", getClass().getSimpleName(), 1);
+                return null;
+            }
+        }
+        String bin = str.getSingle(arg0);
 		if (toBin == 0){
 			StringBuilder sb = new StringBuilder();
-            for (String s : bin.toString().split(" ")) {
+            for (String s : bin.split(" ")) {
                 sb.append((char) Integer.parseInt(s, 2));
             }
 			return new String[]{sb.toString()};
 		}else if (toBin == 1){
-			return new String[]{Integer.toString(Integer.parseInt(bin.toString(), 2))};
+			return new String[]{Integer.toString(Integer.parseInt(bin, 2))};
 		}else if (toBin == 2){
-			return new String[]{Integer.toHexString(Integer.parseInt(bin.toString(), 2))};
+			return new String[]{Integer.toHexString(Integer.parseInt(bin, 2))};
 		}else{
-			return new String[]{Integer.toOctalString(Integer.parseInt(bin.toString(), 2))};
+			return new String[]{Integer.toOctalString(Integer.parseInt(bin, 2))};
 		}
 	}
 

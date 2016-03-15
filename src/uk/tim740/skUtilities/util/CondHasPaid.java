@@ -26,7 +26,7 @@ public class CondHasPaid extends Condition {
             v = Boolean.valueOf(in.readLine());
             in.close();
         } catch (Exception e) {
-            skUtilities.prErr(e.getCause().getMessage(), getClass().getSimpleName());
+            skUtilities.prErr(e.getCause().getMessage(), getClass().getSimpleName(), 1);
         }
         return v;
     }

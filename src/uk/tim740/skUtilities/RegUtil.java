@@ -22,12 +22,14 @@ public class RegUtil {
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
 
 
-        Skript.registerCondition(CondHasPaid.class, "%player% (has paid|is premium)");
+        Skript.registerCondition(CondHasPaid.class, "%player% (has|is) (paid|premium)");
 
         if(Bukkit.getVersion().contains("(MC: 1.9)")) {
             Skript.registerEffect(EffToggleGlide.class, "set %entity%'s glide (state|ability|mode) to %boolean%");
 
             Skript.registerCondition(CondGliding.class, "%entity% is gliding");
+        }else{
+            skUtilities.prErr("Failed to load: ", "CondGliding & EffToggleGlide, due to being on 1.8!", 0);
         }
     }
 }

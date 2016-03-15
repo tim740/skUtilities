@@ -29,7 +29,7 @@ public class EffRunScript extends Effect{
 				Desktop.getDesktop().open(new File(pth));
 			}
 		}catch (IOException e){
-            skUtilities.prErr("'" + pth + "' isn't a valid path!", getClass().getSimpleName());
+            skUtilities.prErr("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 1);
 		}
 	}
 
