@@ -20,15 +20,15 @@ public class ExprFromBin extends SimpleExpression<String> {
 	@Override
 	@Nullable
 	protected String[] get(Event arg0){
-        String binV = str.getSingle(arg0).trim();
+        String bin = str.getSingle(arg0);
+        String binV = bin.trim();
         for (char character : binV.toCharArray()){
             if (character !='0' && character !='1' && character !=' '){
                 skUtilities.prErr("Binary Strings can only contain 1's, 0's or spaces!", getClass().getSimpleName(), 1);
                 return null;
             }
         }
-        String bin = str.getSingle(arg0);
-		if (toBin == 0){
+        if (toBin == 0){
 			StringBuilder sb = new StringBuilder();
             for (String s : bin.split(" ")) {
                 sb.append((char) Integer.parseInt(s, 2));

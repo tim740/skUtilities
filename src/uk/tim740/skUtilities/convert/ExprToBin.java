@@ -22,11 +22,9 @@ public class ExprToBin extends SimpleExpression<String> {
 		if (fromBin == 0){
 			 byte[] by = str.getSingle(arg0).getBytes();
 			 StringBuilder bin = new StringBuilder();
-			 for (byte b : by)
-			 {
+			 for (byte b : by) {
 			    int val = b;
-			    for (int i = 0; i < 8; i++)
-			    {
+			    for (int i = 0; i < 8; i++) {
 			    	bin.append((val & 128) == 0 ? 0 : 1);
 			        val <<= 1;
 			    }

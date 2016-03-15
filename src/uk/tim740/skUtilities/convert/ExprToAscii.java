@@ -20,7 +20,7 @@ public class ExprToAscii extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event arg0) {
         if (ty == 0){
-            return new String[]{Character.toString ((char) Integer.parseInt(num.getSingle(arg0).toString()))};
+            return new String[]{Character.toString((char) Integer.parseInt(num.getSingle(arg0).toString()))};
         }else{
             char ch = (char) Integer.parseInt(num.getSingle(arg0).toString());
             if (ch < 0x10){
@@ -33,7 +33,6 @@ public class ExprToAscii extends SimpleExpression<String>{
                 return new String[]{"\\u" + Integer.toHexString(ch)};
             }
         }
-
 	}
 
     @SuppressWarnings("unchecked")
