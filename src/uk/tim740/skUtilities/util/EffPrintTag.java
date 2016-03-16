@@ -5,6 +5,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
@@ -19,11 +20,11 @@ public class EffPrintTag extends Effect{
 	@Override
 	protected void execute(Event arg0) {
         if (type == 0){
-            Bukkit.getServer().getLogger().info(str.getSingle(arg0));
+            Bukkit.getServer().getLogger().info(ChatColor.translateAlternateColorCodes('&', str.getSingle(arg0)));
         }else if (type == 1){
-            Bukkit.getServer().getLogger().warning(str.getSingle(arg0));
+            Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes('&', str.getSingle(arg0)));
         }else{
-            Bukkit.getServer().getLogger().severe(str.getSingle(arg0));
+            Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes('&', str.getSingle(arg0)));
         }
 	}
 

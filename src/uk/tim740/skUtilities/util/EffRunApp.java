@@ -16,7 +16,7 @@ import uk.tim740.skUtilities.skUtilities;
 /**
  * Created by tim740
  */
-public class EffRunSA extends Effect{
+public class EffRunApp extends Effect{
 	private Expression<String> path;
 
 	@Override
