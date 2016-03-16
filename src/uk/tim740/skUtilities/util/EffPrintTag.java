@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740 on 02/03/16
  */
-public class EffPrintError extends Effect{
+public class EffPrintTag extends Effect{
 	private Expression<String> str;
     private int type;
 

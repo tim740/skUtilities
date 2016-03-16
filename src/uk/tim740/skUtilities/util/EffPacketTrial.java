@@ -34,7 +34,7 @@ public class EffPacketTrial extends Effect {
             sPM.invoke(pc, playOutConstructor.newInstance(5, 0));
         }
         catch (Exception ex) {
-            skUtilities.prErr("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName(), 1);
+            skUtilities.prEW("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName(), 1, 0);
         }
 	}
 

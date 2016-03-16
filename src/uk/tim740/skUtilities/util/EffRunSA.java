@@ -16,7 +16,7 @@ import uk.tim740.skUtilities.skUtilities;
 /**
  * Created by tim740
  */
-public class EffRunScript extends Effect{
+public class EffRunSA extends Effect{
 	private Expression<String> path;
 
 	@Override
@@ -26,10 +26,11 @@ public class EffRunScript extends Effect{
 			if(!new File(pth).exists()){
 				throw new IOException();
 			}else{
+                skUtilities.prEW("Running: " + pth, getClass().getSimpleName(), 1, 1);
 				Desktop.getDesktop().open(new File(pth));
 			}
 		}catch (IOException e){
-            skUtilities.prErr("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 1);
+            skUtilities.prEW("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 1, 0);
 		}
 	}
 

@@ -29,7 +29,7 @@ public class ExprFromUnicode extends SimpleExpression<String> {
             try {
                 p.load(new StringReader("key="+str.getSingle(arg0)));
             } catch (IOException e) {
-                skUtilities.prErr(e.getMessage(), getClass().getSimpleName(), 1);
+                skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 1, 0);
             }
             out = p.getProperty("key");
         }else{
@@ -37,7 +37,7 @@ public class ExprFromUnicode extends SimpleExpression<String> {
             try {
                 p.load(new StringReader("key="+str.getSingle(arg0)));
             } catch (IOException e) {
-                skUtilities.prErr(e.getMessage(), getClass().getSimpleName(), 1);
+                skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 1, 0);
             }
             String iout = p.getProperty("key");
             for(String c : iout.split("")) {

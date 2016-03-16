@@ -14,15 +14,23 @@ public class skUtilities extends JavaPlugin {
         if(Bukkit.getVersion().contains("(MC: 1.9)")) {
             RegEvent.regE();
         }else{
-            prErr("Failed to load: ", "Events, due to being on 1.8!", 0);
+            prEW("Failed to load: ", "Events, due to being on 1.8!", 0, 0);
         }
         Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " has fully loaded!");
     }
-    public static void prErr(String s, String c, Integer b) {
+
+    public static void prEW(String s, String c, Integer b, Integer p) {
         String ver = Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
-        Bukkit.getServer().getLogger().severe("[skUtilities] v" + ver + ": "  + s + " ("+ c +")");
-        if (b == 1){
-            Bukkit.broadcast("(ERROR) [skUtilities] v" + ver + ": " + s + " ("+ c +")", "skUtilities.error");
+        if (p == 0){
+            Bukkit.getServer().getLogger().severe("[skUtilities] v" + ver + ": "  + s + " ("+ c +")");
+            if (b == 1){
+                Bukkit.broadcast("(ERROR) [skUtilities] v" + ver + ": " + s + " ("+ c +")", "skUtilities.error");
+            }
+        }else{
+            Bukkit.getServer().getLogger().warning("[skUtilities] v" + ver + ": "  + s + " ("+ c +")");
+            if (b == 1){
+                Bukkit.broadcast("(WARNING) [skUtilities] v" + ver + ": " + s + " ("+ c +")", "skUtilities.warning");
+            }
         }
     }
 }

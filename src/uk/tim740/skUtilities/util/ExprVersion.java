@@ -22,7 +22,7 @@ public class ExprVersion extends SimpleExpression<String> {
         try {
             return new String[]{Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
         }catch(Exception e){
-            skUtilities.prErr("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), 1);
+            skUtilities.prEW("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), 1, 0);
             return null;
         }
     }
