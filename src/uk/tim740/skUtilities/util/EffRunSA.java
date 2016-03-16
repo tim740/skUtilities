@@ -26,7 +26,7 @@ public class EffRunSA extends Effect{
 			if(!new File(pth).exists()){
 				throw new IOException();
 			}else{
-                skUtilities.prEW("Running: " + pth, getClass().getSimpleName(), 1, 1);
+                skUtilities.prEW("Running: '" + pth + "'", getClass().getSimpleName(), 1, 1);
 				Desktop.getDesktop().open(new File(pth));
 			}
 		}catch (IOException e){
