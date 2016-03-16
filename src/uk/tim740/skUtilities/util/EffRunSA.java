@@ -23,16 +23,16 @@ public class EffRunSA extends Effect{
 	protected void execute(Event arg0) {
 		String pth = new File("plugins\\", path.getSingle(arg0)).getPath().replaceAll("/", "\\");
         try{
-			if(!new File(pth).exists()){
-				throw new IOException();
-			}else{
+            if(!new File(pth).exists()){
+                throw new IOException();
+            }else{
                 skUtilities.prEW("Running: '" + pth + "'", getClass().getSimpleName(), 1, 1);
-				Desktop.getDesktop().open(new File(pth));
-			}
-		}catch (IOException e){
+                Desktop.getDesktop().open(new File(pth));
+            }
+        }catch (IOException e){
             skUtilities.prEW("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 1, 0);
-		}
-	}
+        }
+    }
 
     @SuppressWarnings("unchecked")
     @Override
