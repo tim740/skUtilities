@@ -7,6 +7,7 @@ import ch.njol.skript.util.Getter;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.CauldronLevelChangeEvent;
+import org.bukkit.event.entity.EntityToggleGlideEvent;
 
 import javax.annotation.Nullable;
 
@@ -38,6 +39,6 @@ public class RegEvent {
             }
         }, 0);
 
-        //Skript.registerEvent("GlideToggle", SimpleEvent.class, EntityToggleGlideEvent.class, "[elytra ]glide toggle");
+        Skript.registerEvent("GlideToggle", SimpleEvent.class, EntityToggleGlideEvent.class, "[elytra ]glide toggle");
     }
 }
