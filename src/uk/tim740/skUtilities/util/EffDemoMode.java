@@ -17,7 +17,7 @@ import uk.tim740.skUtilities.skUtilities;
 /**
  * Made by @Sashie - Tweaked by @tim740
  */
-public class EffPacketTrial extends Effect {
+public class EffDemoMode extends Effect {
 	private Expression<Player> player;
 	@Override
 	protected void execute(@Nullable Event e) {
