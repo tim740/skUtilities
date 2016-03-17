@@ -21,7 +21,6 @@ public class EffCreateDeleteFile extends Effect {
     @Override
     protected void execute(Event arg0) {
         File pth = new File("plugins\\" + path.getSingle(arg0).replaceAll("/", "\\"));
-        //   if (type == 0){
         if (!pth.exists()) {
             if (type == 0) {
                 try {
@@ -46,19 +45,6 @@ public class EffCreateDeleteFile extends Effect {
             }
         }
     }
-/*        }else{
-            if(pth.exists()){
-                try {
-                    pth.delete();
-                } catch (Exception e) {
-                    skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 1, 0);
-                }
-                skUtilities.prEW("Deleted file: '" + pth + "'", getClass().getSimpleName(), 1, 1);
-            }else {
-                skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 1, 0);
-            }
-        }
-    }*/
 
     @SuppressWarnings("unchecked")
     @Override
