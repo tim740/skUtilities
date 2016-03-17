@@ -27,7 +27,6 @@ public class RegConvert {
         Skript.registerExpression(ExprEncrypt.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)crypt %string% using %-string% with key %-string%");
         Skript.registerExpression(ExprHash.class, String.class, ExpressionType.PROPERTY, "hash[ed] %string% using %-string%");
 
-
         Skript.registerExpression(ExprUnixToDate.class, String.class, ExpressionType.PROPERTY, "convert unix[ date] %string% to date[ formatted as %-string%]");
         Skript.registerExpression(ExprMirrorTxt.class, String.class, ExpressionType.PROPERTY, "mirror[ed] %string%");
     }

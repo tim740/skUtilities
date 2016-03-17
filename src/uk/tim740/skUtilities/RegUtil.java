@@ -16,8 +16,10 @@ public class RegUtil {
         Skript.registerExpression(ExprVersion.class,String.class,ExpressionType.PROPERTY,"%string%'s version", "version of %string%");
         Skript.registerExpression(ExprSysTime.class,Number.class,ExpressionType.PROPERTY,"[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
 
+        Skript.registerEffect(EffRunApp.class, "run (script|program|app[lication]|file) at %string%");
+        Skript.registerEffect(EffCreateDeleteFile.class, "(0¦create|1¦delete) (script|program|app[lication]|file) %string%");
+
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
-        Skript.registerEffect(EffRunApp.class, "run (script|program|app[lication]) at %string%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
 
