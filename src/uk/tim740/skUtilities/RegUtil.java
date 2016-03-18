@@ -23,9 +23,8 @@ public class RegUtil {
         Skript.registerExpression(ExprDirList.class,String.class,ExpressionType.PROPERTY,"files in dir[ectory] %string%", "dir[ectory] %string%'s files");
 
         Skript.registerEffect(EffRunApp.class, "run (script|program|app[lication]|file) at %string%");
-        Skript.registerEffect(EffZipAddFile.class, "(0¦add|1¦(remove|delete)) (script|program|app[lication]|file) %string% at zip[ file] %-string%");
-        Skript.registerEffect(EffCreateDeleteFile.class, "(0¦create|1¦delete) (script|program|app[lication]|[zip ]file) %string%");
         Skript.registerEffect(EffZipAddFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
+        Skript.registerEffect(EffCreateDeleteFile.class, "(0¦create|1¦delete) (script|program|app[lication]|[zip ]file) %string%");
 
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
