@@ -9,6 +9,9 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Objects;
 
 /**
  * Created by tim740 on 10/03/2016
@@ -19,11 +22,21 @@ public class ExprVersion extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event arg0) {
-        try {
-            return new String[]{Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
-        }catch(Exception e){
-            skUtilities.prEW("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), 1, 0);
-            return null;
+        if (Objects.equals(str.getSingle(arg0).toLowerCase(), "aliases")) {
+            try {
+                return new String[]{"v" + new BufferedReader(new FileReader("plugins\\Skript\\aliases-english.sk")).readLine().replaceAll("#! VERSION: ", "").replaceAll("!", "")};
+
+            } catch (Exception e) {
+                skUtilities.prEW(e.getCause().getMessage(), getClass().getSimpleName(), 0);
+                return null;
+            }
+        }else {
+            try {
+                return new String[]{"v" + Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
+            } catch (Exception e) {
+                skUtilities.prEW("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), 0);
+                return null;
+            }
         }
     }
 

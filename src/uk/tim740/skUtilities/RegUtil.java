@@ -4,6 +4,7 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
 import org.bukkit.Bukkit;
 import uk.tim740.skUtilities.util.*;
+import uk.tim740.skUtilities.util.files.*;
 
 /**
  * Created by tim740 on 22/02/2016
@@ -15,11 +16,17 @@ public class RegUtil {
         Skript.registerExpression(ExprWorldUtil.class,String.class,ExpressionType.PROPERTY,"[world ](0¦(dimension|environment)|1¦type) of %world%", "%world%'s [world ](0¦(dimension|environment)|1¦type)");
         Skript.registerExpression(ExprVersion.class,String.class,ExpressionType.PROPERTY,"%string%'s version", "version of %string%");
         Skript.registerExpression(ExprSysTime.class,Number.class,ExpressionType.PROPERTY,"[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
+
         Skript.registerExpression(ExprFileLines.class,Number.class,ExpressionType.PROPERTY,"line count of (script|program|app[lication]|file) %string%", "(script|program|app[lication]|file) %string%'s line count");
+        Skript.registerExpression(ExprFileSize.class,String.class,ExpressionType.PROPERTY,"file size of %string%", "%string%'s file size");
+        Skript.registerExpression(ExprZipList.class,String.class,ExpressionType.PROPERTY,"files in zip[ file] %string%", "zip[ file] %string%'s files");
+        Skript.registerExpression(ExprDirList.class,String.class,ExpressionType.PROPERTY,"files in dir[ectory] %string%", "dir[ectory] %string%'s files");
 
 
         Skript.registerEffect(EffRunApp.class, "run (script|program|app[lication]|file) at %string%");
-        Skript.registerEffect(EffCreateDeleteFile.class, "(0¦create|1¦delete) (script|program|app[lication]|file) %string%");
+        Skript.registerEffect(EffZipAddFile.class, "(0¦add|1¦(remove|delete)) (script|program|app[lication]|file) %string% at zip[ file] %-string%");
+        Skript.registerEffect(EffCreateDeleteFile.class, "(0¦create|1¦delete) (script|program|app[lication]|[zip ]file) %string%");
+        Skript.registerEffect(EffZipAddFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
 
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
@@ -30,7 +37,7 @@ public class RegUtil {
 
             Skript.registerCondition(CondGliding.class, "%entity% is gliding");
         }else{
-            skUtilities.prEW("Failed to load: ", "CondGliding & EffToggleGlide, due to being on 1.8!", 0, 0);
+            skUtilities.loadErr("Failed to load: CondGliding & EffToggleGlide, due to being on 1.8!");
         }
     }
 }

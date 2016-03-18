@@ -24,7 +24,7 @@ public class ExprHexToRgb extends SimpleExpression<String>{
 		if (s.length() == 6){
 			return new String[]{Color.decode("#" + s).toString().replace("java.awt.Color[", "").replace("r=", "").replace("g=", " ").replace("b=", " ").replace("]", "")};
 		}else{
-            skUtilities.prEW("Length must be 6. (FFFFFF)!", getClass().getSimpleName(), 1, 0);
+            skUtilities.prEW("Length must be 6. (FFFFFF)!", getClass().getSimpleName(), 0);
 			return null;
 		}
 	}

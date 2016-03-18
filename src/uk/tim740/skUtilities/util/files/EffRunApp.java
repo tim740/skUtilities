@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util;
+package uk.tim740.skUtilities.util.files;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -26,11 +26,11 @@ public class EffRunApp extends Effect{
             if(!new File(pth).exists()){
                 throw new IOException();
             }else{
-                skUtilities.prEW("Running: '" + pth + "'", getClass().getSimpleName(), 1, 1);
+                skUtilities.prEW("Running: '" + pth + "'", getClass().getSimpleName(), 1);
                 Desktop.getDesktop().open(new File(pth));
             }
         }catch (IOException e){
-            skUtilities.prEW("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 1, 0);
+            skUtilities.prEW("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 0);
         }
     }
 

@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util;
+package uk.tim740.skUtilities.util.files;
 
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
@@ -26,22 +26,22 @@ public class EffCreateDeleteFile extends Effect {
                 try {
                     pth.createNewFile();
                 } catch (IOException e) {
-                    skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 1, 0);
+                    skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                 }
-                skUtilities.prEW("Created file: '" + pth + "'", getClass().getSimpleName(), 1, 1);
+                skUtilities.prEW("Created file: '" + pth + "'", getClass().getSimpleName(), 1);
             } else {
-                skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 1, 0);
+                skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             }
         } else {
             if (type == 0) {
-                skUtilities.prEW("'" + pth + "' already exists!", getClass().getSimpleName(), 1, 0);
+                skUtilities.prEW("'" + pth + "' already exists!", getClass().getSimpleName(), 0);
             } else {
                 try {
                     pth.delete();
                 } catch (Exception e) {
-                    skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 1, 0);
+                    skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                 }
-                skUtilities.prEW("Deleted file: '" + pth + "'", getClass().getSimpleName(), 1, 1);
+                skUtilities.prEW("Deleted file: '" + pth + "'", getClass().getSimpleName(), 1);
             }
         }
     }

@@ -15,23 +15,25 @@ public class skUtilities extends JavaPlugin {
         if(Bukkit.getVersion().contains("(MC: 1.9)")) {
             RegEvent.regE();
         }else{
-            prEW("Failed to load: ", "Events, due to being on 1.8!", 0, 0);
+            loadErr("Failed to load: Events, due to being on 1.8!");
         }
-        Bukkit.getServer().getLogger().info("[skUtilities] v" + Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " has fully loaded!");
+        Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + " has fully loaded!");
     }
 
-    public static void prEW(String s, String c, Integer b, Integer p) {
-        String ver = Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
-        if (p == 0){
-            Bukkit.getServer().getLogger().severe("[skUtilities] v" + ver + ": " + s + " ("+ c +".class)");
-            if (b == 1){
-                Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + ver + ": " + s + ChatColor.AQUA + " ("+ c +".class)", "skUtilities.error");
-            }
+    public static void prEW(String s, String c, Integer t) {
+        if (t == 0){
+            Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s + " ("+ c +".class)");
+            Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + ChatColor.AQUA + " ("+ c +".class)", "skUtilities.error");
         }else{
-            Bukkit.getServer().getLogger().warning("[skUtilities] v" + ver + ": "  + s + " ("+ c +".class)");
-            if (b == 1){
-                Bukkit.broadcast(ChatColor.GOLD + "[skUtilities: WARNING]" + ChatColor.GRAY + " v" + ver + ": " + s + ChatColor.AQUA + " ("+ c +".class)", "skUtilities.warning");
-            }
+            Bukkit.getServer().getLogger().warning("[skUtilities] v" + getVer() + ": "  + s + " ("+ c +".class)");
+            Bukkit.broadcast(ChatColor.GOLD + "[skUtilities: WARNING]" + ChatColor.GRAY+ " v" + getVer() + ": " + s + ChatColor.AQUA + " ("+ c +".class)", "skUtilities.warning");
         }
+    }
+    public static void loadErr(String s){
+        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s);
+    }
+
+    public static String getVer(){
+        return Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
 }

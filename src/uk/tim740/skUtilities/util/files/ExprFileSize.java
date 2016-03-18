@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util;
+package uk.tim740.skUtilities.util.files;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -8,32 +8,33 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.*;
+import java.io.File;
+import java.text.DecimalFormat;
 
 /**
  * Created by tim740 on 17/03/2016
  */
-public class ExprFileLines extends SimpleExpression<Number>{
+public class ExprFileSize extends SimpleExpression<String>{
 	private Expression<String> path;
 
 	@Override
 	@Nullable
-	protected Number[] get(Event arg0) {
+	protected String[] get(Event arg0) {
         File pth = new File("plugins\\" + path.getSingle(arg0).replaceAll("/", "\\"));
-        Integer ln = 0;
+        double fs = pth.length();
+        DecimalFormat df = new DecimalFormat("#.##");
         if (pth.exists()){
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(pth));
-                while ((br.readLine()) != null)
-                    ln = ln+1;
-                br.close();
-                return new Number[]{ln};
-            } catch (Exception e) {
-                skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 1, 0);
-                return null;
+            if (fs <1024){
+                return new String[]{fs + "Bytes"};
+            }else if (fs <1048576){
+                return new String[]{df.format(fs /1024) + "KB"};
+            }else if (fs <1073741824) {
+                return new String[]{df.format(fs /1048576) + "MB"};
+            }else {
+                return new String[]{df.format(fs /1073741824) + "GB"};
             }
         }else{
-            skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 1, 0);
+            skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;
         }
 	}
@@ -45,8 +46,8 @@ public class ExprFileLines extends SimpleExpression<Number>{
         return true;
     }
     @Override
-    public Class<? extends Number> getReturnType() {
-        return Number.class;
+    public Class<? extends String> getReturnType() {
+        return String.class;
     }
     @Override
     public boolean isSingle() {
