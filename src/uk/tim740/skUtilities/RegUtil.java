@@ -31,7 +31,7 @@ public class RegUtil {
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
 
-        Skript.registerCondition(CondFileExists.class, "%string% exists");
+        Skript.registerCondition(CondFileExists.class, "[(script|program|app[lication]|file) ]%string% exists");
         if(Bukkit.getVersion().contains("(MC: 1.9)")) {
             Skript.registerEffect(EffToggleGlide.class, "set %entity%'s glide (state|ability|mode) to %boolean%");
 
