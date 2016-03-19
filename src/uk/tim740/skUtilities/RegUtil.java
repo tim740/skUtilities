@@ -28,7 +28,7 @@ public class RegUtil {
         Skript.registerEffect(EffWriteLine.class, "set line %number% in file %string% to %-string%");
 
         Skript.registerEffect(EffZipAddFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
-        Skript.registerEffect(EffUnzip.class, "unzip %string% to dir[ectory] %-string%");
+        Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
 
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
