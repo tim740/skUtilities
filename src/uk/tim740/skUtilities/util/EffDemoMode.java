@@ -20,7 +20,6 @@ import uk.tim740.skUtilities.skUtilities;
 public class EffDemoMode extends Effect {
 	private Expression<Player> player;
 
-    @SuppressWarnings("confusing")
 	@Override
 	protected void execute(@Nullable Event e) {
         String p = Bukkit.getServer().getClass().getPackage().getName();
