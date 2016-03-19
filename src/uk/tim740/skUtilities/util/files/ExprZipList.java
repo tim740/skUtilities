@@ -26,15 +26,15 @@ public class ExprZipList extends SimpleExpression<String>{
         String out = "";
         ZipEntry zEn;
         try {
-            ZipInputStream zipIs = new ZipInputStream(new BufferedInputStream(new FileInputStream(pth)));
-            while ((zEn = zipIs.getNextEntry()) != null) {
+            ZipInputStream zIs = new ZipInputStream(new BufferedInputStream(new FileInputStream(pth)));
+            while ((zEn = zIs.getNextEntry()) != null) {
                 if (Objects.equals(out, "")) {
                     out = zEn.getName();
                 } else {
                     out = (out + "," + zEn.getName());
                 }
             }
-            zipIs.close();
+            zIs.close();
             return new String[]{out};
         } catch (FileNotFoundException e) {
             skUtilities.prEW("ZipFile: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);

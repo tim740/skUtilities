@@ -19,6 +19,7 @@ import uk.tim740.skUtilities.skUtilities;
  */
 public class EffDemoMode extends Effect {
 	private Expression<Player> player;
+
 	@Override
 	protected void execute(@Nullable Event e) {
         String p = Bukkit.getServer().getClass().getPackage().getName();
@@ -32,8 +33,7 @@ public class EffDemoMode extends Effect {
             Object pc = handle.getClass().getField("playerConnection").get(handle);
             Method sPM = pc.getClass().getMethod("sendPacket", Class.forName("net.minecraft.server." + ver + ".Packet"));
             sPM.invoke(pc, playOutConstructor.newInstance(5, 0));
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             skUtilities.prEW("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName(), 0);
         }
 	}

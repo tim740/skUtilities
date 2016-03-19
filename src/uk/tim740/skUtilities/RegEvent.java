@@ -14,8 +14,8 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740 on 13/03/2016
  */
-public class RegEvent {
-    public static void regE(){
+class RegEvent {
+    static void regE(){
         Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class, "cauldron[ water] level change");
         EventValues.registerEventValue(CauldronLevelChangeEvent.class, Integer.class, new Getter<Integer,CauldronLevelChangeEvent>() {
             @Nullable

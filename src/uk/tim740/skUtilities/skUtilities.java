@@ -19,7 +19,7 @@ public class skUtilities extends JavaPlugin {
         }
         Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + " has fully loaded!");
     }
-    public static String getVer(){
+    private static String getVer(){
         return Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
 
@@ -32,7 +32,7 @@ public class skUtilities extends JavaPlugin {
             Bukkit.broadcast(ChatColor.GOLD + "[skUtilities: WARNING]" + ChatColor.GRAY+ " v" + getVer() + ": " + s + ChatColor.AQUA + " ("+ c +".class)", "skUtilities.warning");
         }
     }
-    public static void loadErr(String s){
+    static void loadErr(String s){
         Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + " - Failed to load:  " + s);
     }
 }

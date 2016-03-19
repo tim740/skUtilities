@@ -25,7 +25,6 @@ public class ExprVersion extends SimpleExpression<String> {
         if (Objects.equals(str.getSingle(arg0).toLowerCase(), "aliases")) {
             try {
                 return new String[]{"v" + new BufferedReader(new FileReader("plugins\\Skript\\aliases-english.sk")).readLine().replaceAll("#! VERSION: ", "").replaceAll("!", "")};
-
             } catch (Exception e) {
                 skUtilities.prEW(e.getCause().getMessage(), getClass().getSimpleName(), 0);
                 return null;

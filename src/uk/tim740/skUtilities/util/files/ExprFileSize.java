@@ -25,7 +25,7 @@ public class ExprFileSize extends SimpleExpression<String>{
         DecimalFormat df = new DecimalFormat("#.##");
         if (pth.exists()){
             if (fs <1024){
-                return new String[]{fs + "Bytes"};
+                return new String[]{pth.length() + "Bytes"};
             }else if (fs <1048576){
                 return new String[]{df.format(fs /1024) + "KB"};
             }else if (fs <1073741824) {

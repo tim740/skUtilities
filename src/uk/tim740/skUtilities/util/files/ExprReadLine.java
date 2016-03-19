@@ -27,6 +27,7 @@ public class ExprReadLine extends SimpleExpression<String>{
         File pth = new File("plugins\\" + path.getSingle(arg0).replaceAll("/", "\\"));
         if (pth.exists()){
             try (Stream<String> lines = Files.lines(Paths.get(pth.toString()))) {
+                //noinspection OptionalGetWithoutIsPresent
                 return new String[]{lines.skip(Integer.parseInt(line.getSingle(arg0).toString()) -1).findFirst().get()};
             }catch (IOException e) {
                 skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);

@@ -7,8 +7,8 @@ import uk.tim740.skUtilities.convert.*;
 /**
  * Created by tim740 on 22/02/2016
  */
-public class RegConvert {
-    public static void regC() {
+class RegConvert {
+    static void regC() {
         Skript.registerExpression(ExprToBin.class, String.class, ExpressionType.PROPERTY, "convert (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal) %string% to bin[ary]");
         Skript.registerExpression(ExprToAscii.class, String.class, ExpressionType.PROPERTY, "convert ascii %number% to (0¦(text|string)|1¦unicode)");
         Skript.registerExpression(ExprToString.class, String.class, ExpressionType.PROPERTY, "convert (text|string) %string% to (0¦ascii|1¦unicode)");
