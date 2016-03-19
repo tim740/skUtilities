@@ -15,9 +15,12 @@ public class skUtilities extends JavaPlugin {
         if(Bukkit.getVersion().contains("(MC: 1.9)")) {
             RegEvent.regE();
         }else{
-            loadErr("Failed to load: Events, due to being on 1.8!");
+            loadErr("Events, due to being on 1.8!");
         }
         Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + " has fully loaded!");
+    }
+    public static String getVer(){
+        return Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
 
     public static void prEW(String s, String c, Integer t) {
@@ -30,10 +33,6 @@ public class skUtilities extends JavaPlugin {
         }
     }
     public static void loadErr(String s){
-        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s);
-    }
-
-    public static String getVer(){
-        return Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
+        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + " - Failed to load:  " + s);
     }
 }
