@@ -20,6 +20,7 @@ import uk.tim740.skUtilities.skUtilities;
 public class EffDemoMode extends Effect {
 	private Expression<Player> player;
 
+    @SuppressWarnings("confusing")
 	@Override
 	protected void execute(@Nullable Event e) {
         String p = Bukkit.getServer().getClass().getPackage().getName();
@@ -28,7 +29,7 @@ public class EffDemoMode extends Effect {
             Class<?> cPlayer = Class.forName("org.bukkit.craftbukkit." + ver + ".entity.CraftPlayer");
             Class<?> PacketPlayOutGameStateChange = Class.forName("net.minecraft.server." + ver + ".PacketPlayOutGameStateChange");
             Constructor<?> playOutConstructor = PacketPlayOutGameStateChange.getConstructor(Integer.TYPE, Float.TYPE);
-            Method getHandleMethod = cPlayer.getMethod("getHandle", (Class<?>[])new Class[0]);
+            Method getHandleMethod = cPlayer.getMethod("getHandle");
             Object handle = getHandleMethod.invoke(cPlayer.cast(player.getSingle(e)));
             Object pc = handle.getClass().getField("playerConnection").get(handle);
             Method sPM = pc.getClass().getMethod("sendPacket", Class.forName("net.minecraft.server." + ver + ".Packet"));
