@@ -40,17 +40,29 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
         }
     }
     public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
-        if (mode == Changer.ChangeMode.SET) {
+        if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
             File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
-            Boolean boo = (boolean) delta[0];
             if (pth.exists()) {
-                if (type == 0){
-                    pth.setReadable(boo);
-                }else if (type == 1){
-                    pth.setWritable(boo);
-                }else{
+                Boolean boo = (boolean) delta[0];
+                if (type == 0) {
+                    if (mode == Changer.ChangeMode.SET) {
+                        pth.setReadable(boo);
+                    }else{
+                        pth.setReadable(true);
+                    }
+                } else if (type == 1) {
+                    if (mode == Changer.ChangeMode.SET) {
+                        pth.setWritable(boo);
+                    }else{
+                        pth.setWritable(true);
+                    }
+                } else {
                     try {
-                        Files.setAttribute(Paths.get(pth.toString()), "dos:hidden", boo);
+                        if (mode == Changer.ChangeMode.SET) {
+                            Files.setAttribute(Paths.get(pth.toString()), "dos:hidden", boo);
+                        }else{
+                            Files.setAttribute(Paths.get(pth.toString()), "dos:hidden", false);
+                        }
                     } catch (IOException e) {
                         skUtilities.prEW("Sorry Windows only!", getClass().getSimpleName(), 0);
                     }
@@ -72,7 +84,7 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
     @SuppressWarnings("unchecked")
     @Override
     public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
-        if (mode == Changer.ChangeMode.SET) {
+        if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
             return CollectionUtils.array(Boolean.class);
         }
         return null;
