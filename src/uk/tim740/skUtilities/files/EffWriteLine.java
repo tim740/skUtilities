@@ -32,9 +32,8 @@ public class EffWriteLine extends Effect{
                 br.close();
                 cl.set(Integer.parseInt(line.getSingle(arg0).toString()) - 1, str.getSingle(arg0));
                 String[] out = new String[cl.size()];
-                out = cl.toArray(out);
                 BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                for (String aCl : out) {
+                for (String aCl : cl.toArray(out)) {
                     bw.write(aCl);
                     bw.newLine();
                 }
