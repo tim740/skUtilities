@@ -22,7 +22,7 @@ public class ExprDirList extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        String pth = "plugins\\" + path.getSingle(arg0).replaceAll("/", "\\");
+        String pth = "plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator);
         final String[] out = {""};
         try {
             Files.walk(Paths.get(pth)).forEach(dfp -> {

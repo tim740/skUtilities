@@ -15,6 +15,7 @@ class RegFiles {
         Skript.registerExpression(ExprDirList.class,String.class,ExpressionType.PROPERTY,"files in dir[ectory] %string%", "dir[ectory] %string%'s files");
         Skript.registerExpression(ExprReadLine.class,String.class,ExpressionType.PROPERTY,"line %number% in file %string%", "file %string%'s line %number%");
         Skript.registerExpression(ExprFileContents.class,String.class,ExpressionType.PROPERTY,"file contents of %string%", "%string%'s file contents");
+        Skript.registerExpression(SExprFileAttribute.class,Boolean.class,ExpressionType.PROPERTY,"(0¦readable|1¦writable|2¦hidden) attribute of file %string%", "file %string%'s (0¦readable|1¦writable|2¦hidden) attribute");
 
 
         Skript.registerEffect(EffRunApp.class, "run (script|program|app[lication]|file) at %string%");
@@ -22,6 +23,7 @@ class RegFiles {
         Skript.registerEffect(EffWriteLine.class, "set line %number% in file %string% to %-string%");
         Skript.registerEffect(EffZipAddFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
         Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
+
 
         Skript.registerCondition(CondFileExists.class, "[(script|program|app[lication]|file) ]%string% exists");
     }

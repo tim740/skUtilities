@@ -22,7 +22,7 @@ public class ExprZipList extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        File pth = new File("plugins\\" + path.getSingle(arg0).replaceAll("/", "\\"));
+        File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         String out = "";
         ZipEntry zEn;
         try {

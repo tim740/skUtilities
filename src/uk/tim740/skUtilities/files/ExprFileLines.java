@@ -19,7 +19,7 @@ public class ExprFileLines extends SimpleExpression<Number>{
 	@Override
 	@Nullable
 	protected Number[] get(Event arg0) {
-        File pth = new File("plugins\\" + path.getSingle(arg0).replaceAll("/", "\\"));
+        File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         Integer ln = 0;
         if (pth.exists()){
             try {

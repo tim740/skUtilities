@@ -20,7 +20,7 @@ public class EffWriteLine extends Effect{
 
 	@Override
 	protected void execute(Event arg0) {
-        File pth = new File("plugins\\" + path.getSingle(arg0).replaceAll("/", "\\"));
+        File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         if (pth.exists()) {
             try {
                 ArrayList<String> cl = new ArrayList<>();

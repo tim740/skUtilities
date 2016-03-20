@@ -20,8 +20,8 @@ public class EffUnzip extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File pth = new File("plugins\\" + file.getSingle(arg0).replaceAll("/", "\\"));
-        File Fzip = new File("plugins\\" + zip.getSingle(arg0).replaceAll("/", "\\"));
+        File pth = new File("plugins" + File.separator + file.getSingle(arg0).replaceAll("/", File.separator));
+        File Fzip = new File("plugins" + File.separator + zip.getSingle(arg0).replaceAll("/", File.separator));
         if (Fzip.exists()) {
             try{
                 if(!pth.exists()){

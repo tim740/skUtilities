@@ -22,17 +22,17 @@ public class EffZipAddFile extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File pth = new File("plugins\\" + file.getSingle(arg0).replaceAll("/", "\\"));
-        File Fzip = new File("plugins\\" + zip.getSingle(arg0).replaceAll("/", "\\"));
+        File pth = new File("plugins" + File.separator + file.getSingle(arg0).replaceAll("/", File.separator));
+        File Fzip = new File("plugins" + File.separator + zip.getSingle(arg0).replaceAll("/", File.separator));
         if (Fzip.exists()) {
             String ext = "." + FilenameUtils.getExtension(Fzip.toString());
             String frt = Fzip.toString().replaceAll(ext, "") + " - Copy (" + System.currentTimeMillis() /1000 +")" + ext;
-            skUtilities.prEW("File: '" + Fzip + "' already exists, Renaming to: " + frt.substring(frt.lastIndexOf('\\') + 1), getClass().getSimpleName(), 1);
+            skUtilities.prEW("File: '" + Fzip + "' already exists, Renaming to: " + frt.substring(frt.lastIndexOf(File.separator) + 1), getClass().getSimpleName(), 1);
             Fzip = new File(frt);
         }
         try {
             ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(Fzip));
-            zos.putNextEntry(new ZipEntry(file.getSingle(arg0).replaceAll("/", "\\")));
+            zos.putNextEntry(new ZipEntry(file.getSingle(arg0).replaceAll("/", File.separator)));
             FileInputStream in = new FileInputStream(pth);
             zos.write(new byte[1024], 0, in.read(new byte[1024]));
             in.close();
