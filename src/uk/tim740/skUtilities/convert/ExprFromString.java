@@ -14,14 +14,14 @@ import java.util.Objects;
 /**
  * Created by tim740.
  */
-public class ExprToString extends SimpleExpression<String>{
+public class ExprFromString extends SimpleExpression<String>{
 	private Expression<String> str;
     private int ty;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		String out = "";
+        String out = "";
         if (ty == 0) {
             for (String c : str.getSingle(arg0).split("")) {
                 if (Objects.equals(out, "")) {
@@ -43,7 +43,7 @@ public class ExprToString extends SimpleExpression<String>{
                 }
             }
         }
-		return new String[]{out};
+        return new String[]{out};
 	}
 
     @SuppressWarnings("unchecked")
