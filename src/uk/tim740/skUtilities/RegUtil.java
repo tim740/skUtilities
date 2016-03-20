@@ -25,7 +25,7 @@ class RegUtil {
 
             Skript.registerCondition(CondGliding.class, "%entity% is gliding");
         }else{
-            skUtilities.loadErr("CondGliding & EffToggleGlide, due to being on 1.8!");
+            skUtilities.loadErr("CondGliding & EffToggleGlide");
         }
     }
 }

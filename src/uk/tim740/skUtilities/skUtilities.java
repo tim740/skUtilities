@@ -16,7 +16,7 @@ public class skUtilities extends JavaPlugin {
         if(Bukkit.getVersion().contains("(MC: 1.9)")) {
             RegEvent.regE();
         }else{
-            loadErr("Events, due to being on 1.8!");
+            loadErr("Events");
         }
         Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + " has fully loaded!");
     }
@@ -34,6 +34,6 @@ public class skUtilities extends JavaPlugin {
         }
     }
     static void loadErr(String s){
-        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + " - Failed to load:  " + s);
+        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + " - Failed to load:  " + s + ", due to being on 1.8!");
     }
 }
