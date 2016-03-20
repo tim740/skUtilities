@@ -25,11 +25,9 @@ public class EffWriteLine extends Effect{
             try {
                 ArrayList<String> cl = new ArrayList<>();
                 String inLi;
-                Integer ln = 0;
                 BufferedReader br = new BufferedReader(new FileReader(pth));
                 while ((inLi = br.readLine()) != null) {
                     cl.add(inLi);
-                    ln = ln+1;
                 }
                 br.close();
                 cl.set(Integer.parseInt(line.getSingle(arg0).toString()) - 1, str.getSingle(arg0));
