@@ -29,6 +29,8 @@ public class ExprVersion extends SimpleExpression<String> {
                 skUtilities.prEW(e.getCause().getMessage(), getClass().getSimpleName(), 0);
                 return null;
             }
+        }else if (Objects.equals(str.getSingle(arg0).toLowerCase(), "java")) {
+            return new String[]{System.getProperty("java.version")};
         }else {
             try {
                 return new String[]{"v" + Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
