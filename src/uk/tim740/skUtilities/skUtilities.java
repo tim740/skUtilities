@@ -9,6 +9,7 @@ public class skUtilities extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+        long s = System.currentTimeMillis();
         Skript.registerAddon(this);
         RegConvert.regC();
         RegUtil.regU();
@@ -18,7 +19,7 @@ public class skUtilities extends JavaPlugin {
         }else{
             loadErr("Events");
         }
-        Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + " has fully loaded!");
+        Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + " has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
     }
     private static String getVer(){
         return Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
