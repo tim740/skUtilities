@@ -30,7 +30,9 @@ public class ExprVersion extends SimpleExpression<String> {
                 return null;
             }
         }else if (Objects.equals(str.getSingle(arg0).toLowerCase(), "java")) {
-            return new String[]{System.getProperty("java.version")};
+            return new String[]{"v" + System.getProperty("java.version")};
+        }else if (Objects.equals(str.getSingle(arg0).toLowerCase(), "server")) {
+            return new String[]{Bukkit.getServer().getVersion()};
         }else {
             try {
                 return new String[]{"v" + Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
