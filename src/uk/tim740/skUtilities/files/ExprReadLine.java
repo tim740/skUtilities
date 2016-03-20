@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util.files;
+package uk.tim740.skUtilities.files;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -8,27 +8,28 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 /**
- * Created by tim740 on 17/03/2016
+ * Created by tim740 on 18/03/2016
  */
-public class ExprFileLines extends SimpleExpression<Number>{
+public class ExprReadLine extends SimpleExpression<String>{
+    private Expression<Number> line;
 	private Expression<String> path;
 
 	@Override
 	@Nullable
-	protected Number[] get(Event arg0) {
+	protected String[] get(Event arg0) {
         File pth = new File("plugins\\" + path.getSingle(arg0).replaceAll("/", "\\"));
-        Integer ln = 0;
         if (pth.exists()){
-            try {
-                BufferedReader br = new BufferedReader(new FileReader(pth));
-                while ((br.readLine()) != null)
-                    ln = ln+1;
-                br.close();
-                return new Number[]{ln};
-            } catch (Exception e) {
+            try (Stream<String> lines = Files.lines(Paths.get(pth.toString()))) {
+                //noinspection OptionalGetWithoutIsPresent
+                return new String[]{lines.skip(Integer.parseInt(line.getSingle(arg0).toString()) -1).findFirst().get()};
+            }catch (IOException e) {
                 skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                 return null;
             }
@@ -41,12 +42,13 @@ public class ExprFileLines extends SimpleExpression<Number>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
+        line = (Expression<Number>) arg0[0];
+        path = (Expression<String>) arg0[1];
         return true;
     }
     @Override
-    public Class<? extends Number> getReturnType() {
-        return Number.class;
+    public Class<? extends String> getReturnType() {
+        return String.class;
     }
     @Override
     public boolean isSingle() {

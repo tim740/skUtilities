@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util.files;
+package uk.tim740.skUtilities.files;
 
 import java.awt.Desktop;
 import java.io.File;

@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util.files;
+package uk.tim740.skUtilities.files;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -8,42 +8,47 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.io.*;
+import java.util.Objects;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 /**
  * Created by tim740 on 18/03/2016
  */
-public class ExprReadLine extends SimpleExpression<String>{
-    private Expression<Number> line;
+public class ExprZipList extends SimpleExpression<String>{
 	private Expression<String> path;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
         File pth = new File("plugins\\" + path.getSingle(arg0).replaceAll("/", "\\"));
-        if (pth.exists()){
-            try (Stream<String> lines = Files.lines(Paths.get(pth.toString()))) {
-                //noinspection OptionalGetWithoutIsPresent
-                return new String[]{lines.skip(Integer.parseInt(line.getSingle(arg0).toString()) -1).findFirst().get()};
-            }catch (IOException e) {
-                skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
-                return null;
+        String out = "";
+        ZipEntry zEn;
+        try {
+            ZipInputStream zIs = new ZipInputStream(new BufferedInputStream(new FileInputStream(pth)));
+            while ((zEn = zIs.getNextEntry()) != null) {
+                if (Objects.equals(out, "")) {
+                    out = zEn.getName();
+                } else {
+                    out = (out + "," + zEn.getName());
+                }
             }
-        }else{
-            skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            zIs.close();
+            return new String[]{out};
+        } catch (FileNotFoundException e) {
+            skUtilities.prEW("ZipFile: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            return null;
+        } catch (IOException e) {
+            skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
             return null;
         }
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        line = (Expression<Number>) arg0[0];
-        path = (Expression<String>) arg0[1];
+        path = (Expression<String>) arg0[0];
         return true;
     }
     @Override

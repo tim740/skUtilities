@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.util.files;
+package uk.tim740.skUtilities.files;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -8,42 +8,36 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.*;
-import java.util.Objects;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import java.io.File;
+import java.text.DecimalFormat;
 
 /**
- * Created by tim740 on 18/03/2016
+ * Created by tim740 on 17/03/2016
  */
-public class ExprZipList extends SimpleExpression<String>{
+public class ExprFileSize extends SimpleExpression<String>{
 	private Expression<String> path;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
         File pth = new File("plugins\\" + path.getSingle(arg0).replaceAll("/", "\\"));
-        String out = "";
-        ZipEntry zEn;
-        try {
-            ZipInputStream zIs = new ZipInputStream(new BufferedInputStream(new FileInputStream(pth)));
-            while ((zEn = zIs.getNextEntry()) != null) {
-                if (Objects.equals(out, "")) {
-                    out = zEn.getName();
-                } else {
-                    out = (out + "," + zEn.getName());
-                }
+        double fs = pth.length();
+        DecimalFormat df = new DecimalFormat("#.##");
+        if (pth.exists()){
+            if (fs <1024){
+                return new String[]{pth.length() + "Bytes"};
+            }else if (fs <1048576){
+                return new String[]{df.format(fs /1024) + "KB"};
+            }else if (fs <1073741824) {
+                return new String[]{df.format(fs /1048576) + "MB"};
+            }else {
+                return new String[]{df.format(fs /1073741824) + "GB"};
             }
-            zIs.close();
-            return new String[]{out};
-        } catch (FileNotFoundException e) {
-            skUtilities.prEW("ZipFile: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
-            return null;
-        } catch (IOException e) {
-            skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+        }else{
+            skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;
         }
-    }
+	}
 
     @SuppressWarnings("unchecked")
     @Override
