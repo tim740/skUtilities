@@ -3,5 +3,5 @@ description: An addon for skript that adds conversions, utilities and much more.
 author: tim740
 website: https://tim740.github.io/
 main: uk.tim740.skUtilities.skUtilities
-version: 0.4.1
+version: 0.4.2
 depend: [Skript]

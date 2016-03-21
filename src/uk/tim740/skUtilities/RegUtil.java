@@ -15,6 +15,7 @@ class RegUtil {
         Skript.registerExpression(ExprWorldUtil.class,String.class,ExpressionType.PROPERTY,"[world ](0¦(dimension|environment)|1¦type) of %world%", "%world%'s [world ](0¦(dimension|environment)|1¦type)");
         Skript.registerExpression(ExprVersion.class,String.class,ExpressionType.PROPERTY,"%string%'s version", "version of %string%");
         Skript.registerExpression(ExprSysTime.class,Number.class,ExpressionType.PROPERTY,"[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
+        Skript.registerExpression(ExprFontNames.class,String.class,ExpressionType.PROPERTY,"[all ][system ]font names");
 
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
