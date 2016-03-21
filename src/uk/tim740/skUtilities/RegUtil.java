@@ -21,11 +21,9 @@ class RegUtil {
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
 
         if(Bukkit.getVersion().contains("(MC: 1.9)")) {
-            Skript.registerEffect(EffToggleGlide.class, "set %entity%'s glide (state|ability|mode) to %boolean%");
-
-            Skript.registerCondition(CondGliding.class, "%entity% is gliding");
+            Skript.registerExpression(SExprGlideMode.class,Boolean.class,ExpressionType.PROPERTY,"glide (state|ability|mode) of %entity%", "%entity%'s glide (state|ability|mode)");
         }else{
-            skUtilities.loadErr("CondGliding & EffToggleGlide");
+            skUtilities.loadErr("SExprGlideMode");
         }
     }
 }
