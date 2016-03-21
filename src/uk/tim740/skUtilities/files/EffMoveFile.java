@@ -20,8 +20,8 @@ public class EffMoveFile extends Effect{
 	protected void execute(Event arg0) {
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         if (pth.exists()) {
-            pth.renameTo(new File("plugins" + File.separator + mpath.getSingle(arg0).replaceAll("/", File.separator) + pth.getName()));
-       } else {
+            pth.renameTo(new File("plugins" + File.separator + mpath.getSingle(arg0).replaceAll("/", File.separator) + File.separator + pth.getName()));
+        } else {
             skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
         }
     }
