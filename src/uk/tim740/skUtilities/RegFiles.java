@@ -22,6 +22,7 @@ class RegFiles {
         Skript.registerEffect(EffCreateDeleteFile.class, "(0¦create|1¦delete) (script|program|app[lication]|[zip ]file) %string%");
         Skript.registerEffect(EffWriteLine.class, "set line %number% in file %string% to %-string%");
         Skript.registerEffect(EffRenameFile.class, "rename file %string% to %-string%");
+        Skript.registerEffect(EffMoveFile.class, "move file %string% to %-string%");
         Skript.registerEffect(EffWipeFile.class, "(clear|wipe) file %string%");
 
         Skript.registerEffect(EffZipAddFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
