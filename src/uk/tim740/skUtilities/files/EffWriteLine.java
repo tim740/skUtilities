@@ -42,7 +42,7 @@ public class EffWriteLine extends Effect{
                 skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
             }
         } else {
-            skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
         }
     }
 
