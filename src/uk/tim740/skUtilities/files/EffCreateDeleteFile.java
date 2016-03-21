@@ -25,10 +25,11 @@ public class EffCreateDeleteFile extends Effect {
             if (type == 0) {
                 try {
                     pth.createNewFile();
+                    skUtilities.prEW("Created file: '" + pth + "'", getClass().getSimpleName(), 1);
                 } catch (IOException e) {
                     skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                 }
-                skUtilities.prEW("Created file: '" + pth + "'", getClass().getSimpleName(), 1);
+
             } else {
                 skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             }
@@ -38,10 +39,10 @@ public class EffCreateDeleteFile extends Effect {
             } else {
                 try {
                     pth.delete();
+                    skUtilities.prEW("Deleted file: '" + pth + "'", getClass().getSimpleName(), 1);
                 } catch (Exception e) {
                     skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                 }
-                skUtilities.prEW("Deleted file: '" + pth + "'", getClass().getSimpleName(), 1);
             }
         }
     }
