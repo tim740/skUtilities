@@ -25,6 +25,7 @@ class RegFiles {
         Skript.registerEffect(EffRenameFile.class, "rename file %string% to %-string%");
         Skript.registerEffect(EffMoveFile.class, "move file %string% to %-string%");
         Skript.registerEffect(EffWipeFile.class, "(clear|wipe) file %string%");
+        Skript.registerEffect(EffDownloadFile.class, "download file from %string% in to file %-string%");
 
         Skript.registerEffect(EffZipAddFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
         Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
