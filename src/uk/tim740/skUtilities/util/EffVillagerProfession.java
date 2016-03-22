@@ -18,9 +18,9 @@ import uk.tim740.skUtilities.skUtilities;
  * Created by tim740 on 18/02/2016
  */
 public class EffVillagerProfession extends Effect{
-    private int prof;
     private Expression<Location> loca;
     private Expression<Entity> entity;
+    private int prof;
 
     @Override
     protected void execute(Event arg0) {
