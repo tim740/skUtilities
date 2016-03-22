@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Objects;
+import java.util.ArrayList;
 
 /**
  * Created by tim740 on 18/03/2016
@@ -23,18 +23,15 @@ public class ExprDirList extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event arg0) {
         String pth = "plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator);
-        final String[] out = {""};
         try {
+            ArrayList<String> cl = new ArrayList<>();
             Files.walk(Paths.get(pth)).forEach(dfp -> {
                 if (Files.isRegularFile(dfp)) {
-                    if (Objects.equals(out[0], "")) {
-                        out[0] = String.valueOf(dfp);
-                    } else {
-                        out[0] = (out[0] + "," + dfp);
-                    }
+                    cl.add(String.valueOf(dfp));
                 }
             });
-            return new String[]{out[0]};
+            String[] out = new String[cl.size()];
+            return cl.toArray(out);
         } catch (FileNotFoundException e) {
             skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;

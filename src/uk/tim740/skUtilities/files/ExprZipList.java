@@ -9,7 +9,7 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.*;
-import java.util.Objects;
+import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -23,19 +23,16 @@ public class ExprZipList extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event arg0) {
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
-        String out = "";
-        ZipEntry zEn;
         try {
+            ArrayList<String> cl = new ArrayList<>();
+            ZipEntry zEn;
             ZipInputStream zIs = new ZipInputStream(new BufferedInputStream(new FileInputStream(pth)));
             while ((zEn = zIs.getNextEntry()) != null) {
-                if (Objects.equals(out, "")) {
-                    out = zEn.getName();
-                } else {
-                    out = (out + "," + zEn.getName());
-                }
+                cl.add(zEn.getName());
             }
             zIs.close();
-            return new String[]{out};
+            String[] out = new String[cl.size()];
+            return cl.toArray(out);
         } catch (FileNotFoundException e) {
             skUtilities.prEW("ZipFile: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;
