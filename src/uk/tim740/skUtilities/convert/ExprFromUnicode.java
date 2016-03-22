@@ -24,21 +24,15 @@ public class ExprFromUnicode extends SimpleExpression<String> {
 	@Nullable
 	protected String[] get(Event arg0) {
         String out = "";
+        Properties p = new Properties();
+        try {
+            p.load(new StringReader("key="+str.getSingle(arg0)));
+        } catch (IOException e) {
+            skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+        }
         if (ucTy == 0) {
-            Properties p = new Properties();
-            try {
-                p.load(new StringReader("key="+str.getSingle(arg0)));
-            } catch (IOException e) {
-                skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
-            }
             out = p.getProperty("key");
         }else{
-            Properties p = new Properties();
-            try {
-                p.load(new StringReader("key="+str.getSingle(arg0)));
-            } catch (IOException e) {
-                skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
-            }
             String iout = p.getProperty("key");
             for(String c : iout.split("")) {
                 if (Objects.equals(out, "")) {
