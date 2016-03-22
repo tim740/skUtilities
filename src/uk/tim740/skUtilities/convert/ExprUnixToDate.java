@@ -24,8 +24,7 @@ public class ExprUnixToDate extends SimpleExpression <String>{
         if (format != null){
             si = format.getSingle(arg0);
         }
-		SimpleDateFormat sdf = new SimpleDateFormat(si);
-        return new String[]{sdf.format(new Date(Long.valueOf((str.getSingle(arg0) + "a").replace("000a", "").replace("a", "")) *1000L))};
+        return new String[]{new SimpleDateFormat(si).format(new Date(Long.valueOf((str.getSingle(arg0) + "a").replace("000a", "").replace("a", "")) *1000L))};
 	}
 
     @SuppressWarnings("unchecked")
