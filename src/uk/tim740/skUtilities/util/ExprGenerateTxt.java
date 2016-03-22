@@ -16,11 +16,11 @@ import ch.njol.util.Kleenean;
  */
 public class ExprGenerateTxt extends SimpleExpression<String>{
 	private Expression<Integer> inte;
+    private static final String[] chl = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		String[] chl = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
 		Random ranGen = new Random();
 		String out = "";
 		for (int i=0; i<inte.getSingle(arg0); i++){
