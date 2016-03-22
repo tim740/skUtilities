@@ -2,13 +2,12 @@ package uk.tim740.skUtilities.convert;
 
 import javax.annotation.Nullable;
 
+import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
-import ch.njol.util.Kleenean;
-
 import java.util.Objects;
 
 /**
@@ -32,14 +31,14 @@ public class ExprFromString extends SimpleExpression<String>{
             }
         }else{
             for (String c : str.getSingle(arg0).split("")) {
-                if (c.charAt(0) < 0x10){
+                if (c.charAt(0) < 0x10) {
                     out = out + "\\u000" + Integer.toHexString(c.charAt(0));
-                }else if (c.charAt(0) < 0x100){
+                } else if (c.charAt(0) < 0x100) {
                     out = out + "\\u00" + Integer.toHexString(c.charAt(0));
-                }else if (c.charAt(0) < 0x1000){
-                    out = out +"\\u0" + Integer.toHexString(c.charAt(0));
-                }else{
-                    out = out +"\\u" + Integer.toHexString(c.charAt(0));
+                } else if (c.charAt(0) < 0x1000) {
+                    out = out + "\\u0" + Integer.toHexString(c.charAt(0));
+                } else {
+                    out = out + "\\u" + Integer.toHexString(c.charAt(0));
                 }
             }
         }

@@ -20,9 +20,9 @@ public class ExprHexToRgb extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		String s = hex.getSingle(arg0).replace("#", "");
+		String s = hex.getSingle(arg0).toUpperCase().replace("#", "");
 		if (s.length() == 6){
-			return new String[]{Color.decode("#" + s).toString().replace("java.awt.Color[", "").replace("r=", "").replace("g=", " ").replace("b=", " ").replace("]", "")};
+            return new String[]{Color.decode("#" + s).toString().replace("java.awt.Color[", "").replace("r=", "").replace("g=", " ").replace("b=", " ").replace("]", "")};
 		}else{
             skUtilities.prEW("Length must be 6. (FFFFFF)!", getClass().getSimpleName(), 0);
 			return null;
