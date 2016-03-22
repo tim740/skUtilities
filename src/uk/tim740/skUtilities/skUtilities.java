@@ -12,13 +12,12 @@ public class skUtilities extends JavaPlugin {
         long s = System.currentTimeMillis();
         Skript.registerAddon(this);
         RegConvert.regC();
+
         RegUtil.regU();
+        RegUtil.regUE();
+
         RegFiles.regF();
-        if(Bukkit.getVersion().contains("(MC: 1.9)")) {
-            RegEvent.regE();
-        }else{
-            loadErr("Events");
-        }
+        RegFiles.regFE();
         Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + " has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
     }
     private static String getVer(){

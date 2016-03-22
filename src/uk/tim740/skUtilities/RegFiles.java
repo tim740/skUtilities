@@ -2,7 +2,12 @@ package uk.tim740.skUtilities;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
+import ch.njol.skript.lang.util.SimpleEvent;
+import ch.njol.skript.registrations.EventValues;
+import ch.njol.skript.util.Getter;
 import uk.tim740.skUtilities.files.*;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by tim740 on 20/03/2016
@@ -31,5 +36,25 @@ class RegFiles {
         Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
 
         Skript.registerCondition(CondFileExists.class, "[(script|program|app[lication]|file) ]%string% exists");
+    }
+
+    static void regFE() {
+        Skript.registerEvent("DownloadFile", SimpleEvent.class, EvtDownloadFile.class, "file download");
+        EventValues.registerEventValue(EvtDownloadFile.class, String.class, new Getter<String,EvtDownloadFile>() {
+            @Nullable
+            @Override
+            public String get(EvtDownloadFile e) {
+                return e.getUrl();
+            }
+        }, 0);
+
+        Skript.registerEvent("RunApp", SimpleEvent.class, EvtRunApp.class, "(file|app|script) (run|execute)");
+        EventValues.registerEventValue(EvtRunApp.class, String.class, new Getter<String,EvtRunApp>() {
+            @Nullable
+            @Override
+            public String get(EvtRunApp e) {
+                return e.getApp();
+            }
+        }, 0);
     }
 }

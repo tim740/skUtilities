@@ -4,6 +4,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -24,11 +25,15 @@ public class EffDownloadFile extends Effect{
 	protected void execute(Event arg0) {
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         try {
-            ReadableByteChannel rbc = Channels.newChannel(new URL(url.getSingle(arg0)).openStream());
-            FileOutputStream fos = new FileOutputStream(pth);
-            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-            fos.close();
-            rbc.close();
+            EvtDownloadFile efd = new EvtDownloadFile(url.getSingle(arg0));
+            Bukkit.getServer().getPluginManager().callEvent(efd);
+            if (!efd.isCancelled()) {
+                ReadableByteChannel rbc = Channels.newChannel(new URL(url.getSingle(arg0)).openStream());
+                FileOutputStream fos = new FileOutputStream(pth);
+                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+                fos.close();
+                rbc.close();
+            }
         } catch (Exception e) {
             skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
         }
