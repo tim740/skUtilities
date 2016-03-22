@@ -18,9 +18,8 @@ public class ExprFontNames extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event arg0) {
-        Font[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts();
         ArrayList<String> cl = new ArrayList<>();
-        for (Font f : fonts) {
+        for (Font f : GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts()) {
             cl.add(f.getFontName());
         }
         String[] out = new String[cl.size()];
