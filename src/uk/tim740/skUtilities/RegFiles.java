@@ -56,5 +56,23 @@ class RegFiles {
                 return e.getApp();
             }
         }, 0);
+
+        Skript.registerEvent("FileCreation", SimpleEvent.class, EvtFileCreation.class, "file creat(ion|e)");
+        EventValues.registerEventValue(EvtFileCreation.class, String.class, new Getter<String,EvtFileCreation>() {
+            @Nullable
+            @Override
+            public String get(EvtFileCreation e) {
+                return e.getEvtFile();
+            }
+        }, 0);
+
+        Skript.registerEvent("FileDeletion", SimpleEvent.class, EvtFileDeletion.class, "file delet(ion|e)");
+        EventValues.registerEventValue(EvtFileDeletion.class, String.class, new Getter<String,EvtFileDeletion>() {
+            @Nullable
+            @Override
+            public String get(EvtFileDeletion e) {
+                return e.getEvtFile();
+            }
+        }, 0);
     }
 }

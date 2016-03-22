@@ -4,6 +4,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -24,8 +25,11 @@ public class EffCreateDeleteFile extends Effect {
         if (!pth.exists()) {
             if (type == 0) {
                 try {
-                    pth.createNewFile();
-                    skUtilities.prEW("Created file: '" + pth + "'", getClass().getSimpleName(), 1);
+                    EvtFileCreation efc = new EvtFileCreation(pth.toString());
+                    Bukkit.getServer().getPluginManager().callEvent(efc);
+                    if (!efc.isCancelled()) {
+                        pth.createNewFile();
+                    }
                 } catch (IOException e) {
                     skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                 }
@@ -38,8 +42,11 @@ public class EffCreateDeleteFile extends Effect {
                 skUtilities.prEW("'" + pth + "' already exists!", getClass().getSimpleName(), 0);
             } else {
                 try {
-                    pth.delete();
-                    skUtilities.prEW("Deleted file: '" + pth + "'", getClass().getSimpleName(), 1);
+                    EvtFileDeletion efd = new EvtFileDeletion(pth.toString());
+                    Bukkit.getServer().getPluginManager().callEvent(efd);
+                    if (!efd.isCancelled()) {
+                        pth.delete();
+                    }
                 } catch (Exception e) {
                     skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                 }
