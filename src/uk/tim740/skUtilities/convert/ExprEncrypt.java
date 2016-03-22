@@ -12,7 +12,6 @@ import uk.tim740.skUtilities.skUtilities;
 import javax.annotation.Nullable;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-import java.security.Key;
 
 /**
  * Created by tim740 on 23/02/2016
@@ -24,22 +23,18 @@ public class ExprEncrypt extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event arg0) {
-        String iCipher = cipher.getSingle(arg0).toUpperCase();
-        String iString = string.getSingle(arg0);
-        Key Ekey = new SecretKeySpec(key.getSingle(arg0).getBytes(), iCipher);
         byte[] cout = new byte[0];
         Cipher c = null;
         try{
-            c = Cipher.getInstance(iCipher);
-            c.init(type, Ekey);
+            c = Cipher.getInstance(cipher.getSingle(arg0).toUpperCase());
+            c.init(type, new SecretKeySpec(key.getSingle(arg0).getBytes(), cipher.getSingle(arg0).toUpperCase()));
         }catch (Exception e){
             skUtilities.prEW(e.getMessage() + " '"+ cipher +"'", getClass().getSimpleName(), 0);
         }
+        assert c != null;
         if (type == Cipher.ENCRYPT_MODE){
             try{
-                if (c != null) {
-                    cout = c.doFinal(iString.getBytes());
-                }
+                cout = c.doFinal(string.getSingle(arg0).getBytes());
             }catch (Exception e){
                 skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
             }
@@ -48,10 +43,8 @@ public class ExprEncrypt extends SimpleExpression<String> {
             byte[] decry;
             String out = "";
             try{
-                decry = new BASE64Decoder().decodeBuffer(iString);
-                if (c != null) {
-                    cout = c.doFinal(decry);
-                }
+                decry = new BASE64Decoder().decodeBuffer(string.getSingle(arg0));
+                cout = c.doFinal(decry);
             }catch (Exception e) {
                 skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
             }for (byte aCout : cout) {
