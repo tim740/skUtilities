@@ -29,8 +29,7 @@ public class EffZipAddFile extends Effect {
             String frt = Fzip.toString().replaceAll(ext, "") + " - Copy (" + System.currentTimeMillis() /1000 +")" + ext;
             skUtilities.prEW("File: '" + Fzip + "' already exists, Renaming to: " + frt.substring(frt.lastIndexOf(File.separator) + 1), getClass().getSimpleName(), 1);
             Fzip = new File(frt);
-        }
-        try {
+        } try {
             ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(Fzip));
             zos.putNextEntry(new ZipEntry(file.getSingle(arg0).replaceAll("/", File.separator)));
             FileInputStream in = new FileInputStream(pth);
