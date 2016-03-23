@@ -10,7 +10,7 @@ import java.io.File;
  * Created by tim740 on 23/03/2016
  */
 public class EvtUnzip extends Event implements Cancellable {
-    private static final HandlerList handlers = new HandlerList();
+    private static final HandlerList hls = new HandlerList();
     private boolean cancel = false;
     private File file;
     private String nloc;
@@ -37,10 +37,10 @@ public class EvtUnzip extends Event implements Cancellable {
 
     @Override
     public HandlerList getHandlers() {
-        return handlers;
+        return hls;
     }
     @SuppressWarnings("unused")
     public static HandlerList getHandlerList() {
-        return handlers;
+        return hls;
     }
 }
