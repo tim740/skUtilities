@@ -42,18 +42,18 @@ class RegFiles {
     }
 
     static void regFE() {
-        Skript.registerEvent("DownloadFile", SimpleEvent.class, EvtDownloadFile.class, "file download");
-        EventValues.registerEventValue(EvtDownloadFile.class, String.class, new Getter<String,EvtDownloadFile>() {
+        Skript.registerEvent("DownloadFile", SimpleEvent.class, EvtFileDownload.class, "file download");
+        EventValues.registerEventValue(EvtFileDownload.class, String.class, new Getter<String,EvtFileDownload>() {
             @Nullable
             @Override
-            public String get(EvtDownloadFile e) {
+            public String get(EvtFileDownload e) {
                 return e.getUrl();
             }
         }, 0);
-        EventValues.registerEventValue(EvtDownloadFile.class, File.class, new Getter<File,EvtDownloadFile>() {
+        EventValues.registerEventValue(EvtFileDownload.class, File.class, new Getter<File,EvtFileDownload>() {
             @Nullable
             @Override
-            public File get(EvtDownloadFile e) {
+            public File get(EvtFileDownload e) {
                 return e.getEvtFile();
             }
         }, 0);
@@ -81,6 +81,15 @@ class RegFiles {
             @Nullable
             @Override
             public File get(EvtFileDeletion e) {
+                return e.getEvtFile();
+            }
+        }, 0);
+
+        Skript.registerEvent("FileWipe", SimpleEvent.class, EvtFileWipe.class, "file (wipe|reset|clear)");
+        EventValues.registerEventValue(EvtFileWipe.class, File.class, new Getter<File,EvtFileWipe>() {
+            @Nullable
+            @Override
+            public File get(EvtFileWipe e) {
                 return e.getEvtFile();
             }
         }, 0);

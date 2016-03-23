@@ -4,6 +4,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -24,9 +25,13 @@ public class EffWipeFile extends Effect{
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         if (pth.exists()) {
             try {
-                BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                bw.write("");
-                bw.close();
+                EvtFileWipe efw = new EvtFileWipe(pth);
+                Bukkit.getServer().getPluginManager().callEvent(efw);
+                if (!efw.isCancelled()) {
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
+                    bw.write("");
+                    bw.close();
+                }
             } catch (IOException e) {
                 skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
             }

@@ -7,23 +7,18 @@ import org.bukkit.event.HandlerList;
 import java.io.File;
 
 /**
- * Created by tim740 on 22/03/2016
+ * Created by tim740 on 23/03/2016
  */
-public class EvtDownloadFile extends Event implements Cancellable {
+public class EvtFileWipe extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel = false;
-    private String url;
     private File file;
 
-    EvtDownloadFile(String surl, File sfile) {
+    EvtFileWipe(File sfile) {
         cancel = false;
-        url = surl;
         file = sfile;
     }
 
-    public String getUrl() {
-        return url;
-    }
     public File getEvtFile() {
         return file;
     }
