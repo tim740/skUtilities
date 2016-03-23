@@ -4,6 +4,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -20,28 +21,32 @@ public class EffUnzip extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File pth = new File("plugins" + File.separator + file.getSingle(arg0).replaceAll("/", File.separator));
         File Fzip = new File("plugins" + File.separator + zip.getSingle(arg0).replaceAll("/", File.separator));
+        File pth = new File("plugins" + File.separator + file.getSingle(arg0).replaceAll("/", File.separator));
         if (Fzip.exists()) {
             try{
-                if(!pth.exists()){
-                    pth.mkdir();
-                }
-                ZipInputStream zis = new ZipInputStream(new FileInputStream(Fzip));
-                ZipEntry ze = zis.getNextEntry();
-                while (ze!=null) {
-                    File nf = new File(pth + File.separator + ze.getName());
-                    new File(nf.getParent()).mkdirs();
-                    FileOutputStream fos = new FileOutputStream(nf);
-                    int len;
-                    while ((len = zis.read(new byte[1024])) > 0) {
-                        fos.write(new byte[1024], 0, len);
+                EvtUnzip euz = new EvtUnzip(Fzip, pth.toString());
+                Bukkit.getServer().getPluginManager().callEvent(euz);
+                if (!euz.isCancelled()) {
+                    if (!pth.exists()) {
+                        pth.mkdir();
                     }
-                    fos.close();
-                    ze = zis.getNextEntry();
+                    ZipInputStream zis = new ZipInputStream(new FileInputStream(Fzip));
+                    ZipEntry ze = zis.getNextEntry();
+                    while (ze != null) {
+                        File nf = new File(pth + File.separator + ze.getName());
+                        new File(nf.getParent()).mkdirs();
+                        FileOutputStream fos = new FileOutputStream(nf);
+                        int len;
+                        while ((len = zis.read(new byte[1024])) > 0) {
+                            fos.write(new byte[1024], 0, len);
+                        }
+                        fos.close();
+                        ze = zis.getNextEntry();
+                    }
+                    zis.closeEntry();
+                    zis.close();
                 }
-                zis.closeEntry();
-                zis.close();
             }catch (IOException e){
                 skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
             }

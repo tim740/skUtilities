@@ -109,5 +109,21 @@ class RegFiles {
                 return e.getEvtFileName();
             }
         }, 0);
+
+        Skript.registerEvent("Unzip", SimpleEvent.class, EvtUnzip.class, "unzip");
+        EventValues.registerEventValue(EvtUnzip.class, File.class, new Getter<File,EvtUnzip>() {
+            @Nullable
+            @Override
+            public File get(EvtUnzip e) {
+                return e.getEvtFile();
+            }
+        }, 0);
+        EventValues.registerEventValue(EvtUnzip.class, String.class, new Getter<String,EvtUnzip>() {
+            @Nullable
+            @Override
+            public String get(EvtUnzip e) {
+                return e.getEvtNloc();
+            }
+        }, 0);
     }
 }

@@ -21,9 +21,9 @@ public class EffRenameFile extends Effect{
 	protected void execute(Event arg0) {
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         if (pth.exists()) {
-            EvtFileRename efm = new EvtFileRename(pth, name.getSingle(arg0));
-            Bukkit.getServer().getPluginManager().callEvent(efm);
-            if (!efm.isCancelled()) {
+            EvtFileRename efn = new EvtFileRename(pth, name.getSingle(arg0));
+            Bukkit.getServer().getPluginManager().callEvent(efn);
+            if (!efn.isCancelled()) {
                 pth.renameTo(new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator).replaceAll(pth.getName(), name.getSingle(arg0))));
             }
         } else {
