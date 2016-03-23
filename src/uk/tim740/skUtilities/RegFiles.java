@@ -33,7 +33,7 @@ class RegFiles {
         Skript.registerEffect(EffWipeFile.class, "(clear|wipe) file %string%");
         Skript.registerEffect(EffDownloadFile.class, "download file from %string% to file %-string%");
 
-        Skript.registerEffect(EffZipAddFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
+        Skript.registerEffect(EffZipFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
         Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
 
         Skript.registerCondition(CondFileExists.class, "[(script|program|app[lication]|file) ]%string% exists");
