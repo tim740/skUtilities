@@ -7,20 +7,25 @@ import org.bukkit.event.HandlerList;
 import java.io.File;
 
 /**
- * Created by tim740 on 22/03/2016
+ * Created by tim740 on 23/03/2016
  */
-public class EvtFileCreation extends Event implements Cancellable {
+public class EvtFileRename extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel = false;
     private File file;
+    private String name;
 
-    EvtFileCreation(File sfile) {
+    EvtFileRename(File sfile, String sname) {
         cancel = false;
         file = sfile;
+        name = sname;
     }
 
     public File getEvtFile() {
         return file;
+    }
+    public String getEvtFileName() {
+        return name;
     }
 
     public boolean isCancelled() {

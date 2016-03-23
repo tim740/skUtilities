@@ -4,20 +4,22 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
+import java.io.File;
+
 /**
  * Created by tim740 on 22/03/2016
  */
 public class EvtRunApp extends Event implements Cancellable {
     private static final HandlerList handlers = new HandlerList();
     private boolean cancel = false;
-    private String app;
+    private File app;
 
-    EvtRunApp(String sapp) {
+    EvtRunApp(File sapp) {
         cancel = false;
         app = sapp;
     }
 
-    public String getApp() {
+    public File getApp() {
         return app;
     }
 

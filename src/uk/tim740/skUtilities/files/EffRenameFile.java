@@ -4,6 +4,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -20,7 +21,11 @@ public class EffRenameFile extends Effect{
 	protected void execute(Event arg0) {
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         if (pth.exists()) {
-            pth.renameTo(new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator).replaceAll(pth.getName(), name.getSingle(arg0))));
+            EvtFileRename efm = new EvtFileRename(pth, name.getSingle(arg0));
+            Bukkit.getServer().getPluginManager().callEvent(efm);
+            if (!efm.isCancelled()) {
+                pth.renameTo(new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator).replaceAll(pth.getName(), name.getSingle(arg0))));
+            }
         } else {
             skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
         }

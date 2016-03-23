@@ -8,6 +8,7 @@ import ch.njol.skript.util.Getter;
 import uk.tim740.skUtilities.files.*;
 
 import javax.annotation.Nullable;
+import java.io.File;
 
 /**
  * Created by tim740 on 20/03/2016
@@ -36,6 +37,8 @@ class RegFiles {
         Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
 
         Skript.registerCondition(CondFileExists.class, "[(script|program|app[lication]|file) ]%string% exists");
+
+        Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
     }
 
     static void regFE() {
@@ -49,29 +52,61 @@ class RegFiles {
         }, 0);
 
         Skript.registerEvent("RunApp", SimpleEvent.class, EvtRunApp.class, "(file|app|script) (run|execute)");
-        EventValues.registerEventValue(EvtRunApp.class, String.class, new Getter<String,EvtRunApp>() {
+        EventValues.registerEventValue(EvtRunApp.class, File.class, new Getter<File,EvtRunApp>() {
             @Nullable
             @Override
-            public String get(EvtRunApp e) {
+            public File get(EvtRunApp e) {
                 return e.getApp();
             }
         }, 0);
 
         Skript.registerEvent("FileCreation", SimpleEvent.class, EvtFileCreation.class, "file creat(ion|e)");
-        EventValues.registerEventValue(EvtFileCreation.class, String.class, new Getter<String,EvtFileCreation>() {
+        EventValues.registerEventValue(EvtFileCreation.class, File.class, new Getter<File,EvtFileCreation>() {
             @Nullable
             @Override
-            public String get(EvtFileCreation e) {
+            public File get(EvtFileCreation e) {
                 return e.getEvtFile();
             }
         }, 0);
 
         Skript.registerEvent("FileDeletion", SimpleEvent.class, EvtFileDeletion.class, "file delet(ion|e)");
-        EventValues.registerEventValue(EvtFileDeletion.class, String.class, new Getter<String,EvtFileDeletion>() {
+        EventValues.registerEventValue(EvtFileDeletion.class, File.class, new Getter<File,EvtFileDeletion>() {
             @Nullable
             @Override
-            public String get(EvtFileDeletion e) {
+            public File get(EvtFileDeletion e) {
                 return e.getEvtFile();
+            }
+        }, 0);
+
+        Skript.registerEvent("FileMove", SimpleEvent.class, EvtFileMove.class, "file move");
+        EventValues.registerEventValue(EvtFileMove.class, File.class, new Getter<File,EvtFileMove>() {
+            @Nullable
+            @Override
+            public File get(EvtFileMove e) {
+                return e.getEvtFile();
+            }
+        }, 0);
+        EventValues.registerEventValue(EvtFileMove.class, String.class, new Getter<String,EvtFileMove>() {
+            @Nullable
+            @Override
+            public String get(EvtFileMove e) {
+                return e.getEvtMFile();
+            }
+        }, 0);
+
+        Skript.registerEvent("FileRename", SimpleEvent.class, EvtFileRename.class, "file rename");
+        EventValues.registerEventValue(EvtFileRename.class, File.class, new Getter<File,EvtFileRename>() {
+            @Nullable
+            @Override
+            public File get(EvtFileRename e) {
+                return e.getEvtFile();
+            }
+        }, 0);
+        EventValues.registerEventValue(EvtFileRename.class, String.class, new Getter<String,EvtFileRename>() {
+            @Nullable
+            @Override
+            public String get(EvtFileRename e) {
+                return e.getEvtFileName();
             }
         }, 0);
     }

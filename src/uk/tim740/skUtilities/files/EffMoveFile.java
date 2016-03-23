@@ -4,6 +4,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -11,7 +12,7 @@ import javax.annotation.Nullable;
 import java.io.File;
 
 /**
- * Created by tim740 on 21/03/2016
+ * Created by tim740 on 23/03/2016
  */
 public class EffMoveFile extends Effect{
 	private Expression<String> path, mpath;
@@ -20,7 +21,11 @@ public class EffMoveFile extends Effect{
 	protected void execute(Event arg0) {
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         if (pth.exists()) {
-            pth.renameTo(new File("plugins" + File.separator + mpath.getSingle(arg0).replaceAll("/", File.separator) + File.separator + pth.getName()));
+            EvtFileMove efm = new EvtFileMove(pth, mpath.getSingle(arg0));
+            Bukkit.getServer().getPluginManager().callEvent(efm);
+            if (!efm.isCancelled()) {
+                pth.renameTo(new File("plugins" + File.separator + mpath.getSingle(arg0).replaceAll("/", File.separator) + File.separator + pth.getName()));
+            }
         } else {
             skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
         }

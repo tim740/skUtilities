@@ -25,7 +25,7 @@ public class EffCreateDeleteFile extends Effect {
         if (!pth.exists()) {
             if (type == 0) {
                 try {
-                    EvtFileCreation efc = new EvtFileCreation(pth.toString());
+                    EvtFileCreation efc = new EvtFileCreation(pth);
                     Bukkit.getServer().getPluginManager().callEvent(efc);
                     if (!efc.isCancelled()) {
                         pth.createNewFile();
@@ -42,7 +42,7 @@ public class EffCreateDeleteFile extends Effect {
                 skUtilities.prEW("'" + pth + "' already exists!", getClass().getSimpleName(), 0);
             } else {
                 try {
-                    EvtFileDeletion efd = new EvtFileDeletion(pth.toString());
+                    EvtFileDeletion efd = new EvtFileDeletion(pth);
                     Bukkit.getServer().getPluginManager().callEvent(efd);
                     if (!efd.isCancelled()) {
                         pth.delete();
