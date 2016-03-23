@@ -15,6 +15,7 @@ import java.io.File;
  * Created by tim740 on 22/03/2016
  */
 public class ExprFile extends SimpleExpression<File> {
+
     @Override
     protected File[] get(Event f) {
         return new File[]{getFile(f)};
@@ -51,7 +52,6 @@ public class ExprFile extends SimpleExpression<File> {
         }
         return true;
     }
-
     @Override
     public Class<? extends File> getReturnType() {
         return File.class;
