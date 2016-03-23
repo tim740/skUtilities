@@ -22,15 +22,15 @@ public class EffRunApp extends Effect{
 
 	@Override
 	protected void execute(Event arg0) {
-		String pth = new File("plugins" + File.separator, path.getSingle(arg0)).getPath().replaceAll("/", File.separator);
+        File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         try{
             EvtRunApp era = new EvtRunApp(new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator)));
             Bukkit.getServer().getPluginManager().callEvent(era);
             if (!era.isCancelled()) {
-                if(!new File(pth).exists()){
+                if(!pth.exists()){
                     throw new IOException();
                 }else{
-                    Desktop.getDesktop().open(new File(pth));
+                    Desktop.getDesktop().open(pth);
                 }
             }
         }catch (IOException e){
