@@ -25,7 +25,7 @@ public class EffDownloadFile extends Effect{
 	protected void execute(Event arg0) {
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         try {
-            EvtDownloadFile efd = new EvtDownloadFile(url.getSingle(arg0));
+            EvtDownloadFile efd = new EvtDownloadFile(url.getSingle(arg0), pth);
             Bukkit.getServer().getPluginManager().callEvent(efd);
             if (!efd.isCancelled()) {
                 ReadableByteChannel rbc = Channels.newChannel(new URL(url.getSingle(arg0)).openStream());

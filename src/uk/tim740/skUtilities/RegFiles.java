@@ -50,6 +50,13 @@ class RegFiles {
                 return e.getUrl();
             }
         }, 0);
+        EventValues.registerEventValue(EvtDownloadFile.class, File.class, new Getter<File,EvtDownloadFile>() {
+            @Nullable
+            @Override
+            public File get(EvtDownloadFile e) {
+                return e.getEvtFile();
+            }
+        }, 0);
 
         Skript.registerEvent("RunApp", SimpleEvent.class, EvtRunApp.class, "(file|app|script) (run|execute)");
         EventValues.registerEventValue(EvtRunApp.class, File.class, new Getter<File,EvtRunApp>() {
