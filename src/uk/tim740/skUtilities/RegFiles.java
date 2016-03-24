@@ -122,6 +122,29 @@ class RegFiles {
             }
         }, 0);
 
+        Skript.registerEvent("FileWrite", SimpleEvent.class, EvtFileWrite.class, "file write");
+        EventValues.registerEventValue(EvtFileWrite.class, File.class, new Getter<File,EvtFileWrite>() {
+            @Nullable
+            @Override
+            public File get(EvtFileWrite e) {
+                return e.getEvtFile();
+            }
+        }, 0);
+        EventValues.registerEventValue(EvtFileWrite.class, String.class, new Getter<String,EvtFileWrite>() {
+            @Nullable
+            @Override
+            public String get(EvtFileWrite e) {
+                return e.getEvtFileTxt();
+            }
+        }, 0);
+        EventValues.registerEventValue(EvtFileWrite.class, Number.class, new Getter<Number,EvtFileWrite>() {
+            @Nullable
+            @Override
+            public Number get(EvtFileWrite e) {
+                return e.getEvtFileLine();
+            }
+        }, 0);
+
         Skript.registerEvent("Unzip", SimpleEvent.class, EvtUnzip.class, "unzip");
         EventValues.registerEventValue(EvtUnzip.class, File.class, new Getter<File,EvtUnzip>() {
             @Nullable

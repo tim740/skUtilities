@@ -6,6 +6,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import ch.njol.util.coll.CollectionUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -44,24 +45,28 @@ public class SExprEditLine extends SimpleExpression<String>{
         if (mode == Changer.ChangeMode.SET) {
             File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
             if (pth.exists()) {
-                try {
-                    ArrayList<String> cl = new ArrayList<>();
-                    String inLi;
-                    BufferedReader br = new BufferedReader(new FileReader(pth));
-                    while ((inLi = br.readLine()) != null) {
-                        cl.add(inLi);
+                EvtFileWrite efw = new EvtFileWrite(pth, (String) delta[0], line.getSingle(arg0));
+                Bukkit.getServer().getPluginManager().callEvent(efw);
+                if (!efw.isCancelled()) {
+                    try {
+                        ArrayList<String> cl = new ArrayList<>();
+                        String inLi;
+                        BufferedReader br = new BufferedReader(new FileReader(pth));
+                        while ((inLi = br.readLine()) != null) {
+                            cl.add(inLi);
+                        }
+                        br.close();
+                        cl.set(Integer.parseInt(line.getSingle(arg0).toString()) - 1, (String) delta[0]);
+                        String[] out = new String[cl.size()];
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
+                        for (String aCl : cl.toArray(out)) {
+                            bw.write(aCl);
+                            bw.newLine();
+                        }
+                        bw.close();
+                    } catch (Exception e) {
+                        skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                     }
-                    br.close();
-                    cl.set(Integer.parseInt(line.getSingle(arg0).toString()) - 1, (String) delta[0]);
-                    String[] out = new String[cl.size()];
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                    for (String aCl : cl.toArray(out)) {
-                        bw.write(aCl);
-                        bw.newLine();
-                    }
-                    bw.close();
-                } catch (Exception e) {
-                    skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                 }
             } else {
                 skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
