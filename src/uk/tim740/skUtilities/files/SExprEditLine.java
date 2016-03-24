@@ -6,18 +6,21 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import ch.njol.util.coll.CollectionUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 /**
- * Created by tim740 on 20/03/2016
+ * Created by tim740 on 18/03/2016
  */
-public class SExprFileContents extends SimpleExpression<String>{
+public class SExprEditLine extends SimpleExpression<String>{
+    private Expression<Number> line;
 	private Expression<String> path;
 
 	@Override
@@ -25,52 +28,40 @@ public class SExprFileContents extends SimpleExpression<String>{
 	protected String[] get(Event arg0) {
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         if (pth.exists()){
-            try {
-                ArrayList<String> cl = new ArrayList<>();
-                String inLi;
-                BufferedReader br = new BufferedReader(new FileReader(pth));
-                while ((inLi = br.readLine()) != null) {
-                    cl.add(inLi);
-                }
-                br.close();
-                String[] out = new String[cl.size()];
-                return cl.toArray(out);
-            } catch (Exception e) {
+            try (Stream<String> lines = Files.lines(Paths.get(pth.toString()))) {
+                //noinspection OptionalGetWithoutIsPresent
+                return new String[]{lines.skip(Integer.parseInt(line.getSingle(arg0).toString()) -1).findFirst().get()};
+            }catch (IOException e) {
                 skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                 return null;
             }
         }else{
-            skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;
         }
 	}
     public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
-        if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
+        if (mode == Changer.ChangeMode.SET) {
             File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
             if (pth.exists()) {
-                if (mode == Changer.ChangeMode.SET) {
-                    try {
-                        BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                        for (String aCl : (String[]) delta) {
-                            bw.write(aCl);
-                            bw.newLine();
-                        }
-                        bw.close();
-                    } catch (IOException e) {
-                        skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+                try {
+                    ArrayList<String> cl = new ArrayList<>();
+                    String inLi;
+                    BufferedReader br = new BufferedReader(new FileReader(pth));
+                    while ((inLi = br.readLine()) != null) {
+                        cl.add(inLi);
                     }
-                }else{
-                    try {
-                        EvtFileWipe efw = new EvtFileWipe(pth);
-                        Bukkit.getServer().getPluginManager().callEvent(efw);
-                        if (!efw.isCancelled()) {
-                            BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                            bw.write("");
-                            bw.close();
-                        }
-                    } catch (IOException e) {
-                        skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+                    br.close();
+                    cl.set(Integer.parseInt(line.getSingle(arg0).toString()) - 1, (String) delta[0]);
+                    String[] out = new String[cl.size()];
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
+                    for (String aCl : cl.toArray(out)) {
+                        bw.write(aCl);
+                        bw.newLine();
                     }
+                    bw.close();
+                } catch (Exception e) {
+                    skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
                 }
             } else {
                 skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
@@ -81,17 +72,19 @@ public class SExprFileContents extends SimpleExpression<String>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
+        line = (Expression<Number>) arg0[0];
+        path = (Expression<String>) arg0[1];
         return true;
     }
     @SuppressWarnings("unchecked")
     @Override
     public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
-        if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
+        if (mode == Changer.ChangeMode.SET) {
             return CollectionUtils.array(String[].class);
         }
         return null;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
