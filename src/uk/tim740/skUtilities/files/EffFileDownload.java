@@ -18,7 +18,7 @@ import java.nio.channels.ReadableByteChannel;
 /**
  * Created by tim740 on 21/03/2016
  */
-public class EffDownloadFile extends Effect{
+public class EffFileDownload extends Effect{
 	private Expression<String> url, path;
 
 	@Override
