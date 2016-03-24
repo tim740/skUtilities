@@ -20,17 +20,17 @@ class RegFiles {
         Skript.registerExpression(ExprZipList.class,String.class,ExpressionType.PROPERTY,"files in zip[ file] %string%", "zip[ file] %string%'s files");
         Skript.registerExpression(ExprDirList.class,String.class,ExpressionType.PROPERTY,"files in dir[ectory] %string%", "dir[ectory] %string%'s files");
         Skript.registerExpression(ExprReadLine.class,String.class,ExpressionType.PROPERTY,"line %number% in file %string%", "file %string%'s line %number%");
-        Skript.registerExpression(ExprFileContents.class,String.class,ExpressionType.PROPERTY,"file contents of %string%", "%string%'s file contents");
         Skript.registerExpression(ExprFileTimeAttributes.class,Number.class,ExpressionType.PROPERTY,"file %string%'s (0¦last modified|1¦creation|2¦last access) value", "(0¦last modified|1¦creation|2¦last access) value of file %string%");
 
         Skript.registerExpression(SExprFileAttribute.class,Boolean.class,ExpressionType.PROPERTY,"(0¦readable|1¦writable|2¦hidden) attribute of file %string%", "file %string%'s (0¦readable|1¦writable|2¦hidden) attribute");
+        Skript.registerExpression(SExprFileContents.class,String.class,ExpressionType.PROPERTY,"file contents of %string%", "%string%'s file contents");
 
         Skript.registerEffect(EffRunApp.class, "run (script|program|app[lication]|file) at %string%");
         Skript.registerEffect(EffCreateDeleteFile.class, "(0¦create|1¦delete) (script|program|app[lication]|[zip ]file) %string%");
         Skript.registerEffect(EffWriteLine.class, "set line %number% in file %string% to %-string%");
         Skript.registerEffect(EffRenameFile.class, "rename file %string% to %-string%");
         Skript.registerEffect(EffMoveFile.class, "move file %string% to %-string%");
-        Skript.registerEffect(EffWipeFile.class, "(clear|wipe) file %string%");
+
         Skript.registerEffect(EffDownloadFile.class, "download file from %string% to file %-string%");
 
         Skript.registerEffect(EffZipFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
