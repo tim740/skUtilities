@@ -28,6 +28,9 @@ class RegUtil {
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
+        Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");
+        Skript.registerEffect(EffReloadSkript.class, "reload s(k|c)ript %string%");
+
 
         if(Bukkit.getVersion().contains("(MC: 1.9)")) {
             Skript.registerExpression(SExprGlideMode.class,Boolean.class,ExpressionType.PROPERTY,"glide (state|ability|mode) of %entity%", "%entity%'s glide (state|ability|mode)");
