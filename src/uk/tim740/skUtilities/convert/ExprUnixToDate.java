@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.annotation.Nullable;
 
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Expression;
@@ -20,7 +21,7 @@ public class ExprUnixToDate extends SimpleExpression <String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		String si = "dd/MM/yy HH:mm";
+        String si = Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getString("unixDateFormat");
         if (format != null){
             si = format.getSingle(arg0);
         }

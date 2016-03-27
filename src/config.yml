@@ -1,0 +1,28 @@
+#skUtilties
+
+#--------------------------------------------------------------------------
+
+#Default Unix Date Format
+
+#"dd" = Days, "MM" = Months, "yy" = Years (16), "yyyy" = Years (2016), "HH" = Hours, "mm" = Minutes, "ss" = Seconds
+
+unixDateFormat: "dd/MM/yy HH:mm"
+
+#--------------------------------------------------------------------------
+
+#Should this addon check for an update every 12 hours, don't worry it never downloads it!
+
+checkForUpdates: true
+
+#--------------------------------------------------------------------------
+
+#Disables or Enables parts of the addon
+
+loadConversions: true
+loadFiles: true
+loadUtilities: true
+
+#--------------------------------------------------------------------------
+
+#DO NOT CHANGE THIS
+configVersion: 1
