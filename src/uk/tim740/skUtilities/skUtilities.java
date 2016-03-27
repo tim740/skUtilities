@@ -29,7 +29,7 @@ public class skUtilities extends JavaPlugin {
             RegFiles.regF();
             RegFiles.regFE();
         }
-        if (getConfig().getBoolean("loadFiles", true)) {
+        if (getConfig().getBoolean("checkForUpdates", true)) {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         }else{
             skUtilities.prEW("It seems like you've disabled updates, you should consider enabling them again!", "Main", 1);
