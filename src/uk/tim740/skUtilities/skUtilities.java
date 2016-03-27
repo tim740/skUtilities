@@ -16,24 +16,30 @@ public class skUtilities extends JavaPlugin {
 	public void onEnable() {
         long s = System.currentTimeMillis();
         Skript.registerAddon(this);
-        this.saveDefaultConfig();
         getDataFolder().mkdirs();
+        saveDefaultConfig();
         if (getConfig().getBoolean("loadConversions", true)){
             RegConvert.regC();
         }
+
         if (getConfig().getBoolean("loadUtilities", true)){
             RegUtil.regU();
             RegUtil.regUE();
         }
+
         if (getConfig().getBoolean("loadFiles", true)) {
             RegFiles.regF();
             RegFiles.regFE();
         }
+
+        RegConfig.regCo();
+
         if (getConfig().getBoolean("checkForUpdates", true)) {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         }else{
             skUtilities.prEW("It seems like you've disabled updates, you should consider enabling them again!", "Main", 1);
         }
+
         getLogger().info("v" + getVer() + " has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
     }
     private static String getVer(){
@@ -44,9 +50,13 @@ public class skUtilities extends JavaPlugin {
         if (t == 0){
             Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s + " ("+ c +".class)");
             Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + ChatColor.AQUA + " ("+ c +".class)", "skUtilities.error");
-        }else{
+        }else if (t == 1){
             Bukkit.getServer().getLogger().warning("[skUtilities] v" + getVer() + ": "  + s + " ("+ c +".class)");
             Bukkit.broadcast(ChatColor.GOLD + "[skUtilities: WARNING]" + ChatColor.GRAY+ " v" + getVer() + ": " + s + ChatColor.AQUA + " ("+ c +".class)", "skUtilities.warning");
+        }else{
+            Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": "  + s);
+            Bukkit.broadcast("[skUtilities: INFO]" + ChatColor.GRAY + " v" + getVer() + ": " + s, "skUtilities.warning");
+
         }
     }
     static void loadErr(String s){
@@ -54,7 +64,7 @@ public class skUtilities extends JavaPlugin {
     }
 
     private void updateChk(){
-        skUtilities.prEW("Checking for update now you will be notified if there is an update!", "Main", 1);
+        skUtilities.prEW("Checking for update now you will be notified if there is an update!", "Main", 2);
         String v = "";
         try {
             BufferedReader ur = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/tim740/skUtilities/master/latest.ver").openStream()));
@@ -64,10 +74,10 @@ public class skUtilities extends JavaPlugin {
             skUtilities.prEW(e.getCause().getMessage(), "Main", 0);
         }
         if (!Objects.equals(getVer(), v)){
-            skUtilities.prEW("A new version of the aliases is out v" + v, "Main", 1);
-            skUtilities.prEW("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest", "Main", 1);
+            skUtilities.prEW("A new version of the aliases is out v" + v, "Main", 2);
+            skUtilities.prEW("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest", "Main", 2);
         }else{
-            skUtilities.prEW("It seems like your using the latest version!", "Main", 1);
+            skUtilities.prEW("It seems like your using the latest version!", "Main", 2);
         }
     }
 }
