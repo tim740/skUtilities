@@ -18,6 +18,3 @@ loadFiles: true
 loadUtilities: true
 
 #--------------------------------------------------------------------------
-
-#DO NOT CHANGE THIS
-configVersion: 1
