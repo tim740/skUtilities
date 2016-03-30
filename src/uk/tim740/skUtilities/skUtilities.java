@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Objects;
 
+import static org.bukkit.Bukkit.getPluginManager;
+
 public class skUtilities extends JavaPlugin {
 
 	@Override
@@ -34,18 +36,18 @@ public class skUtilities extends JavaPlugin {
         if (getConfig().getBoolean("checkForUpdates", true)) {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         }else{
-            skUtilities.prEW("It seems like you've disabled updates, you should consider enabling them again!", "Main", 1);
+            prEW("It seems like you've disabled updates, you should consider enabling them again!", "Main", 1);
         }
-        getLogger().info("v" + getVer() + " has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
+        prEW("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!", "Main", 2);
     }
 
     public static void prEW(String s, String c, Integer t) {
         if (t == 0){
             Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s + " ("+ c +".class)");
-            Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + ChatColor.AQUA + " ("+ c +".class)", "skUtilities.error");
+            Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + " ("+ c +".class)", "skUtilities.error");
         }else if (t == 1){
             Bukkit.getServer().getLogger().warning("[skUtilities] v" + getVer() + ": "  + s + " ("+ c +".class)");
-            Bukkit.broadcast(ChatColor.GOLD + "[skUtilities: WARNING]" + ChatColor.GRAY+ " v" + getVer() + ": " + s + ChatColor.AQUA + " ("+ c +".class)", "skUtilities.warning");
+            Bukkit.broadcast(ChatColor.GOLD + "[skUtilities: WARNING]" + ChatColor.GRAY+ " v" + getVer() + ": " + s + " ("+ c +".class)", "skUtilities.warning");
         }else{
             Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": "  + s);
             Bukkit.broadcast("[skUtilities: INFO]" + ChatColor.GRAY + " v" + getVer() + ": " + s, "skUtilities.warning");
@@ -57,23 +59,23 @@ public class skUtilities extends JavaPlugin {
     }
 
     private void updateChk(){
-        skUtilities.prEW("Checking for update now you will be notified if there is an update!", "Main", 2);
+        prEW("Checking for update now you will be notified if there is an update!", "Main", 2);
         String v = "";
         try {
             BufferedReader ur = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/tim740/skUtilities/master/latest.ver").openStream()));
             v = ur.readLine();
             ur.close();
         } catch (Exception e) {
-            skUtilities.prEW(e.getCause().getMessage(), "Main", 0);
+            prEW(e.getCause().getMessage(), "Main", 0);
         }
         if (!Objects.equals(getVer(), v)){
-            skUtilities.prEW("A new version of the aliases is out v" + v, "Main", 2);
-            skUtilities.prEW("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest", "Main", 2);
+            prEW("A new version of the addon is out v" + v, "Main", 1);
+            prEW("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest", "Main", 2);
         }else{
-            skUtilities.prEW("It seems like your using the latest version!", "Main", 2);
+            prEW("It seems like your using the latest version!", "Main", 2);
         }
     }
     private static String getVer(){
-        return Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
+        return getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
 }
