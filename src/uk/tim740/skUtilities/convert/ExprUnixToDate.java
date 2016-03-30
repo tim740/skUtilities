@@ -1,10 +1,8 @@
 package uk.tim740.skUtilities.convert;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.annotation.Nullable;
 
-import org.bukkit.Bukkit;
+import ch.njol.skript.util.Date;
 import org.bukkit.event.Event;
 
 import ch.njol.skript.lang.Expression;
@@ -15,29 +13,28 @@ import ch.njol.util.Kleenean;
 /**
  * Created by tim740.
  */
-public class ExprUnixToDate extends SimpleExpression <String>{
-	private Expression<String> str, format;
+public class ExprUnixToDate extends SimpleExpression <Date>{
+    private Expression<Number> str;
 
-	@Override
-	@Nullable
-	protected String[] get(Event arg0) {
-        String si = Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getString("unixDateFormat");
-        if (format != null){
-            si = format.getSingle(arg0);
+    @Override
+    @Nullable
+    protected Date[] get(Event arg0) {
+        String si = str.getSingle(arg0).toString();
+        if (!(si.length() == 10)){
+            si = si.substring(0, 10);
         }
-        return new String[]{new SimpleDateFormat(si).format(new Date(Long.valueOf((str.getSingle(arg0) + "a").replace("000a", "").replace("a", "")) *1000L))};
-	}
+        return new Date[]{new Date(Integer.parseInt(si) *1000L)};
+    }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
-        format = (Expression<String>) arg0[1];
+        str = (Expression<Number>) arg0[0];
         return true;
     }
     @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
+    public Class<? extends Date> getReturnType() {
+        return Date.class;
     }
     @Override
     public boolean isSingle() {

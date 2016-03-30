@@ -2,6 +2,7 @@ package uk.tim740.skUtilities;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
+import ch.njol.skript.util.Date;
 import uk.tim740.skUtilities.convert.*;
 
 /**
@@ -27,7 +28,7 @@ class RegConvert {
         Skript.registerExpression(ExprEncrypt.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)crypt %string% using %-string% with key %-string%");
         Skript.registerExpression(ExprHash.class, String.class, ExpressionType.PROPERTY, "hash[ed] %string% using %-string%");
 
-        Skript.registerExpression(ExprUnixToDate.class, String.class, ExpressionType.PROPERTY, "convert unix[ date] %string% to date[ formatted as %-string%]");
+        Skript.registerExpression(ExprUnixToDate.class, Date.class, ExpressionType.PROPERTY, "convert unix[ date] %number% to date");
         Skript.registerExpression(ExprMirrorTxt.class, String.class, ExpressionType.PROPERTY, "mirror[ed] %string%");
     }
 }
