@@ -21,17 +21,14 @@ public class skUtilities extends JavaPlugin {
         if (getConfig().getBoolean("loadConversions", true)){
             RegConvert.regC();
         }
-
         if (getConfig().getBoolean("loadUtilities", true)){
             RegUtil.regU();
             RegUtil.regUE();
         }
-
         if (getConfig().getBoolean("loadFiles", true)) {
             RegFiles.regF();
             RegFiles.regFE();
         }
-
         RegConfig.regCo();
 
         if (getConfig().getBoolean("checkForUpdates", true)) {
@@ -39,11 +36,7 @@ public class skUtilities extends JavaPlugin {
         }else{
             skUtilities.prEW("It seems like you've disabled updates, you should consider enabling them again!", "Main", 1);
         }
-
         getLogger().info("v" + getVer() + " has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
-    }
-    private static String getVer(){
-        return Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
 
     public static void prEW(String s, String c, Integer t) {
@@ -79,5 +72,8 @@ public class skUtilities extends JavaPlugin {
         }else{
             skUtilities.prEW("It seems like your using the latest version!", "Main", 2);
         }
+    }
+    private static String getVer(){
+        return Bukkit.getServer().getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
 }
