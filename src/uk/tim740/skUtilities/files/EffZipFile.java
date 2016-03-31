@@ -31,7 +31,7 @@ public class EffZipFile extends Effect {
             if (Fzip.exists()) {
                 String ext = "." + FilenameUtils.getExtension(Fzip.toString());
                 String frt = Fzip.toString().replaceAll(ext, "") + " - Copy (" + System.currentTimeMillis() / 1000 + ")" + ext;
-                skUtilities.prEW("File: '" + Fzip + "' already exists, Renaming to: " + frt.substring(frt.lastIndexOf(File.separator) + 1), getClass().getSimpleName(), 1);
+                skUtilities.prSys("File: '" + Fzip + "' already exists, Renaming to: " + frt.substring(frt.lastIndexOf(File.separator) + 1), getClass().getSimpleName(), 1);
                 Fzip = new File(frt);
             }
             try {
@@ -43,11 +43,11 @@ public class EffZipFile extends Effect {
                 zos.closeEntry();
                 zos.close();
             } catch (ZipException e) {
-                skUtilities.prEW("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName(), 0);
+                skUtilities.prSys("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName(), 0);
             } catch (FileNotFoundException e) {
-                skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+                skUtilities.prSys("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             } catch (IOException e) {
-                skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
             }
         }
     }

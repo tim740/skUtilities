@@ -32,7 +32,7 @@ public class EffReloadSkript extends Effect{
                 ScriptLoader.loadScripts(new File[]{f});
             }
         }else{
-            skUtilities.prEW("'" + f + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSys("'" + f + "' doesn't exist!", getClass().getSimpleName(), 0);
         }
 	}
     private static ScriptLoader.ScriptInfo unloadScript(final File script) {

@@ -34,7 +34,7 @@ public class EffDemoMode extends Effect {
             Method sPM = pc.getClass().getMethod("sendPacket", Class.forName("net.minecraft.server." + ver + ".Packet"));
             sPM.invoke(pc, playOutConstructor.newInstance(5, 0));
         } catch (Exception ex) {
-            skUtilities.prEW("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName(), 0);
+            skUtilities.prSys("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName(), 0);
         }
 	}
 

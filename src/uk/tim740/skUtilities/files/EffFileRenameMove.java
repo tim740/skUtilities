@@ -36,7 +36,7 @@ public class EffFileRenameMove extends Effect{
                 }
             }
         } else {
-            skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSys("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
         }
     }
 

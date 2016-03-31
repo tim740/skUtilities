@@ -33,10 +33,10 @@ public class ExprDirList extends SimpleExpression<String>{
             String[] out = new String[cl.size()];
             return cl.toArray(out);
         } catch (FileNotFoundException e) {
-            skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSys("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;
         } catch (IOException e) {
-            skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+            skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
             return null;
         }
     }

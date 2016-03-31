@@ -29,11 +29,11 @@ public class ExprFileLines extends SimpleExpression<Number>{
                 br.close();
                 return new Number[]{ln};
             } catch (Exception e) {
-                skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
                 return null;
             }
         }else{
-            skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSys("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;
         }
 	}

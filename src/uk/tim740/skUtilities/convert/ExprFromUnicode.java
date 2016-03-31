@@ -28,7 +28,7 @@ public class ExprFromUnicode extends SimpleExpression<String> {
         try {
             p.load(new StringReader("key="+str.getSingle(arg0)));
         } catch (IOException e) {
-            skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+            skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
         }
         if (ucTy == 0) {
             out = p.getProperty("key");

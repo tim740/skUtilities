@@ -33,11 +33,11 @@ public class SExprEditLine extends SimpleExpression<String>{
                 //noinspection OptionalGetWithoutIsPresent
                 return new String[]{lines.skip(Integer.parseInt(line.getSingle(arg0).toString()) -1).findFirst().get()};
             }catch (IOException e) {
-                skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
                 return null;
             }
         }else{
-            skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSys("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;
         }
 	}
@@ -65,11 +65,11 @@ public class SExprEditLine extends SimpleExpression<String>{
                         }
                         bw.close();
                     } catch (Exception e) {
-                        skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+                        skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
                     }
                 }
             } else {
-                skUtilities.prEW("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+                skUtilities.prSys("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             }
         }
     }

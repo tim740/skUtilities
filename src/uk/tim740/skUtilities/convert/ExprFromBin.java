@@ -24,7 +24,7 @@ public class ExprFromBin extends SimpleExpression<String> {
         String binV = bin.trim();
         for (char character : binV.toCharArray()){
             if (character !='0' && character !='1' && character !=' '){
-                skUtilities.prEW("Binary Strings can only contain 1's, 0's or spaces!", getClass().getSimpleName(), 0);
+                skUtilities.prSys("Binary Strings can only contain 1's, 0's or spaces!", getClass().getSimpleName(), 0);
                 return null;
             }
         }

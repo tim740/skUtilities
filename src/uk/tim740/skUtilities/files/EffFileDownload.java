@@ -35,7 +35,7 @@ public class EffFileDownload extends Effect{
                 rbc.close();
             }
         } catch (Exception e) {
-            skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+            skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
         }
     }
 

@@ -34,7 +34,7 @@ public class ExprFileSize extends SimpleExpression<String>{
                 return new String[]{df.format(fs /1073741824) + "GB"};
             }
         }else{
-            skUtilities.prEW("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSys("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;
         }
 	}

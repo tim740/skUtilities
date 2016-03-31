@@ -34,7 +34,7 @@ public class EffRunApp extends Effect{
                 }
             }
         }catch (IOException e){
-            skUtilities.prEW("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 0);
+            skUtilities.prSys("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 0);
         }
     }
 
