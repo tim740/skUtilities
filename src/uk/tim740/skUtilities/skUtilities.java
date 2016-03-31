@@ -24,7 +24,7 @@ public class skUtilities extends JavaPlugin {
         Skript.registerAddon(this);
         getDataFolder().mkdirs();
         saveDefaultConfig();
-        if (getConfig().contains("configVersion") || getConfig().getInt("configVersion") != 1){
+        if (!getConfig().contains("configVersion") || getConfig().getInt("configVersion") != 1){
             File pth = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.yml");
             pth.renameTo(new File("plugins" + File.separator + "skUtilities" + File.separator + "config.old"));
             saveDefaultConfig();
