@@ -2,10 +2,10 @@
 
 #--------------------------------------------------------------------------
 
-#Should this addon check for an update every 12 hours,
-#don't worry it never downloads it!
+#Should this addon check for an update every 12 hours
 
 checkForUpdates: true
+downloadUpdates: false
 
 #--------------------------------------------------------------------------
 
@@ -18,3 +18,6 @@ loadFiles: true
 loadUtilities: true
 
 #--------------------------------------------------------------------------
+
+#DO NOT CHANGE THIS!
+configVersion: 1

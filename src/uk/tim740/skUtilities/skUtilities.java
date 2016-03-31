@@ -6,8 +6,12 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 import java.util.Objects;
 
 import static org.bukkit.Bukkit.getPluginManager;
@@ -20,6 +24,11 @@ public class skUtilities extends JavaPlugin {
         Skript.registerAddon(this);
         getDataFolder().mkdirs();
         saveDefaultConfig();
+        if (getConfig().contains("configVersion") || getConfig().getInt("configVersion") != 1){
+            File pth = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.yml");
+            pth.renameTo(new File("plugins" + File.separator + "skUtilities" + File.separator + "config.old"));
+            saveDefaultConfig();
+        }
         if (getConfig().getBoolean("loadConversions", true)){
             RegConvert.regC();
         }
@@ -70,7 +79,26 @@ public class skUtilities extends JavaPlugin {
         }
         if (!Objects.equals(getVer(), v)){
             prEW("A new version of the addon is out v" + v, "Main", 1);
-            prEW("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest", "Main", 2);
+            if (getConfig().getBoolean("downloadUpdates", true)) {
+                String dln = "plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar";
+                if (!new File(dln).exists()) {
+                    prEW("Downloading latest version!", "Main", 2);
+                    try {
+                        ReadableByteChannel rbc = Channels.newChannel(new URL("https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar").openStream());
+                        FileOutputStream fos = new FileOutputStream(dln);
+                        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+                        fos.close();
+                        rbc.close();
+                    } catch (Exception e) {
+                        skUtilities.prEW(e.getMessage(), getClass().getSimpleName(), 0);
+                    }
+                    prEW("Latest version has been downloaded!", "Main", 2);
+                }else{
+                    prEW("A newer version of the addon (v" + v + ") is already updated and ready to use!", "Main", 2);
+                }
+            }else{
+                prEW("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest", "Main", 2);
+            }
         }else{
             prEW("It seems like your using the latest version!", "Main", 2);
         }
