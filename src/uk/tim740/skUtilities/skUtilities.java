@@ -94,7 +94,7 @@ public class skUtilities extends JavaPlugin {
                     }
                     prSys("Latest version has been downloaded!", "Main", 2);
                 }else{
-                    prSys("A newer version of the addon (v" + v + ") is already updated and ready to use!", "Main", 2);
+                    prSys("Latest version of skUtilities (v" + v + ") is already updated and ready to use!", "Main", 2);
                 }
             }else{
                 prSys("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest", "Main", 2);
