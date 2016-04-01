@@ -28,7 +28,7 @@ public class skUtilities extends JavaPlugin {
             File pth = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.yml");
             pth.renameTo(new File("plugins" + File.separator + "skUtilities" + File.separator + "config.old"));
             saveDefaultConfig();
-            prSys("You where using an old version of the config", "Main", 2);
+            prSys("You where using an old version of the config, It was copied and renamed to 'config.old' A bew config has been generated!", "Main", 2);
         }
         if (getConfig().getBoolean("loadConversions", true)){
             RegConvert.regC();
