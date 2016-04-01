@@ -28,6 +28,7 @@ public class skUtilities extends JavaPlugin {
             File pth = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.yml");
             pth.renameTo(new File("plugins" + File.separator + "skUtilities" + File.separator + "config.old"));
             saveDefaultConfig();
+            prSys("You where using an old version of the config", "Main", 2);
         }
         if (getConfig().getBoolean("loadConversions", true)){
             RegConvert.regC();
@@ -47,7 +48,7 @@ public class skUtilities extends JavaPlugin {
         }else{
             prSys("It seems like you've disabled updates, you should consider enabling them again!", "Main", 1);
         }
-        prSys("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!", "Main", 2);
+        prSysi("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
     }
 
     public static void prSys(String s, String c, Integer t) {
@@ -57,18 +58,17 @@ public class skUtilities extends JavaPlugin {
         }else if (t == 1){
             Bukkit.getServer().getLogger().warning("[skUtilities] v" + getVer() + ": "  + s + " ("+ c +".class)");
             Bukkit.broadcast(ChatColor.GOLD + "[skUtilities: WARNING]" + ChatColor.GRAY+ " v" + getVer() + ": " + s + " ("+ c +".class)", "skUtilities.warning");
-        }else{
-            Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": "  + s);
-            Bukkit.broadcast("[skUtilities: INFO]" + ChatColor.GRAY + " v" + getVer() + ": " + s, "skUtilities.warning");
-
         }
+    }
+    private static void prSysi(String s){
+        Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": "  + s);
     }
     static void loadErr(String s){
         Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + " - Failed to load:  " + s + ", due to being on 1.8!");
     }
 
     private void updateChk(){
-        prSys("Checking for update now you will be notified if there is an update!", "Main", 2);
+        prSysi("Checking for update now you will be notified if there is an update!");
         String v = "";
         try {
             BufferedReader ur = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/tim740/skUtilities/master/latest.ver").openStream()));
@@ -78,11 +78,11 @@ public class skUtilities extends JavaPlugin {
             prSys(e.getCause().getMessage(), "Main", 0);
         }
         if (!Objects.equals(getVer(), v)){
-            prSys("A new version of the addon is out v" + v, "Main", 1);
+            prSysi("A new version of the addon is out v" + v);
             if (getConfig().getBoolean("downloadUpdates", true)) {
                 String dln = "plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar";
                 if (!new File(dln).exists()) {
-                    prSys("Downloading latest version!", "Main", 2);
+                    prSysi("Downloading latest version!");
                     try {
                         ReadableByteChannel rbc = Channels.newChannel(new URL("https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar").openStream());
                         FileOutputStream fos = new FileOutputStream(dln);
@@ -90,17 +90,17 @@ public class skUtilities extends JavaPlugin {
                         fos.close();
                         rbc.close();
                     } catch (Exception e) {
-                        skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                        prSys(e.getMessage(), getClass().getSimpleName(), 0);
                     }
-                    prSys("Latest version has been downloaded!", "Main", 2);
+                    prSysi("Latest version has been downloaded!");
                 }else{
-                    prSys("Latest version of skUtilities (v" + v + ") is already updated and ready to use!", "Main", 2);
+                    prSysi("Latest version of skUtilities (v" + v + ") is already updated and ready to use!");
                 }
             }else{
-                prSys("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest", "Main", 2);
+                prSysi("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest");
             }
         }else{
-            prSys("It seems like your using the latest version!", "Main", 2);
+            prSysi("It seems like your using the latest version!");
         }
     }
     private static String getVer(){
