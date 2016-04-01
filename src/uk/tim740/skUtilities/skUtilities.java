@@ -46,7 +46,7 @@ public class skUtilities extends JavaPlugin {
         if (getConfig().getBoolean("checkForUpdates", true)) {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         }else{
-            prSys("It seems like you've disabled updates, you should consider enabling them again!", "Main", 1);
+            prSysi("It seems like you've disabled updates, you should consider enabling them again!");
         }
         prSysi("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
     }
