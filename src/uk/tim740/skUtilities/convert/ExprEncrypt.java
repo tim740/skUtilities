@@ -29,7 +29,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
             c = Cipher.getInstance(cipher.getSingle(arg0).toUpperCase());
             c.init(type, new SecretKeySpec(key.getSingle(arg0).getBytes(), cipher.getSingle(arg0).toUpperCase()));
         }catch (Exception e){
-            skUtilities.prSys(e.getMessage() + " '"+ cipher +"'", getClass().getSimpleName(), 0);
+            skUtilities.prSys(e.getMessage() + " '"+ cipher.getSingle(arg0).toUpperCase() +"'", getClass().getSimpleName(), 0);
         }
         assert c != null;
         if (type == Cipher.ENCRYPT_MODE){
