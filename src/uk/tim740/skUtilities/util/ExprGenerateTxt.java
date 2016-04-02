@@ -27,7 +27,7 @@ public class ExprGenerateTxt extends SimpleExpression<String>{
 			if (Objects.equals(out, "")){
 				out = (chl[ranGen.nextInt(chl.length)]);
 			}else{
-				out = (out + chl[ranGen.nextInt(chl.length)]);
+                out += chl[ranGen.nextInt(chl.length)];
 			}
 		}
 		return new String[]{out};

@@ -38,7 +38,7 @@ public class ExprFromUnicode extends SimpleExpression<String> {
                 if (Objects.equals(out, "")) {
                     out = (Integer.toString(c.charAt(0)));
                 } else {
-                    out = (out + "," + Integer.toString(c.charAt(0)));
+                    out += "," + Integer.toString(c.charAt(0));
                 }
             }
         }

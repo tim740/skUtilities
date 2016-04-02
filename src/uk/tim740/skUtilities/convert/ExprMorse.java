@@ -22,11 +22,11 @@ public class ExprMorse extends SimpleExpression<String> {
     @Nullable
     protected String[] get(Event arg0) {
         String out = "";
-        if(morTy == 0){
+        if (morTy == 0){
             for (char value : str.getSingle(arg0).toLowerCase().toCharArray()) {
                 for (int j = 0; j < engLe.length; j++) {
                     if (engLe[j] == value) {
-                        out = out + morseLe[j] + " ";
+                        out += morseLe[j] + " ";
                     }
                 }
             }
@@ -35,7 +35,7 @@ public class ExprMorse extends SimpleExpression<String> {
                 for (String letter : word.split("\\s")) {
                     for (int j = 0; j < morseLe.length; j++) {
                         if (letter.equals(morseLe[j])) {
-                            out = out + engLe[j];
+                            out += engLe[j];
                         }
                     }
                 }

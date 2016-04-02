@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 class RegUtil {
     static void regU() {
         Skript.registerExpression(ExprLoaded.class,Number.class, ExpressionType.PROPERTY,"number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦plugins|8¦addons|9¦events|10¦effects|11¦expressions|12¦conditions)");
-        Skript.registerExpression(ExprGenerateTxt.class,String.class,ExpressionType.PROPERTY,"generate[ random] string with length %integer%");
+        Skript.registerExpression(ExprGenerateTxt.class,String.class,ExpressionType.PROPERTY,"generate[ random] string with length %number%");
         Skript.registerExpression(ExprVersion.class,String.class,ExpressionType.PROPERTY,"%string%'s version", "version of %string%");
         Skript.registerExpression(ExprSysTime.class,Number.class,ExpressionType.PROPERTY,"[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
         Skript.registerExpression(ExprFontNames.class,String.class,ExpressionType.PROPERTY,"[all ][system ]font names");
@@ -32,7 +32,7 @@ class RegUtil {
         Skript.registerEffect(EffReloadSkript.class, "reload s(k|c)ript %string%");
 
 
-        if(Bukkit.getVersion().contains("(MC: 1.9)")) {
+        if(Bukkit.getVersion().contains("(MC: 1.9")) {
             Skript.registerExpression(SExprGlideMode.class,Boolean.class,ExpressionType.PROPERTY,"glide (state|ability|mode) of %entity%", "%entity%'s glide (state|ability|mode)");
         }else{
             skUtilities.loadErr("SExprGlideMode");
@@ -40,7 +40,7 @@ class RegUtil {
     }
 
     static void regUE() {
-        if(Bukkit.getVersion().contains("(MC: 1.9)")) {
+        if(Bukkit.getVersion().contains("(MC: 1.9")) {
             Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class, "cauldron[ water] level change");
             EventValues.registerEventValue(CauldronLevelChangeEvent.class, Integer.class, new Getter<Integer,CauldronLevelChangeEvent>() {
                 @Nullable
