@@ -65,7 +65,7 @@ public class skUtilities extends JavaPlugin {
         getLogger().info("v" + getVer() + ": "  + s);
     }
     static void loadErr(String s){
-        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + " - Failed to load:  " + s + ", due to being on 1.8!");
+        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + " - Failed to load:  " + s + ", due to not using 1.9+!");
     }
 
     private void updateChk(){
