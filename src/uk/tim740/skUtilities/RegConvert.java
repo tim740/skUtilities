@@ -32,5 +32,7 @@ class RegConvert {
 
         Skript.registerExpression(ExprHash.class, String.class, ExpressionType.PROPERTY, "hash[ed] %string% using %-string%");
         Skript.registerExpression(ExprMirrorTxt.class, String.class, ExpressionType.PROPERTY, "(mirror[ed]|flip[ped]|reverse[d]) %string%");
+
+        Skript.registerExpression(ExprToUpperLower.class, String.class, ExpressionType.PROPERTY, "convert (text|string) %string% to (0¦uppercase|1¦lowercase)");
     }
 }

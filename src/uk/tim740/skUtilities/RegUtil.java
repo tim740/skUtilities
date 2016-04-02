@@ -33,6 +33,8 @@ class RegUtil {
         Skript.registerEffect(EffRestartServer.class, "(0¦restart|1¦reload) server");
 
 
+        Skript.registerCondition(CondStartsEndsWith.class, "%string% (0¦starts|1¦ends) with %-string%");
+
         if(Bukkit.getVersion().contains("(MC: 1.9")) {
             Skript.registerExpression(SExprGlideMode.class,Boolean.class,ExpressionType.PROPERTY,"glide (state|ability|mode) of %entity%", "%entity%'s glide (state|ability|mode)");
         }else{
