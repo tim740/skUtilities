@@ -30,6 +30,7 @@ class RegUtil {
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
         Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");
         Skript.registerEffect(EffReloadSkript.class, "reload s(k|c)ript %string%");
+        Skript.registerEffect(EffRestartServer.class, "(0¦restart|1¦reload) server");
 
 
         if(Bukkit.getVersion().contains("(MC: 1.9")) {
