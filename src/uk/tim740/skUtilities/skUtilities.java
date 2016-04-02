@@ -60,8 +60,8 @@ public class skUtilities extends JavaPlugin {
             Bukkit.broadcast(ChatColor.GOLD + "[skUtilities: WARNING]" + ChatColor.GRAY+ " v" + getVer() + ": " + s + " ("+ c +".class)", "skUtilities.warning");
         }
     }
-    private static void prSysi(String s){
-        Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": "  + s);
+    private void prSysi(String s){
+        getLogger().info("v" + getVer() + ": "  + s);
     }
     static void loadErr(String s){
         Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + " - Failed to load:  " + s + ", due to being on 1.8!");
