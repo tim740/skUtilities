@@ -12,13 +12,13 @@ import ch.njol.util.Kleenean;
 /**
  * Created by tim740.
  */
-public class ExprHexaToNum extends SimpleExpression<String>{
+public class ExprHexaToNum extends SimpleExpression<Number>{
 	private Expression<String> str;
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
-		return new String[]{Integer.toString(Integer.parseInt(str.getSingle(arg0), 16))};
+	protected Number[] get(Event arg0) {
+		return new Number[]{Integer.parseInt(str.getSingle(arg0), 16)};
 	}
 
     @SuppressWarnings("unchecked")
@@ -28,8 +28,8 @@ public class ExprHexaToNum extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
+    public Class<? extends Number> getReturnType() {
+        return Number.class;
     }
     @Override
     public boolean isSingle() {
