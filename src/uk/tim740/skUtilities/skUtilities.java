@@ -15,6 +15,7 @@ import java.nio.channels.ReadableByteChannel;
 import java.util.Objects;
 
 import static org.bukkit.Bukkit.getPluginManager;
+import static org.bukkit.Bukkit.getScheduler;
 
 public class skUtilities extends JavaPlugin {
 
@@ -44,7 +45,7 @@ public class skUtilities extends JavaPlugin {
         RegConfig.regCo();
 
         if (getConfig().getBoolean("checkForUpdates", true)) {
-            Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
+            getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         }else{
             prSysi("It seems like you've disabled updates, you should consider enabling them again!");
         }
