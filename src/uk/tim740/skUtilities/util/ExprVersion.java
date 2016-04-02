@@ -11,7 +11,6 @@ import uk.tim740.skUtilities.skUtilities;
 import javax.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Objects;
 
 /**
  * Created by tim740 on 10/03/2016
@@ -22,18 +21,18 @@ public class ExprVersion extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event arg0) {
-        if (Objects.equals(str.getSingle(arg0).toLowerCase(), "aliases")) {
+        if (str.getSingle(arg0).equalsIgnoreCase("aliases")) {
             try {
                 return new String[]{"v" + new BufferedReader(new FileReader("plugins\\Skript\\aliases-english.sk")).readLine().replaceAll("#! VERSION: ", "").replaceAll("!", "")};
             } catch (Exception e) {
                 skUtilities.prSys(e.getCause().getMessage(), getClass().getSimpleName(), 0);
                 return null;
             }
-        }else if (Objects.equals(str.getSingle(arg0).toLowerCase(), "server")) {
+        }else if (str.getSingle(arg0).equalsIgnoreCase("server")) {
             return new String[]{Bukkit.getServer().getVersion()};
-        }else if (Objects.equals(str.getSingle(arg0).toLowerCase(), "os")) {
+        }else if (str.getSingle(arg0).equalsIgnoreCase("os")) {
             return new String[]{"v" + System.getProperty("os.version")};
-        }else if (Objects.equals(str.getSingle(arg0).toLowerCase(), "java")) {
+        }else if (str.getSingle(arg0).equalsIgnoreCase("java")) {
             return new String[]{"v" + System.getProperty("java.version")};
         }else {
             try {
