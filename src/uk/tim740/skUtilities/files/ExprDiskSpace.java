@@ -6,33 +6,31 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.assist.FileSize;
-import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.File;
 
 /**
- * Created by tim740 on 17/03/2016
+ * Created by tim740 on 03/04/2016
  */
-public class ExprFileSize extends SimpleExpression<String>{
-	private Expression<String> path;
+public class ExprDiskSpace extends SimpleExpression<String>{
+    private int ty;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
-        if (pth.exists()){
-            return new String[]{FileSize.getSize(pth.length())};
+        if (ty == 0){
+            return new String[]{FileSize.getSize(new File(File.separator).getTotalSpace())};
+        }else if (ty == 1){
+            return new String[]{FileSize.getSize(new File(File.separator).getFreeSpace())};
         }else{
-            skUtilities.prSys("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
-            return null;
+            return new String[]{FileSize.getSize(new File(File.separator).getUsableSpace())};
         }
 	}
 
-    @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
+        ty = arg3.mark;
         return true;
     }
     @Override
