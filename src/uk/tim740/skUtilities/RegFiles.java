@@ -33,7 +33,7 @@ class RegFiles {
         Skript.registerEffect(EffZipFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
         Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
 
-        Skript.registerCondition(CondFileExists.class, "[(script|program|app[lication]|file) ]%string% exists");
+        Skript.registerCondition(CondFileExists.class, "(script|program|app[lication]|file) %string% exists");
 
         Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
     }
