@@ -6,14 +6,10 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.skUtilities;
+import uk.tim740.skUtilities.Utils;
 
 import javax.annotation.Nullable;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 
 /**
  * Created by tim740 on 21/03/2016
@@ -24,18 +20,10 @@ public class EffFileDownload extends Effect{
 	@Override
 	protected void execute(Event arg0) {
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
-        try {
-            EvtFileDownload efd = new EvtFileDownload(url.getSingle(arg0), pth);
-            Bukkit.getServer().getPluginManager().callEvent(efd);
-            if (!efd.isCancelled()) {
-                ReadableByteChannel rbc = Channels.newChannel(new URL(url.getSingle(arg0)).openStream());
-                FileOutputStream fos = new FileOutputStream(pth);
-                fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-                fos.close();
-                rbc.close();
-            }
-        } catch (Exception e) {
-            skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+        EvtFileDownload efd = new EvtFileDownload(url.getSingle(arg0), pth);
+        Bukkit.getServer().getPluginManager().callEvent(efd);
+        if (!efd.isCancelled()) {
+            Utils.downloadFile(pth, url.getSingle(arg0));
         }
     }
 

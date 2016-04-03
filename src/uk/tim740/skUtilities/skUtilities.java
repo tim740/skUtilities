@@ -7,11 +7,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 import java.util.Objects;
 
 import static org.bukkit.Bukkit.getPluginManager;
@@ -84,15 +81,7 @@ public class skUtilities extends JavaPlugin {
                 String dln = "plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar";
                 if (!new File(dln).exists()) {
                     prSysi("Downloading latest version!");
-                    try {
-                        ReadableByteChannel rbc = Channels.newChannel(new URL("https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar").openStream());
-                        FileOutputStream fos = new FileOutputStream(dln);
-                        fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-                        fos.close();
-                        rbc.close();
-                    } catch (Exception e) {
-                        prSys(e.getMessage(), getClass().getSimpleName(), 0);
-                    }
+                    Utils.downloadFile(new File(dln), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar");
                     prSysi("Latest version has been downloaded!");
                 }else{
                     prSysi("Latest version of skUtilities (v" + v + ") is already updated and ready to use!");

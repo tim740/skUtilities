@@ -5,7 +5,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.assist.FileSize;
+import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -22,7 +22,7 @@ public class ExprFileSize extends SimpleExpression<String>{
 	protected String[] get(Event arg0) {
         File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
         if (pth.exists()){
-            return new String[]{FileSize.getSize(pth.length())};
+            return new String[]{Utils.getFileSize(pth.length())};
         }else{
             skUtilities.prSys("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;
