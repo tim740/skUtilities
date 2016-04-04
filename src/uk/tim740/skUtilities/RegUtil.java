@@ -31,6 +31,7 @@ class RegUtil {
         Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");
         Skript.registerEffect(EffReloadSkript.class, "reload s(k|c)ript %string%");
         Skript.registerEffect(EffRestartServer.class, "(0¦restart|1¦reload) server");
+        Skript.registerEffect(EffWhitelistAddRemove.class, "whitelist (0¦add|1¦remove) %player%");
 
         Skript.registerCondition(CondStartsEndsWith.class, "%string% (0¦starts|1¦ends) with %-string%");
 
