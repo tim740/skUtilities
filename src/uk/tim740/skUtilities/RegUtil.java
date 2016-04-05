@@ -35,6 +35,7 @@ class RegUtil {
 
         Skript.registerExpression(SExprWhitelist.class,OfflinePlayer.class,ExpressionType.PROPERTY,"whitelist");
         Skript.registerEffect(EffToggleWhitelist.class, "turn whitelist (0¦on|1¦off)");
+        Skript.registerEffect(EffReloadWhitelist.class, "reload whitelist");
         Skript.registerCondition(CondServerWhitelist.class, "server is whitelisted");
         Skript.registerCondition(CondPlayerWhitelist.class, "%player% is whitelisted");
 
