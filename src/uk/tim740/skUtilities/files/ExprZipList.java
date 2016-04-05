@@ -31,8 +31,7 @@ public class ExprZipList extends SimpleExpression<String>{
                 cl.add(zEn.getName());
             }
             zIs.close();
-            String[] out = new String[cl.size()];
-            return cl.toArray(out);
+            return cl.toArray(new String[cl.size()]);
         } catch (FileNotFoundException e) {
             skUtilities.prSys("ZipFile: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;

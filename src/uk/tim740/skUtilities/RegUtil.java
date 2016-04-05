@@ -6,6 +6,7 @@ import ch.njol.skript.lang.util.SimpleEvent;
 import ch.njol.skript.registrations.EventValues;
 import ch.njol.skript.util.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.CauldronLevelChangeEvent;
@@ -31,7 +32,11 @@ class RegUtil {
         Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");
         Skript.registerEffect(EffReloadSkript.class, "reload s(k|c)ript %string%");
         Skript.registerEffect(EffRestartServer.class, "(0¦restart|1¦reload) server");
-        Skript.registerEffect(EffWhitelistAddRemove.class, "whitelist (0¦add|1¦remove) %player%");
+
+        Skript.registerExpression(SExprWhitelist.class,OfflinePlayer.class,ExpressionType.PROPERTY,"whitelist");
+        Skript.registerEffect(EffToggleWhitelist.class, "turn whitelist (0¦on|1¦off)");
+        Skript.registerCondition(CondServerWhitelist.class, "server is whitelisted");
+        Skript.registerCondition(CondPlayerWhitelist.class, "%player% is whitelisted");
 
         Skript.registerCondition(CondStartsEndsWith.class, "%string% (0¦starts|1¦ends) with %-string%");
 

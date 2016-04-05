@@ -30,8 +30,7 @@ public class ExprDirList extends SimpleExpression<String>{
                     cl.add(String.valueOf(dfp));
                 }
             });
-            String[] out = new String[cl.size()];
-            return cl.toArray(out);
+            return cl.toArray(new String[cl.size()]);
         } catch (FileNotFoundException e) {
             skUtilities.prSys("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             return null;
