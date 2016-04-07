@@ -22,12 +22,13 @@ public class skUtilities extends JavaPlugin {
         Skript.registerAddon(this);
         getDataFolder().mkdirs();
         saveDefaultConfig();
-        if (getConfig().getInt("configVersion") != 2 || !getConfig().contains("configVersion")){
-            File pth = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.yml");
-            pth.renameTo(new File("plugins" + File.separator + "skUtilities" + File.separator + "config.old"));
-            saveDefaultConfig();
-            prSys("You where using an old version of the config, It was copied and renamed to 'config.old' A new config has been generated!", "Main", 2);
+        if (!(getConfig().getInt("configVersion") == 2)){
+            resetConfig();
         }
+        if (!getConfig().contains("configVersion")){
+            resetConfig();
+        }
+
         if (getConfig().getBoolean("loadConversions", true)){
             RegConvert.regC();
         }
@@ -95,5 +96,15 @@ public class skUtilities extends JavaPlugin {
     }
     private static String getVer(){
         return getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
+    }
+    private void resetConfig(){
+        File pth = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.yml");
+        File ptho = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.old");
+        if (ptho.exists()){
+            ptho.delete();
+        }
+        pth.renameTo(ptho);
+        saveDefaultConfig();
+        prSysi("You where using an old version of the config, It was copied and renamed to 'config.old' A new config has been generated!");
     }
 }
