@@ -20,7 +20,7 @@ public class ExprFileSize extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
+        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0).replaceAll("/", File.separator));
         if (pth.exists()){
             return new String[]{Utils.getFileSize(pth.length())};
         }else{

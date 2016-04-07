@@ -12,6 +12,7 @@ import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
+import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 /**
@@ -22,9 +23,9 @@ public class EffRunApp extends Effect{
 
 	@Override
 	protected void execute(Event arg0) {
-        File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
+        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0).replaceAll("/", File.separator));
         try{
-            EvtRunApp era = new EvtRunApp(new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator)));
+            EvtRunApp era = new EvtRunApp(pth);
             Bukkit.getServer().getPluginManager().callEvent(era);
             if (!era.isCancelled()) {
                 if(!pth.exists()){

@@ -28,7 +28,7 @@ class RegFiles {
 
         Skript.registerEffect(EffRunApp.class, "run (script|program|app[lication]|file) at %string%");
         Skript.registerEffect(EffCreateDeleteFile.class, "(0¦create|1¦delete) (script|program|app[lication]|[zip ]file) %string%");
-        Skript.registerEffect(EffFileRenameMove.class, "(0¦rename|1¦move) file %string% to %-string%");
+        Skript.registerEffect(EffFileRenameMove.class, "(0¦rename|1¦move|2¦copy) file %string% to %-string%");
         Skript.registerEffect(EffFileDownload.class, "download file from %string% to file %-string%");
         Skript.registerEffect(EffZipFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
         Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
@@ -103,6 +103,22 @@ class RegFiles {
             @Nullable
             @Override
             public String get(EvtFileMove e) {
+                return e.getEvtMFile();
+            }
+        }, 0);
+
+        Skript.registerEvent("FileCopy", SimpleEvent.class, EvtFileCopy.class, "file copy");
+        EventValues.registerEventValue(EvtFileCopy.class, File.class, new Getter<File,EvtFileCopy>() {
+            @Nullable
+            @Override
+            public File get(EvtFileCopy e) {
+                return e.getEvtFile();
+            }
+        }, 0);
+        EventValues.registerEventValue(EvtFileCopy.class, String.class, new Getter<String,EvtFileCopy>() {
+            @Nullable
+            @Override
+            public String get(EvtFileCopy e) {
                 return e.getEvtMFile();
             }
         }, 0);

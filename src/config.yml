@@ -9,6 +9,12 @@ downloadUpdates: false
 
 #--------------------------------------------------------------------------
 
+#Should this addon check in the root folder when using file stuff
+
+useRootAsDefaultPath: false
+
+#--------------------------------------------------------------------------
+
 #Disables or Enables parts of the addon.
 #If disabled the only way to renable is to change to true and restart the server,
 #this only disables/enables those parts when you start the server.
@@ -20,4 +26,4 @@ loadUtilities: true
 #--------------------------------------------------------------------------
 
 #DO NOT CHANGE THIS!
-configVersion: 1
+configVersion: 2

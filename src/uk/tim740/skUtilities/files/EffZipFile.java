@@ -7,6 +7,7 @@ import ch.njol.util.Kleenean;
 import org.apache.commons.io.FilenameUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
+import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -23,8 +24,8 @@ public class EffZipFile extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File pth = new File("plugins" + File.separator + file.getSingle(arg0).replaceAll("/", File.separator));
-        File Fzip = new File("plugins" + File.separator + zip.getSingle(arg0).replaceAll("/", File.separator));
+        File pth = new File(Utils.getDefaultPath() + file.getSingle(arg0).replaceAll("/", File.separator));
+        File Fzip = new File(Utils.getDefaultPath() + zip.getSingle(arg0).replaceAll("/", File.separator));
         EvtFileZip efz = new EvtFileZip(Fzip, pth.toString());
         Bukkit.getServer().getPluginManager().callEvent(efz);
         if (!efz.isCancelled()) {

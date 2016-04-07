@@ -6,6 +6,7 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
+import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -21,8 +22,8 @@ public class EffUnzip extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File Fzip = new File("plugins" + File.separator + zip.getSingle(arg0).replaceAll("/", File.separator));
-        File pth = new File("plugins" + File.separator + file.getSingle(arg0).replaceAll("/", File.separator));
+        File Fzip = new File(Utils.getDefaultPath() + zip.getSingle(arg0).replaceAll("/", File.separator));
+        File pth = new File(Utils.getDefaultPath() + file.getSingle(arg0).replaceAll("/", File.separator));
         if (Fzip.exists()) {
             try{
                 EvtUnzip euz = new EvtUnzip(Fzip, pth.toString());

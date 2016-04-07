@@ -6,6 +6,7 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
+import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -21,7 +22,7 @@ public class EffCreateDeleteFile extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
+        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0).replaceAll("/", File.separator));
         if (!pth.exists()) {
             if (type == 0) {
                 try {

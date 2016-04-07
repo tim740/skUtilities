@@ -8,6 +8,7 @@ import ch.njol.util.Kleenean;
 import ch.njol.util.coll.CollectionUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
+import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -27,7 +28,7 @@ public class SExprEditLine extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
+        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0).replaceAll("/", File.separator));
         if (pth.exists()){
             try (Stream<String> lines = Files.lines(Paths.get(pth.toString()))) {
                 //noinspection OptionalGetWithoutIsPresent
@@ -43,7 +44,7 @@ public class SExprEditLine extends SimpleExpression<String>{
 	}
     public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
-            File pth = new File("plugins" + File.separator + path.getSingle(arg0).replaceAll("/", File.separator));
+            File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0).replaceAll("/", File.separator));
             if (pth.exists()) {
                 EvtFileWrite efw = new EvtFileWrite(pth, (String) delta[0], line.getSingle(arg0));
                 Bukkit.getServer().getPluginManager().callEvent(efw);

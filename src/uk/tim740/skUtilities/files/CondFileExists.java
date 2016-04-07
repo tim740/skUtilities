@@ -5,6 +5,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
+import uk.tim740.skUtilities.Utils;
 
 import java.io.File;
 
@@ -16,7 +17,7 @@ public class CondFileExists extends Condition {
 
     @Override
     public boolean check(Event arg0) {
-        return new File(new File("plugins" + File.separator, path.getSingle(arg0)).getPath().replaceAll("/", File.separator)).exists();
+        return new File(new File(Utils.getDefaultPath() + path.getSingle(arg0)).getPath().replaceAll("/", File.separator)).exists();
     }
 
     @SuppressWarnings("unchecked")
