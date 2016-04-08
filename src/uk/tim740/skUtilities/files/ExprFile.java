@@ -35,6 +35,8 @@ public class ExprFile extends SimpleExpression<File> {
             return ((EvtFileDeletion) e).getEvtFile();
         } else if (e instanceof EvtFileMove) {
             return ((EvtFileMove) e).getEvtFile();
+        } else if (e instanceof EvtFileCopy) {
+            return ((EvtFileCopy) e).getEvtFile();
         } else if (e instanceof EvtFileRename) {
             return ((EvtFileRename) e).getEvtFile();
         } else if (e instanceof EvtFileWipe) {
@@ -52,7 +54,7 @@ public class ExprFile extends SimpleExpression<File> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        if (!ScriptLoader.isCurrentEvent(EvtRunApp.class, EvtFileDownload.class, EvtFileCreation.class, EvtFileDeletion.class, EvtFileMove.class, EvtFileRename.class, EvtFileWipe.class, EvtFileWrite.class, EvtUnzip.class, EvtFileZip.class)) {
+        if (!ScriptLoader.isCurrentEvent(EvtRunApp.class, EvtFileDownload.class, EvtFileCreation.class, EvtFileDeletion.class, EvtFileMove.class, EvtFileCopy.class, EvtFileRename.class, EvtFileWipe.class, EvtFileWrite.class, EvtUnzip.class, EvtFileZip.class)) {
             skUtilities.prSys("Cannot use 'file' outside of file events!", getClass().getSimpleName(), 0);
             return false;
         }
