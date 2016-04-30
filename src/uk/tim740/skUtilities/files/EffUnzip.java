@@ -22,8 +22,8 @@ public class EffUnzip extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File Fzip = new File(Utils.getDefaultPath() + zip.getSingle(arg0).replaceAll("/", File.separator));
-        File pth = new File(Utils.getDefaultPath() + file.getSingle(arg0).replaceAll("/", File.separator));
+        File Fzip = new File(Utils.getDefaultPath() + zip.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath() + file.getSingle(arg0));
         if (Fzip.exists()) {
             try{
                 EvtUnzip euz = new EvtUnzip(Fzip, pth.toString());

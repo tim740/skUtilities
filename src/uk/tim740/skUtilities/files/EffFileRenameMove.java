@@ -24,26 +24,26 @@ public class EffFileRenameMove extends Effect{
 
 	@Override
 	protected void execute(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0).replaceAll("/", File.separator));
+        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
         if (pth.exists()) {
             if (type == 0) {
                 EvtFileRename efn = new EvtFileRename(pth, name.getSingle(arg0));
                 Bukkit.getServer().getPluginManager().callEvent(efn);
                 if (!efn.isCancelled()) {
-                    pth.renameTo(new File(Utils.getDefaultPath() + path.getSingle(arg0).replaceAll("/", File.separator).replaceAll(pth.getName(), name.getSingle(arg0))));
+                    pth.renameTo(new File(Utils.getDefaultPath() + path.getSingle(arg0).replaceAll(pth.getName(), name.getSingle(arg0))));
                 }
             }else if (type == 1){
                 EvtFileMove efm = new EvtFileMove(pth, name.getSingle(arg0));
                 Bukkit.getServer().getPluginManager().callEvent(efm);
                 if (!efm.isCancelled()) {
-                    pth.renameTo(new File(Utils.getDefaultPath() + name.getSingle(arg0).replaceAll("/", File.separator) + File.separator + pth.getName()));
+                    pth.renameTo(new File(Utils.getDefaultPath() + name.getSingle(arg0) + File.separator + pth.getName()));
                 }
             }else{
-                EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(arg0).replaceAll("/", File.separator));
+                EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(arg0));
                 Bukkit.getServer().getPluginManager().callEvent(efc);
                 if (!efc.isCancelled()) {
                     try {
-                        Files.copy(pth.toPath(), Paths.get(Utils.getDefaultPath() + name.getSingle(arg0).replaceAll("/", File.separator) + File.separator + pth.getName()));
+                        Files.copy(pth.toPath(), Paths.get(Utils.getDefaultPath() + name.getSingle(arg0) + File.separator + pth.getName()));
                     } catch (IOException e) {
                         skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
                     }

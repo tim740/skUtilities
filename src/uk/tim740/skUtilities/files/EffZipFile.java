@@ -24,8 +24,8 @@ public class EffZipFile extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + file.getSingle(arg0).replaceAll("/", File.separator));
-        File Fzip = new File(Utils.getDefaultPath() + zip.getSingle(arg0).replaceAll("/", File.separator));
+        File pth = new File(Utils.getDefaultPath() + file.getSingle(arg0));
+        File Fzip = new File(Utils.getDefaultPath() + zip.getSingle(arg0));
         EvtFileZip efz = new EvtFileZip(Fzip, pth.toString());
         Bukkit.getServer().getPluginManager().callEvent(efz);
         if (!efz.isCancelled()) {
@@ -37,7 +37,7 @@ public class EffZipFile extends Effect {
             }
             try {
                 ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(Fzip));
-                zos.putNextEntry(new ZipEntry(file.getSingle(arg0).replaceAll("/", File.separator)));
+                zos.putNextEntry(new ZipEntry(file.getSingle(arg0)));
                 FileInputStream in = new FileInputStream(pth);
                 zos.write(new byte[1024], 0, in.read(new byte[1024]));
                 in.close();

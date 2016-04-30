@@ -19,7 +19,7 @@ public class EffFileDownload extends Effect{
 
 	@Override
 	protected void execute(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0).replaceAll("/", File.separator));
+        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
         EvtFileDownload efd = new EvtFileDownload(url.getSingle(arg0), pth);
         Bukkit.getServer().getPluginManager().callEvent(efd);
         if (!efd.isCancelled()) {

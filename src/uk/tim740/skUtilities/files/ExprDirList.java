@@ -23,7 +23,7 @@ public class ExprDirList extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        String pth = (Utils.getDefaultPath() + path.getSingle(arg0).replaceAll("/", File.separator));
+        String pth = (Utils.getDefaultPath() + path.getSingle(arg0));
         try {
             ArrayList<String> cl = new ArrayList<>();
             Files.walk(Paths.get(pth)).forEach(dfp -> {
