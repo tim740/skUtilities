@@ -28,7 +28,6 @@ public class skUtilities extends JavaPlugin {
         if (!getConfig().contains("configVersion")){
             resetConfig();
         }
-
         if (getConfig().getBoolean("loadConversions", true)){
             RegConvert.regC();
         }
@@ -41,7 +40,6 @@ public class skUtilities extends JavaPlugin {
             RegFiles.regFE();
         }
         RegConfig.regCo();
-
         if (getConfig().getBoolean("checkForUpdates", true)) {
             getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         }else{
@@ -59,14 +57,15 @@ public class skUtilities extends JavaPlugin {
             Bukkit.broadcast(ChatColor.GOLD + "[skUtilities: WARNING]" + ChatColor.GRAY+ " v" + getVer() + ": " + s + " ("+ c +".class)", "skUtilities.warning");
         }
     }
-    private void prSysi(String s){
-        getLogger().info("v" + getVer() + ": "  + s);
+    public static void prSysi(String s){
+        Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": "  + s);
     }
     static void loadErr(String s){
         Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + " - Failed to load:  " + s + ", due to not using 1.9+!");
     }
 
     private void updateChk(){
+        prSysi("");
         prSysi("Checking for update now you will be notified if there is an update!");
         String v = "";
         try {
@@ -93,6 +92,7 @@ public class skUtilities extends JavaPlugin {
         }else{
             prSysi("It seems like your using the latest version!");
         }
+        prSysi("");
     }
     private static String getVer(){
         return getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
@@ -105,6 +105,10 @@ public class skUtilities extends JavaPlugin {
         }
         pth.renameTo(ptho);
         saveDefaultConfig();
-        prSysi("You where using an old version of the config, It was copied and renamed to 'config.old' A new config has been generated!");
+        prSysi("");
+        prSysi("You where using an old version of the config!");
+        prSysi("It was copied and renamed to 'config.old'");
+        prSysi("A new config has been generated!");
+        prSysi("");
     }
 }

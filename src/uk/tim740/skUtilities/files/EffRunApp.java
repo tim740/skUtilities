@@ -24,18 +24,27 @@ public class EffRunApp extends Effect{
 	@Override
 	protected void execute(Event arg0) {
         File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
-        try{
-            EvtRunApp era = new EvtRunApp(pth);
-            Bukkit.getServer().getPluginManager().callEvent(era);
-            if (!era.isCancelled()) {
-                if(!pth.exists()){
-                    throw new IOException();
-                }else{
-                    Desktop.getDesktop().open(pth);
+        if (Desktop.isDesktopSupported()){
+            try{
+                EvtRunApp era = new EvtRunApp(pth);
+                Bukkit.getServer().getPluginManager().callEvent(era);
+                if (!era.isCancelled()) {
+                    if(!pth.exists()){
+                        throw new IOException();
+                    }else{
+                        Desktop.getDesktop().open(pth);
+                    }
                 }
+            }catch (IOException e){
+                skUtilities.prSys("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 0);
             }
-        }catch (IOException e){
-            skUtilities.prSys("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 0);
+        }else{
+            skUtilities.prSys("Sorry this OS isn't supported!", getClass().getSimpleName(), 0);
+            skUtilities.prSysi("");
+            skUtilities.prSysi("If you using a Linix based system you could try installing");
+            skUtilities.prSysi("libgnome: 'sudo apt-get install libgnome2-0'");
+            skUtilities.prSysi("and then restart the system!");
+            skUtilities.prSysi("");
         }
     }
 
