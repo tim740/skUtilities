@@ -39,12 +39,27 @@ public class EffRunApp extends Effect{
                 skUtilities.prSys("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 0);
             }
         }else{
-            skUtilities.prSys("Sorry this OS isn't supported!", getClass().getSimpleName(), 0);
-            skUtilities.prSysi("");
-            skUtilities.prSysi("If you using a Linix based system you could try installing");
+            String p = System.getProperty("os.name").toLowerCase();
+            Boolean gc = false;
+            if (p.contains("solaris")) gc = true;
+            if (p.contains("sunos")) gc = true;
+            if (p.contains("linux")) gc = true;
+            if (p.contains("unix")) gc = true;
+            if (gc.equals(true)){
+                skUtilities.prSysi("");
+                skUtilities.prSysi("Looks like your using a linux based system and don't have");
+                skUtilities.prSysi("libgnome installed execute the command below in the terminal ");
+                skUtilities.prSysi("'sudo apt-get install libgnome2-0'");
+                skUtilities.prSysi("and then restart the system!");
+                skUtilities.prSysi("");
+            }else{
+                skUtilities.prSys("Sorry this OS ('" + p +"')isn't supported!", getClass().getSimpleName(), 0);
+            }
+            /*skUtilities.prSysi("");
+            skUtilities.prSysi("If you using a 'Linux Based System' you could try installing");
             skUtilities.prSysi("libgnome: 'sudo apt-get install libgnome2-0'");
             skUtilities.prSysi("and then restart the system!");
-            skUtilities.prSysi("");
+            skUtilities.prSysi("");*/
         }
     }
 
