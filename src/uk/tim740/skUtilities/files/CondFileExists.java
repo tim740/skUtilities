@@ -14,16 +14,22 @@ import java.io.File;
  */
 public class CondFileExists extends Condition {
     private Expression<String> path;
+    private int ty;
 
     @Override
     public boolean check(Event arg0) {
-        return new File(new File(Utils.getDefaultPath() + path.getSingle(arg0)).getPath()).exists();
+        if (ty == 0){
+            return new File(new File(Utils.getDefaultPath() + path.getSingle(arg0)).getPath()).exists();
+        }else{
+            return !new File(new File(Utils.getDefaultPath() + path.getSingle(arg0)).getPath()).exists();
+        }
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         path = (Expression<String>) arg0[0];
+        ty = arg3.mark;
         return true;
     }
     @Override

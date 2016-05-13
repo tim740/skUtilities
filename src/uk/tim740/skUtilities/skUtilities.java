@@ -65,7 +65,6 @@ public class skUtilities extends JavaPlugin {
     }
 
     private void updateChk(){
-        prSysi("");
         prSysi("Checking for update now you will be notified if there is an update!");
         String v = "";
         try {
@@ -92,7 +91,6 @@ public class skUtilities extends JavaPlugin {
         }else{
             prSysi("It seems like your using the latest version!");
         }
-        prSysi("");
     }
     private static String getVer(){
         return getPluginManager().getPlugin("skUtilities").getDescription().getVersion();

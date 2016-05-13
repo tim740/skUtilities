@@ -46,12 +46,10 @@ public class EffRunApp extends Effect{
             if (p.contains("linux")) gc = true;
             if (p.contains("unix")) gc = true;
             if (gc.equals(true)){
-                skUtilities.prSysi("");
                 skUtilities.prSysi("Looks like your using a linux based system and don't have");
                 skUtilities.prSysi("libgnome installed execute the command below in the terminal ");
                 skUtilities.prSysi("'sudo apt-get install libgnome2-0'");
                 skUtilities.prSysi("and then restart the system!");
-                skUtilities.prSysi("");
             }else{
                 skUtilities.prSys("Sorry this OS ('" + p +"')isn't supported!", getClass().getSimpleName(), 0);
             }
