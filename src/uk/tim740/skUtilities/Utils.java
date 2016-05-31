@@ -18,7 +18,7 @@ public class Utils {
     public static String getFileSize(double s){
         DecimalFormat df = new DecimalFormat("#.##");
         if (s <1024){
-            return (s + " Bytes").replaceFirst(".0", "");
+            return (s + " B").replaceFirst(".0", "");
         }else if (s <1048576){
             return df.format(s /1024) + " KB";
         }else if (s <1073741824) {
