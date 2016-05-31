@@ -34,7 +34,6 @@ public class EvtFileDeletion extends Event implements Cancellable {
     public HandlerList getHandlers() {
         return hls;
     }
-    @SuppressWarnings("unused")
     public static HandlerList getHandlerList() {
         return hls;
     }
