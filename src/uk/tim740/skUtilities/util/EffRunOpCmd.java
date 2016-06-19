@@ -26,7 +26,7 @@ public class EffRunOpCmd extends Effect{
             if (this.usr == null) {
                 Skript.dispatchCommand(Bukkit.getConsoleSender(), command);
             }else {
-                for (CommandSender sender : this.usr.getArray(arg0)) {
+                for (CommandSender sender : (CommandSender[]) this.usr.getArray(arg0)) {
                     if (!sender.isOp()) {
                         sender.setOp(true);
                         Skript.dispatchCommand(sender, command);
