@@ -24,6 +24,7 @@ class RegUtil {
         Skript.registerExpression(ExprGenerateTxt.class,String.class,ExpressionType.PROPERTY,"generate[ random] string with length %number%");
         Skript.registerExpression(ExprVersion.class,String.class,ExpressionType.PROPERTY,"%string%'s version", "version of %string%");
         Skript.registerExpression(ExprSysTime.class,Number.class,ExpressionType.PROPERTY,"[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
+        Skript.registerExpression(ExprRam.class,Number.class,ExpressionType.PROPERTY,"[skutil ](0¦free|1¦total|2¦max) (ram|memory)");
         Skript.registerExpression(ExprFontNames.class,String.class,ExpressionType.PROPERTY,"[all ][system ]font names");
 
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
@@ -32,6 +33,7 @@ class RegUtil {
         Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");
         Skript.registerEffect(EffReloadSkript.class, "reload s(k|c)ript %string%");
         Skript.registerEffect(EffRestartServer.class, "re(0¦start|1¦load) server");
+        Skript.registerEffect(EffRunOpCmd.class, "(force|make) %player% run (cmd|command) %string% as op");
 
         Skript.registerExpression(SExprWhitelist.class,OfflinePlayer.class,ExpressionType.PROPERTY,"whitelist");
         Skript.registerEffect(EffToggleWhitelist.class, "turn whitelist (0¦on|1¦off)");
@@ -41,7 +43,7 @@ class RegUtil {
 
         Skript.registerCondition(CondStartsEndsWith.class, "%string% (0¦starts|1¦ends) with %-string%");
 
-        if(Bukkit.getVersion().contains("(MC: 1.9")) {
+        if(Bukkit.getVersion().contains("(MC: 1.9") ||  Bukkit.getVersion().contains("(MC: 1.1")) {
             Skript.registerExpression(SExprGlideMode.class,Boolean.class,ExpressionType.PROPERTY,"glide (state|ability|mode) of %entity%", "%entity%'s glide (state|ability|mode)");
         }else{
             skUtilities.loadErr("SExprGlideMode");
@@ -49,7 +51,7 @@ class RegUtil {
     }
 
     static void regUE() {
-        if(Bukkit.getVersion().contains("(MC: 1.9")) {
+        if(Bukkit.getVersion().contains("(MC: 1.9") ||  Bukkit.getVersion().contains("(MC: 1.1")) {
             Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class, "cauldron[ water] level change");
             EventValues.registerEventValue(CauldronLevelChangeEvent.class, Integer.class, new Getter<Integer,CauldronLevelChangeEvent>() {
                 @Nullable
