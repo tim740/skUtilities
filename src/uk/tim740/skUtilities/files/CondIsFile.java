@@ -12,12 +12,12 @@ import java.io.File;
 /**
  * Created by tim740 on 18/03/2016
  */
-public class CondFileExists extends Condition {
+public class CondIsFile extends Condition {
     private Expression<String> path;
 
     @Override
     public boolean check(Event arg0) {
-        Boolean pth = new File(new File(Utils.getDefaultPath() + path.getSingle(arg0)).getPath()).exists();
+        Boolean pth = new File(new File(Utils.getDefaultPath() + path.getSingle(arg0)).getPath()).isFile();
         return (isNegated() ? !pth : pth);
     }
 

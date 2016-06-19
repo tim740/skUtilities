@@ -13,14 +13,16 @@ import java.io.File;
 /**
  * Created by tim740 on 20/03/2016
  */
+        //check if file or folder
 class RegFiles {
     static void regF() {
-        Skript.registerExpression(ExprFileLines.class,Number.class,ExpressionType.PROPERTY,"line count of (script|program|app[lication]|file) %string%", "(script|program|app[lication]|file) %string%'s line count");
         Skript.registerExpression(ExprZipList.class,String.class,ExpressionType.PROPERTY,"files in zip[ file] %string%", "zip[ file] %string%'s files");
         Skript.registerExpression(ExprDirList.class,String.class,ExpressionType.PROPERTY,"files in dir[ectory] %string%", "dir[ectory] %string%'s files");
+        Skript.registerExpression(ExprFileLines.class,Number.class,ExpressionType.PROPERTY,"line count of (script|program|app[lication]|file) %string%", "(script|program|app[lication]|file) %string%'s line count");
         Skript.registerExpression(ExprFileTimeAttributes.class,Number.class,ExpressionType.PROPERTY,"file %string%'s (0¦last modified|1¦creation|2¦last access) value", "(0¦last modified|1¦creation|2¦last access) value of file %string%");
         Skript.registerExpression(ExprFileSize.class,String.class,ExpressionType.PROPERTY,"file size of %string%", "%string%'s file size");
         Skript.registerExpression(ExprFileSizeBytes.class,Number.class,ExpressionType.PROPERTY,"file size of %string% in bytes", "%string%'s file size in bytes");
+        Skript.registerExpression(ExprFileExtension.class,String.class,ExpressionType.PROPERTY,"file extension of %string%", "%string%'s file extension");
 
         Skript.registerExpression(ExprDiskSpace.class,String.class,ExpressionType.PROPERTY,"disk's (0¦total|1¦free|2¦usable) space", "(0¦total|1¦free|2¦usable) space on disk");
 
@@ -35,7 +37,9 @@ class RegFiles {
         Skript.registerEffect(EffZipFile.class, "add (script|program|app[lication]|file) %string% to zip[ file] %-string%");
         Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
 
-        Skript.registerCondition(CondFileExists.class, "(script|program|app[lication]|file) %string% (0¦exists|1¦does(n't|not) exist)");
+        Skript.registerCondition(CondFileExists.class, "(script|program|app[lication]|file) %string% exists", "(script|program|app[lication]|file) %string% does(n't| not) exist");
+        Skript.registerCondition(CondIsFile.class, "(script|program|app[lication]|file) %string% is a file", "(script|program|app[lication]|file) %string% is(n't| not) a file");
+
 
         Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
     }
