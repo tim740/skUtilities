@@ -4,6 +4,7 @@ import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
 /**
@@ -16,9 +17,11 @@ public class CondStartsEndsWith extends Condition {
     @Override
     public boolean check(Event arg0) {
         if (ty == 0) {
-            return str.getSingle(arg0).startsWith(txt.getSingle(arg0));
+            Boolean chk = str.getSingle(arg0).startsWith(txt.getSingle(arg0));
+            return (isNegated() ? !chk : chk);
         }else{
-            return str.getSingle(arg0).endsWith(txt.getSingle(arg0));
+            Boolean chk = str.getSingle(arg0).endsWith(txt.getSingle(arg0));
+            return (isNegated() ? !chk : chk);
         }
     }
 
@@ -28,6 +31,7 @@ public class CondStartsEndsWith extends Condition {
         str = (Expression<String>) arg0[0];
         txt = (Expression<String>) arg0[1];
         ty = arg3.mark;
+        setNegated(arg1 == 1);
         return true;
     }
     @Override

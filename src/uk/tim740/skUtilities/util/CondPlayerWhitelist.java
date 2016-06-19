@@ -6,28 +6,27 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
+import uk.tim740.skUtilities.Utils;
+
+import java.io.File;
 
 /**
  * Created by tim740 on 05/04/2016
  */
 public class CondPlayerWhitelist extends Condition {
     private Expression<Player> usr;
-    private int ty;
 
     @Override
     public boolean check(Event arg0) {
-        if (ty == 0){
-            return usr.getSingle(arg0).isWhitelisted();
-        }else{
-            return !usr.getSingle(arg0).isWhitelisted();
-        }
+        Boolean chk = usr.getSingle(arg0).isWhitelisted();
+        return (isNegated() ? !chk : chk);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         usr = (Expression<Player>) arg0[0];
-        ty = arg3.mark;
+        setNegated(arg1 == 1);
         return true;
     }
     @Override

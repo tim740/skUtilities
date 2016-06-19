@@ -11,20 +11,16 @@ import org.bukkit.event.Event;
  * Created by tim740 on 05/04/2016
  */
 public class CondServerWhitelist extends Condition {
-    private int ty;
 
     @Override
     public boolean check(Event arg0) {
-        if (ty == 0){
-            return Bukkit.hasWhitelist();
-        }else{
-            return !Bukkit.hasWhitelist();
-        }
+        Boolean chk = Bukkit.hasWhitelist();
+        return (isNegated() ? !chk : chk);
     }
 
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        ty = arg3.mark;
+        setNegated(arg1 == 1);
         return true;
     }
     @Override

@@ -38,10 +38,10 @@ class RegUtil {
         Skript.registerExpression(SExprWhitelist.class,OfflinePlayer.class,ExpressionType.PROPERTY,"whitelist");
         Skript.registerEffect(EffToggleWhitelist.class, "turn whitelist (0¦on|1¦off)");
         Skript.registerEffect(EffReloadWhitelist.class, "reload whitelist");
-        Skript.registerCondition(CondServerWhitelist.class, "server (0¦is|1¦is( no|n')t) whitelisted");
-        Skript.registerCondition(CondPlayerWhitelist.class, "%player% (0¦is|1¦is( no|n')t) whitelisted");
+        Skript.registerCondition(CondServerWhitelist.class, "server is whitelisted", "server is(n't| no)t whitelisted");
+        Skript.registerCondition(CondPlayerWhitelist.class, "%player% is whitelisted", "%player% is(n't| no)t whitelisted");
 
-        Skript.registerCondition(CondStartsEndsWith.class, "%string% (0¦starts|1¦ends) with %-string%");
+        Skript.registerCondition(CondStartsEndsWith.class, "%string% (0¦starts|1¦ends) with %-string%", "%string% does(n't| not) (0¦starts|1¦ends) with %-string%");
 
         if(Bukkit.getVersion().contains("(MC: 1.9") ||  Bukkit.getVersion().contains("(MC: 1.1")) {
             Skript.registerExpression(SExprGlideMode.class,Boolean.class,ExpressionType.PROPERTY,"glide (state|ability|mode) of %entity%", "%entity%'s glide (state|ability|mode)");
