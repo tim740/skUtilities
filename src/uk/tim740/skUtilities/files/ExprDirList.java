@@ -26,7 +26,7 @@ public class ExprDirList extends SimpleExpression<String>{
         if (pth.isDirectory()) {
             //noinspection ConstantConditions
             for (File file : pth.listFiles()) {
-                cl.add(String.valueOf(file.getName()));
+                cl.add(String.valueOf(file.getAbsolutePath()));
             }
             return cl.toArray(new String[cl.size()]);
         }else{
