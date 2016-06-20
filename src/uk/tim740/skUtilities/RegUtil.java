@@ -41,7 +41,7 @@ class RegUtil {
         Skript.registerCondition(CondServerWhitelist.class, "server is whitelisted", "server is(n't| no)t whitelisted");
         Skript.registerCondition(CondPlayerWhitelist.class, "%player% is whitelisted", "%player% is(n't| no)t whitelisted");
 
-        Skript.registerCondition(CondStartsEndsWith.class, "%string% (0¦starts|1¦ends) with %-string%", "%string% does(n't| not) (0¦starts|1¦ends) with %-string%");
+        Skript.registerCondition(CondStartsEndsWith.class, "%string% (0¦starts|1¦ends) with %-string%", "%string% does(n't| not) (0¦start|1¦end) with %-string%");
 
         if(Bukkit.getVersion().contains("(MC: 1.9") ||  Bukkit.getVersion().contains("(MC: 1.1")) {
             Skript.registerExpression(SExprGlideMode.class,Boolean.class,ExpressionType.PROPERTY,"glide (state|ability|mode) of %entity%", "%entity%'s glide (state|ability|mode)");
