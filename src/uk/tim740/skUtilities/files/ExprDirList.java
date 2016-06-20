@@ -10,8 +10,6 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /**
@@ -23,20 +21,16 @@ public class ExprDirList extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        String pth = (Utils.getDefaultPath() + path.getSingle(arg0));
-        try {
-            ArrayList<String> cl = new ArrayList<>();
-            Files.walk(Paths.get(pth)).forEach(dfp -> {
-                if (Files.isRegularFile(dfp)) {
-                    cl.add(String.valueOf(dfp));
-                }
-            });
+        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+        ArrayList<String> cl = new ArrayList<>();
+        if (pth.isDirectory()) {
+            //noinspection ConstantConditions
+            for (File file : pth.listFiles()) {
+                cl.add(String.valueOf(file.getName()));
+            }
             return cl.toArray(new String[cl.size()]);
-        } catch (FileNotFoundException e) {
-            skUtilities.prSys("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
-            return null;
-        } catch (IOException e) {
-            skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+        }else{
+            skUtilities.prSys("'" + pth + "' isn't a directory!", getClass().getSimpleName(), 0);
             return null;
         }
     }
