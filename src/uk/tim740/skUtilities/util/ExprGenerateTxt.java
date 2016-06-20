@@ -15,7 +15,7 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprGenerateTxt extends SimpleExpression<String>{
-	private Expression<Number> inte;
+	private Expression<Number> in;
     private static final String[] chl = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
 
 	@Override
@@ -23,7 +23,7 @@ public class ExprGenerateTxt extends SimpleExpression<String>{
 	protected String[] get(Event arg0) {
 		Random ranGen = new Random();
 		String out = "";
-		for (int i=0; i<Integer.parseInt(inte.getSingle(arg0).toString()); i++){
+		for (int i=0; i<Integer.parseInt(in.getSingle(arg0).toString()); i++){
 			if (Objects.equals(out, "")){
 				out = (chl[ranGen.nextInt(chl.length)]);
 			}else{
@@ -36,7 +36,7 @@ public class ExprGenerateTxt extends SimpleExpression<String>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        inte = (Expression<Number>) arg0[0];
+        in = (Expression<Number>) arg0[0];
         return true;
     }
     @Override

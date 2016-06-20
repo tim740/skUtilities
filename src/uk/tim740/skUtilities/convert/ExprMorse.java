@@ -12,30 +12,30 @@ import javax.annotation.Nullable;
  * Created by tim740 on 22/02/2016
  */
 public class ExprMorse extends SimpleExpression<String> {
-    private int morTy;
+    private int ty;
     private Expression<String> str;
-    private static final char[] engLe = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-    private static final String[] morseLe = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---",
+    private static final char[] engL = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+    private static final String[] morseL = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---",
             ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
 
     @Override
     @Nullable
     protected String[] get(Event arg0) {
         String out = "";
-        if (morTy == 0){
+        if (ty == 0){
             for (char value : str.getSingle(arg0).toLowerCase().toCharArray()) {
-                for (int j = 0; j < engLe.length; j++) {
-                    if (engLe[j] == value) {
-                        out += morseLe[j] + " ";
+                for (int j = 0; j < engL.length; j++) {
+                    if (engL[j] == value) {
+                        out += morseL[j] + " ";
                     }
                 }
             }
         }else{
             for (String word : str.getSingle(arg0).split("\\s\\s\\s")) {
                 for (String letter : word.split("\\s")) {
-                    for (int j = 0; j < morseLe.length; j++) {
-                        if (letter.equals(morseLe[j])) {
-                            out += engLe[j];
+                    for (int j = 0; j < morseL.length; j++) {
+                        if (letter.equals(morseL[j])) {
+                            out += engL[j];
                         }
                     }
                 }
@@ -47,7 +47,7 @@ public class ExprMorse extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        morTy = arg3.mark;
+        ty = arg3.mark;
         str = (Expression<String>) arg0[0];
         return true;
     }

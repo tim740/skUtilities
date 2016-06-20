@@ -13,18 +13,18 @@ import javax.annotation.Nullable;
  * Created by tim740 on 30/03/2016
  */
 public class ExprDateToUnix extends SimpleExpression <Number>{
-    private Expression<Date> idate;
+    private Expression<Date> id;
 
     @Override
     @Nullable
     protected Number[] get(Event arg0) {
-        return new Number[]{idate.getSingle(arg0).getTimestamp() /1000L};
+        return new Number[]{id.getSingle(arg0).getTimestamp() /1000L};
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        idate = (Expression<Date>) arg0[0];
+        id = (Expression<Date>) arg0[0];
         return true;
     }
     @Override

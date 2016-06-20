@@ -14,12 +14,12 @@ import ch.njol.util.Kleenean;
  */
 public class ExprToBin extends SimpleExpression<String> {
 	private Expression<String> str;
-	private int fromBin;
+	private int ty;
 
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		if (fromBin == 0){
+		if (ty == 0){
 			 byte[] by = str.getSingle(arg0).getBytes();
 			 StringBuilder bin = new StringBuilder();
 			 for (byte b : by) {
@@ -31,9 +31,9 @@ public class ExprToBin extends SimpleExpression<String> {
 			    bin.append(' ');
 			}
 			return new String[]{bin.toString()};
-		}else if (fromBin == 1){
+		}else if (ty == 1){
 			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(arg0)))};
-		}else if (fromBin == 2){
+		}else if (ty == 2){
 			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(arg0), 16))};
 		}else{
 			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(arg0), 8))};
@@ -43,7 +43,7 @@ public class ExprToBin extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        fromBin = arg3.mark;
+        ty = arg3.mark;
         str = (Expression<String>) arg0[0];
         return true;
     }

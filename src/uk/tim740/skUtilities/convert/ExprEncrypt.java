@@ -17,8 +17,8 @@ import javax.crypto.spec.SecretKeySpec;
  * Created by tim740 on 23/02/2016
  */
 public class ExprEncrypt extends SimpleExpression<String> {
-    private Expression<String> string, key, cipher;
-    private int type;
+    private Expression<String> str, key, cipher;
+    private int ty;
 
     @Override
     @Nullable
@@ -27,14 +27,14 @@ public class ExprEncrypt extends SimpleExpression<String> {
         Cipher c = null;
         try{
             c = Cipher.getInstance(cipher.getSingle(arg0).toUpperCase());
-            c.init(type, new SecretKeySpec(key.getSingle(arg0).getBytes(), cipher.getSingle(arg0).toUpperCase()));
+            c.init(ty, new SecretKeySpec(key.getSingle(arg0).getBytes(), cipher.getSingle(arg0).toUpperCase()));
         }catch (Exception e){
             skUtilities.prSys(e.getMessage() + " '"+ cipher.getSingle(arg0).toUpperCase() +"'", getClass().getSimpleName(), 0);
         }
         assert c != null;
-        if (type == Cipher.ENCRYPT_MODE){
+        if (ty == Cipher.ENCRYPT_MODE){
             try{
-                cout = c.doFinal(string.getSingle(arg0).getBytes());
+                cout = c.doFinal(str.getSingle(arg0).getBytes());
             }catch (Exception e){
                 skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
             }
@@ -43,7 +43,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
             byte[] decry;
             String out = "";
             try{
-                decry = new BASE64Decoder().decodeBuffer(string.getSingle(arg0));
+                decry = new BASE64Decoder().decodeBuffer(str.getSingle(arg0));
                 cout = c.doFinal(decry);
             }catch (Exception e) {
                 skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
@@ -58,11 +58,11 @@ public class ExprEncrypt extends SimpleExpression<String> {
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         if (arg3.mark == 0){
-            type = Cipher.ENCRYPT_MODE;
+            ty = Cipher.ENCRYPT_MODE;
         }else{
-            type = Cipher.DECRYPT_MODE;
+            ty = Cipher.DECRYPT_MODE;
         }
-        string = (Expression<String>) arg0[0];
+        str = (Expression<String>) arg0[0];
         cipher = (Expression<String>) arg0[1];
         key = (Expression<String>) arg0[2];
         return true;

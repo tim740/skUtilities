@@ -19,35 +19,35 @@ import ch.njol.util.Kleenean;
  * Created by tim740.
  */
 public class ExprLoaded extends SimpleExpression<Number>{
-	private int type;
+	private int ty;
 
 	@Override
 	@Nullable
 	protected Number[] get(Event e) {
-		if (type == 0){
+		if (ty == 0){
 			return new Number[]{ScriptLoader.loadedCommands()};
-		}else if (type == 1){
+		}else if (ty == 1){
 			return new Number[]{ScriptLoader.loadedFunctions()};
-		}else if (type == 2){
+		}else if (ty == 2){
 			return new Number[]{ScriptLoader.loadedScripts()};
-		}else if (type == 3){
+		}else if (ty == 3){
 			return new Number[]{ScriptLoader.loadedTriggers()};
-		}else if (type == 4){
+		}else if (ty == 4){
 			return new Number[]{Skript.getStatements().size()};
-		}else if (type == 5){
+		}else if (ty == 5){
 			return new Number[]{Variables.numVariables()};
-		}else if (type == 6){
+		}else if (ty == 6){
 			//System.out.println("aliases loaded " + (ScriptLoader.getScriptAliases()).getClass());
 			return new Number[]{ScriptLoader.getScriptAliases().size()};
-		}else if (type == 7){
+		}else if (ty == 7){
 			return new Number[]{Bukkit.getServer().getPluginManager().getPlugins().length};
-		}else if (type == 8){
+		}else if (ty == 8){
 			return new Number[]{Skript.getAddons().size()};
-		}else if (type == 9){
+		}else if (ty == 9){
 			return new Number[]{Skript.getEvents().size()};
-		}else if (type == 10){
+		}else if (ty == 10){
 			return new Number[]{Skript.getEffects().size()};
-		}else if (type == 11){
+		}else if (ty == 11){
 			int size = 0;
 			Iterator<ExpressionInfo<?, ?>> expressions = Skript.getExpressions();
 			while(expressions.hasNext()) {
@@ -62,7 +62,7 @@ public class ExprLoaded extends SimpleExpression<Number>{
 
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        type = arg3.mark;
+        ty = arg3.mark;
         return true;
     }
     @Override

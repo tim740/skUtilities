@@ -18,7 +18,7 @@ import java.util.Properties;
  */
 public class ExprFromUnicode extends SimpleExpression<String> {
 	private Expression<String> str;
-    private int ucTy;
+    private int ty;
 
 	@Override
 	@Nullable
@@ -30,7 +30,7 @@ public class ExprFromUnicode extends SimpleExpression<String> {
         } catch (IOException e) {
             skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
         }
-        if (ucTy == 0) {
+        if (ty == 0) {
             out = p.getProperty("key");
         }else{
             String iout = p.getProperty("key");
@@ -48,7 +48,7 @@ public class ExprFromUnicode extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        ucTy = arg3.mark;
+        ty = arg3.mark;
         str = (Expression<String>) arg0[0];
         return true;
     }

@@ -15,13 +15,13 @@ import javax.annotation.Nullable;
  */
 public class EffPrintTag extends Effect{
 	private Expression<String> str;
-    private int type;
+    private int ty;
 
 	@Override
 	protected void execute(Event arg0) {
-        if (type == 0){
+        if (ty == 0){
             Bukkit.getServer().getLogger().info(ChatColor.translateAlternateColorCodes('&', str.getSingle(arg0)));
-        }else if (type == 1){
+        }else if (ty == 1){
             Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes('&', str.getSingle(arg0)));
         }else{
             Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes('&', str.getSingle(arg0)));
@@ -32,7 +32,7 @@ public class EffPrintTag extends Effect{
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
         str = (Expression<String>) arg0[0];
-        type = arg3.mark;
+        ty = arg3.mark;
         return true;
     }
     @Override
