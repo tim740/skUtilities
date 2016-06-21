@@ -24,8 +24,8 @@ public class EffZipFile extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + file.getSingle(arg0));
-        File Fzip = new File(Utils.getDefaultPath() + zip.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath(file.getSingle(arg0)));
+        File Fzip = new File(Utils.getDefaultPath(zip.getSingle(arg0)));
         EvtFileZip efz = new EvtFileZip(Fzip, pth.toString());
         Bukkit.getServer().getPluginManager().callEvent(efz);
         if (!efz.isCancelled()) {

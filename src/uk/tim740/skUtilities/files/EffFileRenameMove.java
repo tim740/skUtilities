@@ -20,30 +20,30 @@ import java.nio.file.Paths;
  */
 public class EffFileRenameMove extends Effect{
 	private Expression<String> path, name;
-    private int type;
+    private int ty;
 
 	@Override
 	protected void execute(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
         if (pth.exists()) {
-            if (type == 0) {
+            if (ty == 0) {
                 EvtFileRename efn = new EvtFileRename(pth, name.getSingle(arg0));
                 Bukkit.getServer().getPluginManager().callEvent(efn);
                 if (!efn.isCancelled()) {
-                    pth.renameTo(new File(Utils.getDefaultPath() + path.getSingle(arg0).replaceAll(pth.getName(), name.getSingle(arg0))));
+                    pth.renameTo(new File(Utils.getDefaultPath(path.getSingle(arg0).replaceAll(pth.getName(), name.getSingle(arg0)))));
                 }
-            }else if (type == 1){
+            }else if (ty == 1){
                 EvtFileMove efm = new EvtFileMove(pth, name.getSingle(arg0));
                 Bukkit.getServer().getPluginManager().callEvent(efm);
                 if (!efm.isCancelled()) {
-                    pth.renameTo(new File(Utils.getDefaultPath() + name.getSingle(arg0) + File.separator + pth.getName()));
+                    pth.renameTo(new File(Utils.getDefaultPath(name.getSingle(arg0) + File.separator + pth.getName())));
                 }
             }else{
                 EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(arg0));
                 Bukkit.getServer().getPluginManager().callEvent(efc);
                 if (!efc.isCancelled()) {
                     try {
-                        Files.copy(pth.toPath(), Paths.get(Utils.getDefaultPath() + name.getSingle(arg0) + File.separator + pth.getName()));
+                        Files.copy(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(arg0) + File.separator + pth.getName())));
                     } catch (IOException e) {
                         skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
                     }
@@ -59,7 +59,7 @@ public class EffFileRenameMove extends Effect{
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
         path = (Expression<String>) arg0[0];
         name = (Expression<String>) arg0[1];
-        type = arg3.mark;
+        ty = arg3.mark;
         return true;
     }
     @Override

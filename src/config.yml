@@ -9,9 +9,15 @@ downloadUpdates: false
 
 #--------------------------------------------------------------------------
 
-#Should this addon check in the root folder when using file stuff
+#If set to 'true' (UnSafe Option) anything using paths in this addon (files)
+#will start looking in the root directory of your whole server!
+#Example: Paths would start at 'root' or if your using windows 'c:/'
 
 useRootAsDefaultPath: false
+
+#If set to 'false' (Safe Option) anything using paths in this addon (files)
+#will start looking in the root directory of the minecraft server!
+#Example: Paths would start at 'MinecraftServerRootFolder'
 
 #--------------------------------------------------------------------------
 
@@ -26,4 +32,4 @@ loadUtilities: true
 #--------------------------------------------------------------------------
 
 #DO NOT CHANGE THIS!
-configVersion: 2
+configVersion: 3

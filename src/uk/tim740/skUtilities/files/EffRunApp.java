@@ -23,7 +23,7 @@ public class EffRunApp extends Effect{
 
 	@Override
 	protected void execute(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
         if (Desktop.isDesktopSupported()){
             try{
                 EvtRunApp era = new EvtRunApp(pth);
@@ -53,11 +53,6 @@ public class EffRunApp extends Effect{
             }else{
                 skUtilities.prSys("Sorry this OS ('" + p +"')isn't supported!", getClass().getSimpleName(), 0);
             }
-            /*skUtilities.prSysi("");
-            skUtilities.prSysi("If you using a 'Linux Based System' you could try installing");
-            skUtilities.prSysi("libgnome: 'sudo apt-get install libgnome2-0'");
-            skUtilities.prSysi("and then restart the system!");
-            skUtilities.prSysi("");*/
         }
     }
 

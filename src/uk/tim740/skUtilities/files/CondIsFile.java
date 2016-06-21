@@ -17,7 +17,7 @@ public class CondIsFile extends Condition {
 
     @Override
     public boolean check(Event arg0) {
-        Boolean pth = new File(new File(Utils.getDefaultPath() + path.getSingle(arg0)).getPath()).isFile();
+        Boolean pth = new File(Utils.getDefaultPath(path.getSingle(arg0))).isFile();
         return (isNegated() ? !pth : pth);
     }
 

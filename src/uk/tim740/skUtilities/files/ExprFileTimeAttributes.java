@@ -21,17 +21,17 @@ import java.util.concurrent.TimeUnit;
  */
 public class ExprFileTimeAttributes extends SimpleExpression<Number>{
 	private Expression<String> path;
-    private int type;
+    private int ty;
 
 	@Override
 	@Nullable
 	protected Number[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
         if (pth.exists()){
             try {
-                if (type == 0) {
+                if (ty == 0) {
                     return new Number[]{pth.lastModified() /1000};
-                }else if (type == 1){
+                }else if (ty == 1){
                     return new Number[]{Files.readAttributes(Paths.get(pth.toString()), BasicFileAttributes.class).creationTime().to(TimeUnit.SECONDS)};
                 }else{
                     return new Number[]{Files.readAttributes(Paths.get(pth.toString()), BasicFileAttributes.class).lastAccessTime().to(TimeUnit.SECONDS)};
@@ -50,7 +50,7 @@ public class ExprFileTimeAttributes extends SimpleExpression<Number>{
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
         path = (Expression<String>) arg0[0];
-        type = arg3.mark;
+        ty = arg3.mark;
         return true;
     }
     @Override

@@ -26,7 +26,7 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
 	@Override
 	@Nullable
 	protected Boolean[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
         if (pth.exists()) {
             if (ty == 0) {
                 return new Boolean[]{pth.canRead()};
@@ -42,7 +42,7 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
     }
     public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
-            File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+            File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
             if (pth.exists()) {
                 Boolean boo = (boolean) delta[0];
                 if (ty == 0) {

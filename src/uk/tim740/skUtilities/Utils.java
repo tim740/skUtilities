@@ -42,11 +42,17 @@ public class Utils {
         }
     }
 
-    public static String getDefaultPath(){
+    public static String getDefaultPath(String pth){
         if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("useRootAsDefaultPath", true)){
-            return (Paths.get("").normalize().toAbsolutePath().toString() + File.separator);
+            String dp = Paths.get("").normalize().toAbsolutePath().toString();
+            if (pth.contains(dp)) {
+                return (pth + File.separator);
+            }else{
+                return (dp + File.separator + pth);
+            }
         }else{
-            return ("plugins" + File.separator);
+            return (pth);
         }
     }
+
 }

@@ -21,16 +21,16 @@ public class ExprDirList extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
         ArrayList<String> cl = new ArrayList<>();
         if (pth.isDirectory()) {
             //noinspection ConstantConditions
             for (File file : pth.listFiles()) {
-                cl.add(String.valueOf(file.getAbsolutePath()));
+                cl.add(String.valueOf(pth + File.separator + file.getName()));//(file.getAbsolutePath()));
             }
             return cl.toArray(new String[cl.size()]);
         }else{
-            skUtilities.prSys("'" + pth + "' isn't a valid directory!", getClass().getSimpleName(), 0);
+            skUtilities.prSys("'" + pth + File.separator  + "' isn't a valid directory!", getClass().getSimpleName(), 0);
             return null;
         }
     }

@@ -24,7 +24,7 @@ public class SExprFileContents extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
         if (pth.exists()){
             try {
                 ArrayList<String> cl = new ArrayList<>();
@@ -47,7 +47,7 @@ public class SExprFileContents extends SimpleExpression<String>{
 	}
     public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
-            File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+            File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
             if (pth.exists()) {
                 if (mode == Changer.ChangeMode.SET) {
                     try {

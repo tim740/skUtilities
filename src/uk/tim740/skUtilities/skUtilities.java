@@ -22,7 +22,7 @@ public class skUtilities extends JavaPlugin {
         Skript.registerAddon(this);
         getDataFolder().mkdirs();
         saveDefaultConfig();
-        if (!(getConfig().getInt("configVersion") == 2)){
+        if (!(getConfig().getInt("configVersion") == 3)){
             resetConfig();
         }
         if (!getConfig().contains("configVersion")){
@@ -98,15 +98,18 @@ public class skUtilities extends JavaPlugin {
     private void resetConfig(){
         File pth = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.yml");
         File ptho = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.old");
+
         if (ptho.exists()){
             ptho.delete();
         }
         pth.renameTo(ptho);
         saveDefaultConfig();
+
         prSysi("");
         prSysi("You where using an old version of the config!");
         prSysi("It was copied and renamed to 'config.old'");
         prSysi("A new config has been generated!");
+        prSysi("Sorry but all the options have been reset.");
         prSysi("");
     }
 }

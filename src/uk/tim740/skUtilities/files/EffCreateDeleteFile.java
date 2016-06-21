@@ -18,13 +18,13 @@ import java.io.IOException;
  */
 public class EffCreateDeleteFile extends Effect {
     private Expression<String> path;
-    private int type;
+    private int ty;
 
     @Override
     protected void execute(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
         if (!pth.exists()) {
-            if (type == 0) {
+            if (ty == 0) {
                 try {
                     EvtFileCreation efc = new EvtFileCreation(pth);
                     Bukkit.getServer().getPluginManager().callEvent(efc);
@@ -39,7 +39,7 @@ public class EffCreateDeleteFile extends Effect {
                 skUtilities.prSys("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
             }
         } else {
-            if (type == 0) {
+            if (ty == 0) {
                 skUtilities.prSys("'" + pth + "' already exists!", getClass().getSimpleName(), 0);
             } else {
                 try {
@@ -59,7 +59,7 @@ public class EffCreateDeleteFile extends Effect {
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         path = (Expression<String>) arg0[0];
-        type = arg3.mark;
+        ty = arg3.mark;
         return true;
     }
     @Override

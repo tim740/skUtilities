@@ -23,7 +23,7 @@ public class ExprZipList extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
         try {
             ArrayList<String> cl = new ArrayList<>();
             ZipEntry zEn;

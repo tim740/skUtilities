@@ -17,7 +17,7 @@ public class CondFileExists extends Condition {
 
     @Override
     public boolean check(Event arg0) {
-        Boolean pth = new File(new File(Utils.getDefaultPath() + path.getSingle(arg0)).getPath()).exists();
+        Boolean pth = new File(Utils.getDefaultPath(path.getSingle(arg0))).exists();
         return (isNegated() ? !pth : pth);
     }
 

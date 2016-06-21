@@ -20,7 +20,7 @@ public class ExprFileSizeBytes extends SimpleExpression<Number>{
 	@Override
 	@Nullable
 	protected Number[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath() + path.getSingle(arg0));
+        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
         if (pth.exists()){
             return new Number[]{pth.length()};
         }else{
