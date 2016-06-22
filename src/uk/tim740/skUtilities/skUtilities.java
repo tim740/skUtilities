@@ -96,8 +96,8 @@ public class skUtilities extends JavaPlugin {
         return getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
     private void resetConfig(){
-        File pth = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.yml");
-        File ptho = new File("plugins" + File.separator + "skUtilities" + File.separator + "config.old");
+        File pth = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
+        File ptho = new File(getDataFolder().getAbsolutePath() + File.separator + "config.old");
 
         if (ptho.exists()){
             ptho.delete();
