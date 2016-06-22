@@ -83,7 +83,7 @@ public class skUtilities extends JavaPlugin {
                     Utils.downloadFile(new File(dln), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar");
                     prSysi("Latest version has been downloaded!");
                 }else{
-                    prSysi("Latest version of skUtilities (v" + v + ") is already updated and ready to use!");
+                    prSysi("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
                 }
             }else{
                 prSysi("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest");
