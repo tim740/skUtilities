@@ -72,7 +72,7 @@ public class skUtilities extends JavaPlugin {
             v = ur.readLine();
             ur.close();
         } catch (Exception e) {
-            prSys(e.getCause().getMessage(), "Main", 0);
+            prSys("Error while checking for update!", "Main", 0);
         }
         if (!Objects.equals(getVer(), v)){
             prSysi("A new version of the addon is out v" + v);
