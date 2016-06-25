@@ -44,7 +44,15 @@ public class skUtilities extends JavaPlugin {
             getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         }else{
             prSysi("It seems like you've disabled updates, you should consider enabling them again!");
+    }
+
+        try {
+            Metrics metrics = new Metrics(this);
+            metrics.start();
+        } catch (Exception e) {
+            skUtilities.prSys("Failed to submit stats to Metrics", getClass().getSimpleName(), 0);
         }
+
         prSysi("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
     }
 
