@@ -26,6 +26,7 @@ class RegUtil {
         Skript.registerExpression(ExprSysTime.class,Number.class,ExpressionType.PROPERTY,"[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
         Skript.registerExpression(ExprRam.class,Number.class,ExpressionType.PROPERTY,"[skutil ](0¦free|1¦total|2¦max) (ram|memory)");
         Skript.registerExpression(ExprFontNames.class,String.class,ExpressionType.PROPERTY,"[all ][system ]font names");
+        Skript.registerExpression(ExprServerIP.class,String.class,ExpressionType.PROPERTY,"[skutil ]ip of server", "[skutil ]server's ip");
 
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
