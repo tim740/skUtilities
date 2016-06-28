@@ -21,8 +21,7 @@ public class skUtilities extends JavaPlugin {
         saveDefaultConfig();
         if (!(getConfig().getInt("configVersion") == 3)){
             resetConfig();
-        }
-        if (!getConfig().contains("configVersion")){
+        }else if (!getConfig().contains("configVersion")){
             resetConfig();
         }
         if (getConfig().getBoolean("loadConversions", true)){
