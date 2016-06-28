@@ -49,9 +49,10 @@ class RegUtil {
         }else{
             skUtilities.loadErr("SExprGlideMode");
         }
+        regUE();
     }
 
-    static void regUE() {
+    private static void regUE() {
         if(Bukkit.getVersion().contains("(MC: 1.9") ||  Bukkit.getVersion().contains("(MC: 1.1")) {
             Skript.registerEvent("CauldronLevelChange", SimpleEvent.class, CauldronLevelChangeEvent.class, "cauldron[ water] level change");
             EventValues.registerEventValue(CauldronLevelChangeEvent.class, Integer.class, new Getter<Integer,CauldronLevelChangeEvent>() {

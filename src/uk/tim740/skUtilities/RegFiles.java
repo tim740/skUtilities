@@ -43,9 +43,11 @@ class RegFiles {
 
 
         Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
+
+        regFE();
     }
 
-    static void regFE() {
+    private static void regFE() {
         Skript.registerEvent("DownloadFile", SimpleEvent.class, EvtFileDownload.class, "file download");
         EventValues.registerEventValue(EvtFileDownload.class, String.class, new Getter<String,EvtFileDownload>() {
             @Nullable

@@ -11,9 +11,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Objects;
 
-import static org.bukkit.Bukkit.getPluginManager;
-import static org.bukkit.Bukkit.getScheduler;
-
 public class skUtilities extends JavaPlugin {
 
 	@Override
@@ -33,18 +30,16 @@ public class skUtilities extends JavaPlugin {
         }
         if (getConfig().getBoolean("loadUtilities", true)){
             RegUtil.regU();
-            RegUtil.regUE();
         }
         if (getConfig().getBoolean("loadFiles", true)) {
             RegFiles.regF();
-            RegFiles.regFE();
         }
         RegConfig.regCo();
         if (getConfig().getBoolean("checkForUpdates", true)) {
-            getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
+            Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         }else{
             prSysi("It seems like you've disabled updates, you should consider enabling them again!");
-    }
+        }
 
         try {
             Metrics metrics = new Metrics(this);
@@ -101,7 +96,7 @@ public class skUtilities extends JavaPlugin {
         }
     }
     private static String getVer(){
-        return getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
+        return Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
     private void resetConfig(){
         File pth = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
