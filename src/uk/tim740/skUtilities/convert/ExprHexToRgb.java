@@ -1,6 +1,5 @@
 package uk.tim740.skUtilities.convert;
 
-import java.awt.Color;
 import javax.annotation.Nullable;
 
 import org.bukkit.event.Event;
@@ -22,8 +21,9 @@ public class ExprHexToRgb extends SimpleExpression<String>{
 	protected String[] get(Event arg0) {
 		String s = hex.getSingle(arg0).toUpperCase().replace("#", "");
 		if (s.length() == 6){
-            return new String[]{Color.decode("#" + s).toString().replace("java.awt.Color[", "").replace("r=", "").replace("g=", " ").replace("b=", " ").replace("]", "")};
-		}else{
+            int color = (int)Long.parseLong(s, 16);
+            return new String[]{Integer.toString((color >> 16) & 0xFF) + ", " + Integer.toString((color >> 8) & 0xFF) + ", " + Integer.toString((color) & 0xFF)};
+        }else{
             skUtilities.prSys("Length must be 6. (FFFFFF)!", getClass().getSimpleName(), 0);
 			return null;
 		}
