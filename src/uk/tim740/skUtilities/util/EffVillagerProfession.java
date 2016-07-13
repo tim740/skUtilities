@@ -19,19 +19,18 @@ import uk.tim740.skUtilities.skUtilities;
  */
 public class EffVillagerProfession extends Effect{
     private Expression<Location> loca;
+    private Expression<Villager.Profession> prof;
     private Expression<Entity> entity;
-    private int prof;
 
     @Override
     protected void execute(Event arg0) {
         Location loc = loca.getSingle(arg0);
-        Villager.Profession[] s = Villager.Profession.values();
         if (entity.toString().contains("zombie")){
             Zombie zom = (Zombie) loc.getWorld().spawnEntity(loc, EntityType.ZOMBIE);
-            zom.setVillagerProfession(s[prof]);
+            zom.setVillagerProfession(prof.getSingle(arg0));
         }else if (entity.toString().contains("villager")){
             Villager vil = (Villager) loc.getWorld().spawnEntity(loc, EntityType.VILLAGER);
-            vil.setProfession(s[prof]);
+            vil.setProfession(prof.getSingle(arg0));
         }else{
             skUtilities.prSys("Only (Villager & Zombie Villager) are supported!", getClass().getSimpleName(), 0);
         }
@@ -40,9 +39,9 @@ public class EffVillagerProfession extends Effect{
     @Override
     @SuppressWarnings("unchecked")
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        prof = arg3.mark;
         entity = (Expression<Entity>) arg0[0];
-        loca = (Expression<Location>) arg0[1];
+        prof = (Expression<Villager.Profession>) arg0[1];
+        loca = (Expression<Location>) arg0[2];
         return true;
     }
     @Override

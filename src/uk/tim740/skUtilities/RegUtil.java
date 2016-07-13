@@ -1,14 +1,19 @@
 package uk.tim740.skUtilities;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.classes.ClassInfo;
+import ch.njol.skript.classes.Parser;
 import ch.njol.skript.lang.ExpressionType;
+import ch.njol.skript.lang.ParseContext;
 import ch.njol.skript.lang.util.SimpleEvent;
+import ch.njol.skript.registrations.Classes;
 import ch.njol.skript.registrations.EventValues;
 import ch.njol.skript.util.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Villager;
 import org.bukkit.event.block.CauldronLevelChangeEvent;
 import org.bukkit.event.entity.EntityToggleGlideEvent;
 import uk.tim740.skUtilities.util.*;
@@ -29,7 +34,35 @@ class RegUtil {
 
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
-        Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession (0¦farmer|1¦librarian|2¦priest|3¦blacksmith|4¦butcher) at %location%");
+
+        Classes.registerClass(new ClassInfo<>(Villager.Profession.class, "profession").name("profession").parser(new Parser<Villager.Profession>() {
+            @Override
+            @Nullable
+            public Villager.Profession parse(String s, ParseContext context) {
+                try {
+                    return Villager.Profession.valueOf(s.toUpperCase());
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+
+            @Override
+            public String toString(Villager.Profession vi, int i) {
+                return vi.name().toLowerCase();
+                //.getName().toLowerCase();
+            }
+            @Override
+            public String toVariableNameString(Villager.Profession vi) {
+                return vi.name().toLowerCase();
+            }
+            @Override
+            public String getVariableNamePattern() {
+                return ".+";
+            }
+        }));
+
+        Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession %profession% at %location%");
+
         Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");
         Skript.registerEffect(EffReloadSkript.class, "reload s(k|c)ript %string%");
         Skript.registerEffect(EffRestartServer.class, "re(0¦start|1¦load) server");
