@@ -6,9 +6,6 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
-
-import java.io.File;
 
 /**
  * Created by tim740 on 05/04/2016
