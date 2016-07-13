@@ -10,6 +10,7 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 
 /**
@@ -23,7 +24,7 @@ public class ExprVersion extends SimpleExpression<String> {
     protected String[] get(Event arg0) {
         if (str.getSingle(arg0).equalsIgnoreCase("aliases")) {
             try {
-                return new String[]{"v" + new BufferedReader(new FileReader("plugins\\Skript\\aliases-english.sk")).readLine().replaceAll("#! VERSION: ", "").replaceAll("!", "")};
+                return new String[]{"v" + new BufferedReader(new FileReader("plugins" + File.separator + "Skript" + File.separator +"aliases-english.sk")).readLine().replaceAll("#! VERSION: ", "").replaceAll("!", "")};
             } catch (Exception e) {
                 skUtilities.prSys(e.getCause().getMessage(), getClass().getSimpleName(), 0);
                 return null;
