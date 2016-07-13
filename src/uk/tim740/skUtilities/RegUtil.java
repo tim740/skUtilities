@@ -36,30 +36,33 @@ class RegUtil {
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
 
-        Classes.registerClass(new ClassInfo<>(Villager.Profession.class, "profession").name("profession").parser(new Parser<Villager.Profession>() {
-            @Override
-            @Nullable
-            public Villager.Profession parse(String s, ParseContext context) {
-                try {
-                    return Villager.Profession.valueOf(s.toUpperCase());
-                } catch (Exception e) {
-                    return null;
+        if (Bukkit.getPluginManager().getPlugin("SkQuery") == null){
+            Classes.registerClass(new ClassInfo<>(Villager.Profession.class, "profession").parser(new Parser<Villager.Profession>() {
+                @Override
+                @Nullable
+                public Villager.Profession parse(String s, ParseContext context) {
+                    try {
+                        return Villager.Profession.valueOf(s.toUpperCase());
+                    } catch (Exception e) {
+                        return null;
+                    }
                 }
-            }
 
-            @Override
-            public String toString(Villager.Profession vi, int i) {
-                return vi.name().toLowerCase();
-            }
-            @Override
-            public String toVariableNameString(Villager.Profession vi) {
-                return vi.name().toLowerCase();
-            }
-            @Override
-            public String getVariableNamePattern() {
-                return ".+";
-            }
-        }));
+                @Override
+                public String toString(Villager.Profession vi, int i) {
+                    return vi.name().toLowerCase();
+                }
+                @Override
+                public String toVariableNameString(Villager.Profession vi) {
+                    return vi.name().toLowerCase();
+                }
+                @Override
+                public String getVariableNamePattern() {
+                    return ".+";
+                }
+            }));
+        }
+
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession %profession% at %location%");
 
         Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");
