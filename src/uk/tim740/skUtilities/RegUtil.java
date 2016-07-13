@@ -25,12 +25,13 @@ import javax.annotation.Nullable;
  */
 class RegUtil {
     static void regU() {
+        Skript.registerExpression(ExprServerIP.class,String.class,ExpressionType.PROPERTY,"[skutil ]ip of server", "[skutil ]server's ip");
+
         Skript.registerExpression(ExprLoaded.class,Number.class, ExpressionType.PROPERTY,"number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦plugins|8¦addons|9¦events|10¦effects|11¦expressions|12¦conditions)");
         Skript.registerExpression(ExprVersion.class,String.class,ExpressionType.PROPERTY,"%string%'s version", "version of %string%");
         Skript.registerExpression(ExprSysTime.class,Number.class,ExpressionType.PROPERTY,"[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
         Skript.registerExpression(ExprRam.class,Number.class,ExpressionType.PROPERTY,"[skutil ](0¦free|1¦total|2¦max) (ram|memory)");
         Skript.registerExpression(ExprFontNames.class,String.class,ExpressionType.PROPERTY,"[all ][system ]font names");
-        Skript.registerExpression(ExprServerIP.class,String.class,ExpressionType.PROPERTY,"[skutil ]ip of server", "[skutil ]server's ip");
 
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
@@ -49,7 +50,6 @@ class RegUtil {
             @Override
             public String toString(Villager.Profession vi, int i) {
                 return vi.name().toLowerCase();
-                //.getName().toLowerCase();
             }
             @Override
             public String toVariableNameString(Villager.Profession vi) {
@@ -60,7 +60,6 @@ class RegUtil {
                 return ".+";
             }
         }));
-
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession %profession% at %location%");
 
         Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");
