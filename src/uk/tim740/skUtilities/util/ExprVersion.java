@@ -32,12 +32,12 @@ public class ExprVersion extends SimpleExpression<String> {
         }else if (str.getSingle(arg0).equalsIgnoreCase("server")) {
             return new String[]{Bukkit.getServer().getVersion()};
         }else if (str.getSingle(arg0).equalsIgnoreCase("os")) {
-            return new String[]{"v" + System.getProperty("os.version")};
+            return new String[]{System.getProperty("os.version")};
         }else if (str.getSingle(arg0).equalsIgnoreCase("java")) {
-            return new String[]{"v" + System.getProperty("java.version")};
+            return new String[]{System.getProperty("java.version")};
         }else {
             try {
-                return new String[]{"v" + Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
+                return new String[]{Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
             } catch (Exception e) {
                 skUtilities.prSys("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), 0);
                 return null;

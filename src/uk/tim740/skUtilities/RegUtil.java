@@ -62,7 +62,6 @@ class RegUtil {
                 }
             }));
         }
-
         Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession %profession% at %location%");
 
         Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");

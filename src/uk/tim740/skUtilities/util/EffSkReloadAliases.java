@@ -15,8 +15,8 @@ public class EffSkReloadAliases extends Effect{
 
 	@Override
 	protected void execute(Event arg0) {
-            Aliases.clear();
-            Aliases.load();
+        Aliases.clear();
+        Aliases.load();
 	}
 
     @Override
