@@ -49,9 +49,9 @@ public class ExprLoaded extends SimpleExpression<Number>{
 			return new Number[]{Skript.getEffects().size()};
 		}else if (ty == 11){
 			int size = 0;
-			Iterator<ExpressionInfo<?, ?>> expressions = Skript.getExpressions();
-			while(expressions.hasNext()) {
-			  expressions.next();
+			Iterator<ExpressionInfo<?, ?>> exprs = Skript.getExpressions();
+			while(exprs.hasNext()) {
+			  exprs.next();
 			  size += 1;
 			}
 			return new Number[]{size};
