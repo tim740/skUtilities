@@ -35,7 +35,7 @@ class RegFiles {
         Skript.registerEffect(EffCreateDeleteFile.class, "(0¦crea|1¦dele)te (script|program|app[lication]|[zip ]file) %string%");
         Skript.registerEffect(EffFileRenameMove.class, "(0¦rename|1¦move|2¦copy) file %string% to %-string%");
         Skript.registerEffect(EffFileDownload.class, "download file from %string% to file %-string%");
-        Skript.registerEffect(EffZipFile.class, "add file[s] %strings% to zip[ file] %-string%");
+        Skript.registerEffect(EffZipFile.class, "zip file[s] %strings% to zip[ file] %-string%");
         Skript.registerEffect(EffZipDirectory.class, "zip dir[ectory] %string% to zip[ file] %-string%");
         Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
 
@@ -44,7 +44,6 @@ class RegFiles {
 
 
         Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
-
         regFE();
     }
 
