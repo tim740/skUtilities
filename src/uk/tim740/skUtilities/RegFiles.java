@@ -44,6 +44,7 @@ class RegFiles {
 
 
         Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
+
         regFE();
     }
 
