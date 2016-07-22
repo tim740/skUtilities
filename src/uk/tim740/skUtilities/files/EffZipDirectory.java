@@ -11,34 +11,28 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipException;
 import java.util.zip.ZipOutputStream;
 
 /**
- * Created by tim740 on 17/03/2016
+ * Created by tim740 on 22/07/2016
  */
-public class EffZipFile extends Effect {
-    private Expression<String> files;
-    private Expression<String> zip;
+public class EffZipDirectory extends Effect {
+    private Expression<String> file, zip;
 
     @Override
     protected void execute(Event arg0) {
+        File Dpth = new File(Utils.getDefaultPath(file.getSingle(arg0)));
         File Fzip = new File(Utils.getDefaultPath(zip.getSingle(arg0)));
-        ArrayList<File> cl = new ArrayList<>();
-        for (String Spth : files.getAll(arg0)) {
-            cl.add(new File(Utils.getDefaultPath(Spth)));
-        }
-        File[] Fpths = new File[cl.size()];
-        File[] s = cl.toArray(Fpths);
-        EvtFileZip efz = new EvtFileZip(Fzip, "Files");
+        EvtFileZip efz = new EvtFileZip(Fzip, Dpth.toString());
         Bukkit.getServer().getPluginManager().callEvent(efz);
         if (!efz.isCancelled()) {
             try {
                 FileOutputStream fout = new FileOutputStream(Fzip);
                 ZipOutputStream zout = new ZipOutputStream(new BufferedOutputStream(fout));
+                File[] s = Dpth.listFiles();
+                assert s != null;
                 for (File va : s) {
                     FileInputStream fin = new FileInputStream(va);
                     zout.putNextEntry(new ZipEntry(va.getName()));
@@ -53,7 +47,7 @@ public class EffZipFile extends Effect {
             } catch (ZipException e) {
                 skUtilities.prSys("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName(), 0);
             } catch (FileNotFoundException e) {
-                skUtilities.prSys("Files: '" + Arrays.toString(s) + "' 1 or " + s.length + " Files don't exist!", getClass().getSimpleName(), 0);
+                skUtilities.prSys("Directory: '" + Dpth + "' doesn't exist!", getClass().getSimpleName(), 0);
             } catch (IOException e) {
                 skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
             }
@@ -63,7 +57,7 @@ public class EffZipFile extends Effect {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        files = (Expression<String>) arg0[0];
+        file = (Expression<String>) arg0[0];
         zip = (Expression<String>) arg0[1];
         return true;
     }
