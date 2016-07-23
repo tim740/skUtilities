@@ -29,14 +29,14 @@ public class ExprEncrypt extends SimpleExpression<String> {
             c = Cipher.getInstance(cipher.getSingle(arg0).toUpperCase());
             c.init(ty, new SecretKeySpec(key.getSingle(arg0).getBytes(), cipher.getSingle(arg0).toUpperCase()));
         }catch (Exception e){
-            skUtilities.prSys(e.getMessage() + " '"+ cipher.getSingle(arg0).toUpperCase() +"'", getClass().getSimpleName(), 0);
+            skUtilities.prSysE(e.getMessage() + " '"+ cipher.getSingle(arg0).toUpperCase() +"'", getClass().getSimpleName(), e);
         }
         assert c != null;
         if (ty == Cipher.ENCRYPT_MODE){
             try{
                 cout = c.doFinal(str.getSingle(arg0).getBytes());
             }catch (Exception e){
-                skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
             }
             return new String[]{new BASE64Encoder().encode(cout)};
         }else{
@@ -46,7 +46,7 @@ public class ExprEncrypt extends SimpleExpression<String> {
                 decry = new BASE64Decoder().decodeBuffer(str.getSingle(arg0));
                 cout = c.doFinal(decry);
             }catch (Exception e) {
-                skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
             }for (byte aCout : cout) {
                 out = (out + Character.toString((char) new Byte(aCout).intValue()));
             }

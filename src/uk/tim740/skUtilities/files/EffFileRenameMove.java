@@ -45,12 +45,12 @@ public class EffFileRenameMove extends Effect{
                     try {
                         Files.copy(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(arg0) + File.separator + pth.getName())));
                     } catch (IOException e) {
-                        skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                        skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
                     }
                 }
             }
         } else {
-            skUtilities.prSys("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
         }
     }
 

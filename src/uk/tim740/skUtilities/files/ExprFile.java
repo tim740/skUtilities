@@ -55,7 +55,7 @@ public class ExprFile extends SimpleExpression<File> {
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
         if (!ScriptLoader.isCurrentEvent(EvtRunApp.class, EvtFileDownload.class, EvtFileCreation.class, EvtFileDeletion.class, EvtFileMove.class, EvtFileCopy.class, EvtFileRename.class, EvtFileWipe.class, EvtFileWrite.class, EvtUnzip.class, EvtFileZip.class)) {
-            skUtilities.prSys("Cannot use 'file' outside of file events!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("Cannot use 'file' outside of file events!", getClass().getSimpleName());
             return false;
         }
         return true;

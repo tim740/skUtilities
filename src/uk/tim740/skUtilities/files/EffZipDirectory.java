@@ -11,9 +11,10 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.*;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipException;
-import java.util.zip.ZipOutputStream;
+import java.net.URI;
+import java.nio.file.*;
+import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * Created by tim740 on 22/07/2016
@@ -23,33 +24,37 @@ public class EffZipDirectory extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File Dpth = new File(Utils.getDefaultPath(file.getSingle(arg0)));
+        Path Dpth = Paths.get(Utils.getDefaultPath(file.getSingle(arg0)));
         File Fzip = new File(Utils.getDefaultPath(zip.getSingle(arg0)));
         EvtFileZip efz = new EvtFileZip(Fzip, Dpth.toString());
         Bukkit.getServer().getPluginManager().callEvent(efz);
         if (!efz.isCancelled()) {
             try {
-                FileOutputStream fout = new FileOutputStream(Fzip);
-                ZipOutputStream zout = new ZipOutputStream(new BufferedOutputStream(fout));
-                File[] s = Dpth.listFiles();
-                assert s != null;
-                for (File va : s) {
-                    FileInputStream fin = new FileInputStream(va);
-                    zout.putNextEntry(new ZipEntry(va.getName()));
-                    int il;
-                    while ((il = fin.read(new byte[1024], 0, 1024)) > 0) {
-                        zout.write(new byte[1024], 0, il);
-                    }
-                    zout.closeEntry();
-                    fin.close();
+                final Map<String, String> env = new HashMap<>();
+                env.put("create", "true");
+                final URI uri = URI.create("jar:file:/" + Fzip.getAbsolutePath().replace("\\", "/"));
+                try (final FileSystem zfs = FileSystems.newFileSystem(uri, env);
+                    final Stream<Path> files = Files.walk(Dpth)) {
+                    final Path rt = zfs.getPath("/");
+                    files.forEach(cf -> {
+                        try {
+                            final Path to = rt.resolve(Dpth.relativize(cf).toString());
+                            if (Files.isDirectory(cf)) {
+                                Files.createDirectories(to);
+                            } else {
+                                Files.copy(cf, to);
+                            }
+                        } catch (IOException e) {
+                            skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+                        }
+                    });
                 }
-                zout.close();
-            } catch (ZipException e) {
-                skUtilities.prSys("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName(), 0);
+            } catch (FileSystemAlreadyExistsException e) {
+                skUtilities.prSysE("ZipFile: '" + Fzip + "' already exists!", getClass().getSimpleName(), e);
             } catch (FileNotFoundException e) {
-                skUtilities.prSys("Directory: '" + Dpth + "' doesn't exist!", getClass().getSimpleName(), 0);
+                skUtilities.prSysE("Directory: '" + Dpth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), e);
             } catch (IOException e) {
-                skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
             }
         }
     }

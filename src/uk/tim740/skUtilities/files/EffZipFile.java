@@ -51,11 +51,11 @@ public class EffZipFile extends Effect {
                 }
                 zout.close();
             } catch (ZipException e) {
-                skUtilities.prSys("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName(), 0);
+                skUtilities.prSysE("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName(), e);
             } catch (FileNotFoundException e) {
-                skUtilities.prSys("Files: '" + Arrays.toString(s) + "' 1 or " + s.length + " Files don't exist!", getClass().getSimpleName(), 0);
+                skUtilities.prSysE("Files: '" + Arrays.toString(s) + "' 1 or " + s.length + " Files don't exist!", getClass().getSimpleName(), e);
             } catch (IOException e) {
-                skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
             }
         }
     }

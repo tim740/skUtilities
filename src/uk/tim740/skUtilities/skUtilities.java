@@ -19,7 +19,7 @@ public class skUtilities extends JavaPlugin {
         Skript.registerAddon(this);
         getDataFolder().mkdirs();
         saveDefaultConfig();
-        if (!(getConfig().getInt("configVersion") == 3)){
+        if (!(getConfig().getInt("configVersion") == 4)){
             resetConfig();
         }else if (!getConfig().contains("configVersion")){
             resetConfig();
@@ -37,29 +37,31 @@ public class skUtilities extends JavaPlugin {
         if (getConfig().getBoolean("checkForUpdates", true)) {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         }else{
-            prSysi("It seems like you've disabled updates, you should consider enabling them again!");
+            prSysI("It seems like you've disabled updates, you should consider enabling them again!");
         }
 
         try {
             Metrics metrics = new Metrics(this);
             metrics.start();
         } catch (Exception e) {
-            skUtilities.prSys("Failed to submit stats to Metrics", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("Failed to submit stats to Metrics", getClass().getSimpleName(), e);
         }
 
-        prSysi("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
+        prSysI("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
     }
 
-    public static void prSys(String s, String c, Integer t) {
-        if (t == 0){
-            Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s + " ("+ c +".class)");
-            Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + " ("+ c +".class)", "skUtilities.error");
-        }else if (t == 1){
-            Bukkit.getServer().getLogger().warning("[skUtilities] v" + getVer() + ": "  + s + " ("+ c +".class)");
-            Bukkit.broadcast(ChatColor.GOLD + "[skUtilities: WARNING]" + ChatColor.GRAY+ " v" + getVer() + ": " + s + " ("+ c +".class)", "skUtilities.warning");
+    public static void prSysE(String s, String c) {
+        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s + " (" + c + ".class)");
+        Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + " (" + c + ".class)", "skUtilities.error");
+    }
+    public static void prSysE(String s, String c, Exception e) {
+        if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("debug", true)){
+            e.printStackTrace();
+        }else {
+            prSysE(s, c);
         }
     }
-    public static void prSysi(String s){
+    public static void prSysI(String s){
         Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": "  + s);
     }
     static void loadErr(String s){
@@ -67,31 +69,31 @@ public class skUtilities extends JavaPlugin {
     }
 
     private void updateChk(){
-        prSysi("Checking for update now you will be notified if there is an update!");
+        prSysI("Checking for update now you will be notified if there is an update!");
         String v = "";
         try {
             BufferedReader ur = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/tim740/skUtilities/master/latest.ver").openStream()));
             v = ur.readLine();
             ur.close();
         } catch (Exception e) {
-            prSys("Error while checking for update!", "Main", 0);
+            prSysE("Error while checking for update!", "Main", e);
         }
         if (!Objects.equals(getVer(), v)){
-            prSysi("A new version of the addon is out v" + v);
+            prSysI("A new version of the addon is out v" + v);
             if (getConfig().getBoolean("downloadUpdates", true)) {
                 String dln = "plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar";
                 if (!new File(dln).exists()) {
-                    prSysi("Downloading latest version!");
+                    prSysI("Downloading latest version!");
                     Utils.downloadFile(new File(dln), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar");
-                    prSysi("Latest version has been downloaded!");
+                    prSysI("Latest version has been downloaded!");
                 }else{
-                    prSysi("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
+                    prSysI("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
                 }
             }else{
-                prSysi("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest");
+                prSysI("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest");
             }
         }else{
-            prSysi("It seems like your using the latest version!");
+            prSysI("It seems like your using the latest version!");
         }
     }
     private static String getVer(){
@@ -107,11 +109,11 @@ public class skUtilities extends JavaPlugin {
         pth.renameTo(ptho);
         saveDefaultConfig();
 
-        prSysi("");
-        prSysi("You where using an old version of the config!");
-        prSysi("It was copied and renamed to 'config.old'");
-        prSysi("A new config has been generated!");
-        prSysi("Sorry but all the options have been reset.");
-        prSysi("");
+        prSysI("");
+        prSysI("You where using an old version of the config!");
+        prSysI("It was copied and renamed to 'config.old'");
+        prSysI("A new config has been generated!");
+        prSysI("Sorry but all the options have been reset.");
+        prSysI("");
     }
 }

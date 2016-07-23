@@ -1,13 +1,13 @@
 #skUtilities
 
-#--------------------------------------------------------------------------
+#--------------------------------[ Updates ]--------------------------------
 
 #Should this addon check for an update every 12 hours
 
 checkForUpdates: true
 downloadUpdates: false
 
-#--------------------------------------------------------------------------
+#-------------------------------[ Security! ]-------------------------------
 
 #If set to 'true' (UnSafe Option) anything using paths in this addon (files)
 #will start looking in the root directory of your whole server!
@@ -19,17 +19,24 @@ useRootAsDefaultPath: false
 #will start looking in the root directory of the minecraft server!
 #Example: Paths would start at 'MinecraftServerRootFolder'
 
-#--------------------------------------------------------------------------
+#--------------------------------[ Loading ]--------------------------------
 
 #Disables or Enables parts of the addon.
-#If disabled the only way to renable is to change to true and restart the server,
-#this only disables/enables those parts when you start the server.
+#If disabled the only way to renable is to change to true and restart the
+#server, this only disables/enables those parts when you start the server.
 
 loadConversions: true
 loadFiles: true
 loadUtilities: true
 
-#--------------------------------------------------------------------------
+#---------------------------------[ Debug ]---------------------------------
 
-#DO NOT CHANGE THIS!
-configVersion: 3
+#Forces skUtiltites to send StackTraces instead of shortened errors, don't
+#keep this enabled all the time, only if you need more info on an error.
+
+debug: false
+
+#---------------------------------------------------------------------------
+
+#DO NOT CHANGE THIS! (Config will reset if changed)
+configVersion: 4

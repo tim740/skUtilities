@@ -26,7 +26,7 @@ public class ExprVersion extends SimpleExpression<String> {
             try {
                 return new String[]{"v" + new BufferedReader(new FileReader("plugins" + File.separator + "Skript" + File.separator +"aliases-english.sk")).readLine().replaceAll("#! VERSION: ", "").replaceAll("!", "")};
             } catch (Exception e) {
-                skUtilities.prSys(e.getCause().getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSysE(e.getCause().getMessage(), getClass().getSimpleName(), e);
                 return null;
             }
         }else if (str.getSingle(arg0).equalsIgnoreCase("server")) {
@@ -39,7 +39,7 @@ public class ExprVersion extends SimpleExpression<String> {
             try {
                 return new String[]{Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
             } catch (Exception e) {
-                skUtilities.prSys("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), 0);
+                skUtilities.prSysE("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), e);
                 return null;
             }
         }

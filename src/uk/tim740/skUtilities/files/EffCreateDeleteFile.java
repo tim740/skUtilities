@@ -32,15 +32,15 @@ public class EffCreateDeleteFile extends Effect {
                         pth.createNewFile();
                     }
                 } catch (IOException e) {
-                    skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                    skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
                 }
 
             } else {
-                skUtilities.prSys("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+                skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
             }
         } else {
             if (ty == 0) {
-                skUtilities.prSys("'" + pth + "' already exists!", getClass().getSimpleName(), 0);
+                skUtilities.prSysE("'" + pth + "' already exists!", getClass().getSimpleName());
             } else {
                 try {
                     EvtFileDeletion efd = new EvtFileDeletion(pth);
@@ -49,7 +49,7 @@ public class EffCreateDeleteFile extends Effect {
                         pth.delete();
                     }
                 } catch (Exception e) {
-                    skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                    skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
                 }
             }
         }

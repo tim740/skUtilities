@@ -38,7 +38,7 @@ public class Utils {
             fos.close();
             rbc.close();
         } catch (Exception e) {
-            skUtilities.prSys(e.getMessage(), "Utils", 0);
+            skUtilities.prSysE(e.getMessage(), "Utils", e);
         }
     }
 

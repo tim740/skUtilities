@@ -36,7 +36,7 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
                 return new Boolean[]{pth.isHidden()};
             }
         }else{
-            skUtilities.prSys("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
             return null;
         }
     }
@@ -65,11 +65,11 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
                             Files.setAttribute(Paths.get(pth.toString()), "dos:hidden", false);
                         }
                     } catch (IOException e) {
-                        skUtilities.prSys("Sorry Windows only!", getClass().getSimpleName(), 0);
+                        skUtilities.prSysE("Sorry Windows only!", getClass().getSimpleName(), e);
                     }
                 }
             } else {
-                skUtilities.prSys("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+                skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
             }
         }
     }

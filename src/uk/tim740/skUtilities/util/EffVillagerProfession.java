@@ -32,7 +32,7 @@ public class EffVillagerProfession extends Effect{
             Villager vil = (Villager) loc.getWorld().spawnEntity(loc, EntityType.VILLAGER);
             vil.setProfession(prof.getSingle(arg0));
         }else{
-            skUtilities.prSys("Only (Villager & Zombie Villager) are supported!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("Only (Villager & Zombie Villager) are supported!", getClass().getSimpleName());
         }
     }
 

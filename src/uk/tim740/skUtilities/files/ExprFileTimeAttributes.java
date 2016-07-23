@@ -37,11 +37,11 @@ public class ExprFileTimeAttributes extends SimpleExpression<Number>{
                     return new Number[]{Files.readAttributes(Paths.get(pth.toString()), BasicFileAttributes.class).lastAccessTime().to(TimeUnit.SECONDS)};
                 }
             } catch (IOException e) {
-                skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
                 return null;
             }
         }else{
-            skUtilities.prSys("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
             return null;
         }
 	}

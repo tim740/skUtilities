@@ -37,11 +37,11 @@ public class SExprFileContents extends SimpleExpression<String>{
                 String[] out = new String[cl.size()];
                 return cl.toArray(out);
             } catch (Exception e) {
-                skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
                 return null;
             }
         }else{
-            skUtilities.prSys("'" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
             return null;
         }
 	}
@@ -58,7 +58,7 @@ public class SExprFileContents extends SimpleExpression<String>{
                         }
                         bw.close();
                     } catch (IOException e) {
-                        skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                        skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
                     }
                 }else{
                     try {
@@ -70,11 +70,11 @@ public class SExprFileContents extends SimpleExpression<String>{
                             bw.close();
                         }
                     } catch (IOException e) {
-                        skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                        skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
                     }
                 }
             } else {
-                skUtilities.prSys("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+                skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
             }
         }
     }

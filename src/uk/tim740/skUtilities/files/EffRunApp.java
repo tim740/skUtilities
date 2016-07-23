@@ -36,7 +36,7 @@ public class EffRunApp extends Effect{
                     }
                 }
             }catch (IOException e){
-                skUtilities.prSys("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), 0);
+                skUtilities.prSysE("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), e);
             }
         }else{
             String p = System.getProperty("os.name").toLowerCase();
@@ -46,12 +46,12 @@ public class EffRunApp extends Effect{
             if (p.contains("linux")) gc = true;
             if (p.contains("unix")) gc = true;
             if (gc.equals(true)){
-                skUtilities.prSysi("Looks like your using a linux based system and don't have");
-                skUtilities.prSysi("libgnome installed execute the command below in the terminal ");
-                skUtilities.prSysi("'sudo apt-get install libgnome2-0'");
-                skUtilities.prSysi("and then restart the system!");
+                skUtilities.prSysI("Looks like your using a linux based system and don't have");
+                skUtilities.prSysI("libgnome installed execute the command below in the terminal ");
+                skUtilities.prSysI("'sudo apt-get install libgnome2-0'");
+                skUtilities.prSysI("and then restart the system!");
             }else{
-                skUtilities.prSys("Sorry this OS ('" + p +"')isn't supported!", getClass().getSimpleName(), 0);
+                skUtilities.prSysE("Sorry this OS ('" + p +"')isn't supported!", getClass().getSimpleName());
             }
         }
     }

@@ -26,7 +26,7 @@ public class ExprHash extends SimpleExpression<String> {
             hashStr.update(str.getSingle(arg0).getBytes(), 0, str.getSingle(arg0).length());
             return new String[]{new BigInteger(1, hashStr.digest()).toString(16)};
         } catch (Exception e) {
-            skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+            skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
             return null;
         }
     }

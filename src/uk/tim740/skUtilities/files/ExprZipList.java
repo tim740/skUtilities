@@ -34,10 +34,10 @@ public class ExprZipList extends SimpleExpression<String>{
             zIs.close();
             return cl.toArray(new String[cl.size()]);
         } catch (FileNotFoundException e) {
-            skUtilities.prSys("ZipFile: '" + pth + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("ZipFile: '" + pth + "' doesn't exist!", getClass().getSimpleName(), e);
             return null;
         } catch (IOException e) {
-            skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+            skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
             return null;
         }
     }

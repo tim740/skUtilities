@@ -30,7 +30,7 @@ public class ExprDirList extends SimpleExpression<String>{
             }
             return cl.toArray(new String[cl.size()]);
         }else{
-            skUtilities.prSys("'" + pth + File.separator  + "' isn't a valid directory!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("'" + pth + File.separator  + "' isn't a valid directory!", getClass().getSimpleName());
             return null;
         }
     }

@@ -49,10 +49,10 @@ public class EffUnzip extends Effect {
                     zis.close();
                 }
             }catch (IOException e){
-                skUtilities.prSys(e.getMessage(), getClass().getSimpleName(), 0);
+                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
             }
         }else{
-            skUtilities.prSys("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName());
         }
     }
 

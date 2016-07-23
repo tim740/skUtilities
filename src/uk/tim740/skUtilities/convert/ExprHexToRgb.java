@@ -24,7 +24,7 @@ public class ExprHexToRgb extends SimpleExpression<String>{
             int color = (int)Long.parseLong(s, 16);
             return new String[]{Integer.toString((color >> 16) & 0xFF) + ", " + Integer.toString((color >> 8) & 0xFF) + ", " + Integer.toString((color) & 0xFF)};
         }else{
-            skUtilities.prSys("Length must be 6. (FFFFFF)!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("Length must be 6. (FFFFFF)!", getClass().getSimpleName());
 			return null;
 		}
 	}

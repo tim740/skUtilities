@@ -21,7 +21,7 @@ public class EffReloadConfig extends Effect {
         try {
             Bukkit.getPluginManager().getPlugin(str.getSingle(arg0)).reloadConfig();
         } catch (Exception e) {
-            skUtilities.prSys("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), 0);
+            skUtilities.prSysE("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), e);
         }
     }
 
