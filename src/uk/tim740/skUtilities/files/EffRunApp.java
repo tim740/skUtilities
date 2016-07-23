@@ -51,7 +51,7 @@ public class EffRunApp extends Effect{
                 skUtilities.prSysI("'sudo apt-get install libgnome2-0'");
                 skUtilities.prSysI("and then restart the system!");
             }else{
-                skUtilities.prSysE("Sorry this OS ('" + p +"')isn't supported!", getClass().getSimpleName());
+                skUtilities.prSysE("Sorry this OS ('" + p +"') isn't supported!", getClass().getSimpleName());
             }
         }
     }
