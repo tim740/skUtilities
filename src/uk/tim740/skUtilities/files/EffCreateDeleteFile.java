@@ -10,8 +10,10 @@ import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Created by tim740 on 16/03/2016
@@ -22,35 +24,26 @@ public class EffCreateDeleteFile extends Effect {
 
     @Override
     protected void execute(Event arg0) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
-        if (!pth.exists()) {
-            if (ty == 0) {
-                try {
-                    EvtFileCreation efc = new EvtFileCreation(pth);
-                    Bukkit.getServer().getPluginManager().callEvent(efc);
-                    if (!efc.isCancelled()) {
-                        pth.createNewFile();
-                    }
-                } catch (IOException e) {
-                    skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(arg0)));
+        if (ty == 0) {
+            try {
+                EvtFileCreation efc = new EvtFileCreation(pth.toFile());
+                Bukkit.getServer().getPluginManager().callEvent(efc);
+                if (!efc.isCancelled()) {
+                    Files.createFile(pth);
                 }
-
-            } else {
-                skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
+            } catch (IOException e) {
+                skUtilities.prSysE("File: '" + pth + "' already exists!", getClass().getSimpleName(), e);
             }
         } else {
-            if (ty == 0) {
-                skUtilities.prSysE("'" + pth + "' already exists!", getClass().getSimpleName());
-            } else {
-                try {
-                    EvtFileDeletion efd = new EvtFileDeletion(pth);
-                    Bukkit.getServer().getPluginManager().callEvent(efd);
-                    if (!efd.isCancelled()) {
-                        pth.delete();
-                    }
-                } catch (Exception e) {
-                    skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+            try {
+                EvtFileDeletion efd = new EvtFileDeletion(pth.toFile());
+                Bukkit.getServer().getPluginManager().callEvent(efd);
+                if (!efd.isCancelled()) {
+                    Files.delete(pth);
                 }
+            } catch (IOException e) {
+                skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), e);
             }
         }
     }
