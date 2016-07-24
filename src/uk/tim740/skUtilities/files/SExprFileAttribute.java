@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
@@ -26,19 +27,23 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
 	@Override
 	@Nullable
 	protected Boolean[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
-        if (pth.exists()) {
+        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(arg0)));
+        if (Files.exists(pth)) {
             if (ty == 0) {
-                return new Boolean[]{pth.canRead()};
+                return new Boolean[]{Files.isReadable(pth)};
             } else if (ty == 1) {
-                return new Boolean[]{pth.canWrite()};
+                return new Boolean[]{Files.isWritable(pth)};
             } else {
-                return new Boolean[]{pth.isHidden()};
+                try {
+                    return new Boolean[]{Files.isHidden(pth)};
+                } catch (IOException e) {
+                    skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+                }
             }
         }else{
             skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
-            return null;
         }
+        return null;
     }
     public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
