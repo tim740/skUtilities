@@ -10,6 +10,7 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.*;
+import java.nio.file.Files;
 
 /**
  * Created by tim740 on 17/03/2016
@@ -21,14 +22,9 @@ public class ExprFileLines extends SimpleExpression<Number>{
 	@Nullable
 	protected Number[] get(Event arg0) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
-        Integer ln = 0;
         if (pth.exists()){
             try {
-                BufferedReader br = new BufferedReader(new FileReader(pth));
-                while ((br.readLine()) != null)
-                    ln = ln+1;
-                br.close();
-                return new Number[]{ln};
+                return new Number[]{Files.readAllLines(pth.toPath()).size()};
             } catch (Exception e) {
                 skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
                 return null;

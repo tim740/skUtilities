@@ -19,7 +19,7 @@ class RegFiles {
     static void regF() {
         Skript.registerExpression(ExprZipList.class,String.class,ExpressionType.PROPERTY,"files in zip[ file] %string%", "zip[ file] %string%'s files");
         Skript.registerExpression(ExprDirList.class,String.class,ExpressionType.PROPERTY,"files in dir[ectory] %string%", "dir[ectory] %string%'s files");
-        Skript.registerExpression(ExprFileLines.class,Number.class,ExpressionType.PROPERTY,"line count of (script|program|app[lication]|file) %string%", "(script|program|app[lication]|file) %string%'s line count");
+        Skript.registerExpression(ExprFileLines.class,Number.class,ExpressionType.PROPERTY,"line count of file %string%", "file %string%'s line count");
         Skript.registerExpression(ExprFileTimeAttributes.class,Number.class,ExpressionType.PROPERTY,"file %string%'s (0¦last modified|1¦creation|2¦last access) value", "(0¦last modified|1¦creation|2¦last access) value of file %string%");
         Skript.registerExpression(ExprFileSize.class,String.class,ExpressionType.PROPERTY,"file size of %string%", "%string%'s file size");
         Skript.registerExpression(ExprFileSizeBytes.class,Number.class,ExpressionType.PROPERTY,"file size of %string% in bytes", "%string%'s file size in bytes");
