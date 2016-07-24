@@ -9,9 +9,9 @@ import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.concurrent.TimeUnit;
@@ -26,24 +26,19 @@ public class ExprFileTimeAttributes extends SimpleExpression<Number>{
 	@Override
 	@Nullable
 	protected Number[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
-        if (pth.exists()){
-            try {
-                if (ty == 0) {
-                    return new Number[]{pth.lastModified() /1000};
-                }else if (ty == 1){
-                    return new Number[]{Files.readAttributes(Paths.get(pth.toString()), BasicFileAttributes.class).creationTime().to(TimeUnit.SECONDS)};
-                }else{
-                    return new Number[]{Files.readAttributes(Paths.get(pth.toString()), BasicFileAttributes.class).lastAccessTime().to(TimeUnit.SECONDS)};
-                }
-            } catch (IOException e) {
-                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
-                return null;
+        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(arg0)));
+        try {
+            if (ty == 0) {
+                return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).lastModifiedTime().to(TimeUnit.SECONDS)};
+            }else if (ty == 1){
+                return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).creationTime().to(TimeUnit.SECONDS)};
+            }else{
+                return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).lastAccessTime().to(TimeUnit.SECONDS)};
             }
-        }else{
-            skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
-            return null;
+        } catch (IOException e) {
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), e);
         }
+        return null;
 	}
 
     @SuppressWarnings("unchecked")
