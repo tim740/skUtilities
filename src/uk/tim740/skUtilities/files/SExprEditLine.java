@@ -15,6 +15,7 @@ import uk.tim740.skUtilities.skUtilities;
 import javax.annotation.Nullable;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -29,9 +30,9 @@ public class SExprEditLine extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
-        if (pth.exists()){
-            try (Stream<String> lines = Files.lines(Paths.get(pth.toString()))) {
+        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(arg0)));
+        if (Files.exists(pth)){
+            try (Stream<String> lines = Files.lines(pth)) {
                 //noinspection OptionalGetWithoutIsPresent
                 return new String[]{lines.skip(Integer.parseInt(line.getSingle(arg0).toString()) -1).findFirst().get()};
             }catch (IOException e) {
@@ -52,12 +53,7 @@ public class SExprEditLine extends SimpleExpression<String>{
                 if (!efw.isCancelled()) {
                     try {
                         ArrayList<String> cl = new ArrayList<>();
-                        String inLi;
-                        BufferedReader br = new BufferedReader(new FileReader(pth));
-                        while ((inLi = br.readLine()) != null) {
-                            cl.add(inLi);
-                        }
-                        br.close();
+                        cl.addAll(Files.readAllLines(pth.toPath()));
                         cl.set(Integer.parseInt(line.getSingle(arg0).toString()) - 1, (String) delta[0]);
                         String[] out = new String[cl.size()];
                         BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
