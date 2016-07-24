@@ -21,7 +21,7 @@ import java.util.zip.ZipOutputStream;
 /**
  * Created by tim740 on 17/03/2016
  */
-public class EffZipFile extends Effect {
+public class EffZipFiles extends Effect {
     private Expression<String> files;
     private Expression<String> zip;
 
