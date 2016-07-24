@@ -11,8 +11,10 @@ import uk.tim740.skUtilities.skUtilities;
 import javax.annotation.Nullable;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import java.util.zip.ZipFile;
 
 /**
  * Created by tim740 on 18/03/2016
@@ -24,22 +26,14 @@ public class ExprZipList extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event arg0) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
-        try {
-            ArrayList<String> cl = new ArrayList<>();
-            ZipEntry zEn;
-            ZipInputStream zIs = new ZipInputStream(new BufferedInputStream(new FileInputStream(pth)));
-            while ((zEn = zIs.getNextEntry()) != null) {
-                cl.add(zEn.getName());
-            }
-            zIs.close();
+        ArrayList<String> cl = new ArrayList<>();
+        try (ZipFile zf = new ZipFile(pth)) {
+            cl.addAll(zf.stream().collect(Collectors.toList()).stream().map((Function<ZipEntry, String>) ZipEntry::toString).collect(Collectors.toList()));
             return cl.toArray(new String[cl.size()]);
-        } catch (FileNotFoundException e) {
-            skUtilities.prSysE("ZipFile: '" + pth + "' doesn't exist!", getClass().getSimpleName(), e);
-            return null;
         } catch (IOException e) {
-            skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
-            return null;
+            skUtilities.prSysE("ZipFile: '" + pth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), e);
         }
+        return null;
     }
 
     @SuppressWarnings("unchecked")
