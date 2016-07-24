@@ -12,8 +12,11 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.*;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import java.net.URI;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by tim740 on 19/03/2016
@@ -24,36 +27,36 @@ public class EffUnzip extends Effect {
     @Override
     protected void execute(Event arg0) {
         File Fzip = new File(Utils.getDefaultPath(zip.getSingle(arg0)));
-        File pth = new File(Utils.getDefaultPath(file.getSingle(arg0)));
-        if (Fzip.exists()) {
-            try{
-                EvtUnzip euz = new EvtUnzip(Fzip, pth.toString());
-                Bukkit.getServer().getPluginManager().callEvent(euz);
-                if (!euz.isCancelled()) {
-                    if (!pth.exists()) {
-                        pth.mkdir();
-                    }
-                    ZipInputStream zis = new ZipInputStream(new FileInputStream(Fzip));
-                    ZipEntry ze = zis.getNextEntry();
-                    while (ze != null) {
-                        File nf = new File(pth + File.separator + ze.getName());
-                        new File(nf.getParent()).mkdirs();
-                        FileOutputStream fos = new FileOutputStream(nf);
-                        int len;
-                        while ((len = zis.read(new byte[1024])) > 0) {
-                            fos.write(new byte[1024], 0, len);
-                        }
-                        fos.close();
-                        ze = zis.getNextEntry();
-                    }
-                    zis.closeEntry();
-                    zis.close();
+        Path pth = Paths.get(Utils.getDefaultPath(file.getSingle(arg0)));
+        EvtUnzip euz = new EvtUnzip(Fzip, pth.toString());
+        Bukkit.getServer().getPluginManager().callEvent(euz);
+        if (!euz.isCancelled()) {
+            try {
+                final Map<String, String> env = new HashMap<>();
+                env.put("create", "true");
+                if (Files.notExists(pth)) {
+                    Files.createDirectories(pth);
                 }
-            }catch (IOException e){
-                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+                try (FileSystem zfs = FileSystems.newFileSystem(URI.create("jar:file:/" + Fzip.getAbsolutePath().replace("\\", "/")), env)) {
+                    Files.walkFileTree(zfs.getPath("/"), new SimpleFileVisitor<Path>() {
+                        @Override
+                        public FileVisitResult visitFile(Path ftc, BasicFileAttributes ats) throws IOException {
+                            Files.copy(ftc, Paths.get(pth.toString(), ftc.toString()), StandardCopyOption.REPLACE_EXISTING);
+                            return FileVisitResult.CONTINUE;
+                        }
+                        @Override
+                        public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes ats) throws IOException {
+                            final Path dtc = Paths.get(pth.toString(), dir.toString());
+                            if (Files.notExists(dtc)) {
+                                Files.createDirectory(dtc);
+                            }
+                            return FileVisitResult.CONTINUE;
+                        }
+                    });
+                }
+            } catch (IOException e) {
+                skUtilities.prSysE("ZipFile: '" + Fzip + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), e);
             }
-        }else{
-            skUtilities.prSysE("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName());
         }
     }
 
