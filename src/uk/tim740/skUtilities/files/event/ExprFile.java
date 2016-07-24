@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.files.event;
 
 import ch.njol.skript.ScriptLoader;
 import ch.njol.skript.lang.Expression;

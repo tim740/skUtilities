@@ -9,6 +9,7 @@ import ch.njol.util.coll.CollectionUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.Utils;
+import uk.tim740.skUtilities.files.event.EvtFileWipe;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;

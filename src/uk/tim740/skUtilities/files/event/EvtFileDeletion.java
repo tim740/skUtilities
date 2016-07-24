@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.files.event;
 
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -9,23 +9,18 @@ import java.io.File;
 /**
  * Created by tim740 on 22/03/2016
  */
-public class EvtFileZip extends Event implements Cancellable {
+public class EvtFileDeletion extends Event implements Cancellable {
     private static final HandlerList hls = new HandlerList();
     private boolean cancel = false;
     private File file;
-    private String zip;
 
-    EvtFileZip(File sfile, String szip) {
+    public EvtFileDeletion(File sfile) {
         cancel = false;
         file = sfile;
-        zip = szip;
     }
 
     public File getEvtFile() {
         return file;
-    }
-    public String getEvtZipFile() {
-        return zip;
     }
 
     public boolean isCancelled() {

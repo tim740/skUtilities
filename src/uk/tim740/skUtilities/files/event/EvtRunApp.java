@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.files.event;
 
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -9,18 +9,18 @@ import java.io.File;
 /**
  * Created by tim740 on 22/03/2016
  */
-public class EvtFileCreation extends Event implements Cancellable {
+public class EvtRunApp extends Event implements Cancellable {
     private static final HandlerList hls = new HandlerList();
     private boolean cancel = false;
-    private File file;
+    private File app;
 
-    EvtFileCreation(File sfile) {
+    public EvtRunApp(File sapp) {
         cancel = false;
-        file = sfile;
+        app = sapp;
     }
 
-    public File getEvtFile() {
-        return file;
+    public File getApp() {
+        return app;
     }
 
     public boolean isCancelled() {

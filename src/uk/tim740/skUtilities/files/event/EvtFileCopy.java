@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.files.event;
 
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -15,7 +15,7 @@ public class EvtFileCopy extends Event implements Cancellable {
     private File file;
     private String mfile;
 
-    EvtFileCopy(File sfile, String smfile) {
+    public EvtFileCopy(File sfile, String smfile) {
         cancel = false;
         file = sfile;
         mfile = smfile;

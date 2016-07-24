@@ -6,6 +6,7 @@ import ch.njol.skript.lang.util.SimpleEvent;
 import ch.njol.skript.registrations.EventValues;
 import ch.njol.skript.util.Getter;
 import uk.tim740.skUtilities.files.*;
+import uk.tim740.skUtilities.files.event.*;
 
 import javax.annotation.Nullable;
 import java.io.File;
@@ -13,7 +14,7 @@ import java.io.File;
 /**
  * Created by tim740 on 20/03/2016
  */
-        //check if file or folder
+
 class RegFiles {
     static void regF() {
         Skript.registerExpression(ExprZipList.class,String.class,ExpressionType.PROPERTY,"files in zip[ file] %string%", "zip[ file] %string%'s files");

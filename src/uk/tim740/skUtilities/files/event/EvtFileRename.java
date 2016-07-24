@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.files.event;
 
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -7,25 +7,25 @@ import org.bukkit.event.HandlerList;
 import java.io.File;
 
 /**
- * Created by tim740 on 22/03/2016
+ * Created by tim740 on 23/03/2016
  */
-public class EvtFileDownload extends Event implements Cancellable {
+public class EvtFileRename extends Event implements Cancellable {
     private static final HandlerList hls = new HandlerList();
     private boolean cancel = false;
-    private String url;
     private File file;
+    private String name;
 
-    EvtFileDownload(String surl, File sfile) {
+    public EvtFileRename(File sfile, String sname) {
         cancel = false;
-        url = surl;
         file = sfile;
+        name = sname;
     }
 
-    public String getUrl() {
-        return url;
-    }
     public File getEvtFile() {
         return file;
+    }
+    public String getEvtFileName() {
+        return name;
     }
 
     public boolean isCancelled() {

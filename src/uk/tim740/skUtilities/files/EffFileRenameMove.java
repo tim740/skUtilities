@@ -7,6 +7,9 @@ import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.Utils;
+import uk.tim740.skUtilities.files.event.EvtFileCopy;
+import uk.tim740.skUtilities.files.event.EvtFileMove;
+import uk.tim740.skUtilities.files.event.EvtFileRename;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
