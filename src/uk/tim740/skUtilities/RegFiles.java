@@ -33,7 +33,8 @@ class RegFiles {
         Skript.registerExpression(SExprEditLine.class,String.class,ExpressionType.PROPERTY,"line %number% in file %string%", "file %string%'s line %number%");
 
         Skript.registerEffect(EffRunApp.class, "run (script|program|app[lication]|file) at %string%");
-        Skript.registerEffect(EffCreateDeleteFile.class, "(0¦crea|1¦dele)te (script|program|app[lication]|[zip ]file) %string%");
+        Skript.registerEffect(EffCreateFile.class, "create (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
+        Skript.registerEffect(EffDeleteFile.class, "delete (script|program|app[lication]|[zip ]file) %string%");
         Skript.registerEffect(EffFileRenameMove.class, "(0¦rename|1¦move|2¦copy) file %string% to %-string%");
         Skript.registerEffect(EffFileDownload.class, "download file from %string% to file %-string%");
         Skript.registerEffect(EffZipFiles.class, "zip file[s] %strings% to zip[ file] %-string%");
