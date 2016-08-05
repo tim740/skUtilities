@@ -74,8 +74,8 @@ public class SExprEditLine extends SimpleExpression<String>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        line = (Expression<Number>) arg0[0];
-        path = (Expression<String>) arg0[1];
+        line = (Expression<Number>) arg0[arg1];
+        path = (Expression<String>) arg0[1 - arg1];
         return true;
     }
     @SuppressWarnings("unchecked")
