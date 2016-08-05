@@ -19,10 +19,22 @@ public class skUtilities extends JavaPlugin {
         Skript.registerAddon(this);
         getDataFolder().mkdirs();
         saveDefaultConfig();
-        if (!(getConfig().getInt("configVersion") == 4)){
-            resetConfig();
-        }else if (!getConfig().contains("configVersion")){
-            resetConfig();
+        if (!(getConfig().getInt("configVersion") == 4) || !(getConfig().isSet("configVersion"))){
+            File pth = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
+            File ptho = new File(getDataFolder().getAbsolutePath() + File.separator + "config.old");
+
+            if (ptho.exists()){
+                ptho.delete();
+            }
+            pth.renameTo(ptho);
+            saveDefaultConfig();
+
+            prSysI("");
+            prSysI("You where using an old version of the config!");
+            prSysI("It was copied and renamed to 'config.old'");
+            prSysI("A new config has been generated!");
+            prSysI("Sorry but all the options have been reset.");
+            prSysI("");
         }
         if (getConfig().getBoolean("loadConversions", true)){
             RegConvert.regC();
@@ -98,22 +110,5 @@ public class skUtilities extends JavaPlugin {
     }
     private static String getVer(){
         return Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
-    }
-    private void resetConfig(){
-        File pth = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
-        File ptho = new File(getDataFolder().getAbsolutePath() + File.separator + "config.old");
-
-        if (ptho.exists()){
-            ptho.delete();
-        }
-        pth.renameTo(ptho);
-        saveDefaultConfig();
-
-        prSysI("");
-        prSysI("You where using an old version of the config!");
-        prSysI("It was copied and renamed to 'config.old'");
-        prSysI("A new config has been generated!");
-        prSysI("Sorry but all the options have been reset.");
-        prSysI("");
     }
 }

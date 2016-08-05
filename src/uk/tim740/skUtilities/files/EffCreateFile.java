@@ -11,6 +11,7 @@ import uk.tim740.skUtilities.files.event.EvtFileCreation;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -31,13 +32,17 @@ public class EffCreateFile extends Effect {
         if (!efc.isCancelled()) {
             if (ty == 0) {
                 try {
+                    Path fwn = Paths.get(pth.toString().replace(File.separator + pth.toString().substring(pth.toString().lastIndexOf(File.separator) +1), ""));
+                    if (!Files.exists(fwn)) {
+                        Files.createDirectories(fwn);
+                    }
                     Files.createFile(pth);
                 } catch (IOException e) {
                     skUtilities.prSysE("File: '" + pth + "' already exists!", getClass().getSimpleName(), e);
                 }
             } else {
                 try {
-                    Files.createDirectory(pth);
+                    Files.createDirectories(pth);
                 } catch (IOException e) {
                     skUtilities.prSysE("Directory: '" + pth + "' already exists!", getClass().getSimpleName(), e);
                 }
