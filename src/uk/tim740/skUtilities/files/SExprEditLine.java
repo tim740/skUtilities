@@ -37,12 +37,11 @@ public class SExprEditLine extends SimpleExpression<String>{
                 return new String[]{lines.skip(Integer.parseInt(line.getSingle(arg0).toString()) -1).findFirst().get()};
             }catch (IOException e) {
                 skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
-                return null;
             }
         }else{
             skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
-            return null;
         }
+        return null;
 	}
     public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {

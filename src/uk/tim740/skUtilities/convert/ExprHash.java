@@ -27,8 +27,8 @@ public class ExprHash extends SimpleExpression<String> {
             return new String[]{new BigInteger(1, hashStr.digest()).toString(16)};
         } catch (Exception e) {
             skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
-            return null;
         }
+        return null;
     }
 
     @SuppressWarnings("unchecked")

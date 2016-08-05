@@ -25,8 +25,8 @@ public class ExprFileSizeBytes extends SimpleExpression<Number>{
             return new Number[]{pth.length()};
         }else{
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
-            return null;
         }
+        return null;
 	}
 
     @SuppressWarnings("unchecked")

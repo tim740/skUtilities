@@ -25,8 +25,8 @@ public class ExprAbsolutePath extends SimpleExpression<String>{
             return new String[]{pth.getAbsolutePath()};
         }else{
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
-            return null;
         }
+        return null;
 	}
 
     @SuppressWarnings("unchecked")

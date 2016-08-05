@@ -39,12 +39,11 @@ public class SExprFileContents extends SimpleExpression<String>{
                 return cl.toArray(out);
             } catch (Exception e) {
                 skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
-                return null;
             }
         }else{
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
-            return null;
         }
+        return null;
 	}
     public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {

@@ -27,12 +27,11 @@ public class ExprFileLines extends SimpleExpression<Number>{
                 return new Number[]{Files.readAllLines(pth.toPath()).size()};
             } catch (Exception e) {
                 skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
-                return null;
             }
         }else{
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
-            return null;
         }
+        return null;
 	}
 
     @SuppressWarnings("unchecked")

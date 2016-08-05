@@ -25,8 +25,8 @@ public class ExprFileSize extends SimpleExpression<String>{
             return new String[]{Utils.getFileSize(pth.length())};
         }else{
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
-            return null;
         }
+        return null;
 	}
 
     @SuppressWarnings("unchecked")
