@@ -33,7 +33,7 @@ public class skUtilities extends JavaPlugin {
             prSysI("You where using an old version of the config!");
             prSysI("It was copied and renamed to 'config.old'");
             prSysI("A new config has been generated!");
-            prSysI("Sorry but all the options have been reset.");
+            prSysI("New config has reset to default options!");
             prSysI("");
         }
         if (getConfig().getBoolean("loadConversions", true)){
@@ -49,14 +49,14 @@ public class skUtilities extends JavaPlugin {
         if (getConfig().getBoolean("checkForUpdates", true)) {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         }else{
-            prSysI("It seems like you've disabled updates, you should consider enabling them again!");
+            prSysI("Checking for updates is disabled, you should consider enabling it again!");
         }
 
         try {
             Metrics metrics = new Metrics(this);
             metrics.start();
         } catch (Exception e) {
-            skUtilities.prSysE("Failed to submit stats to Metrics", getClass().getSimpleName(), e);
+            skUtilities.prSysE("Failed to submit stats to Metrics, http://www.mcstats.org could be down!", getClass().getSimpleName(), e);
         }
 
         prSysI("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
