@@ -80,7 +80,7 @@ class RegUtil {
         if(Bukkit.getVersion().contains("(MC: 1.9") ||  Bukkit.getVersion().contains("(MC: 1.1")) {
             Skript.registerExpression(SExprGlideMode.class,Boolean.class,ExpressionType.PROPERTY,"glide (state|ability|mode) of %entity%", "%entity%'s glide (state|ability|mode)");
         }else{
-            skUtilities.loadErr("SExprGlideMode");
+            Bukkit.getServer().getLogger().severe("[skUtilities] v" + Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " - Failed to load:  SExprGlideMode, due to not using 1.9+!");
         }
         regUE();
     }
@@ -112,7 +112,8 @@ class RegUtil {
 
             Skript.registerEvent("GlideToggle", SimpleEvent.class, EntityToggleGlideEvent.class, "[elytra ]glide toggle");
         }else{
-            skUtilities.loadErr("CauldronLevelChange & GlideToggle Events");
+            Bukkit.getServer().getLogger().severe("[skUtilities] v" + Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " - Failed to load:  CauldronLevelChange, due to not using 1.9+!");
+            Bukkit.getServer().getLogger().severe("[skUtilities] v" + Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " - Failed to load:  GlideToggle, due to not using 1.9+!");
         }
     }
 }

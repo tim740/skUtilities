@@ -76,9 +76,6 @@ public class skUtilities extends JavaPlugin {
     public static void prSysI(String s){
         Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": "  + s);
     }
-    static void loadErr(String s){
-        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + " - Failed to load:  " + s + ", due to not using 1.9+!");
-    }
 
     private void updateChk(){
         prSysI("Checking for update now you will be notified if there is an update!");
