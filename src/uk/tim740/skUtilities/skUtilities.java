@@ -88,13 +88,13 @@ public class skUtilities extends JavaPlugin {
             prSysE("Error while checking for update!", "Main", e);
         }
         if (!Objects.equals(getVer(), v)){
-            prSysI("A new version of the addon is out v" + v);
+            prSysI("A new version of the skUtilities is out v" + v);
             if (getConfig().getBoolean("downloadUpdates", true)) {
                 String dln = "plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar";
                 if (!new File(dln).exists()) {
-                    prSysI("Downloading latest version!");
+                    prSysI("Starting download of skUtilities v" + v);
                     Utils.downloadFile(new File(dln), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar");
-                    prSysI("Latest version has been downloaded!");
+                    prSysI("Finished downloading skUtilities v" + v);
                 }else{
                     prSysI("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
                 }
@@ -102,7 +102,7 @@ public class skUtilities extends JavaPlugin {
                 prSysI("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest");
             }
         }else{
-            prSysI("It seems like your using the latest version!");
+            prSysI("Currently using the latest version of skUtilities");
         }
     }
     private static String getVer(){
