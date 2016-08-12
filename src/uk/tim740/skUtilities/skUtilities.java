@@ -100,6 +100,7 @@ public class skUtilities extends JavaPlugin {
                 }
             }else{
                 prSysI("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest");
+                prSysI("You should consider enabling `downloadUpdates` in the config.");
             }
         }else{
             prSysI("Currently using the latest version of skUtilities");
