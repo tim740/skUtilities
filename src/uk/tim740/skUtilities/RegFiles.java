@@ -24,6 +24,8 @@ class RegFiles {
         Skript.registerExpression(ExprFileSize.class,String.class,ExpressionType.PROPERTY,"file size of %string%", "%string%'s file size");
         Skript.registerExpression(ExprFileSizeBytes.class,Number.class,ExpressionType.PROPERTY,"file size of %string% in bytes", "%string%'s file size in bytes");
         Skript.registerExpression(ExprFileExtension.class,String.class,ExpressionType.PROPERTY,"file extension of %string%", "%string%'s file extension");
+        Skript.registerExpression(ExprFileName.class,String.class,ExpressionType.PROPERTY,"file name of %string%", "%string%'s file name");
+
         Skript.registerExpression(ExprAbsolutePath.class,String.class,ExpressionType.PROPERTY,"(absolute|complete) path of %string%", "%string%'s (absolute|complete) path");
 
         Skript.registerExpression(ExprDiskSpace.class,String.class,ExpressionType.PROPERTY,"disk's (0¦total|1¦free|2¦usable) space", "(0¦total|1¦free|2¦usable) space on disk");
@@ -45,6 +47,8 @@ class RegFiles {
         Skript.registerCondition(CondFileExists.class, "(script|program|app[lication]|file) %string% exists", "(script|program|app[lication]|file) %string% does(n't| not) exist");
         Skript.registerCondition(CondIsFile.class, "(script|program|app[lication]|file) %string% is a file", "(script|program|app[lication]|file) %string% is(n't| not) a file");
         Skript.registerCondition(CondHasExtension.class, "file %string% has ext[ension] %-string%", "file %string% does(n't| not) have ext[ension] %-string%");
+        Skript.registerCondition(CondHasName.class, "file %string% has name %-string%", "file %string% does(n't| not) have name %-string%");
+
 
         Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
         regFE();
