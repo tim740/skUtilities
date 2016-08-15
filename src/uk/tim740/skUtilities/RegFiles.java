@@ -28,6 +28,7 @@ class RegFiles {
 
         Skript.registerExpression(ExprDiskSpace.class,String.class,ExpressionType.PROPERTY,"disk's (0¦total|1¦free|2¦usable) space", "(0¦total|1¦free|2¦usable) space on disk");
 
+        Skript.registerExpression(SExprFileOwner.class,String.class,ExpressionType.PROPERTY,"owner of file %string%", "file %string%'s owner");
         Skript.registerExpression(SExprFileAttribute.class,Boolean.class,ExpressionType.PROPERTY,"(0¦readable|1¦writable|2¦hidden) attribute of file %string%", "file %string%'s (0¦readable|1¦writable|2¦hidden) attribute");
         Skript.registerExpression(SExprFileContents.class,String.class,ExpressionType.PROPERTY,"file contents of %string%", "%string%'s file contents");
         Skript.registerExpression(SExprEditLine.class,String.class,ExpressionType.PROPERTY,"line %number% in file %string%", "file %string%'s line %number%");
