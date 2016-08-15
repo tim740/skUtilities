@@ -14,7 +14,6 @@ import java.io.File;
 /**
  * Created by tim740 on 20/03/2016
  */
-
 class RegFiles {
     static void regF() {
         Skript.registerExpression(ExprZipList.class,String.class,ExpressionType.PROPERTY,"files in zip[ file] %string%", "zip[ file] %string%'s files");
@@ -45,12 +44,14 @@ class RegFiles {
 
         Skript.registerCondition(CondFileExists.class, "(script|program|app[lication]|file) %string% exists", "(script|program|app[lication]|file) %string% does(n't| not) exist");
         Skript.registerCondition(CondIsFile.class, "(script|program|app[lication]|file) %string% is a file", "(script|program|app[lication]|file) %string% is(n't| not) a file");
+        Skript.registerCondition(CondIsExecutable.class, "(script|program|app[lication]|file) %string% is(n't| not) exec[utable]", "(script|program|app[lication]|file) %string% is exec[utable]");
 
-        Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
         regFE();
     }
 
     private static void regFE() {
+        Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
+
         Skript.registerEvent("DownloadFile", SimpleEvent.class, EvtFileDownload.class, "file download");
         EventValues.registerEventValue(EvtFileDownload.class, String.class, new Getter<String,EvtFileDownload>() {
             @Nullable
