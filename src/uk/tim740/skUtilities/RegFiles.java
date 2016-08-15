@@ -44,6 +44,7 @@ class RegFiles {
 
         Skript.registerCondition(CondFileExists.class, "(script|program|app[lication]|file) %string% exists", "(script|program|app[lication]|file) %string% does(n't| not) exist");
         Skript.registerCondition(CondIsFile.class, "(script|program|app[lication]|file) %string% is a file", "(script|program|app[lication]|file) %string% is(n't| not) a file");
+        Skript.registerCondition(CondIsSymbolic.class, "(script|program|app[lication]|file) %string% is (symbolic|shortcut)", "(script|program|app[lication]|file) %string% is(n't| not) (symbolic|shortcut)");
         Skript.registerCondition(CondIsExecutable.class, "(script|program|app[lication]|file) %string% is(n't| not) exec[utable]", "(script|program|app[lication]|file) %string% is exec[utable]");
 
         regFE();
