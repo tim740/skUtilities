@@ -45,9 +45,6 @@ class RegFiles {
 
         Skript.registerCondition(CondFileExists.class, "(script|program|app[lication]|file) %string% exists", "(script|program|app[lication]|file) %string% does(n't| not) exist");
         Skript.registerCondition(CondIsFile.class, "(script|program|app[lication]|file) %string% is a file", "(script|program|app[lication]|file) %string% is(n't| not) a file");
-        Skript.registerCondition(CondHasExtension.class, "file %string% has ext[ension] %-string%", "file %string% does(n't| not) have ext[ension] %-string%");
-        Skript.registerCondition(CondHasName.class, "file %string% has name %-string%", "file %string% does(n't| not) have name %-string%");
-
 
         Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
         regFE();
