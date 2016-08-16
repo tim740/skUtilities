@@ -45,7 +45,6 @@ public class SExprFileOwner extends SimpleExpression<String>{
             if (Files.exists(pth)) {
                 try {
                     String str = (String) delta[0];
-                   // FileOwnerAttributeView view = Files.getFileAttributeView(pth, FileOwnerAttributeView.class);
                     UserPrincipalLookupService lookupService = FileSystems.getDefault().getUserPrincipalLookupService();
                     Files.setOwner(pth, lookupService.lookupPrincipalByName(str));
                 } catch (IOException e) {
