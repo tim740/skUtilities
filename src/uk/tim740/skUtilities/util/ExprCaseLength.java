@@ -21,12 +21,12 @@ public class ExprCaseLength extends SimpleExpression<Number>{
 	    String s = str.getSingle(arg0);
         Integer n = 0;
 		if (ty == 0){
-            for (int k = 0; k < s.length(); k++) {
-                if (Character.isUpperCase(s.charAt(k))) n++;
+            for (int i = 0; i < s.length(); i++) {
+                if (Character.isUpperCase(s.charAt(i))) n++;
             }
 		}else{
-            for (int k = 0; k < s.length(); k++) {
-                if (Character.isLowerCase(s.charAt(k))) n++;
+            for (int i = 0; i < s.length(); i++) {
+                if (Character.isLowerCase(s.charAt(i))) n++;
             }
         }
         return new Number[]{n};
