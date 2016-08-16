@@ -44,9 +44,9 @@ class RegFiles {
         Skript.registerEffect(EffInsertLine.class, "write %string% at line %number% to file %-string%");
 
         Skript.registerCondition(CondFileExists.class, "(script|program|app[lication]|file) %string% exists", "(script|program|app[lication]|file) %string% does(n't| not) exist");
-        Skript.registerCondition(CondIsFile.class, "(script|program|app[lication]|file) %string% is a file", "(script|program|app[lication]|file) %string% is(n't| not) a file");
-        Skript.registerCondition(CondIsSymbolic.class, "(script|program|app[lication]|file) %string% is (symbolic|shortcut)", "(script|program|app[lication]|file) %string% is(n't| not) (symbolic|shortcut)");
-        Skript.registerCondition(CondIsExecutable.class, "(script|program|app[lication]|file) %string% is(n't| not) exec[utable]", "(script|program|app[lication]|file) %string% is exec[utable]");
+        Skript.registerCondition(CondIsFile.class, "file %string% is a file", "file %string% is(n't| not) a file");
+        Skript.registerCondition(CondIsSymbolic.class, "file %string% is (symbolic|shortcut)", "file %string% is(n't| not) (symbolic|shortcut)");
+        Skript.registerCondition(CondIsExecutable.class, "file %string% is(n't| not) exec[utable]", "file %string% is exec[utable]");
 
         regFE();
     }
