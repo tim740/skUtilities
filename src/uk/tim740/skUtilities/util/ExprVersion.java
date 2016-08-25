@@ -22,23 +22,22 @@ public class ExprVersion extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event arg0) {
-        if (str.getSingle(arg0).equalsIgnoreCase("aliases")) {
+        String s = str.getSingle(arg0);
+        if (s.equalsIgnoreCase("aliases")) {
             try {
                 return new String[]{"v" + new BufferedReader(new FileReader("plugins" + File.separator + "Skript" + File.separator +"aliases-english.sk")).readLine().replaceAll("#! VERSION: ", "").replaceAll("!", "")};
             } catch (Exception e) {
                 skUtilities.prSysE(e.getCause().getMessage(), getClass().getSimpleName(), e);
             }
-        }else if (str.getSingle(arg0).equalsIgnoreCase("server")) {
+        }else if (s.equalsIgnoreCase("server")) {
             return new String[]{Bukkit.getServer().getVersion()};
-        }else if (str.getSingle(arg0).equalsIgnoreCase("os")) {
-            return new String[]{System.getProperty("os.version")};
-        }else if (str.getSingle(arg0).equalsIgnoreCase("java")) {
-            return new String[]{System.getProperty("java.version")};
+        }else if (s.equalsIgnoreCase("os") || s.equalsIgnoreCase("java")) {
+            return new String[]{System.getProperty(s.toLowerCase()+".version")};
         }else {
             try {
                 return new String[]{Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
             } catch (Exception e) {
-                skUtilities.prSysE("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), e);
+                skUtilities.prSysE("'" + s + "' isn't a real plugin!", getClass().getSimpleName(), e);
             }
         }
         return null;
