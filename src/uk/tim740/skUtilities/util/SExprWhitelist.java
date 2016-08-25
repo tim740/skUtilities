@@ -34,6 +34,8 @@ public class SExprWhitelist extends SimpleExpression<OfflinePlayer> {
             for (OfflinePlayer sof : Bukkit.getWhitelistedPlayers()) {
                 sof.setWhitelisted(false);
             }
+        }else if (mode == Changer.ChangeMode.SET) {
+            Bukkit.setWhitelist((Boolean) delta[0]);
         }
     }
 
@@ -44,8 +46,10 @@ public class SExprWhitelist extends SimpleExpression<OfflinePlayer> {
     @SuppressWarnings("unchecked")
     @Override
     public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
-        if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.ADD || mode == Changer.ChangeMode.REMOVE) {
+        if (mode == Changer.ChangeMode.ADD || mode == Changer.ChangeMode.REMOVE) {
             return CollectionUtils.array(OfflinePlayer.class);
+        }else if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
+            return CollectionUtils.array(Boolean.class);
         }
         return null;
     }
