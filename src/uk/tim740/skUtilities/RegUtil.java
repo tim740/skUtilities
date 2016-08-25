@@ -29,8 +29,8 @@ class RegUtil {
         Skript.registerEffect(EffRestartServer.class, "re(0¦start|1¦load) server");
         Skript.registerEffect(EffRunOpCmd.class, "(force|make) %player% run (cmd|command) %string% as op");
 
-        Skript.registerExpression(SExprWhitelist.class, OfflinePlayer.class, ExpressionType.PROPERTY, "whitelist");
         Skript.registerEffect(EffReloadWhitelist.class, "reload whitelist");
+        Skript.registerExpression(SExprWhitelist.class, OfflinePlayer.class, ExpressionType.PROPERTY, "whitelist");
         Skript.registerCondition(CondServerWhitelist.class, "server is whitelisted", "server is(n't| no)t whitelisted");
         Skript.registerCondition(CondPlayerWhitelist.class, "%player% is whitelisted", "%player% is(n't| no)t whitelisted");
 
