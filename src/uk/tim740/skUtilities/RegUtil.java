@@ -11,8 +11,12 @@ import uk.tim740.skUtilities.util.*;
  */
 class RegUtil {
     static void regU() {
-        Skript.registerExpression(ExprServerIP.class, String.class, ExpressionType.PROPERTY, "[skutil ]ip of server", "[skutil ]server's ip");
+        Skript.registerEffect(EffReloadWhitelist.class, "reload whitelist");
+        Skript.registerExpression(SExprWhitelist.class, OfflinePlayer.class, ExpressionType.PROPERTY, "whitelist");
+        Skript.registerCondition(CondServerWhitelist.class, "server is whitelisted", "server is(n't| no)t whitelisted");
+        Skript.registerCondition(CondPlayerWhitelist.class, "%player% is whitelisted", "%player% is(n't| no)t whitelisted");
 
+        Skript.registerExpression(ExprServerIP.class, String.class, ExpressionType.PROPERTY, "[skutil ]ip of server", "[skutil ]server's ip");
         Skript.registerExpression(ExprLoaded.class, Number.class, ExpressionType.PROPERTY, "number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦plugins|8¦addons|9¦events|10¦effects|11¦expressions|12¦conditions)");
         Skript.registerExpression(ExprVersion.class, String.class, ExpressionType.PROPERTY, "%string%'s version", "version of %string%");
         Skript.registerExpression(ExprSysTime.class, Number.class, ExpressionType.PROPERTY, "[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
@@ -20,19 +24,12 @@ class RegUtil {
         Skript.registerExpression(ExprFontNames.class, String.class, ExpressionType.PROPERTY, "[all ][system ]font names");
         Skript.registerExpression(ExprCaseLength.class, Number.class, ExpressionType.PROPERTY, "number of (0¦upper|1¦lower)case char[acter]s in %string%");
 
-
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
-
+        Skript.registerEffect(EffRunOpCmd.class, "(force|make) %player% run (cmd|command) %string% as op");
         Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");
         Skript.registerEffect(EffReloadSkript.class, "reload s(k|c)ript %string%");
         Skript.registerEffect(EffRestartServer.class, "re(0¦start|1¦load) server");
-        Skript.registerEffect(EffRunOpCmd.class, "(force|make) %player% run (cmd|command) %string% as op");
-
-        Skript.registerEffect(EffReloadWhitelist.class, "reload whitelist");
-        Skript.registerExpression(SExprWhitelist.class, OfflinePlayer.class, ExpressionType.PROPERTY, "whitelist");
-        Skript.registerCondition(CondServerWhitelist.class, "server is whitelisted", "server is(n't| no)t whitelisted");
-        Skript.registerCondition(CondPlayerWhitelist.class, "%player% is whitelisted", "%player% is(n't| no)t whitelisted");
 
         Skript.registerCondition(CondStartsEndsWith.class, "%string% (0¦starts|1¦ends) with %-string%", "%string% does(n't| not) (0¦start|1¦end) with %-string%");
 
