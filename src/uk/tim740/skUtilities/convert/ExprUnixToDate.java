@@ -1,20 +1,19 @@
 package uk.tim740.skUtilities.convert;
 
-import javax.annotation.Nullable;
-
-import ch.njol.skript.util.Date;
-import org.bukkit.event.Event;
-
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
+import ch.njol.skript.util.Date;
 import ch.njol.util.Kleenean;
+import org.bukkit.event.Event;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by tim740.
  */
 public class ExprUnixToDate extends SimpleExpression <Date>{
-    private Expression<Number> str;
+    private Expression<Integer> str;
 
     @Override
     @Nullable
@@ -29,7 +28,7 @@ public class ExprUnixToDate extends SimpleExpression <Date>{
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        str = (Expression<Number>) arg0[0];
+        str = (Expression<Integer>) arg0[0];
         return true;
     }
     @Override
