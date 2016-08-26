@@ -1,13 +1,12 @@
 package uk.tim740.skUtilities.convert;
 
-import javax.annotation.Nullable;
-
-import org.bukkit.event.Event;
-
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import org.bukkit.event.Event;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by tim740.
@@ -18,7 +17,7 @@ public class ExprNumToHexa extends SimpleExpression<String>{
 	@Override
 	@Nullable
 	protected String[] get(Event arg0) {
-		return new String[]{Integer.toHexString(Integer.parseInt(i.getSingle(arg0).toString()))};
+		return new String[]{Integer.toHexString(i.getSingle(arg0).intValue())};
 	}
 
     @SuppressWarnings("unchecked")
