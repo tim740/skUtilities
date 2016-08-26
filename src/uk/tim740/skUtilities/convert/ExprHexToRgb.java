@@ -1,14 +1,13 @@
 package uk.tim740.skUtilities.convert;
 
-import javax.annotation.Nullable;
-
-import org.bukkit.event.Event;
-
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by tim740.
@@ -21,8 +20,8 @@ public class ExprHexToRgb extends SimpleExpression<String>{
 	protected String[] get(Event arg0) {
 		String s = hex.getSingle(arg0).toUpperCase().replace("#", "");
 		if (s.length() == 6){
-            int color = (int)Long.parseLong(s, 16);
-            return new String[]{Integer.toString((color >> 16) & 0xFF) + ", " + Integer.toString((color >> 8) & 0xFF) + ", " + Integer.toString((color) & 0xFF)};
+            int c = (int)Long.parseLong(s, 16);
+            return new String[]{Integer.toString((c >> 16) & 0xFF) + ", " + Integer.toString((c >> 8) & 0xFF) + ", " + Integer.toString((c) & 0xFF)};
         }else{
             skUtilities.prSysE("Length must be 6. (FFFFFF)!", getClass().getSimpleName());
 		}

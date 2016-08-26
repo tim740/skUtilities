@@ -1,21 +1,20 @@
 package uk.tim740.skUtilities.convert;
 
-import javax.annotation.Nullable;
-
-import org.bukkit.event.Event;
-
-import uk.tim740.skUtilities.skUtilities;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import org.bukkit.event.Event;
+import uk.tim740.skUtilities.skUtilities;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by tim740.
  */
 public class ExprFromBin extends SimpleExpression<String> {
     private Expression<String> str;
-    private int toBin;
+    private int ty;
 
 	@Override
 	@Nullable
@@ -28,15 +27,15 @@ public class ExprFromBin extends SimpleExpression<String> {
                 return null;
             }
         }
-        if (toBin == 0){
+        if (ty == 0){
 			StringBuilder sb = new StringBuilder();
             for (String s : bin.split(" ")) {
                 sb.append((char) Integer.parseInt(s, 2));
             }
 			return new String[]{sb.toString()};
-		}else if (toBin == 1){
+		}else if (ty == 1){
 			return new String[]{Integer.toString(Integer.parseInt(bin, 2))};
-		}else if (toBin == 2){
+		}else if (ty == 2){
 			return new String[]{Integer.toHexString(Integer.parseInt(bin, 2))};
 		}else{
 			return new String[]{Integer.toOctalString(Integer.parseInt(bin, 2))};
@@ -46,7 +45,7 @@ public class ExprFromBin extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        toBin = arg3.mark;
+        ty = arg3.mark;
         str = (Expression<String>) arg0[0];
         return true;
     }
