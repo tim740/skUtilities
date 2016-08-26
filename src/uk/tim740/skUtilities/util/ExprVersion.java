@@ -35,7 +35,7 @@ public class ExprVersion extends SimpleExpression<String> {
             return new String[]{System.getProperty(s.toLowerCase()+".version")};
         }else {
             try {
-                return new String[]{Bukkit.getServer().getPluginManager().getPlugin(str.getSingle(arg0)).getDescription().getVersion()};
+                return new String[]{Bukkit.getServer().getPluginManager().getPlugin(s).getDescription().getVersion()};
             } catch (Exception e) {
                 skUtilities.prSysE("'" + s + "' isn't a real plugin!", getClass().getSimpleName(), e);
             }
