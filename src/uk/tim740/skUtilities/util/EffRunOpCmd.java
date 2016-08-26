@@ -1,7 +1,9 @@
 package uk.tim740.skUtilities.util;
 
 import ch.njol.skript.Skript;
-import ch.njol.skript.lang.*;
+import ch.njol.skript.lang.Effect;
+import ch.njol.skript.lang.Expression;
+import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
@@ -12,7 +14,7 @@ import javax.annotation.Nullable;
 
 /**
  * Created by tim740 on 16/06/16
- * Code by dzikoysk
+ * Code by @dzikoysk, optimized by @tim740
  */
 public class EffRunOpCmd extends Effect{
     private Expression<String> str;
@@ -21,18 +23,18 @@ public class EffRunOpCmd extends Effect{
 
     @Override
 	protected void execute(Event arg0) {
-        for (String command : this.str.getArray(arg0)) {
-            if (command.startsWith("/")) command = command.substring(1);
-            if (this.usr == null) {
-                Skript.dispatchCommand(Bukkit.getConsoleSender(), command);
+        for (String cmd : str.getArray(arg0)) {
+            if (cmd.startsWith("/")) cmd = cmd.substring(1);
+            if (usr == null) {
+                Skript.dispatchCommand(Bukkit.getConsoleSender(), cmd);
             }else {
-                for (CommandSender sender : (CommandSender[]) this.usr.getArray(arg0)) {
-                    if (!sender.isOp()) {
-                        sender.setOp(true);
-                        Skript.dispatchCommand(sender, command);
-                        sender.setOp(false);
+                for (CommandSender u : usr.getArray(arg0)) {
+                    if (!u.isOp()) {
+                        u.setOp(true);
+                        Skript.dispatchCommand(u, cmd);
+                        u.setOp(false);
                     } else {
-                        Skript.dispatchCommand(sender, command);
+                        Skript.dispatchCommand(u, cmd);
                     }
                 }
             }
