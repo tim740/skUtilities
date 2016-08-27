@@ -97,8 +97,11 @@ public class skUtilities extends JavaPlugin {
                     prSysI("Finished downloading skUtilities v" + v);
                 }else{
                     prSysI("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
+                    Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!", "skUtilities.update");
+
                 }
             }else{
+                Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest", "skUtilities.update");
                 prSysI("You can find the latest version here: https://github.com/tim740/skUtilities/releases/latest");
                 prSysI("You should consider enabling `downloadUpdates` in the config.");
             }
