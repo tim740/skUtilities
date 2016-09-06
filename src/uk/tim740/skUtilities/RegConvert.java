@@ -23,7 +23,7 @@ class RegConvert {
         Skript.registerExpression(ExprHexToRgb.class, String.class, ExpressionType.PROPERTY, "convert hex %string% to rgb");
         Skript.registerExpression(ExprRgbToHex.class, String.class, ExpressionType.PROPERTY, "convert rgb %number%, %number%, %number% to hex");
 
-        Skript.registerExpression(ExprUnixToDate.class, Date.class, ExpressionType.PROPERTY, "convert unix[ date] %integer% to date");
+        Skript.registerExpression(ExprUnixToDate.class, Date.class, ExpressionType.PROPERTY, "convert unix[ date] %number% to date");
         Skript.registerExpression(ExprDateToUnix.class, Number.class, ExpressionType.PROPERTY, "convert date %date% to unix[ date]");
 
         Skript.registerExpression(ExprBase64.class, String.class, ExpressionType.PROPERTY, "(0¦en|1¦de)code base[ ]64 %string%");

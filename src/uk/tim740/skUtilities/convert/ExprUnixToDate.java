@@ -6,6 +6,7 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.skript.util.Date;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
+import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 
@@ -13,22 +14,27 @@ import javax.annotation.Nullable;
  * Created by tim740.
  */
 public class ExprUnixToDate extends SimpleExpression <Date>{
-    private Expression<Integer> str;
+    private Expression<Number> n;
 
     @Override
     @Nullable
     protected Date[] get(Event arg0) {
-        String si = str.getSingle(arg0).toString();
+        String si = n.getSingle(arg0).toString();
         if (!(si.length() == 10)){
             si = si.substring(0, 10);
         }
-        return new Date[]{new Date(Integer.parseInt(si) *1000L)};
+        try {
+            return new Date[]{new Date(Integer.parseInt(si) *1000L)};
+        } catch (Exception e) {
+            skUtilities.prSysE("'" + si + "' You must use Integers 10 Chars long!", getClass().getSimpleName(), e);
+        }
+        return null;
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        str = (Expression<Integer>) arg0[0];
+        n = (Expression<Number>) arg0[0];
         return true;
     }
     @Override
