@@ -1,11 +1,5 @@
 package uk.tim740.skUtilities.util;
 
-import java.util.Iterator;
-import javax.annotation.Nullable;
-
-import org.bukkit.Bukkit;
-import org.bukkit.event.Event;
-
 import ch.njol.skript.ScriptLoader;
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Expression;
@@ -14,6 +8,10 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.skript.variables.Variables;
 import ch.njol.util.Kleenean;
+import org.bukkit.event.Event;
+
+import javax.annotation.Nullable;
+import java.util.Iterator;
 
 /**
  * Created by tim740.
@@ -40,14 +38,10 @@ public class ExprLoaded extends SimpleExpression<Number>{
 			//System.out.println("aliases loaded " + (ScriptLoader.getScriptAliases()).getClass());
 			return new Number[]{ScriptLoader.getScriptAliases().size()};
 		}else if (ty == 7){
-			return new Number[]{Bukkit.getServer().getPluginManager().getPlugins().length};
-		}else if (ty == 8){
-			return new Number[]{Skript.getAddons().size()};
-		}else if (ty == 9){
 			return new Number[]{Skript.getEvents().size()};
-		}else if (ty == 10){
+		}else if (ty == 8){
 			return new Number[]{Skript.getEffects().size()};
-		}else if (ty == 11){
+		}else if (ty == 9){
 			int size = 0;
 			Iterator<ExpressionInfo<?, ?>> exprs = Skript.getExpressions();
 			while(exprs.hasNext()) {
