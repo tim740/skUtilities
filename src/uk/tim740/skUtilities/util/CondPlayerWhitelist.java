@@ -14,20 +14,20 @@ public class CondPlayerWhitelist extends Condition {
     private Expression<Player> usr;
 
     @Override
-    public boolean check(Event arg0) {
-        Boolean chk = usr.getSingle(arg0).isWhitelisted();
+    public boolean check(Event e) {
+        Boolean chk = usr.getSingle(e).isWhitelisted();
         return (isNegated() ? !chk : chk);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        usr = (Expression<Player>) arg0[0];
-        setNegated(arg1 == 1);
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        usr = (Expression<Player>) e[0];
+        setNegated(i == 1);
         return true;
     }
     @Override
-    public String toString(Event arg0, boolean arg1) {
+    public String toString(Event e, boolean b) {
         return getClass().getName();
     }
 

@@ -15,16 +15,16 @@ import javax.annotation.Nullable;
 public class EffReloadWhitelist extends Effect{
 
 	@Override
-	protected void execute(Event arg0) {
+	protected void execute(Event e) {
         Bukkit.reloadWhitelist();
     }
 
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

@@ -26,8 +26,8 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
 
 	@Override
 	@Nullable
-	protected Boolean[] get(Event arg0) {
-        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(arg0)));
+	protected Boolean[] get(Event e) {
+        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
         if (Files.exists(pth)) {
             if (ty == 0) {
                 return new Boolean[]{Files.isReadable(pth)};
@@ -36,8 +36,8 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
             } else {
                 try {
                     return new Boolean[]{Files.isHidden(pth)};
-                } catch (IOException e) {
-                    skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+                } catch (IOException x) {
+                    skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
                 }
             }
         }else{
@@ -45,9 +45,9 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
         }
         return null;
     }
-    public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
+    public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
-            File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
+            File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
             if (pth.exists()) {
                 Boolean boo = (boolean) delta[0];
                 if (ty == 0) {
@@ -69,8 +69,8 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
                         }else{
                             Files.setAttribute(Paths.get(pth.toString()), "dos:hidden", false);
                         }
-                    } catch (IOException e) {
-                        skUtilities.prSysE("Sorry Windows only!", getClass().getSimpleName(), e);
+                    } catch (IOException x) {
+                        skUtilities.prSysE("Sorry Windows only!", getClass().getSimpleName(), x);
                     }
                 }
             } else {
@@ -82,9 +82,9 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        path = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
     @SuppressWarnings("unchecked")
@@ -105,7 +105,7 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

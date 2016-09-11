@@ -18,8 +18,8 @@ public class ExprFromBin extends SimpleExpression<String> {
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0){
-        String bin = str.getSingle(arg0);
+	protected String[] get(Event e){
+        String bin = str.getSingle(e);
         String binV = bin.trim();
         for (char character : binV.toCharArray()){
             if (character !='0' && character !='1' && character !=' '){
@@ -44,9 +44,9 @@ public class ExprFromBin extends SimpleExpression<String> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        ty = arg3.mark;
-        str = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        ty = p.mark;
+        str = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -58,7 +58,7 @@ public class ExprFromBin extends SimpleExpression<String> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

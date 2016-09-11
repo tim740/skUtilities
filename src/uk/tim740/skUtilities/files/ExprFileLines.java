@@ -9,7 +9,7 @@ import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.*;
+import java.io.File;
 import java.nio.file.Files;
 
 /**
@@ -20,13 +20,13 @@ public class ExprFileLines extends SimpleExpression<Number>{
 
 	@Override
 	@Nullable
-	protected Number[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
+	protected Number[] get(Event e) {
+        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         if (pth.exists()){
             try {
                 return new Number[]{Files.readAllLines(pth.toPath()).size()};
-            } catch (Exception e) {
-                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+            } catch (Exception x) {
+                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
             }
         }else{
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
@@ -36,8 +36,8 @@ public class ExprFileLines extends SimpleExpression<Number>{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        path = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -49,7 +49,7 @@ public class ExprFileLines extends SimpleExpression<Number>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

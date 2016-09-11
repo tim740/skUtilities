@@ -17,8 +17,8 @@ public class ExprRandomizeString extends SimpleExpression<String>{
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
-        char a[] = str.getSingle(arg0).toCharArray();
+	protected String[] get(Event e) {
+        char a[] = str.getSingle(e).toCharArray();
         Random r = new Random();
         for (int i=0 ; i<a.length-1 ; i++ ) {
             int j = r.nextInt(a.length-1);
@@ -29,8 +29,8 @@ public class ExprRandomizeString extends SimpleExpression<String>{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        str = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -42,7 +42,7 @@ public class ExprRandomizeString extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

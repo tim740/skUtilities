@@ -1,13 +1,12 @@
 package uk.tim740.skUtilities.convert;
 
-import javax.annotation.Nullable;
-
-import ch.njol.util.Kleenean;
-import org.bukkit.event.Event;
-
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
+import ch.njol.util.Kleenean;
+import org.bukkit.event.Event;
+
+import javax.annotation.Nullable;
 import java.util.Objects;
 
 /**
@@ -19,10 +18,10 @@ public class ExprFromString extends SimpleExpression<String>{
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
+	protected String[] get(Event e) {
         String out = "";
         if (ty == 0) {
-            for (String c : str.getSingle(arg0).split("")) {
+            for (String c : str.getSingle(e).split("")) {
                 if (Objects.equals(out, "")) {
                     out = (Integer.toString(c.charAt(0)));
                 } else {
@@ -30,7 +29,7 @@ public class ExprFromString extends SimpleExpression<String>{
                 }
             }
         }else{
-            for (String c : str.getSingle(arg0).split("")) {
+            for (String c : str.getSingle(e).split("")) {
                 if (c.charAt(0) < 0x10) {
                     out += "\\u000" + Integer.toHexString(c.charAt(0));
                 } else if (c.charAt(0) < 0x100) {
@@ -47,9 +46,9 @@ public class ExprFromString extends SimpleExpression<String>{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        str = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
     @Override
@@ -61,7 +60,7 @@ public class ExprFromString extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

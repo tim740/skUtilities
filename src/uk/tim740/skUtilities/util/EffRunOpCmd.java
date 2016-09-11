@@ -22,13 +22,13 @@ public class EffRunOpCmd extends Effect{
 
 
     @Override
-	protected void execute(Event arg0) {
-        for (String cmd : str.getArray(arg0)) {
+	protected void execute(Event e) {
+        for (String cmd : str.getArray(e)) {
             if (cmd.startsWith("/")) cmd = cmd.substring(1);
             if (usr == null) {
                 Skript.dispatchCommand(Bukkit.getConsoleSender(), cmd);
             }else {
-                for (CommandSender u : usr.getArray(arg0)) {
+                for (CommandSender u : usr.getArray(e)) {
                     if (!u.isOp()) {
                         u.setOp(true);
                         Skript.dispatchCommand(u, cmd);
@@ -43,13 +43,13 @@ public class EffRunOpCmd extends Effect{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        usr = (Expression<Player>) arg0[0];
-        str = (Expression<String>) arg0[1];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        usr = (Expression<Player>) e[0];
+        str = (Expression<String>) e[1];
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

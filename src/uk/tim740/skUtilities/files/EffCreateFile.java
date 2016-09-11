@@ -25,8 +25,8 @@ public class EffCreateFile extends Effect {
     private int ty;
 
     @Override
-    protected void execute(Event arg0) {
-        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(arg0)));
+    protected void execute(Event e) {
+        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
         EvtFileCreation efc = new EvtFileCreation(pth.toFile());
         Bukkit.getServer().getPluginManager().callEvent(efc);
         if (!efc.isCancelled()) {
@@ -37,14 +37,14 @@ public class EffCreateFile extends Effect {
                         Files.createDirectories(fwn);
                     }
                     Files.createFile(pth);
-                } catch (IOException e) {
-                    skUtilities.prSysE("File: '" + pth + "' already exists!", getClass().getSimpleName(), e);
+                } catch (IOException x) {
+                    skUtilities.prSysE("File: '" + pth + "' already exists!", getClass().getSimpleName(), x);
                 }
             } else {
                 try {
                     Files.createDirectories(pth);
-                } catch (IOException e) {
-                    skUtilities.prSysE("Directory: '" + pth + "' already exists!", getClass().getSimpleName(), e);
+                } catch (IOException x) {
+                    skUtilities.prSysE("Directory: '" + pth + "' already exists!", getClass().getSimpleName(), x);
                 }
             }
         }
@@ -52,13 +52,13 @@ public class EffCreateFile extends Effect {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        path = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

@@ -1,13 +1,12 @@
 package uk.tim740.skUtilities.convert;
 
-import javax.annotation.Nullable;
-
-import org.bukkit.event.Event;
-
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import org.bukkit.event.Event;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by tim740.
@@ -18,9 +17,9 @@ public class ExprToBin extends SimpleExpression<String> {
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
+	protected String[] get(Event e) {
 		if (ty == 0){
-			 byte[] by = str.getSingle(arg0).getBytes();
+			 byte[] by = str.getSingle(e).getBytes();
 			 StringBuilder bin = new StringBuilder();
 			 for (byte b : by) {
 			    int val = b;
@@ -32,19 +31,19 @@ public class ExprToBin extends SimpleExpression<String> {
 			}
 			return new String[]{bin.toString()};
 		}else if (ty == 1){
-			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(arg0)))};
+			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(e)))};
 		}else if (ty == 2){
-			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(arg0), 16))};
+			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(e), 16))};
 		}else{
-			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(arg0), 8))};
+			return new String[]{Integer.toBinaryString(Integer.parseInt(str.getSingle(e), 8))};
 		}
 	}
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        ty = arg3.mark;
-        str = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        ty = p.mark;
+        str = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -56,7 +55,7 @@ public class ExprToBin extends SimpleExpression<String> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

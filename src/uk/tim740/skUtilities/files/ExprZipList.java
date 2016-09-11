@@ -9,7 +9,8 @@ import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -24,22 +25,22 @@ public class ExprZipList extends SimpleExpression<String>{
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
+	protected String[] get(Event e) {
+        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         ArrayList<String> cl = new ArrayList<>();
         try (ZipFile zf = new ZipFile(pth)) {
             cl.addAll(zf.stream().collect(Collectors.toList()).stream().map((Function<ZipEntry, String>) ZipEntry::toString).collect(Collectors.toList()));
             return cl.toArray(new String[cl.size()]);
-        } catch (IOException e) {
-            skUtilities.prSysE("ZipFile: '" + pth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), e);
+        } catch (IOException x) {
+            skUtilities.prSysE("ZipFile: '" + pth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), x);
         }
         return null;
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        path = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -51,7 +52,7 @@ public class ExprZipList extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

@@ -16,7 +16,7 @@ public class ExprSysTime extends SimpleExpression<Integer> {
 
     @Override
     @Nullable
-    protected Integer[] get(Event arg0) {
+    protected Integer[] get(Event e) {
         if (ty == 0) {
             return new Integer[]{Math.toIntExact(System.nanoTime())};
         }else if (ty == 1){
@@ -28,8 +28,8 @@ public class ExprSysTime extends SimpleExpression<Integer> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        ty = p.mark;
         return true;
     }
     @Override
@@ -41,7 +41,7 @@ public class ExprSysTime extends SimpleExpression<Integer> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

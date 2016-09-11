@@ -17,8 +17,8 @@ public class ExprCaseLength extends SimpleExpression<Number>{
 
 	@Override
 	@Nullable
-	protected Number[] get(Event arg0) {
-	    String s = str.getSingle(arg0);
+	protected Number[] get(Event e) {
+	    String s = str.getSingle(e);
         Integer n = 0;
 		if (ty == 0){
             for (int i = 0; i < s.length(); i++) {
@@ -34,9 +34,9 @@ public class ExprCaseLength extends SimpleExpression<Number>{
 
 	@SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        str = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
     @Override
@@ -48,7 +48,7 @@ public class ExprCaseLength extends SimpleExpression<Number>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

@@ -24,8 +24,8 @@ public class EffReloadSkript extends Effect{
 
 
     @Override
-	protected void execute(Event arg0) {
-        File f = new File("plugins" + File.separator + "Skript" + File.separator + "scripts" + File.separator + str.getSingle(arg0).replaceAll(".sk", "") + ".sk");
+	protected void execute(Event e) {
+        File f = new File("plugins" + File.separator + "Skript" + File.separator + "scripts" + File.separator + str.getSingle(e).replaceAll(".sk", "") + ".sk");
         if (f.exists()) {
             if (!f.isDirectory()) {
                 unloadScript(f);
@@ -84,12 +84,12 @@ public class EffReloadSkript extends Effect{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        str = (Expression<String>) e[0];
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

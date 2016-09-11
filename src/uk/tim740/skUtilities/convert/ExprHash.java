@@ -19,23 +19,23 @@ public class ExprHash extends SimpleExpression<String> {
 
     @Override
     @Nullable
-    protected String[] get(Event arg0) {
+    protected String[] get(Event e) {
         MessageDigest hashStr;
         try {
-            hashStr = MessageDigest.getInstance(hash.getSingle(arg0).toUpperCase());
-            hashStr.update(str.getSingle(arg0).getBytes(), 0, str.getSingle(arg0).length());
+            hashStr = MessageDigest.getInstance(hash.getSingle(e).toUpperCase());
+            hashStr.update(str.getSingle(e).getBytes(), 0, str.getSingle(e).length());
             return new String[]{new BigInteger(1, hashStr.digest()).toString(16)};
-        } catch (Exception e) {
-            skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+        } catch (Exception x) {
+            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
         return null;
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
-        hash = (Expression<String>) arg0[1];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        str = (Expression<String>) e[0];
+        hash = (Expression<String>) e[1];
         return true;
     }
     @Override
@@ -47,7 +47,7 @@ public class ExprHash extends SimpleExpression<String> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

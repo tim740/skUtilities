@@ -19,21 +19,21 @@ public class SExprGlideMode extends SimpleExpression<Boolean>{
 
 	@Override
 	@Nullable
-	protected Boolean[] get(Event arg0) {
-		return new Boolean[]{ent.getSingle(arg0).isGliding()};
+	protected Boolean[] get(Event e) {
+		return new Boolean[]{ent.getSingle(e).isGliding()};
 	}
-    public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
+    public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
-            ent.getSingle(arg0).setGliding((boolean) delta[0]);
+            ent.getSingle(e).setGliding((boolean) delta[0]);
         }else if (mode == Changer.ChangeMode.RESET) {
-            ent.getSingle(arg0).setGliding(false);
+            ent.getSingle(e).setGliding(false);
         }
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        ent = (Expression<LivingEntity>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        ent = (Expression<LivingEntity>) e[0];
         return true;
     }
     @SuppressWarnings("unchecked")
@@ -54,7 +54,7 @@ public class SExprGlideMode extends SimpleExpression<Boolean>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

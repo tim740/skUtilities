@@ -20,19 +20,19 @@ public class ExprBase64 extends SimpleExpression<String> {
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
+	protected String[] get(Event e) {
         if (ty == 0) {
-            return new String[]{Base64.getEncoder().encodeToString(b64.getSingle(arg0).getBytes(StandardCharsets.UTF_8))};
+            return new String[]{Base64.getEncoder().encodeToString(b64.getSingle(e).getBytes(StandardCharsets.UTF_8))};
         }else{
-            return new String[]{new String(DatatypeConverter.parseBase64Binary(b64.getSingle(arg0)), StandardCharsets.UTF_8)};
+            return new String[]{new String(DatatypeConverter.parseBase64Binary(b64.getSingle(e)), StandardCharsets.UTF_8)};
         }
 	}
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        ty = arg3.mark;
-        b64 = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        ty = p.mark;
+        b64 = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -44,7 +44,7 @@ public class ExprBase64 extends SimpleExpression<String> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

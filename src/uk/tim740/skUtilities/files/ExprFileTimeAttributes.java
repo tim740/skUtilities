@@ -25,8 +25,8 @@ public class ExprFileTimeAttributes extends SimpleExpression<Number>{
 
 	@Override
 	@Nullable
-	protected Number[] get(Event arg0) {
-        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(arg0)));
+	protected Number[] get(Event e) {
+        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
         try {
             if (ty == 0) {
                 return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).lastModifiedTime().to(TimeUnit.SECONDS)};
@@ -35,17 +35,17 @@ public class ExprFileTimeAttributes extends SimpleExpression<Number>{
             }else{
                 return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).lastAccessTime().to(TimeUnit.SECONDS)};
             }
-        } catch (IOException e) {
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), e);
+        } catch (IOException x) {
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), x);
         }
         return null;
 	}
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        path = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
     @Override
@@ -57,7 +57,7 @@ public class ExprFileTimeAttributes extends SimpleExpression<Number>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

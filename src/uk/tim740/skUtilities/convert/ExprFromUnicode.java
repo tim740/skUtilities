@@ -22,13 +22,13 @@ public class ExprFromUnicode extends SimpleExpression<String> {
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
+	protected String[] get(Event e) {
         String out = "";
         Properties p = new Properties();
         try {
-            p.load(new StringReader("key="+str.getSingle(arg0)));
-        } catch (IOException e) {
-            skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+            p.load(new StringReader("key="+str.getSingle(e)));
+        } catch (IOException x) {
+            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
         if (ty == 0) {
             out = p.getProperty("key");
@@ -47,9 +47,9 @@ public class ExprFromUnicode extends SimpleExpression<String> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        ty = arg3.mark;
-        str = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        ty = p.mark;
+        str = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -61,7 +61,7 @@ public class ExprFromUnicode extends SimpleExpression<String> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

@@ -22,7 +22,7 @@ public class ExprLoadedList extends SimpleExpression<String>{
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
+	protected String[] get(Event e) {
         ArrayList<String> cl = new ArrayList<>();
         if (ty == 0) {
             for (Plugin s : Bukkit.getServer().getPluginManager().getPlugins()) {
@@ -36,8 +36,8 @@ public class ExprLoadedList extends SimpleExpression<String>{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        ty = p.mark;
         return true;
     }
     @Override
@@ -49,7 +49,7 @@ public class ExprLoadedList extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

@@ -25,15 +25,15 @@ public class EffInsertLine extends Effect{
     private Expression<Number> line;
 
 	@Override
-	protected void execute(Event arg0) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
-        EvtFileWrite efw = new EvtFileWrite(pth, txt.getSingle(arg0), line.getSingle(arg0));
+	protected void execute(Event e) {
+        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+        EvtFileWrite efw = new EvtFileWrite(pth, txt.getSingle(e), line.getSingle(e));
         Bukkit.getServer().getPluginManager().callEvent(efw);
         if (!efw.isCancelled()) {
             try {
                 ArrayList<String> cl = new ArrayList<>();
                 cl.addAll(Files.readAllLines(pth.toPath()));
-                cl.add(line.getSingle(arg0).intValue() - 1, txt.getSingle(arg0));
+                cl.add(line.getSingle(e).intValue() - 1, txt.getSingle(e));
                 String[] out = new String[cl.size()];
                 BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
                 for (String aCl : cl.toArray(out)) {
@@ -41,22 +41,22 @@ public class EffInsertLine extends Effect{
                     bw.newLine();
                 }
                 bw.close();
-            } catch (Exception e) {
-                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName());
+            } catch (Exception x) {
+                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName());
             }
         }
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        txt = (Expression<String>) arg0[0];
-        line = (Expression<Number>) arg0[1];
-        path = (Expression<String>) arg0[2];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        txt = (Expression<String>) e[0];
+        line = (Expression<Number>) e[1];
+        path = (Expression<String>) e[2];
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

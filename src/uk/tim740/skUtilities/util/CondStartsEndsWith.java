@@ -4,7 +4,6 @@ import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
-import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 
 /**
@@ -15,27 +14,27 @@ public class CondStartsEndsWith extends Condition {
     private int ty;
 
     @Override
-    public boolean check(Event arg0) {
+    public boolean check(Event e) {
         if (ty == 0) {
-            Boolean chk = str.getSingle(arg0).startsWith(txt.getSingle(arg0));
+            Boolean chk = str.getSingle(e).startsWith(txt.getSingle(e));
             return (isNegated() ? !chk : chk);
         }else{
-            Boolean chk = str.getSingle(arg0).endsWith(txt.getSingle(arg0));
+            Boolean chk = str.getSingle(e).endsWith(txt.getSingle(e));
             return (isNegated() ? !chk : chk);
         }
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
-        txt = (Expression<String>) arg0[1];
-        ty = arg3.mark;
-        setNegated(arg1 == 1);
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        str = (Expression<String>) e[0];
+        txt = (Expression<String>) e[1];
+        ty = p.mark;
+        setNegated(i == 1);
         return true;
     }
     @Override
-    public String toString(Event arg0, boolean arg1) {
+    public String toString(Event e, boolean b) {
         return getClass().getName();
     }
 

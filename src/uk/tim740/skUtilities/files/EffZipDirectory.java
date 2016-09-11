@@ -11,10 +11,13 @@ import uk.tim740.skUtilities.files.event.EvtFileZip;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URI;
 import java.nio.file.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Stream;
 
 /**
@@ -24,9 +27,9 @@ public class EffZipDirectory extends Effect {
     private Expression<String> file, zip;
 
     @Override
-    protected void execute(Event arg0) {
-        Path Dpth = Paths.get(Utils.getDefaultPath(file.getSingle(arg0)));
-        File Fzip = new File(Utils.getDefaultPath(zip.getSingle(arg0)));
+    protected void execute(Event e) {
+        Path Dpth = Paths.get(Utils.getDefaultPath(file.getSingle(e)));
+        File Fzip = new File(Utils.getDefaultPath(zip.getSingle(e)));
         EvtFileZip efz = new EvtFileZip(Fzip, Dpth.toString());
         Bukkit.getServer().getPluginManager().callEvent(efz);
         if (!efz.isCancelled()) {
@@ -44,30 +47,30 @@ public class EffZipDirectory extends Effect {
                             } else {
                                 Files.copy(cf, to);
                             }
-                        } catch (IOException e) {
-                            skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+                        } catch (IOException x) {
+                            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
                         }
                     });
                 }
-            } catch (FileSystemAlreadyExistsException e) {
-                skUtilities.prSysE("ZipFile: '" + Fzip + "' already exists!", getClass().getSimpleName(), e);
-            } catch (FileNotFoundException e) {
-                skUtilities.prSysE("Directory: '" + Dpth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), e);
-            } catch (IOException e) {
-                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+            } catch (FileSystemAlreadyExistsException x) {
+                skUtilities.prSysE("ZipFile: '" + Fzip + "' already exists!", getClass().getSimpleName(), x);
+            } catch (FileNotFoundException x) {
+                skUtilities.prSysE("Directory: '" + Dpth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), x);
+            } catch (IOException x) {
+                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
             }
         }
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        file = (Expression<String>) arg0[0];
-        zip = (Expression<String>) arg0[1];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        file = (Expression<String>) e[0];
+        zip = (Expression<String>) e[1];
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

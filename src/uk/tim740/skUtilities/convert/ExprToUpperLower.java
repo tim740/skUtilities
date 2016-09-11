@@ -17,19 +17,19 @@ public class ExprToUpperLower extends SimpleExpression<String>{
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
+	protected String[] get(Event e) {
         if (ty == 0) {
-            return new String[]{str.getSingle(arg0).toUpperCase()};
+            return new String[]{str.getSingle(e).toUpperCase()};
         }else{
-            return new String[]{str.getSingle(arg0).toLowerCase()};
+            return new String[]{str.getSingle(e).toLowerCase()};
         }
 	}
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        str = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
     @Override
@@ -41,7 +41,7 @@ public class ExprToUpperLower extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

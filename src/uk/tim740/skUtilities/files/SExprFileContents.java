@@ -24,8 +24,8 @@ public class SExprFileContents extends SimpleExpression<String>{
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
+	protected String[] get(Event e) {
+        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         if (pth.exists()){
             try {
                 ArrayList<String> cl = new ArrayList<>();
@@ -37,17 +37,17 @@ public class SExprFileContents extends SimpleExpression<String>{
                 br.close();
                 String[] out = new String[cl.size()];
                 return cl.toArray(out);
-            } catch (Exception e) {
-                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+            } catch (Exception x) {
+                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
             }
         }else{
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
         }
         return null;
 	}
-    public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
+    public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
-            File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
+            File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
             if (pth.exists()) {
                 if (mode == Changer.ChangeMode.SET) {
                     try {
@@ -57,8 +57,8 @@ public class SExprFileContents extends SimpleExpression<String>{
                             bw.newLine();
                         }
                         bw.close();
-                    } catch (IOException e) {
-                        skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+                    } catch (IOException x) {
+                        skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
                     }
                 }else{
                     try {
@@ -69,8 +69,8 @@ public class SExprFileContents extends SimpleExpression<String>{
                             bw.write("");
                             bw.close();
                         }
-                    } catch (IOException e) {
-                        skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+                    } catch (IOException x) {
+                        skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
                     }
                 }
             } else {
@@ -81,8 +81,8 @@ public class SExprFileContents extends SimpleExpression<String>{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        path = (Expression<String>) e[0];
         return true;
     }
     @SuppressWarnings("unchecked")
@@ -102,7 +102,7 @@ public class SExprFileContents extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

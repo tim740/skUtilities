@@ -21,13 +21,13 @@ public class ExprVersion extends SimpleExpression<String> {
 
     @Override
     @Nullable
-    protected String[] get(Event arg0) {
-        String s = str.getSingle(arg0);
+    protected String[] get(Event e) {
+        String s = str.getSingle(e);
         if (s.equalsIgnoreCase("aliases")) {
             try {
                 return new String[]{"v" + new BufferedReader(new FileReader("plugins" + File.separator + "Skript" + File.separator +"aliases-english.sk")).readLine().replaceAll("#! VERSION: ", "").replaceAll("!", "")};
-            } catch (Exception e) {
-                skUtilities.prSysE(e.getCause().getMessage(), getClass().getSimpleName(), e);
+            } catch (Exception x) {
+                skUtilities.prSysE(x.getCause().getMessage(), getClass().getSimpleName(), x);
             }
         }else if (s.equalsIgnoreCase("server")) {
             return new String[]{Bukkit.getServer().getVersion()};
@@ -36,8 +36,8 @@ public class ExprVersion extends SimpleExpression<String> {
         }else {
             try {
                 return new String[]{Bukkit.getServer().getPluginManager().getPlugin(s).getDescription().getVersion()};
-            } catch (Exception e) {
-                skUtilities.prSysE("'" + s + "' isn't a real plugin!", getClass().getSimpleName(), e);
+            } catch (Exception x) {
+                skUtilities.prSysE("'" + s + "' isn't a real plugin!", getClass().getSimpleName(), x);
             }
         }
         return null;
@@ -45,8 +45,8 @@ public class ExprVersion extends SimpleExpression<String> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        str = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -58,7 +58,7 @@ public class ExprVersion extends SimpleExpression<String> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

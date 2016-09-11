@@ -1,7 +1,8 @@
 package uk.tim740.skUtilities.util;
 
 import ch.njol.skript.aliases.Aliases;
-import ch.njol.skript.lang.*;
+import ch.njol.skript.lang.Effect;
+import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
@@ -14,17 +15,17 @@ import javax.annotation.Nullable;
 public class EffSkReloadAliases extends Effect{
 
 	@Override
-	protected void execute(Event arg0) {
+	protected void execute(Event e) {
         Aliases.clear();
         Aliases.load();
 	}
 
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

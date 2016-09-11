@@ -55,8 +55,8 @@ public class ExprLoaded extends SimpleExpression<Number>{
 	}
 
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        ty = p.mark;
         return true;
     }
     @Override
@@ -68,7 +68,7 @@ public class ExprLoaded extends SimpleExpression<Number>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

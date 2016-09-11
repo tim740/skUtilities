@@ -17,7 +17,7 @@ public class ExprFontNames extends SimpleExpression<String> {
 
     @Override
     @Nullable
-    protected String[] get(Event arg0) {
+    protected String[] get(Event e) {
         ArrayList<String> cl = new ArrayList<>();
         for (Font f : GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts()) {
             cl.add(f.getFontName());
@@ -27,7 +27,7 @@ public class ExprFontNames extends SimpleExpression<String> {
     }
 
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
         return true;
     }
     @Override
@@ -39,7 +39,7 @@ public class ExprFontNames extends SimpleExpression<String> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

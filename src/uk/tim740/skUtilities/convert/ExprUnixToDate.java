@@ -18,23 +18,23 @@ public class ExprUnixToDate extends SimpleExpression <Date>{
 
     @Override
     @Nullable
-    protected Date[] get(Event arg0) {
-        String si = n.getSingle(arg0).toString();
+    protected Date[] get(Event e) {
+        String si = n.getSingle(e).toString();
         if (!(si.length() == 10)){
             si = si.substring(0, 10);
         }
         try {
             return new Date[]{new Date(Integer.parseInt(si) *1000L)};
-        } catch (Exception e) {
-            skUtilities.prSysE("'" + si + "' You must use Integers 10 Chars long!", getClass().getSimpleName(), e);
+        } catch (Exception x) {
+            skUtilities.prSysE("'" + si + "' You must use Integers 10 Chars long!", getClass().getSimpleName(), x);
         }
         return null;
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        n = (Expression<Number>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        n = (Expression<Number>) e[0];
         return true;
     }
     @Override
@@ -46,7 +46,7 @@ public class ExprUnixToDate extends SimpleExpression <Date>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

@@ -18,7 +18,7 @@ public class ExprDiskSpace extends SimpleExpression<String>{
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
+	protected String[] get(Event e) {
         if (ty == 0){
             return new String[]{Utils.getFileSize(new File(File.separator).getTotalSpace())};
         }else if (ty == 1){
@@ -29,8 +29,8 @@ public class ExprDiskSpace extends SimpleExpression<String>{
 	}
 
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        ty = p.mark;
         return true;
     }
     @Override
@@ -42,7 +42,7 @@ public class ExprDiskSpace extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

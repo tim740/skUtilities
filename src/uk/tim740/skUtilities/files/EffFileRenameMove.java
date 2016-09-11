@@ -26,29 +26,29 @@ public class EffFileRenameMove extends Effect{
     private int ty;
 
 	@Override
-	protected void execute(Event arg0) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
+	protected void execute(Event e) {
+        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         if (pth.exists()) {
             if (ty == 0) {
-                EvtFileRename efn = new EvtFileRename(pth, name.getSingle(arg0));
+                EvtFileRename efn = new EvtFileRename(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efn);
                 if (!efn.isCancelled()) {
-                    pth.renameTo(new File(Utils.getDefaultPath(path.getSingle(arg0).replaceAll(pth.getName(), name.getSingle(arg0)))));
+                    pth.renameTo(new File(Utils.getDefaultPath(path.getSingle(e).replaceAll(pth.getName(), name.getSingle(e)))));
                 }
             }else if (ty == 1){
-                EvtFileMove efm = new EvtFileMove(pth, name.getSingle(arg0));
+                EvtFileMove efm = new EvtFileMove(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efm);
                 if (!efm.isCancelled()) {
-                    pth.renameTo(new File(Utils.getDefaultPath(name.getSingle(arg0) + File.separator + pth.getName())));
+                    pth.renameTo(new File(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
                 }
             }else{
-                EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(arg0));
+                EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efc);
                 if (!efc.isCancelled()) {
                     try {
-                        Files.copy(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(arg0) + File.separator + pth.getName())));
-                    } catch (IOException e) {
-                        skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+                        Files.copy(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
+                    } catch (IOException x) {
+                        skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
                     }
                 }
             }
@@ -59,14 +59,14 @@ public class EffFileRenameMove extends Effect{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
-        name = (Expression<String>) arg0[1];
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        path = (Expression<String>) e[0];
+        name = (Expression<String>) e[1];
+        ty = p.mark;
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

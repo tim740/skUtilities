@@ -17,8 +17,8 @@ public class ExprHexToRgb extends SimpleExpression<String>{
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
-		String s = hex.getSingle(arg0).toUpperCase().replace("#", "");
+	protected String[] get(Event e) {
+		String s = hex.getSingle(e).toUpperCase().replace("#", "");
 		if (s.length() == 6){
             int c = (int)Long.parseLong(s, 16);
             return new String[]{Integer.toString((c >> 16) & 0xFF) + ", " + Integer.toString((c >> 8) & 0xFF) + ", " + Integer.toString((c) & 0xFF)};
@@ -30,8 +30,8 @@ public class ExprHexToRgb extends SimpleExpression<String>{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        hex = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        hex = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -43,7 +43,7 @@ public class ExprHexToRgb extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

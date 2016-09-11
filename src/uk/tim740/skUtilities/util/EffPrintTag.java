@@ -2,7 +2,7 @@ package uk.tim740.skUtilities.util;
 
 import ch.njol.skript.lang.Effect;
 import ch.njol.skript.lang.Expression;
-import ch.njol.skript.lang.SkriptParser.ParseResult;
+import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,25 +18,25 @@ public class EffPrintTag extends Effect{
     private int ty;
 
 	@Override
-	protected void execute(Event arg0) {
+	protected void execute(Event e) {
         if (ty == 0){
-            Bukkit.getServer().getLogger().info(ChatColor.translateAlternateColorCodes('&', str.getSingle(arg0)));
+            Bukkit.getServer().getLogger().info(ChatColor.translateAlternateColorCodes('&', str.getSingle(e)));
         }else if (ty == 1){
-            Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes('&', str.getSingle(arg0)));
+            Bukkit.getServer().getLogger().warning(ChatColor.translateAlternateColorCodes('&', str.getSingle(e)));
         }else{
-            Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes('&', str.getSingle(arg0)));
+            Bukkit.getServer().getLogger().severe(ChatColor.translateAlternateColorCodes('&', str.getSingle(e)));
         }
 	}
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
-        ty = arg3.mark;
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        str = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

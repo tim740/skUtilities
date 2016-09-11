@@ -17,22 +17,22 @@ public class EffReloadConfig extends Effect {
     private Expression<String> str;
 
     @Override
-    protected void execute(Event arg0) {
+    protected void execute(Event e) {
         try {
-            Bukkit.getPluginManager().getPlugin(str.getSingle(arg0)).reloadConfig();
-        } catch (Exception e) {
-            skUtilities.prSysE("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), e);
+            Bukkit.getPluginManager().getPlugin(str.getSingle(e)).reloadConfig();
+        } catch (Exception x) {
+            skUtilities.prSysE("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), x);
         }
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        str = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        str = (Expression<String>) e[0];
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

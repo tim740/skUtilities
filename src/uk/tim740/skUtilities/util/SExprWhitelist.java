@@ -20,12 +20,12 @@ public class SExprWhitelist extends SimpleExpression<OfflinePlayer> {
 
 	@Override
 	@Nullable
-	protected OfflinePlayer[] get(Event arg0) {
+	protected OfflinePlayer[] get(Event e) {
         ArrayList<OfflinePlayer> cl = new ArrayList<>();
         cl.addAll(Bukkit.getWhitelistedPlayers());
         return cl.toArray(new OfflinePlayer[cl.size()]);
 	}
-    public void change(Event arg0, Object[] delta, Changer.ChangeMode mode) {
+    public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.ADD) {
             ((OfflinePlayer) delta[0]).setWhitelisted(true);
         }else if (mode == Changer.ChangeMode.REMOVE) {
@@ -40,7 +40,7 @@ public class SExprWhitelist extends SimpleExpression<OfflinePlayer> {
     }
 
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
         return true;
     }
     @SuppressWarnings("unchecked")
@@ -63,7 +63,7 @@ public class SExprWhitelist extends SimpleExpression<OfflinePlayer> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

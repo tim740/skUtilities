@@ -26,10 +26,10 @@ public class EffZipFiles extends Effect {
     private Expression<String> zip;
 
     @Override
-    protected void execute(Event arg0) {
-        File Fzip = new File(Utils.getDefaultPath(zip.getSingle(arg0)));
+    protected void execute(Event e) {
+        File Fzip = new File(Utils.getDefaultPath(zip.getSingle(e)));
         ArrayList<File> cl = new ArrayList<>();
-        for (String Spth : files.getAll(arg0)) {
+        for (String Spth : files.getAll(e)) {
             cl.add(new File(Utils.getDefaultPath(Spth)));
         }
         File[] Fpths = new File[cl.size()];
@@ -51,25 +51,25 @@ public class EffZipFiles extends Effect {
                     fin.close();
                 }
                 zout.close();
-            } catch (ZipException e) {
-                skUtilities.prSysE("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName(), e);
-            } catch (FileNotFoundException e) {
-                skUtilities.prSysE("Files: '" + Arrays.toString(s) + "' 1 or " + s.length + " Files don't exist!", getClass().getSimpleName(), e);
-            } catch (IOException e) {
-                skUtilities.prSysE(e.getMessage(), getClass().getSimpleName(), e);
+            } catch (ZipException x) {
+                skUtilities.prSysE("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName(), x);
+            } catch (FileNotFoundException x) {
+                skUtilities.prSysE("Files: '" + Arrays.toString(s) + "' 1 or " + s.length + " Files don't exist!", getClass().getSimpleName(), x);
+            } catch (IOException x) {
+                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
             }
         }
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        files = (Expression<String>) arg0[0];
-        zip = (Expression<String>) arg0[1];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        files = (Expression<String>) e[0];
+        zip = (Expression<String>) e[1];
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

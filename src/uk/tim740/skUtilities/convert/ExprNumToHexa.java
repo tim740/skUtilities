@@ -12,18 +12,18 @@ import javax.annotation.Nullable;
  * Created by tim740.
  */
 public class ExprNumToHexa extends SimpleExpression<String>{
-	private Expression<Number> i;
+	private Expression<Number> n;
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
-		return new String[]{Integer.toHexString(i.getSingle(arg0).intValue())};
+	protected String[] get(Event e) {
+		return new String[]{Integer.toHexString(n.getSingle(e).intValue())};
 	}
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        i = (Expression<Number>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        n = (Expression<Number>) e[0];
         return true;
     }
     @Override
@@ -35,7 +35,7 @@ public class ExprNumToHexa extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

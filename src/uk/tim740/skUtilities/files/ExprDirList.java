@@ -9,7 +9,7 @@ import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.*;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -20,8 +20,8 @@ public class ExprDirList extends SimpleExpression<String>{
 
 	@Override
 	@Nullable
-	protected String[] get(Event arg0) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(arg0)));
+	protected String[] get(Event e) {
+        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         ArrayList<String> cl = new ArrayList<>();
         if (pth.isDirectory()) {
             //noinspection ConstantConditions
@@ -37,8 +37,8 @@ public class ExprDirList extends SimpleExpression<String>{
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        path = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -50,7 +50,7 @@ public class ExprDirList extends SimpleExpression<String>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

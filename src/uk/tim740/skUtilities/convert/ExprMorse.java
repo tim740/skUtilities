@@ -21,10 +21,10 @@ public class ExprMorse extends SimpleExpression<String> {
 
     @Override
     @Nullable
-    protected String[] get(Event arg0) {
+    protected String[] get(Event e) {
         String out = "";
         if (ty == 0){
-            for (char value : str.getSingle(arg0).toLowerCase().toCharArray()) {
+            for (char value : str.getSingle(e).toLowerCase().toCharArray()) {
                 for (int j = 0; j < engL.length; j++) {
                     if (engL[j] == value) {
                         out += morseL[j] + " ";
@@ -32,7 +32,7 @@ public class ExprMorse extends SimpleExpression<String> {
                 }
             }
         }else{
-            for (String word : str.getSingle(arg0).split("\\s\\s\\s")) {
+            for (String word : str.getSingle(e).split("\\s\\s\\s")) {
                 for (String letter : word.split("\\s")) {
                     for (int j = 0; j < morseL.length; j++) {
                         if (letter.equals(morseL[j])) {
@@ -47,9 +47,9 @@ public class ExprMorse extends SimpleExpression<String> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        ty = arg3.mark;
-        str = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        ty = p.mark;
+        str = (Expression<String>) e[0];
         return true;
     }
     @Override
@@ -61,7 +61,7 @@ public class ExprMorse extends SimpleExpression<String> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

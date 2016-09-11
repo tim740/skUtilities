@@ -23,27 +23,27 @@ public class EffDeleteFile extends Effect {
     private Expression<String> path;
 
     @Override
-    protected void execute(Event arg0) {
-        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(arg0)));
+    protected void execute(Event e) {
+        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
         try {
             EvtFileDeletion efd = new EvtFileDeletion(pth.toFile());
             Bukkit.getServer().getPluginManager().callEvent(efd);
             if (!efd.isCancelled()) {
                 Files.delete(pth);
             }
-        } catch (IOException e) {
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), e);
+        } catch (IOException x) {
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        path = (Expression<String>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        path = (Expression<String>) e[0];
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

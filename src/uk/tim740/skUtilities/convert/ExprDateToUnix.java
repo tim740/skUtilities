@@ -17,14 +17,14 @@ public class ExprDateToUnix extends SimpleExpression <Number>{
 
     @Override
     @Nullable
-    protected Number[] get(Event arg0) {
-        return new Number[]{id.getSingle(arg0).getTimestamp() /1000L};
+    protected Number[] get(Event e) {
+        return new Number[]{id.getSingle(e).getTimestamp() /1000L};
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, ParseResult arg3) {
-        id = (Expression<Date>) arg0[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+        id = (Expression<Date>) e[0];
         return true;
     }
     @Override
@@ -36,7 +36,7 @@ public class ExprDateToUnix extends SimpleExpression <Number>{
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

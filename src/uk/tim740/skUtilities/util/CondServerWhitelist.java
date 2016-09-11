@@ -13,18 +13,18 @@ import org.bukkit.event.Event;
 public class CondServerWhitelist extends Condition {
 
     @Override
-    public boolean check(Event arg0) {
+    public boolean check(Event e) {
         Boolean chk = Bukkit.hasWhitelist();
         return (isNegated() ? !chk : chk);
     }
 
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        setNegated(arg1 == 1);
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        setNegated(i == 1);
         return true;
     }
     @Override
-    public String toString(Event arg0, boolean arg1) {
+    public String toString(Event e, boolean b) {
         return getClass().getName();
     }
 

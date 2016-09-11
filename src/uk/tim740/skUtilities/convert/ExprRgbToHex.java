@@ -7,7 +7,7 @@ import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Created by tim740 on 19/02/2016
@@ -17,17 +17,17 @@ public class ExprRgbToHex extends SimpleExpression<String> {
 
     @Override
     @Nullable
-    protected String[] get(Event arg0) {
-        String rgb = Integer.toHexString(new Color(Integer.parseInt(r.getSingle(arg0).toString()),Integer.parseInt(g.getSingle(arg0).toString()),Integer.parseInt(b.getSingle(arg0).toString())).getRGB());
+    protected String[] get(Event e) {
+        String rgb = Integer.toHexString(new Color(Integer.parseInt(r.getSingle(e).toString()),Integer.parseInt(g.getSingle(e).toString()),Integer.parseInt(b.getSingle(e).toString())).getRGB());
         return new String[]{rgb.substring(2, rgb.length())};
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] arg0, int arg1, Kleenean arg2, SkriptParser.ParseResult arg3) {
-        r = (Expression<Number>) arg0[0];
-        g = (Expression<Number>) arg0[1];
-        b = (Expression<Number>) arg0[2];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+        r = (Expression<Number>) e[0];
+        g = (Expression<Number>) e[1];
+        b = (Expression<Number>) e[2];
         return true;
     }
     @Override
@@ -39,7 +39,7 @@ public class ExprRgbToHex extends SimpleExpression<String> {
         return true;
     }
     @Override
-    public String toString(@Nullable Event arg0, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }

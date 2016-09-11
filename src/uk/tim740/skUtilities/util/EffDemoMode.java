@@ -1,18 +1,17 @@
 package uk.tim740.skUtilities.util;
 
+import ch.njol.skript.lang.Effect;
+import ch.njol.skript.lang.Expression;
+import ch.njol.skript.lang.SkriptParser;
+import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
+import uk.tim740.skUtilities.skUtilities;
 
+import javax.annotation.Nullable;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import javax.annotation.Nullable;
-
-import ch.njol.skript.lang.Effect;
-import ch.njol.skript.lang.Expression;
-import ch.njol.skript.lang.SkriptParser.ParseResult;
-import ch.njol.util.Kleenean;
-import uk.tim740.skUtilities.skUtilities;
 
 /**
  * Made by @Sashie - Tweaked by @tim740
@@ -40,12 +39,12 @@ public class EffDemoMode extends Effect {
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] exprs, int matchedPattern, Kleenean isDelayed, ParseResult parseResult){
-        player = (Expression<Player>) exprs[0];
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p){
+        player = (Expression<Player>) e[0];
         return true;
     }
     @Override
-    public String toString(@Nullable Event e, boolean arg1) {
+    public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
     }
 }
