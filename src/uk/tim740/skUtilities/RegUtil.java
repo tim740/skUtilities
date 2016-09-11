@@ -2,6 +2,7 @@ package uk.tim740.skUtilities;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
+import ch.njol.skript.util.Date;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import uk.tim740.skUtilities.util.*;
@@ -13,8 +14,14 @@ class RegUtil {
     static void regU() {
         Skript.registerEffect(EffReloadWhitelist.class, "reload whitelist");
         Skript.registerExpression(SExprWhitelist.class, OfflinePlayer.class, ExpressionType.PROPERTY, "whitelist");
-        Skript.registerCondition(CondServerWhitelist.class, "server is whitelisted", "server is(n't| no)t whitelisted");
-        Skript.registerCondition(CondPlayerWhitelist.class, "%player% is whitelisted", "%player% is(n't| no)t whitelisted");
+        Skript.registerCondition(CondServerWhitelist.class, "server is whitelisted", "server is(n'| no)t whitelisted");
+        Skript.registerCondition(CondPlayerWhitelist.class, "%player% is whitelisted", "%player% is(n'| no)t whitelisted");
+
+        Skript.registerExpression(ExprGetTimeZone.class, String.class, ExpressionType.PROPERTY, "time[ ]zone of server", "server's time[ ]zone");
+        Skript.registerExpression(ExprTimeZoneList.class, String.class, ExpressionType.PROPERTY, "[all ]time[ ]zones");
+        Skript.registerExpression(ExprTimeInTimeZone.class, Date.class, ExpressionType.PROPERTY, "time in time[ ]zone %string%", "time[ ]zone %string%'s time");
+        Skript.registerExpression(ExprGetRegion.class, String.class, ExpressionType.PROPERTY, "region of server", "server's region");
+        Skript.registerCondition(CondisTimeZone.class, "server is time[ ]zone %string%", "server is(n'| no)t time[ ]zone %string%");
 
         Skript.registerExpression(ExprServerIP.class, String.class, ExpressionType.PROPERTY, "[skutil ]ip of server", "[skutil ]server's ip");
         Skript.registerExpression(ExprLoaded.class, Number.class, ExpressionType.PROPERTY, "number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦events|8¦effects|9¦expressions|10¦conditions)");
