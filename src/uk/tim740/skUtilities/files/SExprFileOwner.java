@@ -28,30 +28,22 @@ public class SExprFileOwner extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event e) {
         Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
-        if (Files.exists(pth)) {
-            try {
-                return new String[]{Files.getOwner(pth).getName()};
-            } catch (IOException x) {
-                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
-            }
-        }else{
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
+        try {
+            return new String[]{Files.getOwner(pth).getName()};
+        } catch (IOException x) {
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         }
         return null;
     }
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
-            if (Files.exists(pth)) {
-                try {
-                    String str = (String) delta[0];
-                    UserPrincipalLookupService lookupService = FileSystems.getDefault().getUserPrincipalLookupService();
-                    Files.setOwner(pth, lookupService.lookupPrincipalByName(str));
-                } catch (IOException x) {
-                    skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
-                }
-            } else {
-                skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
+            try {
+                String str = (String) delta[0];
+                UserPrincipalLookupService lookupService = FileSystems.getDefault().getUserPrincipalLookupService();
+                Files.setOwner(pth, lookupService.lookupPrincipalByName(str));
+            } catch (IOException x) {
+                skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
             }
         }
     }
