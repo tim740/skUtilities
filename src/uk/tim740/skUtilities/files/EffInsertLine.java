@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
@@ -41,6 +42,8 @@ public class EffInsertLine extends Effect{
                     bw.newLine();
                 }
                 bw.close();
+            } catch (IOException x) {
+                skUtilities.prSysE("File: '" + pth + "' doesn't exist!, or is not readable!", getClass().getSimpleName(), x);
             } catch (Exception x) {
                 skUtilities.prSysE(x.getMessage(), getClass().getSimpleName());
             }
