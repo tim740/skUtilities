@@ -10,8 +10,14 @@ import sun.misc.BASE64Encoder;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by tim740 on 23/02/2016
@@ -23,35 +29,31 @@ public class ExprEncrypt extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        byte[] cout = new byte[0];
-        Cipher c = null;
         try{
-            c = Cipher.getInstance(cipher.getSingle(e).toUpperCase());
+            byte[] cout;
+            Cipher c = Cipher.getInstance(cipher.getSingle(e).toUpperCase());
             c.init(ty, new SecretKeySpec(key.getSingle(e).getBytes(), cipher.getSingle(e).toUpperCase()));
-        }catch (Exception x){
-            skUtilities.prSysE(x.getMessage() + " '"+ cipher.getSingle(e).toUpperCase() +"'", getClass().getSimpleName(), x);
-        }
-        assert c != null;
-        if (ty == Cipher.ENCRYPT_MODE){
-            try{
+            if (ty == Cipher.ENCRYPT_MODE){
                 cout = c.doFinal(str.getSingle(e).getBytes());
-            }catch (Exception x){
-                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
-            }
-            return new String[]{new BASE64Encoder().encode(cout)};
-        }else{
-            byte[] decry;
-            String out = "";
-            try{
+                return new String[]{new BASE64Encoder().encode(cout)};
+            }else{
+                byte[] decry;
+                String out = "";
                 decry = new BASE64Decoder().decodeBuffer(str.getSingle(e));
                 cout = c.doFinal(decry);
-            }catch (Exception x) {
-                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
-            }for (byte aCout : cout) {
-                out = (out + Character.toString((char) new Byte(aCout).intValue()));
+                for (byte aCout : cout) {
+                    out = (out + Character.toString((char) new Byte(aCout).intValue()));
+                }
+                return new String[]{out};
             }
-            return new String[]{out};
+        } catch (NoSuchPaddingException | BadPaddingException | IOException | IllegalBlockSizeException x) {
+            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+        } catch (NoSuchAlgorithmException x) {
+            skUtilities.prSysE(x.getMessage() + " '"+ cipher.getSingle(e).toUpperCase() +"'", getClass().getSimpleName(), x);
+        } catch (InvalidKeyException x) {
+            skUtilities.prSysE("Invalid Key: '" + key.getSingle(e) + "'", getClass().getSimpleName(), x);
         }
+        return null;
     }
 
     @SuppressWarnings("unchecked")
