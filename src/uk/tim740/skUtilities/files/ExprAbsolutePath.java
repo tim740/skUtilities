@@ -21,10 +21,10 @@ public class ExprAbsolutePath extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
-        if (pth.exists()){
+        try {
             return new String[]{pth.getAbsolutePath()};
-        }else{
-            skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
+        }catch (Exception x){
+            skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }
         return null;
 	}
