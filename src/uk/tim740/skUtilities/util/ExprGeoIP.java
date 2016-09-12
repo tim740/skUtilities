@@ -33,17 +33,17 @@ public class ExprGeoIP extends SimpleExpression<String>{
             JSONObject j = (JSONObject) new JSONParser().parse(ur.readLine());
             ur.close();
             if (ty == 0){
-                return new String[]{String.valueOf(j.get("country_code"))};
+                return new String[]{j.get("country_code").toString()};
             }else if (ty == 1){
-                return new String[]{String.valueOf(j.get("region_code"))};
+                return new String[]{j.get("region_code").toString()};
             }else if (ty == 2){
-                return new String[]{String.valueOf(j.get("country_name"))};
+                return new String[]{j.get("country_name").toString()};
             }else if (ty == 3){
-                return new String[]{String.valueOf(j.get("region_name"))};
+                return new String[]{j.get("region_name").toString()};
             }else if (ty == 4){
-                return new String[]{String.valueOf(j.get("city"))};
+                return new String[]{j.get("city").toString()};
             }else{
-                return new String[]{String.valueOf(j.get("time_zone"))};
+                return new String[]{j.get("time_zone").toString()};
             }
         } catch (ParseException x) {
             skUtilities.prSysE("Error while parsing json!", getClass().getSimpleName(), x);
