@@ -21,9 +21,9 @@ public class ExprFileSizeBytes extends SimpleExpression<Number>{
 	@Nullable
 	protected Number[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
-        if (pth.exists()){
+        try {
             return new Number[]{pth.length()};
-        }else{
+        }catch(Exception x){
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
         }
         return null;
