@@ -34,42 +34,36 @@ public class SExprEditLine extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event e) {
         Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
-        if (Files.exists(pth)){
-            try (Stream<String> lines = Files.lines(pth)) {
-                //noinspection OptionalGetWithoutIsPresent
-                return new String[]{lines.skip(Integer.parseInt(line.getSingle(e).toString()) -1).findFirst().get()};
-            }catch (IOException x) {
-                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
-            }
-        }else{
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
+        try (Stream<String> lines = Files.lines(pth)) {
+            //noinspection OptionalGetWithoutIsPresent
+            return new String[]{lines.skip(Integer.parseInt(line.getSingle(e).toString()) -1).findFirst().get()};
+        }catch (IOException x) {
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         }
         return null;
 	}
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
-            if (pth.exists()) {
-                EvtFileWrite efw = new EvtFileWrite(pth, (String) delta[0], line.getSingle(e));
-                Bukkit.getServer().getPluginManager().callEvent(efw);
-                if (!efw.isCancelled()) {
-                    try {
-                        ArrayList<String> cl = new ArrayList<>();
-                        cl.addAll(Files.readAllLines(pth.toPath()));
-                        cl.set(Integer.parseInt(line.getSingle(e).toString()) - 1, (String) delta[0]);
-                        String[] out = new String[cl.size()];
-                        BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                        for (String aCl : cl.toArray(out)) {
-                            bw.write(aCl);
-                            bw.newLine();
-                        }
-                        bw.close();
-                    } catch (Exception x) {
-                        skUtilities.prSysE(x.getMessage(), getClass().getSimpleName());
+            EvtFileWrite efw = new EvtFileWrite(pth, (String) delta[0], line.getSingle(e));
+            Bukkit.getServer().getPluginManager().callEvent(efw);
+            if (!efw.isCancelled()) {
+                try {
+                    ArrayList<String> cl = new ArrayList<>();
+                    cl.addAll(Files.readAllLines(pth.toPath()));
+                    cl.set(Integer.parseInt(line.getSingle(e).toString()) - 1, (String) delta[0]);
+                    String[] out = new String[cl.size()];
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
+                    for (String aCl : cl.toArray(out)) {
+                        bw.write(aCl);
+                        bw.newLine();
                     }
+                    bw.close();
+                } catch (IOException x) {
+                    skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
+                } catch (Exception x) {
+                    skUtilities.prSysE(x.getMessage(), getClass().getSimpleName());
                 }
-            } else {
-                skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
             }
         }
     }
