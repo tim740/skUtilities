@@ -17,7 +17,7 @@ import java.lang.reflect.Method;
  * Made by @Sashie - Tweaked by @tim740
  */
 public class EffDemoMode extends Effect {
-	private Expression<Player> player;
+	private Expression<Player> u;
 
 	@Override
 	protected void execute(@Nullable Event e) {
@@ -28,19 +28,19 @@ public class EffDemoMode extends Effect {
             Class<?> PacketPlayOutGameStateChange = Class.forName("net.minecraft.server." + ver + ".PacketPlayOutGameStateChange");
             Constructor<?> playOutConstructor = PacketPlayOutGameStateChange.getConstructor(Integer.TYPE, Float.TYPE);
             Method getHandleMethod = cPlayer.getMethod("getHandle");
-            Object handle = getHandleMethod.invoke(cPlayer.cast(player.getSingle(e)));
+            Object handle = getHandleMethod.invoke(cPlayer.cast(u.getSingle(e)));
             Object pc = handle.getClass().getField("playerConnection").get(handle);
             Method sPM = pc.getClass().getMethod("sendPacket", Class.forName("net.minecraft.server." + ver + ".Packet"));
             sPM.invoke(pc, playOutConstructor.newInstance(5, 0));
-        } catch (Exception ex) {
-            skUtilities.prSysE("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName(), ex);
+        } catch (Exception x) {
+            skUtilities.prSysE("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName(), x);
         }
 	}
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p){
-        player = (Expression<Player>) e[0];
+        u = (Expression<Player>) e[0];
         return true;
     }
     @Override
