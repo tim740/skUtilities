@@ -24,7 +24,7 @@ public class ExprFileExtension extends SimpleExpression<String>{
         try {
             return new String[]{FilenameUtils.getExtension(pth)};
         }catch(Exception x){
-            skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
+            skUtilities.prSysE("File:'" + pth + "' doesn't exist!", getClass().getSimpleName());
         }
         return null;
 	}

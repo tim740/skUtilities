@@ -31,10 +31,10 @@ public class ExprDirList extends SimpleExpression<String>{
                 }
                 return cl.toArray(new String[cl.size()]);
             } else {
-                skUtilities.prSysE("'" + pth + File.separator + "' isn't a valid directory!", getClass().getSimpleName());
+                skUtilities.prSysE("Directory: '" + pth + File.separator + "' isn't a valid directory!", getClass().getSimpleName());
             }
         }catch (Exception x){
-            skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
+            skUtilities.prSysE("Directory: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }
         return null;
     }
