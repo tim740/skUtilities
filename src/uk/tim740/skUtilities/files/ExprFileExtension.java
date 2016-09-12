@@ -10,7 +10,6 @@ import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
 
 /**
  * Created by tim740 on 19/06/2016
@@ -22,9 +21,9 @@ public class ExprFileExtension extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event e) {
         String pth = Utils.getDefaultPath(path.getSingle(e));
-        if (new File(pth).exists()){
+        try {
             return new String[]{FilenameUtils.getExtension(pth)};
-        }else{
+        }catch(Exception x){
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
         }
         return null;
