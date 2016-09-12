@@ -7,7 +7,6 @@ import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
-import javax.xml.bind.DatatypeConverter;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
@@ -24,7 +23,7 @@ public class ExprBase64 extends SimpleExpression<String> {
         if (ty == 0) {
             return new String[]{Base64.getEncoder().encodeToString(b64.getSingle(e).getBytes(StandardCharsets.UTF_8))};
         }else{
-            return new String[]{new String(DatatypeConverter.parseBase64Binary(b64.getSingle(e)), StandardCharsets.UTF_8)};
+            return new String[]{new String(Base64.getDecoder().decode(b64.getSingle(e).getBytes(StandardCharsets.UTF_8)))};
         }
 	}
 
