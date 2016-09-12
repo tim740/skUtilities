@@ -28,27 +28,23 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
 	@Nullable
 	protected Boolean[] get(Event e) {
         Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
-        if (Files.exists(pth)) {
-            if (ty == 0) {
-                return new Boolean[]{Files.isReadable(pth)};
-            } else if (ty == 1) {
-                return new Boolean[]{Files.isWritable(pth)};
-            } else {
-                try {
-                    return new Boolean[]{Files.isHidden(pth)};
-                } catch (IOException x) {
-                    skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
-                }
+        if (ty == 0) {
+            return new Boolean[]{Files.isReadable(pth)};
+        } else if (ty == 1) {
+            return new Boolean[]{Files.isWritable(pth)};
+        } else {
+            try {
+                return new Boolean[]{Files.isHidden(pth)};
+            } catch (IOException x) {
+                skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
             }
-        }else{
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
         }
         return null;
     }
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
             File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
-            if (pth.exists()) {
+            try {
                 Boolean boo = (boolean) delta[0];
                 if (ty == 0) {
                     if (mode == Changer.ChangeMode.SET) {
@@ -73,8 +69,8 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
                         skUtilities.prSysE("Sorry Windows only!", getClass().getSimpleName(), x);
                     }
                 }
-            } else {
-                skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
+            }catch (Exception x){
+                skUtilities.prSysE("'" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
             }
         }
     }
