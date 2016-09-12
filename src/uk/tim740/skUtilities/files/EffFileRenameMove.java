@@ -39,7 +39,11 @@ public class EffFileRenameMove extends Effect{
                 EvtFileMove efm = new EvtFileMove(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efm);
                 if (!efm.isCancelled()) {
-                    pth.renameTo(new File(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
+                    try {
+                        Files.move(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
+                    } catch (IOException x) {
+                        skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
+                    }
                 }
             }else{
                 EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(e));
