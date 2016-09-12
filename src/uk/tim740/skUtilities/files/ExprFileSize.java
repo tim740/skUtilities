@@ -21,9 +21,9 @@ public class ExprFileSize extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
-        if (pth.exists()){
+        try {
             return new String[]{Utils.getFileSize(pth.length())};
-        }else{
+        }catch(Exception x){
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
         }
         return null;
