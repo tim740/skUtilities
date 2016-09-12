@@ -28,7 +28,7 @@ public class EffFileRenameMove extends Effect{
 	@Override
 	protected void execute(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
-        if (pth.exists()) {
+        try {
             if (ty == 0) {
                 EvtFileRename efn = new EvtFileRename(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efn);
@@ -39,25 +39,17 @@ public class EffFileRenameMove extends Effect{
                 EvtFileMove efm = new EvtFileMove(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efm);
                 if (!efm.isCancelled()) {
-                    try {
-                        Files.move(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
-                    } catch (IOException x) {
-                        skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
-                    }
+                    Files.move(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
                 }
             }else{
                 EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efc);
                 if (!efc.isCancelled()) {
-                    try {
-                        Files.copy(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
-                    } catch (IOException x) {
-                        skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
-                    }
+                    Files.copy(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
                 }
             }
-        } else {
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
+        } catch (IOException x) {
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }
     }
 
