@@ -26,22 +26,20 @@ public class SExprFileContents extends SimpleExpression<String>{
 	@Nullable
 	protected String[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
-        if (pth.exists()){
-            try {
-                ArrayList<String> cl = new ArrayList<>();
-                String inLi;
-                BufferedReader br = new BufferedReader(new FileReader(pth));
-                while ((inLi = br.readLine()) != null) {
-                    cl.add(inLi);
-                }
-                br.close();
-                String[] out = new String[cl.size()];
-                return cl.toArray(out);
-            } catch (Exception x) {
-                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+        try {
+            ArrayList<String> cl = new ArrayList<>();
+            String inLi;
+            BufferedReader br = new BufferedReader(new FileReader(pth));
+            while ((inLi = br.readLine()) != null) {
+                cl.add(inLi);
             }
-        }else{
-            skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
+            br.close();
+            String[] out = new String[cl.size()];
+            return cl.toArray(out);
+        }catch (IOException x){
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
+        } catch (Exception x) {
+            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
         return null;
 	}

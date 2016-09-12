@@ -70,7 +70,7 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
                     }
                 }
             }catch (Exception x){
-                skUtilities.prSysE("'" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
+                skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
             }
         }
     }
