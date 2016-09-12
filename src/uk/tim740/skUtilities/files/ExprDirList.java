@@ -23,14 +23,18 @@ public class ExprDirList extends SimpleExpression<String>{
 	protected String[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         ArrayList<String> cl = new ArrayList<>();
-        if (pth.isDirectory()) {
-            //noinspection ConstantConditions
-            for (File file : pth.listFiles()) {
-                cl.add(String.valueOf(pth + File.separator + file.getName()));
+        try {
+            if (pth.isDirectory()) {
+                //noinspection ConstantConditions
+                for (File file : pth.listFiles()) {
+                    cl.add(String.valueOf(pth + File.separator + file.getName()));
+                }
+                return cl.toArray(new String[cl.size()]);
+            } else {
+                skUtilities.prSysE("'" + pth + File.separator + "' isn't a valid directory!", getClass().getSimpleName());
             }
-            return cl.toArray(new String[cl.size()]);
-        }else{
-            skUtilities.prSysE("'" + pth + File.separator  + "' isn't a valid directory!", getClass().getSimpleName());
+        }catch (Exception x){
+            skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }
         return null;
     }
