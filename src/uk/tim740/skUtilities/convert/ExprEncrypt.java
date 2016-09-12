@@ -30,21 +30,12 @@ public class ExprEncrypt extends SimpleExpression<String> {
     @Nullable
     protected String[] get(Event e) {
         try{
-            byte[] cout;
             Cipher c = Cipher.getInstance(cipher.getSingle(e).toUpperCase());
             c.init(ty, new SecretKeySpec(key.getSingle(e).getBytes(), cipher.getSingle(e).toUpperCase()));
             if (ty == Cipher.ENCRYPT_MODE){
-                cout = c.doFinal(str.getSingle(e).getBytes());
-                return new String[]{new BASE64Encoder().encode(cout)};
+                return new String[]{new BASE64Encoder().encode(c.doFinal(str.getSingle(e).getBytes()))};
             }else{
-                byte[] decry;
-                String out = "";
-                decry = new BASE64Decoder().decodeBuffer(str.getSingle(e));
-                cout = c.doFinal(decry);
-                for (byte aCout : cout) {
-                    out = (out + Character.toString((char) new Byte(aCout).intValue()));
-                }
-                return new String[]{out};
+                return new String[]{new String(c.doFinal(new BASE64Decoder().decodeBuffer(str.getSingle(e))))};
             }
         } catch (NoSuchPaddingException | BadPaddingException | IOException | IllegalBlockSizeException x) {
             skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
