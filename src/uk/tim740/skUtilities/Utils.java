@@ -43,7 +43,7 @@ public class Utils {
     }
 
     public static String getDefaultPath(String pth){
-        if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("useRootAsDefaultPath", true)){
+        if (!Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("useRootAsDefaultPath", false)){
             String dp = Paths.get("").normalize().toAbsolutePath().toString();
             if (pth.contains(dp)) {
                 return (pth + File.separator);
@@ -51,7 +51,7 @@ public class Utils {
                 return (dp + File.separator + pth);
             }
         }else{
-            return (pth);
+            return pth;
         }
     }
 
