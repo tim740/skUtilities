@@ -1,29 +1,29 @@
-#skUtilities
+#skUtilities Configuration File
 
 #--------------------------------[ Updates ]--------------------------------
 
-#Should this addon check for an update every 12 hours
+#Should this addon check for updates every 12 hours.
 
 checkForUpdates: true
 downloadUpdates: false
 
 #-------------------------------[ Security! ]-------------------------------
 
-#If set to 'true' (UnSafe Option) anything using paths in this addon (files)
+#(UnSafe Option) If set to 'true' anything using paths in this addon (files)
 #will start looking in the root directory of your whole server!
 #Example: Paths would start at 'root' or if your using windows 'c:/'
 
 useRootAsDefaultPath: false
 
-#If set to 'false' (Safe Option) anything using paths in this addon (files)
+#(Safe Option) If set to 'false' anything using paths in this addon (files)
 #will start looking in the root directory of the minecraft server!
 #Example: Paths would start at 'MinecraftServerRootFolder'
 
 #--------------------------------[ Loading ]--------------------------------
 
 #Disables or Enables parts of the addon.
-#If disabled the only way to renable is to change to true and restart the
-#server, this only disables/enables those parts when you start the server.
+#If you wish to re-enable a part, you will have to change the option back
+#to 'true' and restart the server. (Only takes effect on server load)
 
 loadConversions: true
 loadFiles: true
@@ -31,12 +31,14 @@ loadUtilities: true
 
 #---------------------------------[ Debug ]---------------------------------
 
-#Forces skUtiltites to send StackTraces instead of shortened errors, don't
-#keep this enabled all the time, only if you need more info on an error.
+#Forces this addon to send StackTraces instead of shortened errors.
+#This should only be enabled if you need to get more info from an Error!
 
 debug: false
 
 #---------------------------------------------------------------------------
 
-#DO NOT CHANGE THIS! (Config will reset if changed)
-configVersion: 4
+#Version of Config, If changed this config will reset!
+#DO NOT CHANGE THIS!
+
+configVersion: 5
