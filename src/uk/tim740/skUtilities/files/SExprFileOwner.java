@@ -39,9 +39,8 @@ public class SExprFileOwner extends SimpleExpression<String>{
         if (mode == Changer.ChangeMode.SET) {
             Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
             try {
-                String str = (String) delta[0];
                 UserPrincipalLookupService lookupService = FileSystems.getDefault().getUserPrincipalLookupService();
-                Files.setOwner(pth, lookupService.lookupPrincipalByName(str));
+                Files.setOwner(pth, lookupService.lookupPrincipalByName((String) delta[0]));
             } catch (IOException x) {
                 skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
             }
