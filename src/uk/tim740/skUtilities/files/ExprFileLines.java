@@ -26,7 +26,7 @@ public class ExprFileLines extends SimpleExpression<Number>{
         try {
             return new Number[]{Files.readAllLines(pth.toPath()).size()};
         } catch (IOException x) {
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         } catch (Exception x) {
             skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
