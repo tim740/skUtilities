@@ -14,7 +14,6 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.*;
-import java.util.ArrayList;
 
 /**
  * Created by tim740 on 20/03/2016
@@ -27,15 +26,10 @@ public class SExprFileContents extends SimpleExpression<String>{
 	protected String[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         try {
-            ArrayList<String> cl = new ArrayList<>();
-            String inLi;
             BufferedReader br = new BufferedReader(new FileReader(pth));
-            while ((inLi = br.readLine()) != null) {
-                cl.add(inLi);
-            }
+            String[] s = br.lines().toArray(String[]::new);
             br.close();
-            String[] out = new String[cl.size()];
-            return cl.toArray(out);
+            return s;
         }catch (IOException x){
             skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         } catch (Exception x) {

@@ -16,6 +16,9 @@ import java.io.File;
  */
 class RegFiles {
     static void regF() {
+        Skript.registerExpression(ExprUrlContents.class,String.class,ExpressionType.PROPERTY,"contents from url %string%", "url %string%'s contents");
+        Skript.registerExpression(ExprUrlReadLine.class,String.class,ExpressionType.PROPERTY,"line %number% from url %string%", "url %string%'s line %number%");
+
         Skript.registerExpression(ExprZipList.class,String.class,ExpressionType.PROPERTY,"files in zip[ file] %string%", "zip[ file] %string%'s files");
         Skript.registerExpression(ExprDirList.class,String.class,ExpressionType.PROPERTY,"files in dir[ectory] %string%", "dir[ectory] %string%'s files");
         Skript.registerExpression(ExprFileLines.class,Number.class,ExpressionType.PROPERTY,"line count of file %string%", "file %string%'s line count");
