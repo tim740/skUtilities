@@ -40,33 +40,25 @@ public class SExprFileContents extends SimpleExpression<String>{
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
             File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
-            if (pth.exists()) {
+            try {
                 if (mode == Changer.ChangeMode.SET) {
-                    try {
-                        BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                        for (String aCl : (String[]) delta) {
-                            bw.write(aCl);
-                            bw.newLine();
-                        }
-                        bw.close();
-                    } catch (IOException x) {
-                        skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
+                    for (String aCl : (String[]) delta) {
+                        bw.write(aCl);
+                        bw.newLine();
                     }
-                }else{
-                    try {
-                        EvtFileWipe efw = new EvtFileWipe(pth);
-                        Bukkit.getServer().getPluginManager().callEvent(efw);
-                        if (!efw.isCancelled()) {
-                            BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                            bw.write("");
-                            bw.close();
-                        }
-                    } catch (IOException x) {
-                        skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+                    bw.close();
+                } else {
+                    EvtFileWipe efw = new EvtFileWipe(pth);
+                    Bukkit.getServer().getPluginManager().callEvent(efw);
+                    if (!efw.isCancelled()) {
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
+                        bw.write("");
+                        bw.close();
                     }
                 }
-            } else {
-                skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
+            } catch (IOException x) {
+                skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName());
             }
         }
     }
