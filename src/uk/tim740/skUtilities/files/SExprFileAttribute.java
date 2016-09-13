@@ -28,16 +28,16 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
 	@Nullable
 	protected Boolean[] get(Event e) {
         Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
-        if (ty == 0) {
-            return new Boolean[]{Files.isReadable(pth)};
-        } else if (ty == 1) {
-            return new Boolean[]{Files.isWritable(pth)};
-        } else {
-            try {
+        try {
+            if (ty == 0) {
+                return new Boolean[]{Files.isReadable(pth)};
+            } else if (ty == 1) {
+                return new Boolean[]{Files.isWritable(pth)};
+            } else {
                 return new Boolean[]{Files.isHidden(pth)};
-            } catch (IOException x) {
-                skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
             }
+        } catch (IOException x) {
+                skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         }
         return null;
     }
