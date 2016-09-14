@@ -26,7 +26,7 @@ public class ExprUrlSize extends SimpleExpression<String>{
             Number n = s.getContentLength();
             s.disconnect();
             if (n.intValue() == -1) {
-                skUtilities.prSysE("Url:'" + url.getSingle(e) + "' returned no information about the url's size!", getClass().getSimpleName());
+                skUtilities.prSysE("Url: '" + url.getSingle(e) + "' returned no information about the url's size!", getClass().getSimpleName());
             }
             return new String[]{Utils.getFileSize(n.doubleValue())};
         } catch (Exception x) {
