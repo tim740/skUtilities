@@ -19,17 +19,18 @@ class RegFiles {
         Skript.registerExpression(ExprUrlContents.class,String.class,ExpressionType.PROPERTY,"contents from url %string%", "url %string%'s contents");
         Skript.registerExpression(ExprUrlReadLine.class,String.class,ExpressionType.PROPERTY,"line %number% from url %string%", "url %string%'s line %number%");
         Skript.registerExpression(ExprUrlLines.class,Number.class,ExpressionType.PROPERTY,"line count of url %string%", "url %string%'s line count");
-        Skript.registerExpression(ExprUrlSize.class,String.class,ExpressionType.PROPERTY,"url size of %string%", "%string%'s url size");
-        Skript.registerExpression(ExprUrlSizeBytes.class,Number.class,ExpressionType.PROPERTY,"url size of %string% in bytes", "%string%'s url size in bytes");
+        Skript.registerExpression(ExprUrlSize.class,String.class,ExpressionType.PROPERTY,"size of url %string%", "url %string%'s size");
+        Skript.registerExpression(ExprUrlSizeBytes.class,Number.class,ExpressionType.PROPERTY,"size of url %string% in bytes", "url %string%'s size in bytes");
+        Skript.registerExpression(ExprUrlResponseCode.class,Integer.class,ExpressionType.PROPERTY,"response code of url %string%", "url %string%'s response code");
 
         Skript.registerExpression(ExprZipList.class,String.class,ExpressionType.PROPERTY,"files in zip[ file] %string%", "zip[ file] %string%'s files");
         Skript.registerExpression(ExprDirList.class,String.class,ExpressionType.PROPERTY,"files in dir[ectory] %string%", "dir[ectory] %string%'s files");
         Skript.registerExpression(ExprFileLines.class,Number.class,ExpressionType.PROPERTY,"line count of file %string%", "file %string%'s line count");
         Skript.registerExpression(ExprFileTimeAttributes.class,Number.class,ExpressionType.PROPERTY,"file %string%'s (0¦last modified|1¦creation|2¦last access) value", "(0¦last modified|1¦creation|2¦last access) value of file %string%");
-        Skript.registerExpression(ExprFileSize.class,String.class,ExpressionType.PROPERTY,"file size of %string%", "%string%'s file size");
-        Skript.registerExpression(ExprFileSizeBytes.class,Number.class,ExpressionType.PROPERTY,"file size of %string% in bytes", "%string%'s file size in bytes");
-        Skript.registerExpression(ExprFileExtension.class,String.class,ExpressionType.PROPERTY,"file extension of %string%", "%string%'s file extension");
-        Skript.registerExpression(ExprFileName.class,String.class,ExpressionType.PROPERTY,"file name of %string%", "%string%'s file name");
+        Skript.registerExpression(ExprFileSize.class,String.class,ExpressionType.PROPERTY,"size of file %string%", "file %string%'s size");
+        Skript.registerExpression(ExprFileSizeBytes.class,Number.class,ExpressionType.PROPERTY,"size of file %string% in bytes", "file %string%'s size in bytes");
+        Skript.registerExpression(ExprFileExtension.class,String.class,ExpressionType.PROPERTY,"extension of file %string%", "file %string%'s extension");
+        Skript.registerExpression(ExprFileName.class,String.class,ExpressionType.PROPERTY,"name of file %string%", "file %string%'s name");
         Skript.registerExpression(ExprAbsolutePath.class,String.class,ExpressionType.PROPERTY,"(absolute|complete) path of %string%", "%string%'s (absolute|complete) path");
 
         Skript.registerExpression(ExprDiskSpace.class,String.class,ExpressionType.PROPERTY,"disk's (0¦total|1¦free|2¦usable) space", "(0¦total|1¦free|2¦usable) space on disk");
