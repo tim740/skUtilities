@@ -18,6 +18,7 @@ class RegFiles {
     static void regF() {
         Skript.registerExpression(ExprUrlContents.class,String.class,ExpressionType.PROPERTY,"contents from url %string%", "url %string%'s contents");
         Skript.registerExpression(ExprUrlReadLine.class,String.class,ExpressionType.PROPERTY,"line %number% from url %string%", "url %string%'s line %number%");
+        Skript.registerExpression(ExprUrlLines.class,Number.class,ExpressionType.PROPERTY,"line count of url %string%", "url %string%'s line count");
         Skript.registerExpression(ExprUrlSize.class,String.class,ExpressionType.PROPERTY,"url size of %string%", "%string%'s url size");
         Skript.registerExpression(ExprUrlSizeBytes.class,Number.class,ExpressionType.PROPERTY,"url size of %string% in bytes", "%string%'s url size in bytes");
 
