@@ -29,8 +29,7 @@ class RegFiles {
         Skript.registerExpression(ExprFileTimeAttributes.class,Number.class,ExpressionType.PROPERTY,"file %string%'s (0¦last modified|1¦creation|2¦last access) value", "(0¦last modified|1¦creation|2¦last access) value of file %string%");
         Skript.registerExpression(ExprFileSize.class,String.class,ExpressionType.PROPERTY,"size of file %string%", "file %string%'s size");
         Skript.registerExpression(ExprFileSizeBytes.class,Number.class,ExpressionType.PROPERTY,"size of file %string% in bytes", "file %string%'s size in bytes");
-        Skript.registerExpression(ExprFileExtension.class,String.class,ExpressionType.PROPERTY,"extension of file %string%", "file %string%'s extension");
-        Skript.registerExpression(ExprFileName.class,String.class,ExpressionType.PROPERTY,"name of file %string%", "file %string%'s name");
+        Skript.registerExpression(ExprFileNameExt.class,String.class,ExpressionType.PROPERTY,"(0¦name|1¦extension) of file %string%", "file %string%'s (0¦name|1¦extension)");
         Skript.registerExpression(ExprAbsolutePath.class,String.class,ExpressionType.PROPERTY,"(absolute|complete) path of %string%", "%string%'s (absolute|complete) path");
 
         Skript.registerExpression(ExprDiskSpace.class,String.class,ExpressionType.PROPERTY,"disk's (0¦total|1¦free|2¦usable) space", "(0¦total|1¦free|2¦usable) space on disk");

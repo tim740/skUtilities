@@ -5,6 +5,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import com.google.common.io.Files;
+import org.apache.commons.io.FilenameUtils;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
@@ -14,17 +15,26 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740 on 14/08/2016
  */
-public class ExprFileName extends SimpleExpression<String>{
+public class ExprFileNameExt extends SimpleExpression<String>{
 	private Expression<String> path;
+    private int ty;
 
 	@Override
 	@Nullable
 	protected String[] get(Event e) {
         String pth = Utils.getDefaultPath(path.getSingle(e));
-        try {
-            return new String[]{Files.getNameWithoutExtension(pth)};
-        }catch (Exception x){
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
+        if (ty == 0) {
+            try {
+                return new String[]{Files.getNameWithoutExtension(pth)};
+            } catch (Exception x) {
+                skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
+            }
+        }else{
+            try {
+                return new String[]{FilenameUtils.getExtension(pth)};
+            }catch(Exception x){
+                skUtilities.prSysE("File:'" + pth + "' doesn't exist!", getClass().getSimpleName());
+            }
         }
         return null;
 	}
@@ -33,6 +43,7 @@ public class ExprFileName extends SimpleExpression<String>{
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
         path = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
     @Override
