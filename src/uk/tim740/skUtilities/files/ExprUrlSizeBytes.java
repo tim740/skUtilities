@@ -26,8 +26,9 @@ public class ExprUrlSizeBytes extends SimpleExpression<Number>{
             s.disconnect();
             if (n.intValue() == -1) {
                 skUtilities.prSysE("Url: '" + url.getSingle(e) + "' returned no information about the url's size!", getClass().getSimpleName());
+            } else {
+                return new Number[]{n};
             }
-            return new Number[]{n};
         } catch (Exception x) {
             skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         }
