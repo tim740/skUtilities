@@ -6,6 +6,7 @@
 
 checkForUpdates: true
 downloadUpdates: false
+downloadChangelog: false
 
 #-------------------------------[ Security! ]-------------------------------
 
@@ -41,4 +42,4 @@ debug: false
 #Version of Config, If changed this config will reset!
 #DO NOT CHANGE THIS!
 
-configVersion: 5
+configVersion: 6
