@@ -46,7 +46,7 @@ public class ExprLoadedList extends SimpleExpression<String>{
     }
     @Override
     public boolean isSingle() {
-        return true;
+        return false;
     }
     @Override
     public String toString(@Nullable Event e, boolean b) {

@@ -20,8 +20,7 @@ public class ExprTimeZoneList extends SimpleExpression<String> {
     protected String[] get(Event e) {
         ArrayList<String> cl = new ArrayList<>();
         cl.addAll(ZoneId.getAvailableZoneIds());
-        String[] out = new String[cl.size()];
-        return cl.toArray(out);
+        return cl.toArray(new String[cl.size()]);
     }
 
     @Override
@@ -34,7 +33,7 @@ public class ExprTimeZoneList extends SimpleExpression<String> {
     }
     @Override
     public boolean isSingle() {
-        return true;
+        return false;
     }
     @Override
     public String toString(@Nullable Event e, boolean b) {

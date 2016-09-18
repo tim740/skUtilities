@@ -22,8 +22,7 @@ public class ExprFontNames extends SimpleExpression<String> {
         for (Font f : GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts()) {
             cl.add(f.getFontName());
         }
-        String[] out = new String[cl.size()];
-        return cl.toArray(out);
+        return cl.toArray(new String[cl.size()]);
     }
 
     @Override
@@ -36,7 +35,7 @@ public class ExprFontNames extends SimpleExpression<String> {
     }
     @Override
     public boolean isSingle() {
-        return true;
+        return false;
     }
     @Override
     public String toString(@Nullable Event e, boolean b) {
