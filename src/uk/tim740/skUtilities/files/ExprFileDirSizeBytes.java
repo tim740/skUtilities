@@ -4,6 +4,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
+import org.apache.commons.io.FileUtils;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
@@ -14,16 +15,21 @@ import java.io.File;
 /**
  * Created by tim740 on 17/03/2016
  */
-public class ExprFileSizeBytes extends SimpleExpression<Number>{
+public class ExprFileDirSizeBytes extends SimpleExpression<Number>{
 	private Expression<String> path;
+    private int ty;
 
 	@Override
 	@Nullable
 	protected Number[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         try {
-            return new Number[]{pth.length()};
-        }catch(Exception x){
+            if (ty == 0) {
+                return new Number[]{pth.length()};
+            }else{
+                return new Number[]{FileUtils.sizeOfDirectory(pth)};
+            }
+        } catch (Exception x) {
             skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
         }
         return null;
@@ -33,6 +39,7 @@ public class ExprFileSizeBytes extends SimpleExpression<Number>{
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
         path = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
     @Override

@@ -27,8 +27,8 @@ class RegFiles {
         Skript.registerExpression(ExprDirList.class,String.class,ExpressionType.PROPERTY,"files in dir[ectory] %string%", "dir[ectory] %string%'s files");
         Skript.registerExpression(ExprFileLines.class,Number.class,ExpressionType.PROPERTY,"line count of file %string%", "file %string%'s line count");
         Skript.registerExpression(ExprFileTimeAttributes.class,Number.class,ExpressionType.PROPERTY,"file %string%'s (0¦last modified|1¦creation|2¦last access) value", "(0¦last modified|1¦creation|2¦last access) value of file %string%");
-        Skript.registerExpression(ExprFileSize.class,String.class,ExpressionType.PROPERTY,"size of file %string%", "file %string%'s size");
-        Skript.registerExpression(ExprFileSizeBytes.class,Number.class,ExpressionType.PROPERTY,"size of file %string% in bytes", "file %string%'s size in bytes");
+        Skript.registerExpression(ExprFileDirSize.class,String.class,ExpressionType.PROPERTY,"size of (0¦file|1¦dir[ectory]) %string%", "(0¦file|1¦dir[ectory]) %string%'s size");
+        Skript.registerExpression(ExprFileDirSizeBytes.class,Number.class,ExpressionType.PROPERTY,"size of (0¦file|1¦dir[ectory]) %string% in bytes", "(0¦file|1¦dir[ectory]) %string%'s size in bytes");
         Skript.registerExpression(ExprFileNameExt.class,String.class,ExpressionType.PROPERTY,"(0¦name|1¦extension) of file %string%", "file %string%'s (0¦name|1¦extension)");
         Skript.registerExpression(ExprAbsolutePath.class,String.class,ExpressionType.PROPERTY,"(absolute|complete) path of %string%", "%string%'s (absolute|complete) path");
 
