@@ -42,7 +42,7 @@ class RegFiles {
         Skript.registerEffect(EffRunApp.class, "run (script|program|app[lication]|file) at %string%");
         Skript.registerEffect(EffCreateFile.class, "create (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
         Skript.registerEffect(EffDeleteFile.class, "delete (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
-        Skript.registerEffect(EffFileRenameMove.class, "(0¦rename|1¦move|2¦copy) (file|dir[ectory]) %string% to %-string%");
+        Skript.registerEffect(EffFileRenameMove.class, "(0¦rename (file|dir[ectory])|1¦move file|2¦copy file|3¦move dir[ectory]|4¦copy dir[ectory]) %string% to %-string%");
         Skript.registerEffect(EffFileDownload.class, "download file from %string% to file %-string%");
         Skript.registerEffect(EffZipFiles.class, "zip file[s] %strings% to zip[ file] %-string%");
         Skript.registerEffect(EffZipDirectory.class, "zip dir[ectory] %string% to zip[ file] %-string%");

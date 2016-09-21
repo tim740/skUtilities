@@ -15,8 +15,8 @@ import uk.tim740.skUtilities.skUtilities;
 import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 
 /**
  * Created by tim740 on 21/03/2016
@@ -41,16 +41,52 @@ public class EffFileRenameMove extends Effect{
                 if (!efm.isCancelled()) {
                     Files.move(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
                 }
-            }else{
+            }else if (ty == 2){
                 EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efc);
                 if (!efc.isCancelled()) {
                     Files.copy(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
                 }
+            }else if (ty == 3){
+                EvtFileMove efm = new EvtFileMove(pth, name.getSingle(e));
+                Bukkit.getServer().getPluginManager().callEvent(efm);
+                if (!efm.isCancelled()) {
+                    copyDir(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
+                    Files.walkFileTree(pth.toPath(), new SimpleFileVisitor<Path>() {
+                        @Override
+                        public FileVisitResult visitFile(Path f, BasicFileAttributes attrs) throws IOException {
+                            Files.delete(f);
+                            return FileVisitResult.CONTINUE;
+                        }
+                        @Override
+                        public FileVisitResult postVisitDirectory(Path d, IOException exc) throws IOException {
+                            Files.delete(d);
+                            return FileVisitResult.CONTINUE;
+                        }
+                    });
+                }
+            }else{
+                EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(e));
+                Bukkit.getServer().getPluginManager().callEvent(efc);
+                if (!efc.isCancelled()) {
+                    copyDir(pth.toPath(), Paths.get(Utils.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
+                }
             }
         } catch (IOException x) {
             skUtilities.prSysE("File/Directory: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
+        } catch (Exception x) {
+            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
+    }
+
+    private void copyDir(Path pth, Path pf) throws IOException {
+        Files.walk(pth).forEach(mpath ->{
+            try {
+                Files.copy(mpath, Paths.get(mpath.toString().replace(pth.toString(), pf.toString())));
+            } catch (IOException x) {
+                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
