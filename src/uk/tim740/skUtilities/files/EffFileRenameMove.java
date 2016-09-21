@@ -49,7 +49,7 @@ public class EffFileRenameMove extends Effect{
                 }
             }
         } catch (IOException x) {
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
+            skUtilities.prSysE("File/Directory: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }
     }
 
