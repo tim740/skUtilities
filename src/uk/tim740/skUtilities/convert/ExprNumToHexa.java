@@ -11,14 +11,14 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740.
  */
-public class ExprNumToHexa extends SimpleExpression<String>{
-	private Expression<Number> n;
+public class ExprNumToHexa extends SimpleExpression<String> {
+    private Expression<Number> n;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
-		return new String[]{Integer.toHexString(n.getSingle(e).intValue())};
-	}
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
+        return new String[]{Integer.toHexString(n.getSingle(e).intValue())};
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -26,14 +26,17 @@ public class ExprNumToHexa extends SimpleExpression<String>{
         n = (Expression<Number>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

@@ -16,18 +16,18 @@ import javax.annotation.Nullable;
  * Created by tim740 on 16/06/16
  * Code by @dzikoysk, optimized by @tim740
  */
-public class EffRunOpCmd extends Effect{
+public class EffRunOpCmd extends Effect {
     private Expression<String> str;
     private Expression<Player> usr;
 
 
     @Override
-	protected void execute(Event e) {
+    protected void execute(Event e) {
         for (String cmd : str.getArray(e)) {
             if (cmd.startsWith("/")) cmd = cmd.substring(1);
             if (usr == null) {
                 Skript.dispatchCommand(Bukkit.getConsoleSender(), cmd);
-            }else {
+            } else {
                 for (CommandSender u : usr.getArray(e)) {
                     if (!u.isOp()) {
                         u.setOp(true);
@@ -39,7 +39,7 @@ public class EffRunOpCmd extends Effect{
                 }
             }
         }
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -48,6 +48,7 @@ public class EffRunOpCmd extends Effect{
         str = (Expression<String>) e[1];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

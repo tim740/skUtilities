@@ -26,22 +26,23 @@ import java.util.stream.Stream;
 /**
  * Created by tim740 on 18/03/2016
  */
-public class SExprEditLine extends SimpleExpression<String>{
+public class SExprEditLine extends SimpleExpression<String> {
     private Expression<Number> line;
-	private Expression<String> path;
+    private Expression<String> path;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
         Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
         try (Stream<String> lines = Files.lines(pth)) {
             //noinspection OptionalGetWithoutIsPresent
-            return new String[]{lines.skip(Integer.parseInt(line.getSingle(e).toString()) -1).findFirst().get()};
-        }catch (IOException x) {
+            return new String[]{lines.skip(Integer.parseInt(line.getSingle(e).toString()) - 1).findFirst().get()};
+        } catch (IOException x) {
             skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         }
         return null;
-	}
+    }
+
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
@@ -75,6 +76,7 @@ public class SExprEditLine extends SimpleExpression<String>{
         path = (Expression<String>) e[1 - i];
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
@@ -88,10 +90,12 @@ public class SExprEditLine extends SimpleExpression<String>{
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

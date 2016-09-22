@@ -12,21 +12,21 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740.
  */
-public class ExprHexToRgb extends SimpleExpression<String>{
-	private Expression<String> hex;
+public class ExprHexToRgb extends SimpleExpression<String> {
+    private Expression<String> hex;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
-		String s = hex.getSingle(e).toUpperCase().replace("#", "");
-		if (s.length() == 6){
-            int c = (int)Long.parseLong(s, 16);
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
+        String s = hex.getSingle(e).toUpperCase().replace("#", "");
+        if (s.length() == 6) {
+            int c = (int) Long.parseLong(s, 16);
             return new String[]{Integer.toString((c >> 16) & 0xFF) + ", " + Integer.toString((c >> 8) & 0xFF) + ", " + Integer.toString((c) & 0xFF)};
-        }else{
+        } else {
             skUtilities.prSysE("Length must be 6. (FFFFFF)!", getClass().getSimpleName());
-		}
+        }
         return null;
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -34,14 +34,17 @@ public class ExprHexToRgb extends SimpleExpression<String>{
         hex = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

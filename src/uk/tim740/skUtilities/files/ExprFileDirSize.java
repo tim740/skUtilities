@@ -15,25 +15,25 @@ import java.io.File;
 /**
  * Created by tim740 on 17/03/2016
  */
-public class ExprFileDirSize extends SimpleExpression<String>{
-	private Expression<String> path;
+public class ExprFileDirSize extends SimpleExpression<String> {
+    private Expression<String> path;
     private int ty;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         try {
             if (ty == 0) {
                 return new String[]{Utils.getFileSize(pth.length())};
-            }else{
+            } else {
                 return new String[]{Utils.getFileSize(FileUtils.sizeOfDirectory(pth))};
             }
         } catch (Exception x) {
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());
         }
         return null;
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -42,14 +42,17 @@ public class ExprFileDirSize extends SimpleExpression<String>{
         ty = p.mark;
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

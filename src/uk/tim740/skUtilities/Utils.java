@@ -15,22 +15,22 @@ import java.text.DecimalFormat;
  */
 public class Utils {
 
-    public static String getFileSize(double s){
+    public static String getFileSize(double s) {
         DecimalFormat df = new DecimalFormat("#.##");
-        if (s <1024){
+        if (s < 1024) {
             return (s + " B").replaceFirst(".0", "");
-        }else if (s <1048576){
-            return df.format(s /1024) + " KB";
-        }else if (s <1073741824) {
-            return df.format(s /1048576) + " MB";
-        }else if (s <1099511627776L){
-            return df.format(s /1073741824) + " GB";
-        }else{
-            return df.format(s /1099511627776L) + " TB";
+        } else if (s < 1048576) {
+            return df.format(s / 1024) + " KB";
+        } else if (s < 1073741824) {
+            return df.format(s / 1048576) + " MB";
+        } else if (s < 1099511627776L) {
+            return df.format(s / 1073741824) + " GB";
+        } else {
+            return df.format(s / 1099511627776L) + " TB";
         }
     }
 
-    public static void downloadFile(File pth, String url){
+    public static void downloadFile(File pth, String url) {
         try {
             ReadableByteChannel rbc = Channels.newChannel(new URL(url).openStream());
             FileOutputStream fos = new FileOutputStream(pth);
@@ -42,15 +42,15 @@ public class Utils {
         }
     }
 
-    public static String getDefaultPath(String pth){
-        if (!Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("useRootAsDefaultPath", false)){
+    public static String getDefaultPath(String pth) {
+        if (!Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("useRootAsDefaultPath", false)) {
             String dp = Paths.get("").normalize().toAbsolutePath().toString();
             if (pth.contains(dp)) {
                 return (pth + File.separator);
-            }else{
+            } else {
                 return (dp + File.separator + pth);
             }
-        }else{
+        } else {
             return pth;
         }
     }

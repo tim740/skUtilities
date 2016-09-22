@@ -15,13 +15,13 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740 on 14/08/2016
  */
-public class ExprFileNameExt extends SimpleExpression<String>{
-	private Expression<String> path;
+public class ExprFileNameExt extends SimpleExpression<String> {
+    private Expression<String> path;
     private int ty;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
         String pth = Utils.getDefaultPath(path.getSingle(e));
         if (ty == 0) {
             try {
@@ -29,15 +29,15 @@ public class ExprFileNameExt extends SimpleExpression<String>{
             } catch (Exception x) {
                 skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
             }
-        }else{
+        } else {
             try {
                 return new String[]{FilenameUtils.getExtension(pth)};
-            }catch(Exception x){
+            } catch (Exception x) {
                 skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
             }
         }
         return null;
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -46,14 +46,17 @@ public class ExprFileNameExt extends SimpleExpression<String>{
         ty = p.mark;
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

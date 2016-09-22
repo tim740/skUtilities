@@ -21,12 +21,12 @@ import java.nio.file.attribute.UserPrincipalLookupService;
 /**
  * Created by tim740 on 15/08/2016
  */
-public class SExprFileOwner extends SimpleExpression<String>{
-	private Expression<String> path;
+public class SExprFileOwner extends SimpleExpression<String> {
+    private Expression<String> path;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
         Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
         try {
             return new String[]{Files.getOwner(pth).getName()};
@@ -35,6 +35,7 @@ public class SExprFileOwner extends SimpleExpression<String>{
         }
         return null;
     }
+
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
@@ -54,6 +55,7 @@ public class SExprFileOwner extends SimpleExpression<String>{
         path = (Expression<String>) e[0];
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
@@ -67,10 +69,12 @@ public class SExprFileOwner extends SimpleExpression<String>{
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

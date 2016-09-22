@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740 on 02/04/16
  */
-public class EffRestartServer extends Effect{
+public class EffRestartServer extends Effect {
     private int ty;
 
-	@Override
-	protected void execute(Event e) {
+    @Override
+    protected void execute(Event e) {
         if (ty == 0) {
             Bukkit.getServer().spigot().restart();
-        }else{
+        } else {
             Bukkit.getServer().reload();
         }
     }
@@ -29,6 +29,7 @@ public class EffRestartServer extends Effect{
         ty = p.mark;
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

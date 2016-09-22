@@ -29,14 +29,17 @@ public class ExprFontNames extends SimpleExpression<String> {
     public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return false;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

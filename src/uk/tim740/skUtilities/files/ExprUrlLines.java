@@ -15,12 +15,12 @@ import java.net.URL;
 /**
  * Created by tim740 on 14/09/2016
  */
-public class ExprUrlLines extends SimpleExpression<Number>{
-	private Expression<String> url;
+public class ExprUrlLines extends SimpleExpression<Number> {
+    private Expression<String> url;
 
-	@Override
-	@Nullable
-	protected Number[] get(Event e) {
+    @Override
+    @Nullable
+    protected Number[] get(Event e) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new URL(url.getSingle(e)).openStream()))) {
             long s = br.lines().count();
             br.close();
@@ -29,7 +29,7 @@ public class ExprUrlLines extends SimpleExpression<Number>{
             skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         }
         return null;
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -37,14 +37,17 @@ public class ExprUrlLines extends SimpleExpression<Number>{
         url = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends Number> getReturnType() {
         return Number.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

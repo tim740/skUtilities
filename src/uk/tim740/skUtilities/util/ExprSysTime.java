@@ -19,10 +19,10 @@ public class ExprSysTime extends SimpleExpression<Integer> {
     protected Integer[] get(Event e) {
         if (ty == 0) {
             return new Integer[]{Math.toIntExact(System.nanoTime())};
-        }else if (ty == 1){
+        } else if (ty == 1) {
             return new Integer[]{Math.toIntExact(System.currentTimeMillis())};
-        }else{
-            return new Integer[]{Math.toIntExact(System.currentTimeMillis() /1000)};
+        } else {
+            return new Integer[]{Math.toIntExact(System.currentTimeMillis() / 1000)};
         }
     }
 
@@ -32,14 +32,17 @@ public class ExprSysTime extends SimpleExpression<Integer> {
         ty = p.mark;
         return true;
     }
+
     @Override
     public Class<? extends Integer> getReturnType() {
         return Integer.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

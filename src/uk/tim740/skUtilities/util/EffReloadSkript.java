@@ -15,7 +15,7 @@ import java.util.*;
 /**
  * Created by tim740 on 27/03/16
  */
-public class EffReloadSkript extends Effect{
+public class EffReloadSkript extends Effect {
     private Expression<String> str;
     private final static ScriptLoader.ScriptInfo loadedScripts = new ScriptLoader.ScriptInfo();
     @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
@@ -24,22 +24,24 @@ public class EffReloadSkript extends Effect{
 
 
     @Override
-	protected void execute(Event e) {
+    protected void execute(Event e) {
         File f = new File("plugins" + File.separator + "Skript" + File.separator + "scripts" + File.separator + str.getSingle(e).replaceAll(".sk", "") + ".sk");
         if (f.exists()) {
             if (!f.isDirectory()) {
                 unloadScript(f);
                 ScriptLoader.loadScripts(new File[]{f});
             }
-        }else{
+        } else {
             skUtilities.prSysE("'" + f + "' doesn't exist!", getClass().getSimpleName());
         }
-	}
+    }
+
     private static ScriptLoader.ScriptInfo unloadScript(final File script) {
         final ScriptLoader.ScriptInfo r = unloadScript_(script);
         Functions.validateFunctions();
         return r;
     }
+
     private static ScriptLoader.ScriptInfo unloadScript_(final File script) {
         final ScriptLoader.ScriptInfo info = removeTriggers(script);
         synchronized (loadedScripts) {
@@ -47,6 +49,7 @@ public class EffReloadSkript extends Effect{
         }
         return info;
     }
+
     private static ScriptLoader.ScriptInfo removeTriggers(final File script) {
         final ScriptLoader.ScriptInfo info = new ScriptLoader.ScriptInfo();
         info.files = 1;
@@ -88,6 +91,7 @@ public class EffReloadSkript extends Effect{
         str = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

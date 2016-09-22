@@ -29,6 +29,7 @@ public class CondIsSymbolic extends Condition {
         setNegated(i == 1);
         return true;
     }
+
     @Override
     public String toString(Event e, boolean b) {
         return getClass().getName();

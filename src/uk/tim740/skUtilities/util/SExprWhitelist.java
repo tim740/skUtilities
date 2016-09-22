@@ -18,23 +18,24 @@ import java.util.ArrayList;
  */
 public class SExprWhitelist extends SimpleExpression<OfflinePlayer> {
 
-	@Override
-	@Nullable
-	protected OfflinePlayer[] get(Event e) {
+    @Override
+    @Nullable
+    protected OfflinePlayer[] get(Event e) {
         ArrayList<OfflinePlayer> cl = new ArrayList<>();
         cl.addAll(Bukkit.getWhitelistedPlayers());
         return cl.toArray(new OfflinePlayer[cl.size()]);
-	}
+    }
+
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.ADD) {
             ((OfflinePlayer) delta[0]).setWhitelisted(true);
-        }else if (mode == Changer.ChangeMode.REMOVE) {
+        } else if (mode == Changer.ChangeMode.REMOVE) {
             ((OfflinePlayer) delta[0]).setWhitelisted(false);
-        }else if (mode == Changer.ChangeMode.RESET) {
+        } else if (mode == Changer.ChangeMode.RESET) {
             for (OfflinePlayer sof : Bukkit.getWhitelistedPlayers()) {
                 sof.setWhitelisted(false);
             }
-        }else if (mode == Changer.ChangeMode.SET) {
+        } else if (mode == Changer.ChangeMode.SET) {
             Bukkit.setWhitelist((Boolean) delta[0]);
         }
     }
@@ -43,12 +44,13 @@ public class SExprWhitelist extends SimpleExpression<OfflinePlayer> {
     public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.ADD || mode == Changer.ChangeMode.REMOVE) {
             return CollectionUtils.array(OfflinePlayer.class);
-        }else if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
+        } else if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
             return CollectionUtils.array(Boolean.class);
         }
         return null;
@@ -58,10 +60,12 @@ public class SExprWhitelist extends SimpleExpression<OfflinePlayer> {
     public Class<? extends OfflinePlayer> getReturnType() {
         return OfflinePlayer.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

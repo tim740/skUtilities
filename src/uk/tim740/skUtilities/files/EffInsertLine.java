@@ -21,12 +21,12 @@ import java.util.ArrayList;
 /**
  * Created by tim740 on 25/07/2016
  */
-public class EffInsertLine extends Effect{
-	private Expression<String> txt, path;
+public class EffInsertLine extends Effect {
+    private Expression<String> txt, path;
     private Expression<Number> line;
 
-	@Override
-	protected void execute(Event e) {
+    @Override
+    protected void execute(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         EvtFileWrite efw = new EvtFileWrite(pth, txt.getSingle(e), line.getSingle(e));
         Bukkit.getServer().getPluginManager().callEvent(efw);
@@ -58,6 +58,7 @@ public class EffInsertLine extends Effect{
         path = (Expression<String>) e[2];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

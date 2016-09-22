@@ -45,6 +45,7 @@ public class EffUnzip extends Effect {
                             Files.copy(ftc, Paths.get(pth.toString(), ftc.toString()), StandardCopyOption.REPLACE_EXISTING);
                             return FileVisitResult.CONTINUE;
                         }
+
                         @Override
                         public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes ats) throws IOException {
                             final Path dtc = Paths.get(pth.toString(), dir.toString());
@@ -68,6 +69,7 @@ public class EffUnzip extends Effect {
         file = (Expression<String>) e[1];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

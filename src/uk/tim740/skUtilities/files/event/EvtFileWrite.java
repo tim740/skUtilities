@@ -26,9 +26,11 @@ public class EvtFileWrite extends Event implements Cancellable {
     public File getEvtFile() {
         return file;
     }
+
     public String getEvtFileTxt() {
         return txt;
     }
+
     public Number getEvtFileLine() {
         return line;
     }
@@ -37,6 +39,7 @@ public class EvtFileWrite extends Event implements Cancellable {
     public boolean isCancelled() {
         return cancel;
     }
+
     public void setCancelled(boolean c) {
         cancel = c;
     }
@@ -45,6 +48,7 @@ public class EvtFileWrite extends Event implements Cancellable {
     public HandlerList getHandlers() {
         return hls;
     }
+
     public static HandlerList getHandlerList() {
         return hls;
     }

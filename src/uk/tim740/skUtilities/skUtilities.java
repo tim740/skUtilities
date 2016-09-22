@@ -13,17 +13,17 @@ import java.util.Objects;
 
 public class skUtilities extends JavaPlugin {
 
-	@Override
-	public void onEnable() {
+    @Override
+    public void onEnable() {
         long s = System.currentTimeMillis();
         Skript.registerAddon(this);
         getDataFolder().mkdirs();
         saveDefaultConfig();
-        if (!(getConfig().getInt("configVersion") == 6) || !(getConfig().isSet("configVersion"))){
+        if (!(getConfig().getInt("configVersion") == 6) || !(getConfig().isSet("configVersion"))) {
             File pth = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
             File ptho = new File(getDataFolder().getAbsolutePath() + File.separator + "config.old");
 
-            if (ptho.exists()){
+            if (ptho.exists()) {
                 ptho.delete();
             }
             pth.renameTo(ptho);
@@ -36,10 +36,10 @@ public class skUtilities extends JavaPlugin {
             prSysI("New config has reset to default options!");
             prSysI("");
         }
-        if (getConfig().getBoolean("loadConversions", true)){
+        if (getConfig().getBoolean("loadConversions", true)) {
             RegConvert.regC();
         }
-        if (getConfig().getBoolean("loadUtilities", true)){
+        if (getConfig().getBoolean("loadUtilities", true)) {
             RegUtil.regU();
         }
         if (getConfig().getBoolean("loadFiles", true)) {
@@ -48,7 +48,7 @@ public class skUtilities extends JavaPlugin {
         RegConfig.regCo();
         if (getConfig().getBoolean("checkForUpdates", true)) {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
-        }else{
+        } else {
             prSysI("Checking for updates is disabled, you should consider enabling it again!");
         }
 
@@ -66,18 +66,20 @@ public class skUtilities extends JavaPlugin {
         Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s + " (" + c + ".class)");
         Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + " (" + c + ".class)", "skUtilities.error");
     }
+
     public static void prSysE(String s, String c, Exception e) {
-        if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("debug", true)){
+        if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("debug", true)) {
             e.printStackTrace();
-        }else {
+        } else {
             prSysE(s, c);
         }
     }
-    public static void prSysI(String s){
-        Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": "  + s);
+
+    public static void prSysI(String s) {
+        Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": " + s);
     }
 
-    private void updateChk(){
+    private void updateChk() {
         prSysI("Checking for update now you will be notified if there is an update!");
         String v = "";
         try {
@@ -87,7 +89,7 @@ public class skUtilities extends JavaPlugin {
         } catch (Exception e) {
             prSysE("Error while checking for update!", "Main", e);
         }
-        if (!Objects.equals(getVer(), v)){
+        if (!Objects.equals(getVer(), v)) {
             prSysI("A new version of the skUtilities is out v" + v);
             if (getConfig().getBoolean("downloadUpdates", true)) {
                 String dln = "plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar";
@@ -98,24 +100,25 @@ public class skUtilities extends JavaPlugin {
                     if (getConfig().getBoolean("downloadChangelog", true)) {
                         Utils.downloadFile(new File("plugins" + File.separator + "skUtilities" + File.separator + "skUtilities_v" + v + "_Changelog.sk"), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities_v" + v + "_Changelog.sk");
                         prSysI("Finished downloading 'skUtilities_v" + v + "_Changelog.sk' located in 'plugins/skUtilities'");
-                    }else{
+                    } else {
                         prSysI("Changelog can be viewed at: 'https://github.com/tim740/skUtilities/releases/latest'");
                     }
-                }else{
+                } else {
                     prSysI("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
                     Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!", "skUtilities.update");
 
                 }
-            }else{
+            } else {
                 prSysI("You can find the latest version here: 'https://github.com/tim740/skUtilities/releases/latest'");
                 prSysI("You should consider enabling `downloadUpdates` in the config.");
                 Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "You can find the latest version here: 'https://github.com/tim740/skUtilities/releases/latest'", "skUtilities.update");
             }
-        }else{
+        } else {
             prSysI("Currently using the latest version of skUtilities");
         }
     }
-    private static String getVer(){
+
+    private static String getVer() {
         return Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
 }

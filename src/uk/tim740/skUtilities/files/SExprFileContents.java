@@ -18,25 +18,26 @@ import java.io.*;
 /**
  * Created by tim740 on 20/03/2016
  */
-public class SExprFileContents extends SimpleExpression<String>{
-	private Expression<String> path;
+public class SExprFileContents extends SimpleExpression<String> {
+    private Expression<String> path;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         try {
             BufferedReader br = new BufferedReader(new FileReader(pth));
             String[] s = br.lines().toArray(String[]::new);
             br.close();
             return s;
-        }catch (IOException x){
+        } catch (IOException x) {
             skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         } catch (Exception x) {
             skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
         return null;
-	}
+    }
+
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
             File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
@@ -69,6 +70,7 @@ public class SExprFileContents extends SimpleExpression<String>{
         path = (Expression<String>) e[0];
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
@@ -77,14 +79,17 @@ public class SExprFileContents extends SimpleExpression<String>{
         }
         return null;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return false;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

@@ -25,12 +25,12 @@ public class ExprTimeInTimeZone extends SimpleExpression<Date> {
         String s = str.getSingle(e);
         if (s.contains("-")) {
             s = s.replace('-', '+');
-        }else if (s.contains("+")) {
+        } else if (s.contains("+")) {
             s = s.replace('+', '-');
         }
         try {
-            return new Date[]{new Date(ZonedDateTime.of(LocalDateTime.now(), ZoneId.of(s)).toEpochSecond() *1000L)};
-        }catch (Exception x){
+            return new Date[]{new Date(ZonedDateTime.of(LocalDateTime.now(), ZoneId.of(s)).toEpochSecond() * 1000L)};
+        } catch (Exception x) {
             skUtilities.prSysE("'" + s + "' is not a valid TimeZone!", getClass().getSimpleName(), x);
         }
         return null;
@@ -42,14 +42,17 @@ public class ExprTimeInTimeZone extends SimpleExpression<Date> {
         str = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends Date> getReturnType() {
         return Date.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

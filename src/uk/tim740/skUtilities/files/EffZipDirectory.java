@@ -37,7 +37,7 @@ public class EffZipDirectory extends Effect {
                 final Map<String, String> env = new HashMap<>();
                 env.put("create", "true");
                 try (final FileSystem zfs = FileSystems.newFileSystem(URI.create("jar:file:/" + Fzip.getAbsolutePath().replace("\\", "/")), env);
-                    final Stream<Path> files = Files.walk(Dpth)) {
+                     final Stream<Path> files = Files.walk(Dpth)) {
                     final Path rt = zfs.getPath("/");
                     files.forEach(cf -> {
                         try {
@@ -69,6 +69,7 @@ public class EffZipDirectory extends Effect {
         zip = (Expression<String>) e[1];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

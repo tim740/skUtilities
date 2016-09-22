@@ -15,12 +15,12 @@ import java.util.ArrayList;
 /**
  * Created by tim740 on 18/03/2016
  */
-public class ExprDirList extends SimpleExpression<String>{
-	private Expression<String> path;
+public class ExprDirList extends SimpleExpression<String> {
+    private Expression<String> path;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         ArrayList<String> cl = new ArrayList<>();
         try {
@@ -33,7 +33,7 @@ public class ExprDirList extends SimpleExpression<String>{
             } else {
                 skUtilities.prSysE("Directory: '" + pth + File.separator + "' isn't a valid directory!", getClass().getSimpleName());
             }
-        }catch (Exception x){
+        } catch (Exception x) {
             skUtilities.prSysE("Directory: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }
         return null;
@@ -45,14 +45,17 @@ public class ExprDirList extends SimpleExpression<String>{
         path = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return false;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

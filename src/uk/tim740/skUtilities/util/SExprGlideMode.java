@@ -14,18 +14,19 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740 on 13/03/2016
  */
-public class SExprGlideMode extends SimpleExpression<Boolean>{
-	private Expression<LivingEntity> ent;
+public class SExprGlideMode extends SimpleExpression<Boolean> {
+    private Expression<LivingEntity> ent;
 
-	@Override
-	@Nullable
-	protected Boolean[] get(Event e) {
-		return new Boolean[]{ent.getSingle(e).isGliding()};
-	}
+    @Override
+    @Nullable
+    protected Boolean[] get(Event e) {
+        return new Boolean[]{ent.getSingle(e).isGliding()};
+    }
+
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             ent.getSingle(e).setGliding((boolean) delta[0]);
-        }else if (mode == Changer.ChangeMode.RESET) {
+        } else if (mode == Changer.ChangeMode.RESET) {
             ent.getSingle(e).setGliding(false);
         }
     }
@@ -36,6 +37,7 @@ public class SExprGlideMode extends SimpleExpression<Boolean>{
         ent = (Expression<LivingEntity>) e[0];
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
@@ -49,10 +51,12 @@ public class SExprGlideMode extends SimpleExpression<Boolean>{
     public Class<? extends Boolean> getReturnType() {
         return Boolean.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

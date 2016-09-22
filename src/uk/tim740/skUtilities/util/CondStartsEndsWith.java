@@ -18,7 +18,7 @@ public class CondStartsEndsWith extends Condition {
         if (ty == 0) {
             Boolean chk = str.getSingle(e).startsWith(txt.getSingle(e));
             return (isNegated() ? !chk : chk);
-        }else{
+        } else {
             Boolean chk = str.getSingle(e).endsWith(txt.getSingle(e));
             return (isNegated() ? !chk : chk);
         }
@@ -33,6 +33,7 @@ public class CondStartsEndsWith extends Condition {
         setNegated(i == 1);
         return true;
     }
+
     @Override
     public String toString(Event e, boolean b) {
         return getClass().getName();

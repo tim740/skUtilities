@@ -29,14 +29,17 @@ public class ExprClearAccented extends SimpleExpression<String> {
         str = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

@@ -12,13 +12,13 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740 on 30/03/2016
  */
-public class ExprDateToUnix extends SimpleExpression <Number>{
+public class ExprDateToUnix extends SimpleExpression<Number> {
     private Expression<Date> id;
 
     @Override
     @Nullable
     protected Number[] get(Event e) {
-        return new Number[]{id.getSingle(e).getTimestamp() /1000L};
+        return new Number[]{id.getSingle(e).getTimestamp() / 1000L};
     }
 
     @SuppressWarnings("unchecked")
@@ -27,14 +27,17 @@ public class ExprDateToUnix extends SimpleExpression <Number>{
         id = (Expression<Date>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends Number> getReturnType() {
         return Number.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

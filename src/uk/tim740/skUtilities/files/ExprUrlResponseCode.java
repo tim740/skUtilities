@@ -15,12 +15,12 @@ import java.net.URL;
 /**
  * Created by tim740 on 13/09/2016
  */
-public class ExprUrlResponseCode extends SimpleExpression<Integer>{
+public class ExprUrlResponseCode extends SimpleExpression<Integer> {
     private Expression<String> url;
 
-	@Override
-	@Nullable
-	protected Integer[] get(Event e) {
+    @Override
+    @Nullable
+    protected Integer[] get(Event e) {
         try {
             HttpURLConnection.setFollowRedirects(false);
             HttpURLConnection c = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
@@ -41,14 +41,17 @@ public class ExprUrlResponseCode extends SimpleExpression<Integer>{
         url = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends Integer> getReturnType() {
         return Integer.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

@@ -14,12 +14,12 @@ import java.net.URL;
 /**
  * Created by tim740 on 14/09/2016
  */
-public class ExprUrlSizeBytes extends SimpleExpression<Number>{
-	private Expression<String> url;
+public class ExprUrlSizeBytes extends SimpleExpression<Number> {
+    private Expression<String> url;
 
-	@Override
-	@Nullable
-	protected Number[] get(Event e) {
+    @Override
+    @Nullable
+    protected Number[] get(Event e) {
         try {
             HttpURLConnection s = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
             Number n = s.getContentLength();
@@ -33,7 +33,7 @@ public class ExprUrlSizeBytes extends SimpleExpression<Number>{
             skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         }
         return null;
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -41,14 +41,17 @@ public class ExprUrlSizeBytes extends SimpleExpression<Number>{
         url = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends Number> getReturnType() {
         return Number.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

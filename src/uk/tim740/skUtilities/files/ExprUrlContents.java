@@ -16,12 +16,12 @@ import java.net.URL;
 /**
  * Created by tim740 on 13/09/2016
  */
-public class ExprUrlContents extends SimpleExpression<String>{
-	private Expression<String> url;
+public class ExprUrlContents extends SimpleExpression<String> {
+    private Expression<String> url;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
         try {
             BufferedReader ur = new BufferedReader(new InputStreamReader(new URL(url.getSingle(e)).openStream()));
             String[] s = ur.lines().toArray(String[]::new);
@@ -39,14 +39,17 @@ public class ExprUrlContents extends SimpleExpression<String>{
         url = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return false;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

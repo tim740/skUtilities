@@ -20,13 +20,13 @@ import java.nio.file.Paths;
 /**
  * Created by tim740 on 20/03/2016
  */
-public class SExprFileAttribute extends SimpleExpression<Boolean>{
-	private Expression<String> path;
+public class SExprFileAttribute extends SimpleExpression<Boolean> {
+    private Expression<String> path;
     private int ty;
 
-	@Override
-	@Nullable
-	protected Boolean[] get(Event e) {
+    @Override
+    @Nullable
+    protected Boolean[] get(Event e) {
         Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
         try {
             if (ty == 0) {
@@ -37,10 +37,11 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
                 return new Boolean[]{Files.isHidden(pth)};
             }
         } catch (IOException x) {
-                skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         }
         return null;
     }
+
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
             File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
@@ -49,27 +50,27 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
                 if (ty == 0) {
                     if (mode == Changer.ChangeMode.SET) {
                         pth.setReadable(boo);
-                    }else{
+                    } else {
                         pth.setReadable(true);
                     }
                 } else if (ty == 1) {
                     if (mode == Changer.ChangeMode.SET) {
                         pth.setWritable(boo);
-                    }else{
+                    } else {
                         pth.setWritable(true);
                     }
                 } else {
                     try {
                         if (mode == Changer.ChangeMode.SET) {
                             Files.setAttribute(Paths.get(pth.toString()), "dos:hidden", boo);
-                        }else{
+                        } else {
                             Files.setAttribute(Paths.get(pth.toString()), "dos:hidden", false);
                         }
                     } catch (IOException x) {
                         skUtilities.prSysE("Sorry Windows only!", getClass().getSimpleName(), x);
                     }
                 }
-            }catch (Exception x){
+            } catch (Exception x) {
                 skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
             }
         }
@@ -83,6 +84,7 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
         ty = p.mark;
         return true;
     }
+
     @SuppressWarnings("unchecked")
     @Override
     public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
@@ -96,10 +98,12 @@ public class SExprFileAttribute extends SimpleExpression<Boolean>{
     public Class<? extends Boolean> getReturnType() {
         return Boolean.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

@@ -15,11 +15,11 @@ import java.io.File;
 /**
  * Created by tim740 on 21/03/2016
  */
-public class EffFileDownload extends Effect{
-	private Expression<String> url, path;
+public class EffFileDownload extends Effect {
+    private Expression<String> url, path;
 
-	@Override
-	protected void execute(Event e) {
+    @Override
+    protected void execute(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         EvtFileDownload efd = new EvtFileDownload(url.getSingle(e), pth);
         Bukkit.getServer().getPluginManager().callEvent(efd);
@@ -35,6 +35,7 @@ public class EffFileDownload extends Effect{
         path = (Expression<String>) e[1];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

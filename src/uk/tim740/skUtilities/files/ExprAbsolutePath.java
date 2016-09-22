@@ -14,20 +14,20 @@ import java.io.File;
 /**
  * Created by tim740 on 28/06/2016
  */
-public class ExprAbsolutePath extends SimpleExpression<String>{
-	private Expression<String> path;
+public class ExprAbsolutePath extends SimpleExpression<String> {
+    private Expression<String> path;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         try {
             return new String[]{pth.getAbsolutePath()};
-        }catch (Exception x){
+        } catch (Exception x) {
             skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }
         return null;
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -35,14 +35,17 @@ public class ExprAbsolutePath extends SimpleExpression<String>{
         path = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

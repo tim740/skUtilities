@@ -15,7 +15,7 @@ public class ExprMorse extends SimpleExpression<String> {
     private int ty;
     private Expression<String> str;
     private static final char[] engL = {' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
     private static final String[] morseL = {"_", "-----", ".----", "..---", "...--", "....-", "......", "-.....", "--...", "---..", "----.",
             ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
 
@@ -23,7 +23,7 @@ public class ExprMorse extends SimpleExpression<String> {
     @Nullable
     protected String[] get(Event e) {
         String out = "";
-        if (ty == 0){
+        if (ty == 0) {
             for (char value : str.getSingle(e).toLowerCase().toCharArray()) {
                 for (int j = 0; j < engL.length; j++) {
                     if (engL[j] == value) {
@@ -31,7 +31,7 @@ public class ExprMorse extends SimpleExpression<String> {
                     }
                 }
             }
-        }else{
+        } else {
             for (String word : str.getSingle(e).split("\\s\\s\\s")) {
                 for (String letter : word.split("\\s")) {
                     for (int j = 0; j < morseL.length; j++) {
@@ -52,14 +52,17 @@ public class ExprMorse extends SimpleExpression<String> {
         str = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

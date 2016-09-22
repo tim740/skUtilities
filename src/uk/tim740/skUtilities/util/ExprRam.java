@@ -18,11 +18,11 @@ public class ExprRam extends SimpleExpression<Number> {
     @Nullable
     protected Number[] get(Event e) {
         if (ty == 0) {
-            return new Number[]{Runtime.getRuntime().freeMemory() /1000000L};
-        }else if (ty == 1){
-            return new Number[]{Runtime.getRuntime().totalMemory() /1000000L};
-        }else{
-            return new Number[]{Runtime.getRuntime().maxMemory() /1000000L};
+            return new Number[]{Runtime.getRuntime().freeMemory() / 1000000L};
+        } else if (ty == 1) {
+            return new Number[]{Runtime.getRuntime().totalMemory() / 1000000L};
+        } else {
+            return new Number[]{Runtime.getRuntime().maxMemory() / 1000000L};
         }
     }
 
@@ -32,14 +32,17 @@ public class ExprRam extends SimpleExpression<Number> {
         ty = p.mark;
         return true;
     }
+
     @Override
     public Class<? extends Number> getReturnType() {
         return Number.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

@@ -38,14 +38,17 @@ public class ExprHash extends SimpleExpression<String> {
         hash = (Expression<String>) e[1];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

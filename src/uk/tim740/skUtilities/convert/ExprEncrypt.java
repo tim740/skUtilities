@@ -29,18 +29,18 @@ public class ExprEncrypt extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        try{
+        try {
             Cipher c = Cipher.getInstance(cipher.getSingle(e).toUpperCase());
             c.init(ty, new SecretKeySpec(key.getSingle(e).getBytes(), cipher.getSingle(e).toUpperCase()));
-            if (ty == Cipher.ENCRYPT_MODE){
+            if (ty == Cipher.ENCRYPT_MODE) {
                 return new String[]{new BASE64Encoder().encode(c.doFinal(str.getSingle(e).getBytes()))};
-            }else{
+            } else {
                 return new String[]{new String(c.doFinal(new BASE64Decoder().decodeBuffer(str.getSingle(e))))};
             }
         } catch (NoSuchPaddingException | BadPaddingException | IOException | IllegalBlockSizeException x) {
             skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         } catch (NoSuchAlgorithmException x) {
-            skUtilities.prSysE(x.getMessage() + " '"+ cipher.getSingle(e).toUpperCase() +"'", getClass().getSimpleName(), x);
+            skUtilities.prSysE(x.getMessage() + " '" + cipher.getSingle(e).toUpperCase() + "'", getClass().getSimpleName(), x);
         } catch (InvalidKeyException x) {
             skUtilities.prSysE("Invalid Key: '" + key.getSingle(e) + "'", getClass().getSimpleName(), x);
         }
@@ -50,9 +50,9 @@ public class ExprEncrypt extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
-        if (p.mark == 0){
+        if (p.mark == 0) {
             ty = Cipher.ENCRYPT_MODE;
-        }else{
+        } else {
             ty = Cipher.DECRYPT_MODE;
         }
         str = (Expression<String>) e[0];
@@ -60,14 +60,17 @@ public class ExprEncrypt extends SimpleExpression<String> {
         key = (Expression<String>) e[2];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

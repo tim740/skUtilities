@@ -16,12 +16,12 @@ import java.nio.file.Files;
 /**
  * Created by tim740 on 17/03/2016
  */
-public class ExprFileLines extends SimpleExpression<Number>{
-	private Expression<String> path;
+public class ExprFileLines extends SimpleExpression<Number> {
+    private Expression<String> path;
 
-	@Override
-	@Nullable
-	protected Number[] get(Event e) {
+    @Override
+    @Nullable
+    protected Number[] get(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
         try {
             return new Number[]{Files.readAllLines(pth.toPath()).size()};
@@ -31,7 +31,7 @@ public class ExprFileLines extends SimpleExpression<Number>{
             skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
         return null;
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -39,14 +39,17 @@ public class ExprFileLines extends SimpleExpression<Number>{
         path = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends Number> getReturnType() {
         return Number.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

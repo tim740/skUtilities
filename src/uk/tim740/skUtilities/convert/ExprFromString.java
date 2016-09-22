@@ -12,13 +12,13 @@ import java.util.Objects;
 /**
  * Created by tim740.
  */
-public class ExprFromString extends SimpleExpression<String>{
-	private Expression<String> str;
+public class ExprFromString extends SimpleExpression<String> {
+    private Expression<String> str;
     private int ty;
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
         String out = "";
         if (ty == 0) {
             for (String c : str.getSingle(e).split("")) {
@@ -28,7 +28,7 @@ public class ExprFromString extends SimpleExpression<String>{
                     out += "," + Integer.toString(c.charAt(0));
                 }
             }
-        }else{
+        } else {
             for (String c : str.getSingle(e).split("")) {
                 if (c.charAt(0) < 0x10) {
                     out += "\\u000" + Integer.toHexString(c.charAt(0));
@@ -42,7 +42,7 @@ public class ExprFromString extends SimpleExpression<String>{
             }
         }
         return new String[]{out};
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -51,14 +51,17 @@ public class ExprFromString extends SimpleExpression<String>{
         ty = p.mark;
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

@@ -31,6 +31,7 @@ public class EffReloadConfig extends Effect {
         str = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

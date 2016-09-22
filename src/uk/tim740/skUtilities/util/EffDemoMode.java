@@ -17,10 +17,10 @@ import java.lang.reflect.Method;
  * Made by @Sashie - Tweaked by @tim740
  */
 public class EffDemoMode extends Effect {
-	private Expression<Player> u;
+    private Expression<Player> u;
 
-	@Override
-	protected void execute(@Nullable Event e) {
+    @Override
+    protected void execute(@Nullable Event e) {
         String p = Bukkit.getServer().getClass().getPackage().getName();
         String ver = p.substring(p.lastIndexOf(".") + 1, p.length());
         try {
@@ -35,14 +35,15 @@ public class EffDemoMode extends Effect {
         } catch (Exception x) {
             skUtilities.prSysE("Player didn't have a compatible version of Minecraft!", getClass().getSimpleName(), x);
         }
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p){
+    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
         u = (Expression<Player>) e[0];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

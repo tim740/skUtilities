@@ -41,7 +41,7 @@ public class ExprFile extends SimpleExpression<File> {
             return ((EvtFileRename) e).getEvtFile();
         } else if (e instanceof EvtFileWipe) {
             return ((EvtFileWipe) e).getEvtFile();
-        }else if (e instanceof EvtFileWrite) {
+        } else if (e instanceof EvtFileWrite) {
             return ((EvtFileWrite) e).getEvtFile();
         } else if (e instanceof EvtUnzip) {
             return ((EvtUnzip) e).getEvtFile();
@@ -60,14 +60,17 @@ public class ExprFile extends SimpleExpression<File> {
         }
         return true;
     }
+
     @Override
     public Class<? extends File> getReturnType() {
         return File.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event arg0, boolean arg1) {
         return getClass().getName();

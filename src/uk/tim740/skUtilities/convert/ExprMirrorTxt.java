@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740.
  */
-public class ExprMirrorTxt extends SimpleExpression<String>{
+public class ExprMirrorTxt extends SimpleExpression<String> {
     private Expression<String> str;
 
     @Override
@@ -19,7 +19,7 @@ public class ExprMirrorTxt extends SimpleExpression<String>{
     protected String[] get(Event e) {
         int i, len = str.getSingle(e).length();
         StringBuilder mir = new StringBuilder(len);
-        for (i = (len - 1); i >= 0; i--){
+        for (i = (len - 1); i >= 0; i--) {
             mir.append(str.getSingle(e).charAt(i));
         }
         return new String[]{mir.toString()};
@@ -31,14 +31,17 @@ public class ExprMirrorTxt extends SimpleExpression<String>{
         str = (Expression<String>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

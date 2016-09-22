@@ -68,6 +68,7 @@ public class EffZipFiles extends Effect {
         zip = (Expression<String>) e[1];
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

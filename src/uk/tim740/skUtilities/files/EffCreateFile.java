@@ -32,7 +32,7 @@ public class EffCreateFile extends Effect {
         if (!efc.isCancelled()) {
             if (ty == 0) {
                 try {
-                    Path fwn = Paths.get(pth.toString().replace(File.separator + pth.toString().substring(pth.toString().lastIndexOf(File.separator) +1), ""));
+                    Path fwn = Paths.get(pth.toString().replace(File.separator + pth.toString().substring(pth.toString().lastIndexOf(File.separator) + 1), ""));
                     if (!Files.exists(fwn)) {
                         Files.createDirectories(fwn);
                     }
@@ -57,6 +57,7 @@ public class EffCreateFile extends Effect {
         ty = p.mark;
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

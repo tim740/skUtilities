@@ -12,27 +12,30 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740 on 25/06/16
  */
-public class ExprServerIP extends SimpleExpression<String>{
+public class ExprServerIP extends SimpleExpression<String> {
 
-	@Override
-	@Nullable
-	protected String[] get(Event e) {
+    @Override
+    @Nullable
+    protected String[] get(Event e) {
         return new String[]{Bukkit.getIp()};
-	}
+    }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

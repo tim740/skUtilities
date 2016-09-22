@@ -24,6 +24,7 @@ public class EvtFileMove extends Event implements Cancellable {
     public File getEvtFile() {
         return file;
     }
+
     public String getEvtMFile() {
         return mfile;
     }
@@ -31,6 +32,7 @@ public class EvtFileMove extends Event implements Cancellable {
     public boolean isCancelled() {
         return cancel;
     }
+
     public void setCancelled(boolean c) {
         cancel = c;
     }
@@ -39,6 +41,7 @@ public class EvtFileMove extends Event implements Cancellable {
     public HandlerList getHandlers() {
         return hls;
     }
+
     public static HandlerList getHandlerList() {
         return hls;
     }

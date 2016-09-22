@@ -13,18 +13,18 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740.
  */
-public class ExprUnixToDate extends SimpleExpression <Date>{
+public class ExprUnixToDate extends SimpleExpression<Date> {
     private Expression<Number> n;
 
     @Override
     @Nullable
     protected Date[] get(Event e) {
         String si = n.getSingle(e).toString();
-        if (!(si.length() == 10)){
+        if (!(si.length() == 10)) {
             si = si.substring(0, 10);
         }
         try {
-            return new Date[]{new Date(Integer.parseInt(si) *1000L)};
+            return new Date[]{new Date(Integer.parseInt(si) * 1000L)};
         } catch (Exception x) {
             skUtilities.prSysE("'" + si + "' You must use Integers 10 Chars long!", getClass().getSimpleName(), x);
         }
@@ -37,14 +37,17 @@ public class ExprUnixToDate extends SimpleExpression <Date>{
         n = (Expression<Number>) e[0];
         return true;
     }
+
     @Override
     public Class<? extends Date> getReturnType() {
         return Date.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

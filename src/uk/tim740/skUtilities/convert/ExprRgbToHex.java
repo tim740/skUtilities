@@ -18,7 +18,7 @@ public class ExprRgbToHex extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        String rgb = Integer.toHexString(new Color(Integer.parseInt(r.getSingle(e).toString()),Integer.parseInt(g.getSingle(e).toString()),Integer.parseInt(b.getSingle(e).toString())).getRGB());
+        String rgb = Integer.toHexString(new Color(Integer.parseInt(r.getSingle(e).toString()), Integer.parseInt(g.getSingle(e).toString()), Integer.parseInt(b.getSingle(e).toString())).getRGB());
         return new String[]{rgb.substring(2, rgb.length())};
     }
 
@@ -30,14 +30,17 @@ public class ExprRgbToHex extends SimpleExpression<String> {
         b = (Expression<Number>) e[2];
         return true;
     }
+
     @Override
     public Class<? extends String> getReturnType() {
         return String.class;
     }
+
     @Override
     public boolean isSingle() {
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();

@@ -31,7 +31,7 @@ public class EffDeleteFile extends Effect {
             if (ty == 0) {
                 try {
                     Files.delete(pth);
-                } catch(IOException x){
+                } catch (IOException x) {
                     skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
                 }
             } else {
@@ -42,13 +42,14 @@ public class EffDeleteFile extends Effect {
                             Files.delete(f);
                             return FileVisitResult.CONTINUE;
                         }
+
                         @Override
                         public FileVisitResult postVisitDirectory(Path d, IOException exc) throws IOException {
                             Files.delete(d);
                             return FileVisitResult.CONTINUE;
                         }
                     });
-                } catch(IOException x){
+                } catch (IOException x) {
                     skUtilities.prSysE("Directory: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
                 }
             }
@@ -62,6 +63,7 @@ public class EffDeleteFile extends Effect {
         ty = p.mark;
         return true;
     }
+
     @Override
     public String toString(@Nullable Event e, boolean b) {
         return getClass().getName();
