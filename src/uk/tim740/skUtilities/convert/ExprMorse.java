@@ -24,19 +24,19 @@ public class ExprMorse extends SimpleExpression<String> {
     protected String[] get(Event e) {
         String out = "";
         if (ty == 0) {
-            for (char value : str.getSingle(e).toLowerCase().toCharArray()) {
+            for (char v : str.getSingle(e).toLowerCase().toCharArray()) {
                 for (int j = 0; j < engL.length; j++) {
-                    if (engL[j] == value) {
+                    if (engL[j] == v) {
                         out += morseL[j] + " ";
                         break;
                     }
                 }
             }
         } else {
-            for (String word : str.getSingle(e).split("\\s\\s\\s")) {
-                for (String letter : word.split("\\s")) {
+            for (String w : str.getSingle(e).split("\\s\\s\\s")) {
+                for (String l : w.split("\\s")) {
                     for (int j = 0; j < morseL.length; j++) {
-                        if (letter.equals(morseL[j])) {
+                        if (l.equals(morseL[j])) {
                             out += engL[j];
                             break;
                         }
