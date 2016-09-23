@@ -19,14 +19,14 @@ public class ExprUnixToDate extends SimpleExpression<Date> {
     @Override
     @Nullable
     protected Date[] get(Event e) {
-        String si = n.getSingle(e).toString();
-        if (!(si.length() == 10)) {
-            si = si.substring(0, 10);
-        }
         try {
+            String si = n.getSingle(e).toString();
+            if (!(si.length() == 10)) {
+                si = si.substring(0, 10);
+            }
             return new Date[]{new Date(Integer.parseInt(si) * 1000L)};
         } catch (Exception x) {
-            skUtilities.prSysE("'" + si + "' You must use Integers 10 Chars long!", getClass().getSimpleName(), x);
+            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
         return null;
     }
