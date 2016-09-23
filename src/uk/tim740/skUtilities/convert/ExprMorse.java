@@ -28,6 +28,7 @@ public class ExprMorse extends SimpleExpression<String> {
                 for (int j = 0; j < engL.length; j++) {
                     if (engL[j] == value) {
                         out += morseL[j] + " ";
+                        break;
                     }
                 }
             }
@@ -37,6 +38,7 @@ public class ExprMorse extends SimpleExpression<String> {
                     for (int j = 0; j < morseL.length; j++) {
                         if (letter.equals(morseL[j])) {
                             out += engL[j];
+                            break;
                         }
                     }
                 }
