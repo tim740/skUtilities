@@ -39,7 +39,7 @@ public class ExprDirList extends SimpleExpression<String> {
                     @Override
                     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                         if(!attrs.isDirectory()){
-                            cl.add(file.toString());
+                            cl.add(file.toAbsolutePath().toString());
                         }
                         return FileVisitResult.CONTINUE;
                     }
