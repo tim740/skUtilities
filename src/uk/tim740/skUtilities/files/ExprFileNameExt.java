@@ -23,18 +23,14 @@ public class ExprFileNameExt extends SimpleExpression<String> {
     @Nullable
     protected String[] get(Event e) {
         String pth = Utils.getDefaultPath(path.getSingle(e));
-        if (ty == 0) {
-            try {
+        try {
+            if (ty == 0) {
                 return new String[]{Files.getNameWithoutExtension(pth)};
-            } catch (Exception x) {
-                skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
-            }
-        } else {
-            try {
+            } else {
                 return new String[]{FilenameUtils.getExtension(pth)};
-            } catch (Exception x) {
-                skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());
             }
+        } catch (Exception x) {
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }
         return null;
     }
