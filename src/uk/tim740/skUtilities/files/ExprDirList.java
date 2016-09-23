@@ -9,7 +9,9 @@ import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 
 /**
@@ -17,21 +19,32 @@ import java.util.ArrayList;
  */
 public class ExprDirList extends SimpleExpression<String> {
     private Expression<String> path;
+    private int ty;
 
     @Override
     @Nullable
     protected String[] get(Event e) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
         ArrayList<String> cl = new ArrayList<>();
         try {
-            if (pth.isDirectory()) {
-                //noinspection ConstantConditions
-                for (File file : pth.listFiles()) {
-                    cl.add(String.valueOf(pth + File.separator + file.getName()));
+            if (ty == 0) {
+                try (DirectoryStream<Path> stream = Files.newDirectoryStream(pth)) {
+                    for (Path cf : stream) {
+                        cl.add(cf.toAbsolutePath().toString());
+                    }
                 }
                 return cl.toArray(new String[cl.size()]);
             } else {
-                skUtilities.prSysE("Directory: '" + pth + File.separator + "' isn't a valid directory!", getClass().getSimpleName());
+                Files.walkFileTree(pth, new SimpleFileVisitor<Path>(){
+                    @Override
+                    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                        if(!attrs.isDirectory()){
+                            cl.add(file.toString());
+                        }
+                        return FileVisitResult.CONTINUE;
+                    }
+                });
+                return cl.toArray(new String[cl.size()]);
             }
         } catch (Exception x) {
             skUtilities.prSysE("Directory: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
@@ -43,6 +56,7 @@ public class ExprDirList extends SimpleExpression<String> {
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
         path = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
 

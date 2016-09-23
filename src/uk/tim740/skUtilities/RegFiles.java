@@ -24,7 +24,7 @@ class RegFiles {
         Skript.registerExpression(ExprUrlResponseCode.class, Integer.class, ExpressionType.PROPERTY, "response code of url %string%", "url %string%'s response code");
 
         Skript.registerExpression(ExprZipList.class, String.class, ExpressionType.PROPERTY, "files in zip[ file] %string%", "zip[ file] %string%'s files");
-        Skript.registerExpression(ExprDirList.class, String.class, ExpressionType.PROPERTY, "files in dir[ectory] %string%", "dir[ectory] %string%'s files");
+        Skript.registerExpression(ExprDirList.class, String.class, ExpressionType.PROPERTY, "files in dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%", "dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%'s files");
         Skript.registerExpression(ExprFileLines.class, Number.class, ExpressionType.PROPERTY, "line count of file %string%", "file %string%'s line count");
         Skript.registerExpression(ExprFileTimeAttributes.class, Number.class, ExpressionType.PROPERTY, "file %string%'s (0¦last modified|1¦creation|2¦last access) value", "(0¦last modified|1¦creation|2¦last access) value of file %string%");
         Skript.registerExpression(ExprFileDirSize.class, String.class, ExpressionType.PROPERTY, "size of (0¦file|1¦dir[ectory]) %string%", "(0¦file|1¦dir[ectory]) %string%'s size");

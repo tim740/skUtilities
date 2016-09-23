@@ -30,7 +30,6 @@ class RegUtil {
         Skript.registerExpression(ExprVersion.class, String.class, ExpressionType.PROPERTY, "%string%'s version", "version of %string%");
         Skript.registerExpression(ExprSysTime.class, Integer.class, ExpressionType.PROPERTY, "[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
         Skript.registerExpression(ExprRam.class, Number.class, ExpressionType.PROPERTY, "[skutil ](0¦free|1¦total|2¦max) (ram|memory)");
-        Skript.registerExpression(ExprFontNames.class, String.class, ExpressionType.PROPERTY, "[all ][system ]font names");
         Skript.registerExpression(ExprCaseLength.class, Number.class, ExpressionType.PROPERTY, "number of (0¦upper|1¦lower)case char[acter]s in %string%");
 
         Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
