@@ -28,7 +28,7 @@ class RegUtil {
         Skript.registerExpression(ExprLoaded.class, Number.class, ExpressionType.PROPERTY, "number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦events|8¦effects|9¦expressions|10¦conditions)");
         Skript.registerExpression(ExprLoadedList.class, String.class, ExpressionType.PROPERTY, "(0¦plugins|1¦addons) list", "list of (0¦plugins|1¦addons)");
         Skript.registerExpression(ExprVersion.class, String.class, ExpressionType.PROPERTY, "%string%'s version", "version of %string%");
-        Skript.registerExpression(ExprSysTime.class, Integer.class, ExpressionType.PROPERTY, "[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
+        Skript.registerExpression(ExprSysTime.class, Number.class, ExpressionType.PROPERTY, "[current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
         Skript.registerExpression(ExprRam.class, Number.class, ExpressionType.PROPERTY, "[skutil ](0¦free|1¦total|2¦max) (ram|memory)");
         Skript.registerExpression(ExprCaseLength.class, Number.class, ExpressionType.PROPERTY, "number of (0¦upper|1¦lower)case char[acter]s in %string%");
 

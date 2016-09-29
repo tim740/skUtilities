@@ -11,18 +11,18 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740 on 10/03/2016
  */
-public class ExprSysTime extends SimpleExpression<Integer> {
+public class ExprSysTime extends SimpleExpression<Number> {
     private int ty;
 
     @Override
     @Nullable
-    protected Integer[] get(Event e) {
+    protected Number[] get(Event e) {
         if (ty == 0) {
-            return new Integer[]{Math.toIntExact(System.nanoTime())};
+            return new Number[]{System.nanoTime()};
         } else if (ty == 1) {
-            return new Integer[]{Math.toIntExact(System.currentTimeMillis())};
+            return new Number[]{System.currentTimeMillis()};
         } else {
-            return new Integer[]{Math.toIntExact(System.currentTimeMillis() / 1000)};
+            return new Number[]{(System.currentTimeMillis() / 1000)};
         }
     }
 
@@ -34,8 +34,8 @@ public class ExprSysTime extends SimpleExpression<Integer> {
     }
 
     @Override
-    public Class<? extends Integer> getReturnType() {
-        return Integer.class;
+    public Class<? extends Number> getReturnType() {
+        return Number.class;
     }
 
     @Override
