@@ -1,11 +1,18 @@
 package uk.tim740.skUtilities;
 
 import ch.njol.skript.Skript;
+import ch.njol.skript.classes.ClassInfo;
+import ch.njol.skript.classes.Parser;
 import ch.njol.skript.lang.ExpressionType;
+import ch.njol.skript.lang.ParseContext;
+import ch.njol.skript.registrations.Classes;
 import ch.njol.skript.util.Date;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Villager;
 import uk.tim740.skUtilities.util.*;
+
+import javax.annotation.Nullable;
 
 /**
  * Created by tim740 on 22/02/2016
@@ -42,13 +49,38 @@ class RegUtil {
         Skript.registerCondition(CondStartsEndsWith.class, "%string% (0¦starts|1¦ends) with %-string%", "%string% does(n't| not) (0¦start|1¦end) with %-string%");
 
         if (Bukkit.getVersion().contains("(MC: 1.9") || Bukkit.getVersion().contains("(MC: 1.1")) {
-            RegUtil19.regU();
+            Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession %profession% at %location%");
+            if (Bukkit.getPluginManager().getPlugin("SkQuery") == null) {
+                Classes.registerClass(new ClassInfo<>(Villager.Profession.class, "profession").parser(new Parser<Villager.Profession>() {
+                    @Override
+                    @Nullable
+                    public Villager.Profession parse(String s, ParseContext context) {
+                        try {
+                            return Villager.Profession.valueOf(s.toUpperCase());
+                        } catch (Exception e) {
+                            return null;
+                        }
+                    }
+
+                    @Override
+                    public String toString(Villager.Profession vi, int i) {
+                        return vi.name().toLowerCase();
+                    }
+
+                    @Override
+                    public String toVariableNameString(Villager.Profession vi) {
+                        return vi.name().toLowerCase();
+                    }
+
+                    @Override
+                    public String getVariableNamePattern() {
+                        return ".+";
+                    }
+                }));
+            }
         } else {
             Bukkit.getServer().getLogger().severe("[skUtilities] v" + Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " - Unable to load: TypeProfession, requires 1.9+!");
             Bukkit.getServer().getLogger().severe("[skUtilities] v" + Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " - Unable to load: EffVillagerProfession, requires 1.9+!");
-            Bukkit.getServer().getLogger().severe("[skUtilities] v" + Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " - Unable to load: SExprGlideMode, requires 1.9+!");
-            Bukkit.getServer().getLogger().severe("[skUtilities] v" + Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " - Unable to load: EvtCauldronLevelChange, requires 1.9+!");
-            Bukkit.getServer().getLogger().severe("[skUtilities] v" + Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " - Unable to load: EvtGlideToggle, requires 1.9+!");
         }
     }
 }
