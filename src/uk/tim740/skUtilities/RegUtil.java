@@ -18,7 +18,6 @@ import javax.annotation.Nullable;
  */
 class RegUtil {
     static void regU() {
-
         Skript.registerExpression(ExprGetTimeZone.class, String.class, ExpressionType.PROPERTY, "time[ ]zone of server", "server's time[ ]zone");
         Skript.registerExpression(ExprTimeZoneList.class, String.class, ExpressionType.PROPERTY, "[all ]time[ ]zones");
         Skript.registerExpression(ExprTimeInTimeZone.class, Date.class, ExpressionType.PROPERTY, "[current ]time in time[ ]zone %string%", "[current ]time[ ]zone %string%'s time");
