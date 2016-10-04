@@ -81,40 +81,39 @@ public class skUtilities extends JavaPlugin {
 
     private void updateChk() {
         prSysI("Checking for update now you will be notified if there is an update!");
-        String v = "";
         try {
             BufferedReader ur = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/tim740/skUtilities/master/latest.ver").openStream()));
-            v = ur.readLine();
+            String v = ur.readLine();
             ur.close();
-        } catch (Exception e) {
-            prSysE("Failed to get current version number online, you might be offline!", "Main", e);
-        }
-        if (!Objects.equals(getVer(), v)) {
-            prSysI("A new version of the skUtilities is out v" + v);
-            if (getConfig().getBoolean("downloadUpdates", true)) {
-                String dln = "plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar";
-                if (!new File(dln).exists()) {
-                    prSysI("Starting download of skUtilities v" + v);
-                    Utils.downloadFile(new File(dln), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar");
-                    prSysI("Finished download of 'skUtilities v" + v + "' located in 'plugins/skUtilities'");
-                    if (getConfig().getBoolean("downloadChangelog", true)) {
-                        Utils.downloadFile(new File("plugins" + File.separator + "skUtilities" + File.separator + "skUtilities_v" + v + "_Changelog.sk"), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities_v" + v + "_Changelog.sk");
-                        prSysI("Finished download of 'skUtilities_v" + v + "_Changelog.sk' located in 'plugins/skUtilities'");
+            if (!Objects.equals(getVer(), v)) {
+                prSysI("A new version of the skUtilities is out v" + v);
+                if (getConfig().getBoolean("downloadUpdates", true)) {
+                    String dln = "plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar";
+                    if (!new File(dln).exists()) {
+                        prSysI("Starting download of skUtilities v" + v);
+                        Utils.downloadFile(new File(dln), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar");
+                        prSysI("Finished download of 'skUtilities v" + v + "' located in 'plugins/skUtilities'");
+                        if (getConfig().getBoolean("downloadChangelog", true)) {
+                            Utils.downloadFile(new File("plugins" + File.separator + "skUtilities" + File.separator + "skUtilities_v" + v + "_Changelog.sk"), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities_v" + v + "_Changelog.sk");
+                            prSysI("Finished download of 'skUtilities_v" + v + "_Changelog.sk' located in 'plugins/skUtilities'");
+                        } else {
+                            prSysI("Changelog can be viewed at: 'https://github.com/tim740/skUtilities/releases/latest'");
+                        }
                     } else {
-                        prSysI("Changelog can be viewed at: 'https://github.com/tim740/skUtilities/releases/latest'");
+                        prSysI("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
+                        Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!", "skUtilities.update");
+
                     }
                 } else {
-                    prSysI("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
-                    Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!", "skUtilities.update");
-
+                    prSysI("You can find the latest version here: 'https://github.com/tim740/skUtilities/releases/latest'");
+                    prSysI("You should consider enabling `downloadUpdates` in the config.");
+                    Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "You can find the latest version here: 'https://github.com/tim740/skUtilities/releases/latest'", "skUtilities.update");
                 }
             } else {
-                prSysI("You can find the latest version here: 'https://github.com/tim740/skUtilities/releases/latest'");
-                prSysI("You should consider enabling `downloadUpdates` in the config.");
-                Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "You can find the latest version here: 'https://github.com/tim740/skUtilities/releases/latest'", "skUtilities.update");
+                prSysI("Currently using the latest version of skUtilities.");
             }
-        } else {
-            prSysI("Currently using the latest version of skUtilities.");
+        } catch (Exception e) {
+            prSysE("Failed to get current version number online, you might be offline!", "Main", e);
         }
     }
 
