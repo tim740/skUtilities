@@ -102,7 +102,6 @@ public class skUtilities extends JavaPlugin {
                     } else {
                         prSysI("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
                         Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!", "skUtilities.update");
-
                     }
                 } else {
                     prSysI("You can find the latest version here: 'https://github.com/tim740/skUtilities/releases/latest'");
