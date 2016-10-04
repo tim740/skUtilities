@@ -87,7 +87,7 @@ public class skUtilities extends JavaPlugin {
             v = ur.readLine();
             ur.close();
         } catch (Exception e) {
-            prSysE("Error while checking for update!", "Main", e);
+            prSysE("Failed to read current version number online, you might be offline!", "Main", e);
         }
         if (!Objects.equals(getVer(), v)) {
             prSysI("A new version of the skUtilities is out v" + v);
