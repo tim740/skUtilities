@@ -25,7 +25,6 @@ class RegUtil {
         Skript.registerExpression(ExprGeoIP.class, String.class, ExpressionType.PROPERTY, "(0¦country code|1¦region code|2¦country|3¦region|4¦city|5¦time[ ]zone) of %player%", "%player%'s (0¦country code|1¦region code|2¦country|3¦region|4¦city|5¦time[ ]zone)");
         Skript.registerCondition(CondisTimeZone.class, "server is time[ ]zone %string%", "server is(n'| no)t time[ ]zone %string%");
 
-        Skript.registerExpression(ExprServerIP.class, String.class, ExpressionType.PROPERTY, "[skutil ]ip of server", "[skutil ]server's ip");
         Skript.registerExpression(ExprLoaded.class, Number.class, ExpressionType.PROPERTY, "number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦events|8¦effects|9¦expressions|10¦conditions)");
         Skript.registerExpression(ExprLoadedList.class, String.class, ExpressionType.PROPERTY, "(0¦plugins|1¦addons) list", "list of (0¦plugins|1¦addons)");
         Skript.registerExpression(ExprVersion.class, String.class, ExpressionType.PROPERTY, "%string%'s version", "version of %string%");
