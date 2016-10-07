@@ -7,6 +7,8 @@ import ch.njol.skript.registrations.EventValues;
 import ch.njol.skript.util.Getter;
 import uk.tim740.skUtilities.files.*;
 import uk.tim740.skUtilities.files.event.*;
+import uk.tim740.skUtilities.util.ExprGetJsonID;
+import uk.tim740.skUtilities.util.ExprGetJsonIDS;
 
 import javax.annotation.Nullable;
 import java.io.File;
@@ -22,6 +24,9 @@ class RegFiles {
         Skript.registerExpression(ExprUrlSize.class, String.class, ExpressionType.PROPERTY, "size of url %string%", "url %string%'s size");
         Skript.registerExpression(ExprUrlSizeBytes.class, Number.class, ExpressionType.PROPERTY, "size of url %string% in bytes", "url %string%'s size in bytes");
         Skript.registerExpression(ExprUrlResponseCode.class, Integer.class, ExpressionType.PROPERTY, "response code of url %string%", "url %string%'s response code");
+
+        Skript.registerExpression(ExprGetJsonID.class, String.class, ExpressionType.PROPERTY, "content of json value %string% from text %-string%", "value %string%'s json contents from text %-string%");
+        Skript.registerExpression(ExprGetJsonIDS.class, String.class, ExpressionType.PROPERTY, "content of json value's %strings% from text %-string%", "value's %strings%'s json contents from text %-string%");
 
         Skript.registerExpression(ExprZipList.class, String.class, ExpressionType.PROPERTY, "files in zip[ file] %string%", "zip[ file] %string%'s files");
         Skript.registerExpression(ExprDirList.class, String.class, ExpressionType.PROPERTY, "files in dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%", "dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%'s files");

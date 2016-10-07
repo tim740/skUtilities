@@ -22,7 +22,6 @@ class RegUtil {
         Skript.registerExpression(ExprTimeZoneList.class, String.class, ExpressionType.PROPERTY, "[all ]time[ ]zones");
         Skript.registerExpression(ExprTimeInTimeZone.class, Date.class, ExpressionType.PROPERTY, "[current ]time in time[ ]zone %string%", "[current ]time[ ]zone %string%'s time");
         Skript.registerExpression(ExprGetRegion.class, String.class, ExpressionType.PROPERTY, "region of server", "server's region");
-        Skript.registerExpression(ExprGeoIP.class, String.class, ExpressionType.PROPERTY, "(0¦country code|1¦region code|2¦country|3¦region|4¦city|5¦time[ ]zone) of %player%", "%player%'s (0¦country code|1¦region code|2¦country|3¦region|4¦city|5¦time[ ]zone)");
         Skript.registerCondition(CondisTimeZone.class, "server is time[ ]zone %string%", "server is(n'| no)t time[ ]zone %string%");
 
         Skript.registerExpression(ExprLoaded.class, Number.class, ExpressionType.PROPERTY, "number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦events|8¦effects|9¦expressions|10¦conditions)");
@@ -32,7 +31,6 @@ class RegUtil {
         Skript.registerExpression(ExprRam.class, Number.class, ExpressionType.PROPERTY, "[skutil ](0¦free|1¦total|2¦max) (ram|memory)");
         Skript.registerExpression(ExprCaseLength.class, Number.class, ExpressionType.PROPERTY, "number of (0¦upper|1¦lower)case char[acter]s in %string%");
 
-        Skript.registerEffect(EffDemoMode.class, "send[ fake] trial packet to %player%");
         Skript.registerEffect(EffPrintTag.class, "print (0¦info|1¦warning|2¦error) %string% to console");
         Skript.registerEffect(EffRunOpCmd.class, "(force|make) %player% run (cmd|command) %string% as op");
         Skript.registerEffect(EffSkReloadAliases.class, "skript reload aliases");
