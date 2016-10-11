@@ -56,7 +56,7 @@ public class skUtilities extends JavaPlugin {
             Metrics metrics = new Metrics(this);
             metrics.start();
         } catch (Exception e) {
-            skUtilities.prSysE("Failed to submit stats to Metrics, http://www.mcstats.org could be down!", getClass().getSimpleName(), e);
+            skUtilities.prSysE("Failed to submit stats to Metrics, MCStats could be down!", getClass().getSimpleName(), e);
         }
 
         prSysI("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
