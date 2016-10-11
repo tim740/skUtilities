@@ -24,7 +24,7 @@ public class EffFileDownload extends Effect {
         EvtFileDownload efd = new EvtFileDownload(url.getSingle(e), pth);
         Bukkit.getServer().getPluginManager().callEvent(efd);
         if (!efd.isCancelled()) {
-            Utils.downloadFile(pth, url.getSingle(e));
+            Utils.downloadFile(pth.toPath(), url.getSingle(e));
         }
     }
 

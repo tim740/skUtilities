@@ -3,10 +3,11 @@ package uk.tim740.skUtilities;
 import org.bukkit.Bukkit;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
 
@@ -30,15 +31,13 @@ public class Utils {
         }
     }
 
-    public static void downloadFile(File pth, String url) {
+    public static void downloadFile(Path pth, String url) {
         try {
-            ReadableByteChannel rbc = Channels.newChannel(new URL(url).openStream());
-            FileOutputStream fos = new FileOutputStream(pth);
-            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-            fos.close();
-            rbc.close();
-        } catch (Exception e) {
-            skUtilities.prSysE(e.getMessage(), "Utils", e);
+            Files.copy(new URL(url).openStream(), pth);
+        } catch (MalformedURLException x) {
+            skUtilities.prSysE("Error downloading from: '" + url + "' Is the site down?", "Utils", x);
+        } catch (IOException x) {
+            skUtilities.prSysE(x.getMessage(), "Utils", x);
         }
     }
 
