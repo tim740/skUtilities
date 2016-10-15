@@ -17,12 +17,13 @@ import java.security.cert.X509Certificate;
 /**
  * Created by tim740 on 15/10/2016
  */
-public class ExprUrlSSLVerifier extends SimpleExpression<String> {
+public class ExprUrlSSLIssueExpire extends SimpleExpression<Number> {
     private Expression<String> url;
+    private int ty;
 
     @Override
     @Nullable
-    protected String[] get(Event e) {
+    protected Number[] get(Event e) {
         try {
             HttpsURLConnection c = (HttpsURLConnection) new URL(url.getSingle(e)).openConnection();
             c.connect();
@@ -30,9 +31,13 @@ public class ExprUrlSSLVerifier extends SimpleExpression<String> {
                 if (cert instanceof X509Certificate) {
                     X509Certificate sc = (X509Certificate) cert;
                     c.disconnect();
-                    String[] s = sc.getIssuerX500Principal().getName().split("O=");
-                    s = s[1].split(",C");
-                    return new String[]{s[0]};
+                    String sv;
+                    if (ty == 0) {
+                        sv = String.valueOf(sc.getNotBefore().getTime());
+                    } else {
+                        sv = String.valueOf(sc.getNotAfter().getTime());
+                    }
+                    return new Number[]{Long.parseLong(sv.substring(0, 10))};
                 }
             }
         } catch (IOException x) {
@@ -47,12 +52,13 @@ public class ExprUrlSSLVerifier extends SimpleExpression<String> {
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
         url = (Expression<String>) e[0];
+        ty = p.mark;
         return true;
     }
 
     @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
+    public Class<? extends Number> getReturnType() {
+        return Number.class;
     }
 
     @Override
