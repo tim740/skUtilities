@@ -21,5 +21,6 @@ class RegUrl {
         Skript.registerExpression(ExprUrlSSLSerialNumber.class, String.class, ExpressionType.PROPERTY, "ssl serial number of url %string%", "url %string%'s ssl serial number");
         Skript.registerExpression(ExprUrlSSLIssueExpire.class, Number.class, ExpressionType.PROPERTY, "ssl (0¦issue|1¦expire) value of url %string%", "url %string%'s ssl (0¦issue|1¦expire) value");
         Skript.registerExpression(ExprUrlSSLAlgorithm.class, String.class, ExpressionType.PROPERTY, "ssl algorithm of url %string%", "url %string%'s ssl algorithm");
+        Skript.registerExpression(ExprUrlSSLVersion.class, Number.class, ExpressionType.PROPERTY, "ssl version of url %string%", "url %string%'s ssl version");
     }
 }
