@@ -13,21 +13,20 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by tim740 on 13/09/2016
+ * Created by tim740 on 15/10/2016
  */
-public class ExprUrlResponseCode extends SimpleExpression<Integer> {
+public class ExprUrlLastModified extends SimpleExpression<Number> {
     private Expression<String> url;
 
     @Override
     @Nullable
-    protected Integer[] get(Event e) {
+    protected Number[] get(Event e) {
         try {
             HttpURLConnection.setFollowRedirects(false);
             HttpURLConnection c = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
-            c.setRequestMethod("HEAD");
-            int r = c.getResponseCode();
+            String n = String.valueOf(c.getLastModified());
             c.disconnect();
-            return new Integer[]{r};
+            return new Number[]{Long.valueOf(n.substring(0, 10))};
         } catch (IOException x) {
             skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         } catch (Exception x) {
@@ -44,8 +43,8 @@ public class ExprUrlResponseCode extends SimpleExpression<Integer> {
     }
 
     @Override
-    public Class<? extends Integer> getReturnType() {
-        return Integer.class;
+    public Class<? extends Number> getReturnType() {
+        return Number.class;
     }
 
     @Override
