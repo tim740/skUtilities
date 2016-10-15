@@ -26,8 +26,7 @@ public class ExprUrlSSLVerifier extends SimpleExpression<String> {
         try {
             HttpsURLConnection c = (HttpsURLConnection) new URL(url.getSingle(e)).openConnection();
             c.connect();
-            Certificate[] certs = c.getServerCertificates();
-            for (Certificate cert : certs) {
+            for (Certificate cert : c.getServerCertificates()) {
                 if (cert instanceof X509Certificate) {
                     X509Certificate sc = (X509Certificate ) cert;
                     c.disconnect();
