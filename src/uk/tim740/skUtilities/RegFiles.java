@@ -40,7 +40,7 @@ class RegFiles {
         Skript.registerEffect(EffZipFiles.class, "zip file[s] %strings% to zip[ file] %-string%");
         Skript.registerEffect(EffZipDirectory.class, "zip dir[ectory] %string% to zip[ file] %-string%");
         Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
-        Skript.registerEffect(EffInsertLine.class, "write %string% at line %number% to file %-string%");
+        Skript.registerEffect(EffInsertLine.class, "write %string% at line %numbers% to file %-string%");
 
         Skript.registerCondition(CondFileExists.class, "(script|program|app[lication]|file) %string% exists", "(script|program|app[lication]|file) %string% does(n't| not) exist");
         Skript.registerCondition(CondIsFile.class, "file %string% is a file", "file %string% is(n'| no)t a file");

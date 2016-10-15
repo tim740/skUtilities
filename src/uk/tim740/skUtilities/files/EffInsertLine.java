@@ -28,13 +28,21 @@ public class EffInsertLine extends Effect {
     @Override
     protected void execute(Event e) {
         File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
-        EvtFileWrite efw = new EvtFileWrite(pth, txt.getSingle(e), line.getSingle(e));
+        EvtFileWrite efw = new EvtFileWrite(pth, txt.getSingle(e), 0);
         Bukkit.getServer().getPluginManager().callEvent(efw);
         if (!efw.isCancelled()) {
             try {
                 ArrayList<String> cl = new ArrayList<>();
                 cl.addAll(Files.readAllLines(pth.toPath()));
-                cl.add(line.getSingle(e).intValue() - 1, txt.getSingle(e));
+                for (Number cn : line.getAll(e)) {
+                    if ((cn.intValue() -1) > cl.size()) {
+                        Integer dn = ((cn.intValue() -1) -cl.size());
+                        for (int n = 0; n < dn; n++) {
+                            cl.add("");
+                        }
+                    }
+                    cl.add(cn.intValue() - 1, txt.getSingle(e));
+                }
                 String[] out = new String[cl.size()];
                 BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
                 for (String aCl : cl.toArray(out)) {
@@ -45,7 +53,7 @@ public class EffInsertLine extends Effect {
             } catch (IOException x) {
                 skUtilities.prSysE("File: '" + pth + "' doesn't exist!, or is not readable!", getClass().getSimpleName(), x);
             } catch (Exception x) {
-                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName());
+                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
             }
         }
     }
