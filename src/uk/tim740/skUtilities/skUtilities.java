@@ -21,7 +21,7 @@ public class skUtilities extends JavaPlugin {
         Skript.registerAddon(this);
         getDataFolder().mkdirs();
         saveDefaultConfig();
-        if (!(getConfig().getInt("configVersion") == 6) || !(getConfig().isSet("configVersion"))) {
+        if (!(getConfig().getInt("configVersion") == 7) || !(getConfig().isSet("configVersion"))) {
             File pth = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
             File ptho = new File(getDataFolder().getAbsolutePath() + File.separator + "config.old");
 
@@ -38,6 +38,7 @@ public class skUtilities extends JavaPlugin {
             prSysI("New config has reset to default options!");
             prSysI("");
         }
+
         if (getConfig().getBoolean("loadConversions", true)) RegConvert.reg();
         if (getConfig().getBoolean("loadFiles", true)) RegFiles.reg();
         if (getConfig().getBoolean("loadUrls", true)) RegUrl.reg();
