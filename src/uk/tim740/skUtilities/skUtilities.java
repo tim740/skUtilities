@@ -38,18 +38,10 @@ public class skUtilities extends JavaPlugin {
             prSysI("New config has reset to default options!");
             prSysI("");
         }
-        if (getConfig().getBoolean("loadConversions", true)) {
-            RegConvert.reg();
-        }
-        if (getConfig().getBoolean("loadFiles", true)) {
-            RegFiles.reg();
-        }
-        if (getConfig().getBoolean("loadUrls", true)) {
-            RegUrl.reg();
-        }
-        if (getConfig().getBoolean("loadUtilities", true)) {
-            RegUtil.reg();
-        }
+        if (getConfig().getBoolean("loadConversions", true)) RegConvert.reg();
+        if (getConfig().getBoolean("loadFiles", true)) RegFiles.reg();
+        if (getConfig().getBoolean("loadUrls", true)) RegUrl.reg();
+        if (getConfig().getBoolean("loadUtilities", true)) RegUtil.reg();
         Skript.registerEffect(EffReloadConfig.class, "reload %string%'s config", "reload config of %string%");
 
         if (getConfig().getBoolean("checkForUpdates", true)) {
