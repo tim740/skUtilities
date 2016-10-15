@@ -29,8 +29,8 @@ public class ExprUrlSSLIssueExpire extends SimpleExpression<Number> {
             c.connect();
             for (Certificate cert : c.getServerCertificates()) {
                 if (cert instanceof X509Certificate) {
-                    X509Certificate sc = (X509Certificate) cert;
                     c.disconnect();
+                    X509Certificate sc = (X509Certificate) cert;
                     String sv;
                     if (ty == 0) {
                         sv = String.valueOf(sc.getNotBefore().getTime());

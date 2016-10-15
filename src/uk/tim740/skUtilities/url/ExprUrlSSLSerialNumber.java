@@ -28,8 +28,8 @@ public class ExprUrlSSLSerialNumber extends SimpleExpression<String> {
             c.connect();
             for (Certificate cert : c.getServerCertificates()) {
                 if (cert instanceof X509Certificate) {
-                    X509Certificate sc = (X509Certificate) cert;
                     c.disconnect();
+                    X509Certificate sc = (X509Certificate) cert;
                     return new String[]{sc.getSerialNumber().toString(16)};
                 }
             }

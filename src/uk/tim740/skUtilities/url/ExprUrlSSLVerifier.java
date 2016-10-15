@@ -28,8 +28,8 @@ public class ExprUrlSSLVerifier extends SimpleExpression<String> {
             c.connect();
             for (Certificate cert : c.getServerCertificates()) {
                 if (cert instanceof X509Certificate) {
-                    X509Certificate sc = (X509Certificate) cert;
                     c.disconnect();
+                    X509Certificate sc = (X509Certificate) cert;
                     String[] s = sc.getIssuerX500Principal().getName().split("O=");
                     s = s[1].split(",C");
                     return new String[]{s[0]};
