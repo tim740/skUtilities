@@ -15,14 +15,7 @@ import java.io.File;
  * Created by tim740 on 20/03/2016
  */
 class RegFiles {
-    static void regF() {
-        Skript.registerExpression(ExprUrlContents.class, String.class, ExpressionType.PROPERTY, "contents from url %string%", "url %string%'s contents");
-        Skript.registerExpression(ExprUrlReadLine.class, String.class, ExpressionType.PROPERTY, "line %number% from url %string%", "url %string%'s line %number%");
-        Skript.registerExpression(ExprUrlLines.class, Number.class, ExpressionType.PROPERTY, "line count of url %string%", "url %string%'s line count");
-        Skript.registerExpression(ExprUrlSize.class, String.class, ExpressionType.PROPERTY, "size of url %string%", "url %string%'s size");
-        Skript.registerExpression(ExprUrlSizeBytes.class, Number.class, ExpressionType.PROPERTY, "size of url %string% in bytes", "url %string%'s size in bytes");
-        Skript.registerExpression(ExprUrlResponseCode.class, Integer.class, ExpressionType.PROPERTY, "response code of url %string%", "url %string%'s response code");
-
+    static void reg() {
         Skript.registerExpression(ExprZipList.class, String.class, ExpressionType.PROPERTY, "files in zip[ file] %string%", "zip[ file] %string%'s files");
         Skript.registerExpression(ExprDirList.class, String.class, ExpressionType.PROPERTY, "files in dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%", "dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%'s files");
         Skript.registerExpression(ExprFileLines.class, Number.class, ExpressionType.PROPERTY, "line count of file %string%", "file %string%'s line count");

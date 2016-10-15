@@ -4,6 +4,7 @@ import ch.njol.skript.Skript;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
+import uk.tim740.skUtilities.config.EffReloadConfig;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -38,15 +39,19 @@ public class skUtilities extends JavaPlugin {
             prSysI("");
         }
         if (getConfig().getBoolean("loadConversions", true)) {
-            RegConvert.regC();
-        }
-        if (getConfig().getBoolean("loadUtilities", true)) {
-            RegUtil.regU();
+            RegConvert.reg();
         }
         if (getConfig().getBoolean("loadFiles", true)) {
-            RegFiles.regF();
+            RegFiles.reg();
         }
-        RegConfig.regCo();
+        if (getConfig().getBoolean("loadUrls", true)) {
+            RegUrl.reg();
+        }
+        if (getConfig().getBoolean("loadUtilities", true)) {
+            RegUtil.reg();
+        }
+        Skript.registerEffect(EffReloadConfig.class, "reload %string%'s config", "reload config of %string%");
+
         if (getConfig().getBoolean("checkForUpdates", true)) {
             Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
         } else {

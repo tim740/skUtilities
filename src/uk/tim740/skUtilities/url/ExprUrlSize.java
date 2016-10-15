@@ -1,38 +1,37 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.url;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
+import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by tim740 on 13/09/2016
+ * Created by tim740 on 14/09/2016
  */
-public class ExprUrlReadLine extends SimpleExpression<String> {
-    private Expression<Number> line;
+public class ExprUrlSize extends SimpleExpression<String> {
     private Expression<String> url;
 
     @Override
     @Nullable
     protected String[] get(Event e) {
         try {
-            Integer n = (line.getSingle(e).intValue() - 1);
-            BufferedReader ur = new BufferedReader(new InputStreamReader(new URL(url.getSingle(e)).openStream()));
-            String[] s = ur.lines().toArray(String[]::new);
-            ur.close();
-            return new String[]{s[n]};
-        } catch (IOException x) {
-            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
+            HttpURLConnection s = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
+            Number n = s.getContentLength();
+            s.disconnect();
+            if (n.intValue() == -1) {
+                skUtilities.prSysE("Url: '" + url.getSingle(e) + "' returned no information about the url's size!", getClass().getSimpleName());
+            } else {
+                return new String[]{Utils.getFileSize(n.doubleValue())};
+            }
         } catch (Exception x) {
-            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         }
         return null;
     }
@@ -40,8 +39,7 @@ public class ExprUrlReadLine extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        line = (Expression<Number>) e[i];
-        url = (Expression<String>) e[1 - i];
+        url = (Expression<String>) e[0];
         return true;
     }
 

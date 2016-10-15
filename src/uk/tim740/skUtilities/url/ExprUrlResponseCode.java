@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.url;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -8,25 +8,29 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by tim740 on 14/09/2016
+ * Created by tim740 on 13/09/2016
  */
-public class ExprUrlLines extends SimpleExpression<Number> {
+public class ExprUrlResponseCode extends SimpleExpression<Integer> {
     private Expression<String> url;
 
     @Override
     @Nullable
-    protected Number[] get(Event e) {
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new URL(url.getSingle(e)).openStream()))) {
-            long s = br.lines().count();
-            br.close();
-            return new Number[]{s};
-        } catch (Exception x) {
+    protected Integer[] get(Event e) {
+        try {
+            HttpURLConnection.setFollowRedirects(false);
+            HttpURLConnection c = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
+            c.setRequestMethod("HEAD");
+            int r = c.getResponseCode();
+            return new Integer[]{r};
+        } catch (IOException x) {
             skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
+        } catch (Exception x) {
+            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
         return null;
     }
@@ -39,8 +43,8 @@ public class ExprUrlLines extends SimpleExpression<Number> {
     }
 
     @Override
-    public Class<? extends Number> getReturnType() {
-        return Number.class;
+    public Class<? extends Integer> getReturnType() {
+        return Integer.class;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.url;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -8,29 +8,29 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by tim740 on 13/09/2016
+ * Created by tim740 on 14/09/2016
  */
-public class ExprUrlResponseCode extends SimpleExpression<Integer> {
+public class ExprUrlSizeBytes extends SimpleExpression<Number> {
     private Expression<String> url;
 
     @Override
     @Nullable
-    protected Integer[] get(Event e) {
+    protected Number[] get(Event e) {
         try {
-            HttpURLConnection.setFollowRedirects(false);
-            HttpURLConnection c = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
-            c.setRequestMethod("HEAD");
-            int r = c.getResponseCode();
-            return new Integer[]{r};
-        } catch (IOException x) {
-            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
+            HttpURLConnection s = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
+            Number n = s.getContentLength();
+            s.disconnect();
+            if (n.intValue() == -1) {
+                skUtilities.prSysE("Url: '" + url.getSingle(e) + "' returned no information about the url's size!", getClass().getSimpleName());
+            } else {
+                return new Number[]{n};
+            }
         } catch (Exception x) {
-            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         }
         return null;
     }
@@ -43,8 +43,8 @@ public class ExprUrlResponseCode extends SimpleExpression<Integer> {
     }
 
     @Override
-    public Class<? extends Integer> getReturnType() {
-        return Integer.class;
+    public Class<? extends Number> getReturnType() {
+        return Number.class;
     }
 
     @Override

@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.url;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -8,28 +8,26 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.net.HttpURLConnection;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 
 /**
- * Created by tim740 on 14/09/2016
+ * Created by tim740 on 13/09/2016
  */
-public class ExprUrlSizeBytes extends SimpleExpression<Number> {
+public class ExprUrlContents extends SimpleExpression<String> {
     private Expression<String> url;
 
     @Override
     @Nullable
-    protected Number[] get(Event e) {
+    protected String[] get(Event e) {
         try {
-            HttpURLConnection s = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
-            Number n = s.getContentLength();
-            s.disconnect();
-            if (n.intValue() == -1) {
-                skUtilities.prSysE("Url: '" + url.getSingle(e) + "' returned no information about the url's size!", getClass().getSimpleName());
-            } else {
-                return new Number[]{n};
-            }
-        } catch (Exception x) {
+            BufferedReader ur = new BufferedReader(new InputStreamReader(new URL(url.getSingle(e)).openStream()));
+            String[] s = ur.lines().toArray(String[]::new);
+            ur.close();
+            return s;
+        } catch (IOException x) {
             skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         }
         return null;
@@ -43,13 +41,13 @@ public class ExprUrlSizeBytes extends SimpleExpression<Number> {
     }
 
     @Override
-    public Class<? extends Number> getReturnType() {
-        return Number.class;
+    public Class<? extends String> getReturnType() {
+        return String.class;
     }
 
     @Override
     public boolean isSingle() {
-        return true;
+        return false;
     }
 
     @Override

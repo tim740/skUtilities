@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.url;
 
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser.ParseResult;
@@ -16,19 +16,23 @@ import java.net.URL;
 /**
  * Created by tim740 on 13/09/2016
  */
-public class ExprUrlContents extends SimpleExpression<String> {
+public class ExprUrlReadLine extends SimpleExpression<String> {
+    private Expression<Number> line;
     private Expression<String> url;
 
     @Override
     @Nullable
     protected String[] get(Event e) {
         try {
+            Integer n = (line.getSingle(e).intValue() - 1);
             BufferedReader ur = new BufferedReader(new InputStreamReader(new URL(url.getSingle(e)).openStream()));
             String[] s = ur.lines().toArray(String[]::new);
             ur.close();
-            return s;
+            return new String[]{s[n]};
         } catch (IOException x) {
             skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
+        } catch (Exception x) {
+            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
         return null;
     }
@@ -36,7 +40,8 @@ public class ExprUrlContents extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        url = (Expression<String>) e[0];
+        line = (Expression<Number>) e[i];
+        url = (Expression<String>) e[1 - i];
         return true;
     }
 
@@ -47,7 +52,7 @@ public class ExprUrlContents extends SimpleExpression<String> {
 
     @Override
     public boolean isSingle() {
-        return false;
+        return true;
     }
 
     @Override
