@@ -53,9 +53,8 @@ public class SExprEditLine extends SimpleExpression<String> {
                     ArrayList<String> cl = new ArrayList<>();
                     cl.addAll(Files.readAllLines(pth.toPath()));
                     cl.set(Integer.parseInt(line.getSingle(e).toString()) - 1, (String) delta[0]);
-                    String[] out = new String[cl.size()];
                     BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                    for (String aCl : cl.toArray(out)) {
+                    for (String aCl : cl.toArray(new String[cl.size()])) {
                         bw.write(aCl);
                         bw.newLine();
                     }
