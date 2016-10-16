@@ -43,9 +43,8 @@ public class EffInsertLine extends Effect {
                     }
                     cl.add(cn.intValue() - 1, txt.getSingle(e));
                 }
-                String[] out = new String[cl.size()];
                 BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                for (String aCl : cl.toArray(out)) {
+                for (String aCl : cl.toArray(new String[cl.size()])) {
                     bw.write(aCl);
                     bw.newLine();
                 }
