@@ -15,6 +15,40 @@ import uk.tim740.skUtilities.skUtilities;
 /**
  * Created by tim740 on 18/02/2016
  */
+/*        if (Bukkit.getVersion().contains("(MC: 1.9") || Bukkit.getVersion().contains("(MC: 1.1")) {
+            Skript.registerEffect(EffVillagerProfession.class, "spawn a %entity% with profession %profession% at %location%");
+            if (Bukkit.getPluginManager().getPlugin("SkQuery") != null) {
+                Classes.registerClass(new ClassInfo<>(Villager.Profession.class, "profession").parser(new Parser<Villager.Profession>() {
+                    @Override
+                    @Nullable
+                    public Villager.Profession parse(String s, ParseContext context) {
+                        try {
+                            return Villager.Profession.valueOf(s.toUpperCase());
+                        } catch (Exception e) {
+                            return null;
+                        }
+                    }
+
+                    @Override
+                    public String toString(Villager.Profession vi, int i) {
+                        return vi.name().toLowerCase();
+                    }
+
+                    @Override
+                    public String toVariableNameString(Villager.Profession vi) {
+                        return vi.name().toLowerCase();
+                    }
+
+                    @Override
+                    public String getVariableNamePattern() {
+                        return ".+";
+                    }
+                }));
+            }
+        } else {
+            Bukkit.getServer().getLogger().severe("[skUtilities] v" + Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " - Unable to load: TypeProfession, requires 1.9+!");
+            Bukkit.getServer().getLogger().severe("[skUtilities] v" + Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion() + " - Unable to load: EffVillagerProfession, requires 1.9+!");
+        }*/
 public class EffVillagerProfession extends Effect {
     private Expression<Location> loca;
     private Expression<Villager.Profession> prof;
