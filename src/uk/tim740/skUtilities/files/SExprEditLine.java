@@ -17,6 +17,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,7 +35,7 @@ public class SExprEditLine extends SimpleExpression<String> {
     @Nullable
     protected String[] get(Event e) {
         Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
-        try (Stream<String> lines = Files.lines(pth)) {
+        try (Stream<String> lines = Files.lines(pth, Charset.defaultCharset())) {
             //noinspection OptionalGetWithoutIsPresent
             return new String[]{lines.skip(Integer.parseInt(line.getSingle(e).toString()) - 1).findFirst().get()};
         } catch (IOException x) {
@@ -51,7 +52,7 @@ public class SExprEditLine extends SimpleExpression<String> {
             if (!efw.isCancelled()) {
                 try {
                     ArrayList<String> cl = new ArrayList<>();
-                    cl.addAll(Files.readAllLines(pth.toPath()));
+                    cl.addAll(Files.readAllLines(pth.toPath(), Charset.defaultCharset()));
                     cl.set(Integer.parseInt(line.getSingle(e).toString()) - 1, (String) delta[0]);
                     BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
                     for (String aCl : cl.toArray(new String[cl.size()])) {

@@ -15,6 +15,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class EffInsertLine extends Effect {
         if (!efw.isCancelled()) {
             try {
                 ArrayList<String> cl = new ArrayList<>();
-                cl.addAll(Files.readAllLines(pth.toPath()));
+                cl.addAll(Files.readAllLines(pth.toPath(), Charset.defaultCharset()));
                 for (Number cn : line.getAll(e)) {
                     if ((cn.intValue() -1) > cl.size()) {
                         Integer dn = ((cn.intValue() -1) -cl.size());
