@@ -16,36 +16,36 @@ import java.io.File;
  */
 class RegFiles {
     static void reg() {
-        Skript.registerExpression(ExprZipList.class, String.class, ExpressionType.PROPERTY, "files in zip[ file] %string%", "zip[ file] %string%'s files");
-        Skript.registerExpression(ExprDirList.class, String.class, ExpressionType.PROPERTY, "files in dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%", "dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%'s files");
-        Skript.registerExpression(ExprFileLines.class, Number.class, ExpressionType.PROPERTY, "line count of file %string%", "file %string%'s line count");
-        Skript.registerExpression(ExprFileTimeAttributes.class, Number.class, ExpressionType.PROPERTY, "file %string%'s (0¦last modified|1¦creation|2¦last access) value", "(0¦last modified|1¦creation|2¦last access) value of file %string%");
-        Skript.registerExpression(ExprFileDirSize.class, String.class, ExpressionType.PROPERTY, "size of (0¦file|1¦dir[ectory]) %string%", "(0¦file|1¦dir[ectory]) %string%'s size");
-        Skript.registerExpression(ExprFileDirSizeBytes.class, Number.class, ExpressionType.PROPERTY, "size of (0¦file|1¦dir[ectory]) %string% in bytes", "(0¦file|1¦dir[ectory]) %string%'s size in bytes");
-        Skript.registerExpression(ExprFileNameExt.class, String.class, ExpressionType.PROPERTY, "(0¦name|1¦extension) of file %string%", "file %string%'s (0¦name|1¦extension)");
-        Skript.registerExpression(ExprAbsolutePath.class, String.class, ExpressionType.PROPERTY, "(absolute|complete) path of %string%", "%string%'s (absolute|complete) path");
+        Skript.registerExpression(ExprZipList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]files in zip[ file] %string%", "[skutil[ities] ]zip[ file] %string%'s files");
+        Skript.registerExpression(ExprDirList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]files in dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%", "[skutil[ities] ]dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%'s files");
+        Skript.registerExpression(ExprFileLines.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]line count of file %string%", "[skutil[ities] ]file %string%'s line count");
+        Skript.registerExpression(ExprFileTimeAttributes.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]file %string%'s (0¦last modified|1¦creation|2¦last access) value", "[skutil[ities] ](0¦last modified|1¦creation|2¦last access) value of file %string%");
+        Skript.registerExpression(ExprFileDirSize.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]size of (0¦file|1¦dir[ectory]) %string%", "[skutil[ities] ](0¦file|1¦dir[ectory]) %string%'s size");
+        Skript.registerExpression(ExprFileDirSizeBytes.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]size of (0¦file|1¦dir[ectory]) %string% in bytes", "[skutil[ities] ](0¦file|1¦dir[ectory]) %string%'s size in bytes");
+        Skript.registerExpression(ExprFileNameExt.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦name|1¦extension) of file %string%", "[skutil[ities] ]file %string%'s (0¦name|1¦extension)");
+        Skript.registerExpression(ExprAbsolutePath.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](absolute|complete) path of %string%", "[skutil[ities] ]%string%'s (absolute|complete) path");
 
-        Skript.registerExpression(ExprDiskSpace.class, String.class, ExpressionType.PROPERTY, "disk's (0¦total|1¦free|2¦usable) space", "(0¦total|1¦free|2¦usable) space on disk");
+        Skript.registerExpression(ExprDiskSpace.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]disk's (0¦total|1¦free|2¦usable) space", "[skutil[ities] ](0¦total|1¦free|2¦usable) space on disk");
 
-        Skript.registerExpression(SExprFileOwner.class, String.class, ExpressionType.PROPERTY, "owner of file %string%", "file %string%'s owner");
-        Skript.registerExpression(SExprFileAttribute.class, Boolean.class, ExpressionType.PROPERTY, "(0¦readable|1¦writable|2¦hidden) attribute of file %string%", "file %string%'s (0¦readable|1¦writable|2¦hidden) attribute");
-        Skript.registerExpression(SExprFileContents.class, String.class, ExpressionType.PROPERTY, "file contents of %string%", "%string%'s file contents");
-        Skript.registerExpression(SExprEditLine.class, String.class, ExpressionType.PROPERTY, "line %number% in file %string%", "file %string%'s line %number%");
+        Skript.registerExpression(SExprFileOwner.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]owner of file %string%", "[skutil[ities] ]file %string%'s owner");
+        Skript.registerExpression(SExprFileAttribute.class, Boolean.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦readable|1¦writable|2¦hidden) attribute of file %string%", "[skutil[ities] ]file %string%'s (0¦readable|1¦writable|2¦hidden) attribute");
+        Skript.registerExpression(SExprFileContents.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]file contents of %string%", "[skutil[ities] ]%string%'s file contents");
+        Skript.registerExpression(SExprEditLine.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]line %number% in file %string%", "[skutil[ities] ]file %string%'s line %number%");
 
-        Skript.registerEffect(EffRunApp.class, "run (script|program|app[lication]|file) at %string%");
-        Skript.registerEffect(EffCreateFile.class, "create (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
-        Skript.registerEffect(EffDeleteFile.class, "delete (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
-        Skript.registerEffect(EffFileRenameMove.class, "(0¦rename (file|dir[ectory])|1¦move file|2¦copy file|3¦move dir[ectory]|4¦copy dir[ectory]) %string% to %-string%");
-        Skript.registerEffect(EffFileDownload.class, "download file from %string% to file %-string%");
-        Skript.registerEffect(EffZipFiles.class, "zip file[s] %strings% to zip[ file] %-string%");
-        Skript.registerEffect(EffZipDirectory.class, "zip dir[ectory] %string% to zip[ file] %-string%");
-        Skript.registerEffect(EffUnzip.class, "(unzip|extract) %string% to dir[ectory] %-string%");
-        Skript.registerEffect(EffInsertLine.class, "write %string% at line %numbers% to file %-string%");
+        Skript.registerEffect(EffRunApp.class, "[skutil[ities] ]run (script|program|app[lication]|file) at %string%");
+        Skript.registerEffect(EffCreateFile.class, "[skutil[ities] ]create (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
+        Skript.registerEffect(EffDeleteFile.class, "[skutil[ities] ]delete (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
+        Skript.registerEffect(EffFileRenameMove.class, "[skutil[ities] ](0¦rename (file|dir[ectory])|1¦move file|2¦copy file|3¦move dir[ectory]|4¦copy dir[ectory]) %string% to %-string%");
+        Skript.registerEffect(EffFileDownload.class, "[skutil[ities] ]download file from %string% to file %-string%");
+        Skript.registerEffect(EffZipFiles.class, "[skutil[ities] ]zip file[s] %strings% to zip[ file] %-string%");
+        Skript.registerEffect(EffZipDirectory.class, "[skutil[ities] ]zip dir[ectory] %string% to zip[ file] %-string%");
+        Skript.registerEffect(EffUnzip.class, "[skutil[ities] ](unzip|extract) %string% to dir[ectory] %-string%");
+        Skript.registerEffect(EffInsertLine.class, "[skutil[ities] ]write %string% at line %numbers% to file %-string%");
 
-        Skript.registerCondition(CondFileExists.class, "(script|program|app[lication]|file) %string% exists", "(script|program|app[lication]|file) %string% does(n't| not) exist");
-        Skript.registerCondition(CondIsFile.class, "file %string% is a file", "file %string% is(n'| no)t a file");
-        Skript.registerCondition(CondIsSymbolic.class, "file %string% is (symbolic|shortcut)", "file %string% is(n'| no)t (symbolic|shortcut)");
-        Skript.registerCondition(CondIsExecutable.class, "file %string% is(n't| not) exec[utable]", "file %string% is exec[utable]");
+        Skript.registerCondition(CondFileExists.class, "[skutil[ities] ](script|program|app[lication]|file) %string% exists", "[skutil[ities] ](script|program|app[lication]|file) %string% does(n't| not) exist");
+        Skript.registerCondition(CondIsFile.class, "[skutil[ities] ]file %string% is a file", "[skutil[ities] ]file %string% is(n'| no)t a file");
+        Skript.registerCondition(CondIsSymbolic.class, "[skutil[ities] ]file %string% is (symbolic|shortcut)", "[skutil[ities] ]file %string% is(n'| no)t (symbolic|shortcut)");
+        Skript.registerCondition(CondIsExecutable.class, "[skutil[ities] ]file %string% is(n't| not) exec[utable]", "[skutil[ities] ]file %string% is exec[utable]");
 
         regFE();
     }
