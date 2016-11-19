@@ -55,8 +55,8 @@ public class skUtilities extends JavaPlugin {
         }
 
         try {
-            MetricsLite metrics = new MetricsLite(this);
-            metrics.start();
+            MetricsLite mcs = new MetricsLite(this);
+            mcs.start();
         } catch (Exception e) {
             skUtilities.prSysE("Failed to submit stats to Metrics, MCStats could be down!", getClass().getSimpleName(), e);
         }
