@@ -24,13 +24,11 @@ public class skUtilities extends JavaPlugin {
         if (!(getConfig().getInt("configVersion") == 7) || !(getConfig().isSet("configVersion"))) {
             File pth = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
             File ptho = new File(getDataFolder().getAbsolutePath() + File.separator + "config.old");
-
             if (ptho.exists()) {
                 ptho.delete();
             }
             pth.renameTo(ptho);
             saveDefaultConfig();
-
             prSysI("");
             prSysI("You where using an old version of the config!");
             prSysI("It was copied and renamed to 'config.old'");
@@ -55,9 +53,8 @@ public class skUtilities extends JavaPlugin {
             MetricsLite metrics = new MetricsLite(this);
             metrics.start();
         } catch (Exception e) {
-            skUtilities.prSysE("Failed to submit stats to MetricsLite, MCStats could be down!", getClass().getSimpleName(), e);
+            skUtilities.prSysE("Failed to submit stats to Metrics, MCStats could be down!", getClass().getSimpleName(), e);
         }
-
         prSysI("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
     }
 
