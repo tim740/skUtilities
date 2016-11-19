@@ -5,7 +5,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
+import uk.tim740.skUtilities.skUtilities;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,7 +18,7 @@ public class CondIsSymbolic extends Condition {
 
     @Override
     public boolean check(Event e) {
-        Boolean pth = Files.isSymbolicLink(Paths.get(Utils.getDefaultPath(path.getSingle(e))));
+        Boolean pth = Files.isSymbolicLink(Paths.get(skUtilities.getDefaultPath(path.getSingle(e))));
         return (isNegated() ? !pth : pth);
     }
 

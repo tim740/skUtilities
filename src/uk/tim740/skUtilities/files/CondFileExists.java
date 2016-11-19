@@ -5,7 +5,7 @@ import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
+import uk.tim740.skUtilities.skUtilities;
 
 import java.io.File;
 
@@ -17,7 +17,7 @@ public class CondFileExists extends Condition {
 
     @Override
     public boolean check(Event e) {
-        Boolean pth = new File(Utils.getDefaultPath(path.getSingle(e))).exists();
+        Boolean pth = new File(skUtilities.getDefaultPath(path.getSingle(e))).exists();
         return (isNegated() ? !pth : pth);
     }
 

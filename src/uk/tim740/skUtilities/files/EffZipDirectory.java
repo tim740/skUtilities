@@ -6,7 +6,6 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.files.event.EvtFileZip;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -28,8 +27,8 @@ public class EffZipDirectory extends Effect {
 
     @Override
     protected void execute(Event e) {
-        Path Dpth = Paths.get(Utils.getDefaultPath(file.getSingle(e)));
-        File Fzip = new File(Utils.getDefaultPath(zip.getSingle(e)));
+        Path Dpth = Paths.get(skUtilities.getDefaultPath(file.getSingle(e)));
+        File Fzip = new File(skUtilities.getDefaultPath(zip.getSingle(e)));
         EvtFileZip efz = new EvtFileZip(Fzip, Dpth.toString());
         Bukkit.getServer().getPluginManager().callEvent(efz);
         if (!efz.isCancelled()) {

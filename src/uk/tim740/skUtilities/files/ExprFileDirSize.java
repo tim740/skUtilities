@@ -6,7 +6,6 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -22,12 +21,12 @@ public class ExprFileDirSize extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
             if (ty == 0) {
-                return new String[]{Utils.getFileSize(pth.length())};
+                return new String[]{skUtilities.getFileSize(pth.length())};
             } else {
-                return new String[]{Utils.getFileSize(FileUtils.sizeOfDirectory(pth))};
+                return new String[]{skUtilities.getFileSize(FileUtils.sizeOfDirectory(pth))};
             }
         } catch (Exception x) {
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());

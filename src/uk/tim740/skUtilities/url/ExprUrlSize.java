@@ -5,7 +5,6 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -28,7 +27,7 @@ public class ExprUrlSize extends SimpleExpression<String> {
             if (n.intValue() == -1) {
                 skUtilities.prSysE("Url: '" + url.getSingle(e) + "' returned no information about the url's size!", getClass().getSimpleName());
             } else {
-                return new String[]{Utils.getFileSize(n.doubleValue())};
+                return new String[]{skUtilities.getFileSize(n.doubleValue())};
             }
         } catch (Exception x) {
             skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);

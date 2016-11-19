@@ -8,9 +8,14 @@ import uk.tim740.skUtilities.config.EffReloadConfig;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class skUtilities extends JavaPlugin {
@@ -87,10 +92,10 @@ public class skUtilities extends JavaPlugin {
                     String dln = "plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar";
                     if (!new File(dln).exists()) {
                         prSysI("Starting download of skUtilities v" + v);
-                        Utils.downloadFile(Paths.get(dln), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar");
+                        downloadFile(Paths.get(dln), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar");
                         prSysI("Finished download of 'skUtilities v" + v + "' located in 'plugins/skUtilities'");
                         if (getConfig().getBoolean("downloadChangelog", true)) {
-                            Utils.downloadFile(Paths.get("plugins" + File.separator + "skUtilities" + File.separator + "skUtilities_v" + v + "_Changelog.sk"), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities_v" + v + "_Changelog.sk");
+                            downloadFile(Paths.get("plugins" + File.separator + "skUtilities" + File.separator + "skUtilities_v" + v + "_Changelog.sk"), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities_v" + v + "_Changelog.sk");
                             prSysI("Finished download of 'skUtilities_v" + v + "_Changelog.sk' located in 'plugins/skUtilities'");
                         } else {
                             prSysI("View changelog here: 'https://github.com/tim740/skUtilities/releases/latest'");
@@ -115,4 +120,43 @@ public class skUtilities extends JavaPlugin {
     private static String getVer() {
         return Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
+
+    public static String getFileSize(double s) {
+        DecimalFormat df = new DecimalFormat("#.##");
+        if (s < 1024) {
+            return (s + " B").replaceFirst(".0", "");
+        } else if (s < 1048576) {
+            return df.format(s / 1024) + " KB";
+        } else if (s < 1073741824) {
+            return df.format(s / 1048576) + " MB";
+        } else if (s < 1099511627776L) {
+            return df.format(s / 1073741824) + " GB";
+        } else {
+            return df.format(s / 1099511627776L) + " TB";
+        }
+    }
+
+    public static void downloadFile(Path pth, String url) {
+        try {
+            Files.copy(new URL(url).openStream(), pth);
+        } catch (MalformedURLException x) {
+            skUtilities.prSysE("Error downloading from: '" + url + "' Is the site down?", "Utils", x);
+        } catch (IOException x) {
+            skUtilities.prSysE(x.getMessage(), "Utils", x);
+        }
+    }
+
+    public static String getDefaultPath(String pth) {
+        if (!Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("useRootAsDefaultPath", false)) {
+            String dp = Paths.get("").normalize().toAbsolutePath().toString();
+            if (pth.contains(dp)) {
+                return (pth + File.separator);
+            } else {
+                return (dp + File.separator + pth);
+            }
+        } else {
+            return pth;
+        }
+    }
+
 }

@@ -5,7 +5,6 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -26,7 +25,7 @@ public class ExprFileTimeAttributes extends SimpleExpression<Number> {
     @Override
     @Nullable
     protected Number[] get(Event e) {
-        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
             if (ty == 0) {
                 return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).lastModifiedTime().to(TimeUnit.SECONDS)};

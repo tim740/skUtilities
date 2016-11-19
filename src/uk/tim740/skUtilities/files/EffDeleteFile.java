@@ -6,7 +6,6 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.files.event.EvtFileDeletion;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -24,7 +23,7 @@ public class EffDeleteFile extends Effect {
 
     @Override
     protected void execute(Event e) {
-        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         EvtFileDeletion efd = new EvtFileDeletion(pth.toFile());
         Bukkit.getServer().getPluginManager().callEvent(efd);
         if (!efd.isCancelled()) {

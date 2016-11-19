@@ -7,7 +7,6 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import ch.njol.util.coll.CollectionUtils;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -27,7 +26,7 @@ public class SExprFileAttribute extends SimpleExpression<Boolean> {
     @Override
     @Nullable
     protected Boolean[] get(Event e) {
-        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
             if (ty == 0) {
                 return new Boolean[]{Files.isReadable(pth)};
@@ -44,7 +43,7 @@ public class SExprFileAttribute extends SimpleExpression<Boolean> {
 
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
-            File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+            File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
             try {
                 Boolean boo = (boolean) delta[0];
                 if (ty == 0) {

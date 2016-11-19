@@ -6,7 +6,6 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.files.event.EvtUnzip;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -27,8 +26,8 @@ public class EffUnzip extends Effect {
 
     @Override
     protected void execute(Event e) {
-        File Fzip = new File(Utils.getDefaultPath(zip.getSingle(e)));
-        Path pth = Paths.get(Utils.getDefaultPath(file.getSingle(e)));
+        File Fzip = new File(skUtilities.getDefaultPath(zip.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(file.getSingle(e)));
         EvtUnzip euz = new EvtUnzip(Fzip, pth.toString());
         Bukkit.getServer().getPluginManager().callEvent(euz);
         if (!euz.isCancelled()) {

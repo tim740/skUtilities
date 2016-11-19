@@ -5,7 +5,7 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
+import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.File;
@@ -20,11 +20,11 @@ public class ExprDiskSpace extends SimpleExpression<String> {
     @Nullable
     protected String[] get(Event e) {
         if (ty == 0) {
-            return new String[]{Utils.getFileSize(new File(File.separator).getTotalSpace())};
+            return new String[]{skUtilities.getFileSize(new File(File.separator).getTotalSpace())};
         } else if (ty == 1) {
-            return new String[]{Utils.getFileSize(new File(File.separator).getFreeSpace())};
+            return new String[]{skUtilities.getFileSize(new File(File.separator).getFreeSpace())};
         } else {
-            return new String[]{Utils.getFileSize(new File(File.separator).getUsableSpace())};
+            return new String[]{skUtilities.getFileSize(new File(File.separator).getUsableSpace())};
         }
     }
 

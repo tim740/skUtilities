@@ -7,7 +7,6 @@ import ch.njol.util.Kleenean;
 import com.google.common.io.Files;
 import org.apache.commons.io.FilenameUtils;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -22,7 +21,7 @@ public class ExprFileNameExt extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        String pth = Utils.getDefaultPath(path.getSingle(e));
+        String pth = skUtilities.getDefaultPath(path.getSingle(e));
         try {
             if (ty == 0) {
                 return new String[]{Files.getNameWithoutExtension(pth)};

@@ -6,7 +6,6 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -22,7 +21,7 @@ public class ExprFileDirSizeBytes extends SimpleExpression<Number> {
     @Override
     @Nullable
     protected Number[] get(Event e) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
             if (ty == 0) {
                 return new Number[]{pth.length()};

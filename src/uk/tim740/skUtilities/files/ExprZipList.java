@@ -5,7 +5,6 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -26,7 +25,7 @@ public class ExprZipList extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
         ArrayList<String> cl = new ArrayList<>();
         try (ZipFile zf = new ZipFile(pth)) {
             cl.addAll(zf.stream().collect(Collectors.toList()).stream().map((Function<ZipEntry, String>) ZipEntry::toString).collect(Collectors.toList()));

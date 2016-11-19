@@ -6,7 +6,6 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.files.event.EvtFileWrite;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -28,7 +27,7 @@ public class EffInsertLine extends Effect {
 
     @Override
     protected void execute(Event e) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
         EvtFileWrite efw = new EvtFileWrite(pth, txt.getSingle(e), 0);
         Bukkit.getServer().getPluginManager().callEvent(efw);
         if (!efw.isCancelled()) {

@@ -8,7 +8,6 @@ import ch.njol.util.Kleenean;
 import ch.njol.util.coll.CollectionUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.files.event.EvtFileWipe;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -24,7 +23,7 @@ public class SExprFileContents extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
             BufferedReader br = new BufferedReader(new FileReader(pth));
             String[] s = br.lines().toArray(String[]::new);
@@ -40,7 +39,7 @@ public class SExprFileContents extends SimpleExpression<String> {
 
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
-            File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+            File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
             try {
                 if (mode == Changer.ChangeMode.SET) {
                     BufferedWriter bw = new BufferedWriter(new FileWriter(pth));

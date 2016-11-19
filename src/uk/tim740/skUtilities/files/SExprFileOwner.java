@@ -7,7 +7,6 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import ch.njol.util.coll.CollectionUtils;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -27,7 +26,7 @@ public class SExprFileOwner extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
             return new String[]{Files.getOwner(pth).getName()};
         } catch (IOException x) {
@@ -38,7 +37,7 @@ public class SExprFileOwner extends SimpleExpression<String> {
 
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
-            Path pth = Paths.get(Utils.getDefaultPath(path.getSingle(e)));
+            Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
             try {
                 UserPrincipalLookupService lookupService = FileSystems.getDefault().getUserPrincipalLookupService();
                 Files.setOwner(pth, lookupService.lookupPrincipalByName((String) delta[0]));

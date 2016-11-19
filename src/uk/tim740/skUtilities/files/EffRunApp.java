@@ -6,7 +6,6 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.files.event.EvtRunApp;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -23,7 +22,7 @@ public class EffRunApp extends Effect {
 
     @Override
     protected void execute(Event e) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
         if (Desktop.isDesktopSupported()) {
             try {
                 EvtRunApp era = new EvtRunApp(pth);

@@ -6,7 +6,6 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.files.event.EvtFileZip;
 import uk.tim740.skUtilities.skUtilities;
 
@@ -27,10 +26,10 @@ public class EffZipFiles extends Effect {
 
     @Override
     protected void execute(Event e) {
-        File Fzip = new File(Utils.getDefaultPath(zip.getSingle(e)));
+        File Fzip = new File(skUtilities.getDefaultPath(zip.getSingle(e)));
         ArrayList<File> cl = new ArrayList<>();
         for (String Spth : files.getAll(e)) {
-            cl.add(new File(Utils.getDefaultPath(Spth)));
+            cl.add(new File(skUtilities.getDefaultPath(Spth)));
         }
         File[] Fpths = new File[cl.size()];
         File[] s = cl.toArray(Fpths);

@@ -6,8 +6,8 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.Utils;
 import uk.tim740.skUtilities.files.event.EvtFileDownload;
+import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.File;
@@ -20,11 +20,11 @@ public class EffFileDownload extends Effect {
 
     @Override
     protected void execute(Event e) {
-        File pth = new File(Utils.getDefaultPath(path.getSingle(e)));
+        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
         EvtFileDownload efd = new EvtFileDownload(url.getSingle(e), pth);
         Bukkit.getServer().getPluginManager().callEvent(efd);
         if (!efd.isCancelled()) {
-            Utils.downloadFile(pth.toPath(), url.getSingle(e));
+            skUtilities.downloadFile(pth.toPath(), url.getSingle(e));
         }
     }
 
