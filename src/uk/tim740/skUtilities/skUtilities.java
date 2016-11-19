@@ -63,23 +63,6 @@ public class skUtilities extends JavaPlugin {
         prSysI("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
     }
 
-    public static void prSysE(String s, String c) {
-        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s + " (" + c + ".class)");
-        Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + " (" + c + ".class)", "skUtilities.error");
-    }
-
-    public static void prSysE(String s, String c, Exception e) {
-        if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("debug", true)) {
-            e.printStackTrace();
-        } else {
-            prSysE(s, c);
-        }
-    }
-
-    public static void prSysI(String s) {
-        Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": " + s);
-    }
-
     private void updateChk() {
         prSysI("Checking for update now you will be notified if there is an update!");
         try {
@@ -115,6 +98,23 @@ public class skUtilities extends JavaPlugin {
         } catch (Exception e) {
             prSysE("Failed to get latest version number, you might be offline!", "Main", e);
         }
+    }
+
+    public static void prSysE(String s, String c) {
+        Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s + " (" + c + ".class)");
+        Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + " (" + c + ".class)", "skUtilities.error");
+    }
+
+    public static void prSysE(String s, String c, Exception e) {
+        if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("debug", true)) {
+            e.printStackTrace();
+        } else {
+            prSysE(s, c);
+        }
+    }
+
+    public static void prSysI(String s) {
+        Bukkit.getServer().getLogger().info("[skUtilities] v" + getVer() + ": " + s);
     }
 
     private static String getVer() {
