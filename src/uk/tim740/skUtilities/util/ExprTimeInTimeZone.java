@@ -3,37 +3,51 @@ package uk.tim740.skUtilities.util;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
-import ch.njol.skript.util.Date;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.time.LocalDateTime;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by tim740 on 11/09/2016
  */
-public class ExprTimeInTimeZone extends SimpleExpression<Date> {
+public class ExprTimeInTimeZone extends SimpleExpression<String> {
     private Expression<String> str;
 
     @Override
     @Nullable
-    protected Date[] get(Event e) {
+    protected String[] get(Event e) {
         String s = str.getSingle(e);
-        if (s.contains("-")) {
-            s = s.replace('-', '+');
-        } else if (s.contains("+")) {
-            s = s.replace('+', '-');
-        }
+        String[] sl = new String[0];
         try {
-            return new Date[]{new Date(ZonedDateTime.of(LocalDateTime.now(), ZoneId.of(s)).toEpochSecond() * 1000L)};
+            BufferedReader br = new BufferedReader(new FileReader(new File("plugins/Skript/config.sk").getAbsoluteFile()));
+            sl = br.lines().toArray(String[]::new);
+            br.close();
         } catch (Exception x) {
-            skUtilities.prSysE("'" + s + "' is not a valid TimeZone!", getClass().getSimpleName(), x);
+            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
-        return null;
+        String sf = "";
+        for (String aSl : sl) {
+            if (aSl.contains("date format: ")) {
+                sf = aSl.replaceFirst("date format: ",  "");
+            }
+        }
+        String ff;
+        if (sf.equalsIgnoreCase("default")) {
+            ff = new SimpleDateFormat().toPattern();
+        } else {
+            ff = sf;
+        }
+        return new String[]{ZonedDateTime.ofInstant(Instant.now(), ZoneId.of(s)).format(DateTimeFormatter.ofPattern(ff))};
     }
 
     @SuppressWarnings("unchecked")
@@ -44,8 +58,8 @@ public class ExprTimeInTimeZone extends SimpleExpression<Date> {
     }
 
     @Override
-    public Class<? extends Date> getReturnType() {
-        return Date.class;
+    public Class<? extends String> getReturnType() {
+        return String.class;
     }
 
     @Override
