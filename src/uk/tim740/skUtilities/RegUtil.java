@@ -15,8 +15,7 @@ class RegUtil {
         Skript.registerExpression(ExprGetRegion.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]region of server", "[skutil[ities] ]server's region");
         Skript.registerCondition(CondisTimeZone.class, "[skutil[ities] ]server is time[ ]zone %string%", "[skutil[ities] ]server is(n'| no)t time[ ]zone %string%");
 
-        Skript.registerExpression(ExprGetJsonID.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]content of json value %string% from text %-string%", "[skutil[ities] ]value %string%'s json contents from text %-string%");
-        Skript.registerExpression(ExprGetJsonIDS.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]content of json value's %strings% from text %-string%", "[skutil[ities] ]value's %strings%'s json contents from text %-string%");
+        Skript.registerExpression(ExprGetJsonIDS.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]content of json value(0¦ |1¦'s) %strings% from text %-string%", "[skutil[ities] ]value's %strings%'s json contents from text %-string%");
 
         Skript.registerExpression(ExprLoaded.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦events|8¦effects|9¦expressions|10¦conditions)");
         Skript.registerExpression(ExprLoadedList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦plugins|1¦addons) list", "[skutil[ities] ]list of (0¦plugins|1¦addons)");

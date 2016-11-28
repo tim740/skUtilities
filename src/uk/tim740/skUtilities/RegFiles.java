@@ -31,6 +31,7 @@ class RegFiles {
         Skript.registerExpression(SExprFileAttribute.class, Boolean.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦readable|1¦writable|2¦hidden) attribute of file %string%", "[skutil[ities] ]file %string%'s (0¦readable|1¦writable|2¦hidden) attribute");
         Skript.registerExpression(SExprFileContents.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]file contents of %string%", "[skutil[ities] ]%string%'s file contents");
         Skript.registerExpression(SExprEditLine.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]line %number% in file %string%", "[skutil[ities] ]file %string%'s line %number%");
+        Skript.registerExpression(SExprYaml.class, Object.class, ExpressionType.PROPERTY, "[skutil[ities] ]y[a]ml (0¦value|1¦nodes|2¦node[s with] keys|3¦list) %string% (from|of) file %-string%");
 
         Skript.registerEffect(EffRunApp.class, "[skutil[ities] ]run (script|program|app[lication]|file) at %string%");
         Skript.registerEffect(EffCreateFile.class, "[skutil[ities] ]create (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
@@ -42,7 +43,7 @@ class RegFiles {
         Skript.registerEffect(EffUnzip.class, "[skutil[ities] ](unzip|extract) %string% to dir[ectory] %-string%");
         Skript.registerEffect(EffInsertLine.class, "[skutil[ities] ]write %string% at line %numbers% to file %-string%");
 
-        Skript.registerCondition(CondFileExists.class, "[skutil[ities] ](script|program|app[lication]|file) %string% exists", "[skutil[ities] ](script|program|app[lication]|file) %string% does(n't| not) exist");
+        Skript.registerCondition(CondFileExists.class, "[skutil[ities] ](script|program|app[lication]|file|dir[ectory]) %string% exists", "[skutil[ities] ](script|program|app[lication]|file) %string% does(n't| not) exist");
         Skript.registerCondition(CondIsFile.class, "[skutil[ities] ]file %string% is a file", "[skutil[ities] ]file %string% is(n'| no)t a file");
         Skript.registerCondition(CondIsSymbolic.class, "[skutil[ities] ]file %string% is (symbolic|shortcut)", "[skutil[ities] ]file %string% is(n'| no)t (symbolic|shortcut)");
         Skript.registerCondition(CondIsExecutable.class, "[skutil[ities] ]file %string% is(n't| not) exec[utable]", "[skutil[ities] ]file %string% is exec[utable]");

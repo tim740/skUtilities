@@ -19,17 +19,23 @@ import java.util.ArrayList;
 public class ExprGetJsonIDS extends SimpleExpression<String> {
     private Expression<String> ids;
     private Expression<String> t;
+    private int ty;
 
     @Override
     @Nullable
     protected String[] get(Event e) {
         try {
-            JSONObject j = (JSONObject) new JSONParser().parse(t.getSingle(e));
-            ArrayList<String> cl = new ArrayList<>();
-            for (String cid : ids.getAll(e)) {
-                cl.add(j.get(cid).toString());
+            if (ty == 0) {
+                JSONObject j = (JSONObject) new JSONParser().parse(t.getSingle(e));
+                return new String[]{j.get(ids.getSingle(e)).toString()};
+            } else {
+                JSONObject j = (JSONObject) new JSONParser().parse(t.getSingle(e));
+                ArrayList<String> cl = new ArrayList<>();
+                for (String cid : ids.getAll(e)) {
+                    cl.add(j.get(cid).toString());
+                }
+                return cl.toArray(new String[cl.size()]);
             }
-            return cl.toArray(new String[cl.size()]);
         } catch (ParseException x) {
             skUtilities.prSysE("Error while parsing json!", getClass().getSimpleName(), x);
         }
@@ -41,6 +47,7 @@ public class ExprGetJsonIDS extends SimpleExpression<String> {
     public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
         ids = (Expression<String>) e[0];
         t = (Expression<String>) e[1];
+        ty = p.mark;
         return true;
     }
 
@@ -51,7 +58,7 @@ public class ExprGetJsonIDS extends SimpleExpression<String> {
 
     @Override
     public boolean isSingle() {
-        return false;
+        return (ty == 0);
     }
 
     @Override
