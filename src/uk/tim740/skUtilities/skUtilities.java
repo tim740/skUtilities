@@ -26,7 +26,7 @@ public class skUtilities extends JavaPlugin {
         Skript.registerAddon(this);
         getDataFolder().mkdirs();
         saveDefaultConfig();
-        if (!(getConfig().getInt("configVersion") == 7) || !(getConfig().isSet("configVersion"))) {
+        if (!(getConfig().getInt("configVersion") == 8) || !(getConfig().isSet("configVersion"))) {
             File pth = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
             File ptho = new File(getDataFolder().getAbsolutePath() + File.separator + "config.old");
             if (ptho.exists()) {
