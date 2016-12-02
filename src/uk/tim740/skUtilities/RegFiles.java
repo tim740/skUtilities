@@ -58,7 +58,7 @@ class RegFiles {
     private static void regFE() {
         Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
 
-        Skript.registerEvent("DownloadFile", SimpleEvent.class, EvtFileDownload.class, "file download");
+        Skript.registerEvent("DownloadFile", SimpleEvent.class, EvtFileDownload.class, "[skutil[ities] ]file download");
         EventValues.registerEventValue(EvtFileDownload.class, String.class, new Getter<String, EvtFileDownload>() {
             @Nullable
             @Override
@@ -74,7 +74,7 @@ class RegFiles {
             }
         }, 0);
 
-        Skript.registerEvent("RunApp", SimpleEvent.class, EvtRunApp.class, "(file|app|script) (run|execute)");
+        Skript.registerEvent("RunApp", SimpleEvent.class, EvtRunApp.class, "[skutil[ities] ](file|app|script) (run|execute)");
         EventValues.registerEventValue(EvtRunApp.class, File.class, new Getter<File, EvtRunApp>() {
             @Nullable
             @Override
@@ -83,7 +83,7 @@ class RegFiles {
             }
         }, 0);
 
-        Skript.registerEvent("FileCreation", SimpleEvent.class, EvtFileCreation.class, "file creat(ion|e)");
+        Skript.registerEvent("FileCreation", SimpleEvent.class, EvtFileCreation.class, "[skutil[ities] ]file creat(ion|e)");
         EventValues.registerEventValue(EvtFileCreation.class, File.class, new Getter<File, EvtFileCreation>() {
             @Nullable
             @Override
@@ -92,7 +92,7 @@ class RegFiles {
             }
         }, 0);
 
-        Skript.registerEvent("FileDeletion", SimpleEvent.class, EvtFileDeletion.class, "file delet(ion|e)");
+        Skript.registerEvent("FileDeletion", SimpleEvent.class, EvtFileDeletion.class, "[skutil[ities] ]file delet(ion|e)");
         EventValues.registerEventValue(EvtFileDeletion.class, File.class, new Getter<File, EvtFileDeletion>() {
             @Nullable
             @Override
@@ -101,7 +101,7 @@ class RegFiles {
             }
         }, 0);
 
-        Skript.registerEvent("FileWipe", SimpleEvent.class, EvtFileWipe.class, "file (wipe|reset|clear)");
+        Skript.registerEvent("FileWipe", SimpleEvent.class, EvtFileWipe.class, "[skutil[ities] ]file (wipe|reset|clear)");
         EventValues.registerEventValue(EvtFileWipe.class, File.class, new Getter<File, EvtFileWipe>() {
             @Nullable
             @Override
@@ -110,7 +110,7 @@ class RegFiles {
             }
         }, 0);
 
-        Skript.registerEvent("FileMove", SimpleEvent.class, EvtFileMove.class, "file move");
+        Skript.registerEvent("FileMove", SimpleEvent.class, EvtFileMove.class, "[skutil[ities] ]file move");
         EventValues.registerEventValue(EvtFileMove.class, File.class, new Getter<File, EvtFileMove>() {
             @Nullable
             @Override
@@ -126,7 +126,7 @@ class RegFiles {
             }
         }, 0);
 
-        Skript.registerEvent("FileCopy", SimpleEvent.class, EvtFileCopy.class, "file copy");
+        Skript.registerEvent("FileCopy", SimpleEvent.class, EvtFileCopy.class, "[skutil[ities] ]file copy");
         EventValues.registerEventValue(EvtFileCopy.class, File.class, new Getter<File, EvtFileCopy>() {
             @Nullable
             @Override
@@ -142,7 +142,7 @@ class RegFiles {
             }
         }, 0);
 
-        Skript.registerEvent("FileRename", SimpleEvent.class, EvtFileRename.class, "file rename");
+        Skript.registerEvent("FileRename", SimpleEvent.class, EvtFileRename.class, "[skutil[ities] ]file rename");
         EventValues.registerEventValue(EvtFileRename.class, File.class, new Getter<File, EvtFileRename>() {
             @Nullable
             @Override
@@ -158,7 +158,7 @@ class RegFiles {
             }
         }, 0);
 
-        Skript.registerEvent("FileWrite", SimpleEvent.class, EvtFileWrite.class, "file write");
+        Skript.registerEvent("FileWrite", SimpleEvent.class, EvtFileWrite.class, "[skutil[ities] ]file write");
         EventValues.registerEventValue(EvtFileWrite.class, File.class, new Getter<File, EvtFileWrite>() {
             @Nullable
             @Override
@@ -181,7 +181,7 @@ class RegFiles {
             }
         }, 0);
 
-        Skript.registerEvent("Unzip", SimpleEvent.class, EvtUnzip.class, "unzip");
+        Skript.registerEvent("Unzip", SimpleEvent.class, EvtUnzip.class, "[skutil[ities] ]unzip");
         EventValues.registerEventValue(EvtUnzip.class, File.class, new Getter<File, EvtUnzip>() {
             @Nullable
             @Override
@@ -197,7 +197,7 @@ class RegFiles {
             }
         }, 0);
 
-        Skript.registerEvent("FileZip", SimpleEvent.class, EvtUnzip.class, "file zip");
+        Skript.registerEvent("FileZip", SimpleEvent.class, EvtUnzip.class, "[skutil[ities] ]file zip");
         EventValues.registerEventValue(EvtFileZip.class, File.class, new Getter<File, EvtFileZip>() {
             @Nullable
             @Override
