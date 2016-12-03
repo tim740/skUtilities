@@ -60,7 +60,7 @@ public class SExprYaml extends SimpleExpression<Object> {
             if (mode == Changer.ChangeMode.DELETE) {
                 con.set(ypth, null);
             } else {
-                Object v = delta[0] == null ? "" : delta[0];
+                Object v = (delta[0] == null ? "" : delta[0]);
                 switch (ty) {
                     case 0: {
                         if (mode == Changer.ChangeMode.SET) {
