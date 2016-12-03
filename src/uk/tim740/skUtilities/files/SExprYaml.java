@@ -46,7 +46,7 @@ public class SExprYaml extends SimpleExpression<Object> {
                 }
             }
         } else {
-            skUtilities.prSysE("Yaml Path: '" + ypth + "' doesn't exist!", getClass().getSimpleName());
+            skUtilities.prSysE("Yaml Path: '" + ypth + "' doesn't exist in file '" + pth + "'", getClass().getSimpleName());
         }
         return null;
     }
