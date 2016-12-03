@@ -11,13 +11,13 @@ downloadChangelog: false
 #-------------------------------[ Security! ]-------------------------------
 
 #(UnSafe Option) If set to 'true' anything using paths in this addon (files)
-#will start looking in the root directory of your whole server!
+#Starts looking in the root directory of your whole server!
 #Example: Paths would start at 'root' or if your using windows 'c:/'
 
 useRootAsDefaultPath: false
 
 #(Safe Option) If set to 'false' anything using paths in this addon (files)
-#will start looking in the root directory of the minecraft server!
+#Starts looking in the root directory of the minecraft server!
 #Example: Paths would start at 'MinecraftServerRootFolder'
 
 #--------------------------------[ Loading ]--------------------------------
