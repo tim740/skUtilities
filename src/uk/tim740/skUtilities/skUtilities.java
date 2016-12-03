@@ -4,7 +4,7 @@ import ch.njol.skript.Skript;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
-import uk.tim740.skUtilities.config.EffReloadConfig;
+import uk.tim740.skUtilities.util.EffReloadConfig;
 
 import java.io.BufferedReader;
 import java.io.File;
