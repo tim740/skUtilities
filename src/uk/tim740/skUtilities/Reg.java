@@ -280,7 +280,6 @@ class Reg {
         Skript.registerExpression(ExprRam.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦free|1¦total|2¦max) (ram|memory)");
         Skript.registerExpression(ExprCaseLength.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]number of (0¦upper|1¦lower)case char[acter]s in %string%");
 
-        Skript.registerEffect(EffPrintTag.class, "[skutil[ities] ]print (0¦info|1¦warning|2¦error) %string% to console");
         Skript.registerEffect(EffRunOpCmd.class, "[skutil[ities] ](force|make) %player% run (cmd|command) %string% as op");
         Skript.registerEffect(EffSkReloadAliases.class, "[skutil[ities] ]skript reload aliases");
         Skript.registerEffect(EffReloadSkript.class, "[skutil[ities] ]reload s(k|c)ript %string%");

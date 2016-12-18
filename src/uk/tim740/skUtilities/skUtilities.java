@@ -41,12 +41,12 @@ public class skUtilities extends JavaPlugin {
             prSysI("New config has reset to default options!");
             prSysI("");
         }
-
-        if (getConfig().getBoolean("loadConversions", true)) Reg.convert();
-        if (getConfig().getBoolean("loadFiles", true)) Reg.files();
-        if (getConfig().getBoolean("loadYaml", true)) Reg.yaml();
-        if (getConfig().getBoolean("loadUrls", true)) Reg.url();
-        if (getConfig().getBoolean("loadUtilities", true)) Reg.utils();
+        String ls = "";
+        if (getConfig().getBoolean("loadConversions", true)) ls += "Conversions,"; Reg.convert();
+        if (getConfig().getBoolean("loadFiles", true)) ls += " Files,"; Reg.files();
+        if (getConfig().getBoolean("loadYaml", true)) ls += " Yaml,"; Reg.yaml();
+        if (getConfig().getBoolean("loadUrls", true)) ls += " Urls,"; Reg.url();
+        if (getConfig().getBoolean("loadUtilities", true)) ls += " Utilities"; Reg.utils();
         Skript.registerEffect(EffReloadConfig.class, "reload %string%'s config", "reload config of %string%");
 
         if (getConfig().getBoolean("checkForUpdates", true)) {
@@ -61,7 +61,7 @@ public class skUtilities extends JavaPlugin {
         } catch (Exception e) {
             skUtilities.prSysE("Failed to submit stats to Metrics, MCStats could be down!", getClass().getSimpleName(), e);
         }
-        prSysI("Has fully loaded in " + (System.currentTimeMillis() - s) + "ms!");
+        prSysI("loaded modules (" + ls + ") in " + (System.currentTimeMillis() - s) + "ms");
     }
 
     private void updateChk() {
@@ -159,5 +159,4 @@ public class skUtilities extends JavaPlugin {
             return pth;
         }
     }
-
 }
