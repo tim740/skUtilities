@@ -21,9 +21,10 @@ public class ExprUrlSizeBytes extends SimpleExpression<Number> {
     @Nullable
     protected Number[] get(Event e) {
         try {
-            HttpURLConnection s = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
-            Number n = s.getContentLength();
-            s.disconnect();
+            HttpURLConnection c = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
+            c.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+            Number n = c.getContentLength();
+            c.disconnect();
             if (n.intValue() == -1) {
                 skUtilities.prSysE("Url: '" + url.getSingle(e) + "' returned no information about the url's size!", getClass().getSimpleName());
             } else {

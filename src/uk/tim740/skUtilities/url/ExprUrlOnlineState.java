@@ -24,10 +24,10 @@ public class ExprUrlOnlineState extends SimpleExpression<Boolean> {
         try {
             HttpURLConnection.setFollowRedirects(false);
             HttpURLConnection c = (HttpURLConnection) new URL(url.getSingle(e)).openConnection();
-            c.setRequestMethod("HEAD");
+            c.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
             int r = c.getResponseCode();
             c.disconnect();
-            return new Boolean[]{(r == 403 || r == HttpURLConnection.HTTP_OK)};
+            return new Boolean[]{r == HttpURLConnection.HTTP_OK};
         } catch (IOException x) {
             skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         } catch (Exception x) {
