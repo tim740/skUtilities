@@ -4,19 +4,52 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.lang.ExpressionType;
 import ch.njol.skript.lang.util.SimpleEvent;
 import ch.njol.skript.registrations.EventValues;
+import ch.njol.skript.util.Date;
 import ch.njol.skript.util.Getter;
-import org.bukkit.Bukkit;
+import uk.tim740.skUtilities.convert.*;
 import uk.tim740.skUtilities.files.*;
 import uk.tim740.skUtilities.files.event.*;
+import uk.tim740.skUtilities.url.*;
+import uk.tim740.skUtilities.util.*;
 
 import javax.annotation.Nullable;
 import java.io.File;
 
 /**
- * Created by tim740 on 20/03/2016
+ * Created by tim740 on 18/12/2016
  */
-class RegFiles {
-    static void reg() {
+class Reg {
+    static void convert() {
+        Skript.registerExpression(ExprToBin.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal) %string% to bin[ary]", "[skutil[ities] ](0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal) %string% as bin[ary]");
+        Skript.registerExpression(ExprToAscii.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert ascii %numbers% to (0¦(text|string)|1¦unicode)", "[skutil[ities] ]ascii %numbers% as (0¦(text|string)|1¦unicode)");
+
+        Skript.registerExpression(ExprFromString.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert (text|string) %string% to (0¦ascii|1¦unicode)", "[skutil[ities] ](text|string) %string% as (0¦ascii|1¦unicode)");
+        Skript.registerExpression(ExprFromBin.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert bin[ary] %string% to (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal)", "[skutil[ities] ]bin[ary] %string% as (0¦(text|string)|1¦decimal|2¦hexa[decimal]|3¦octal)");
+        Skript.registerExpression(ExprFromUnicode.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert unicode %string% to (0¦(text|string)|1¦ascii)", "[skutil[ities] ]unicode %string% as (0¦(text|string)|1¦ascii)");
+
+        Skript.registerExpression(ExprHexaToNum.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert hexa[decimal] %string% to num[ber]", "[skutil[ities] ]hexa[decimal] %string% as num[ber]");
+        Skript.registerExpression(ExprNumToHexa.class, String.class, ExpressionType.PROPERTY, "convert num[ber] %number% to hexa[decimal]", "[skutil[ities] ]num[ber] %number% as hexa[decimal]");
+
+        Skript.registerExpression(ExprHexToRgb.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert hex %string% to rgb",  "[skutil[ities] ]hex %string% as rgb");
+        Skript.registerExpression(ExprRgbToHex.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert rgb %number%, %number%, %number% to hex", "[skutil[ities] ]rgb %number%, %number%, %number% as hex");
+
+        Skript.registerExpression(ExprDateToUnix.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert date %date% to unix[ date]", "[skutil[ities] ]date %date% as unix[ date]");
+        Skript.registerExpression(ExprUnixToDate.class, Date.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert unix[ date] %number% to date", "[skutil[ities] ]unix[ date] %number% as date");
+        Skript.registerExpression(ExprUnixToFormattedDate.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert unix[ date] %number% to date formatted as %string%", "[skutil[ities] ]unix[ date] %number% as date formatted as %string%");
+
+        Skript.registerExpression(ExprBase64.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦en|1¦de)code base[ ]64 %string%");
+        Skript.registerExpression(ExprMorse.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦en|1¦de)code morse[ code] %string%");
+        Skript.registerExpression(ExprEncrypt.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦en|1¦de)crypt %string% using %-string% with key %-string%");
+
+        Skript.registerExpression(ExprClearAccented.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]clear accented chars from %string%");
+        Skript.registerExpression(ExprHash.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]hash[ed] %string% using %-string%");
+        Skript.registerExpression(ExprMirrorTxt.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](mirror[ed]|flip[ped]|reverse[d]) %string%");
+
+        Skript.registerExpression(ExprToUpperLower.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert (text|string) %string% to (0¦uppercase|1¦lowercase)");
+        Skript.registerExpression(ExprRandomizeString.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]randomize %string%");
+    }
+
+    static void files() {
         Skript.registerExpression(ExprZipList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]files in zip[ file] %string%", "[skutil[ities] ]zip[ file] %string%'s files");
         Skript.registerExpression(ExprDirList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]files in dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%", "[skutil[ities] ]dir[ectory](0¦|1¦ including sub dir[ectorie]s) %string%'s files");
         Skript.registerExpression(ExprFileLines.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]line count of file %string%", "[skutil[ities] ]file %string%'s line count");
@@ -33,11 +66,6 @@ class RegFiles {
         Skript.registerExpression(SExprFileContents.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]file contents of %string%", "[skutil[ities] ]%string%'s file contents");
         Skript.registerExpression(SExprEditLine.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]line %number% in file %string%", "[skutil[ities] ]file %string%'s line %number%");
 
-        if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("loadYaml", true)) {
-            Skript.registerExpression(SExprYaml.class, Object.class, ExpressionType.PROPERTY, "[skutil[ities] ]y[a]ml (0¦value|1¦nodes|2¦node[s with] keys|3¦list) %string% (from|of) file %-string%");
-            Skript.registerCondition(CondYamlExists.class, "[skutil[ities] ]y[a]ml[ path] %string% in file %-string% exists", "[skutil[ities] ]y[a]ml[ path] %string% in file %-string% does(n't| not) exist");
-        }
-
         Skript.registerEffect(EffRunApp.class, "[skutil[ities] ]run (script|program|app[lication]|file) at %string%");
         Skript.registerEffect(EffCreateFile.class, "[skutil[ities] ]create (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
         Skript.registerEffect(EffDeleteFile.class, "[skutil[ities] ]delete (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
@@ -53,10 +81,9 @@ class RegFiles {
         Skript.registerCondition(CondIsSymbolic.class, "[skutil[ities] ]file %string% is (symbolic|shortcut)", "[skutil[ities] ]file %string% is(n'| no)t (symbolic|shortcut)");
         Skript.registerCondition(CondIsExecutable.class, "[skutil[ities] ]file %string% is(n't| not) exec[utable]", "[skutil[ities] ]file %string% is exec[utable]");
 
-        regFE();
+        fileEvents();
     }
-
-    private static void regFE() {
+    private static void fileEvents() {
         Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
 
         Skript.registerEvent("DownloadFile", SimpleEvent.class, EvtFileDownload.class, "[skutil[ities] ]file download");
@@ -213,5 +240,52 @@ class RegFiles {
                 return e.getEvtZipFile();
             }
         }, 0);
+    }
+
+    static void yaml() {
+        Skript.registerExpression(SExprYaml.class, Object.class, ExpressionType.PROPERTY, "[skutil[ities] ]y[a]ml (0¦value|1¦nodes|2¦node[s with] keys|3¦list) %string% (from|of) file %-string%");
+        Skript.registerCondition(CondYamlExists.class, "[skutil[ities] ]y[a]ml[ path] %string% in file %-string% exists", "[skutil[ities] ]y[a]ml[ path] %string% in file %-string% does(n't| not) exist");
+    }
+
+    static void url() {
+        Skript.registerExpression(ExprUrlContents.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]contents from url %string%", "[skutil[ities] ]url %string%'s contents");
+        Skript.registerExpression(ExprUrlReadLine.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]line %number% from url %string%", "[skutil[ities] ]url %string%'s line %number%");
+        Skript.registerExpression(ExprUrlLines.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]line count of url %string%", "[skutil[ities] ]url %string%'s line count");
+        Skript.registerExpression(ExprUrlSize.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]size of url %string%", "[skutil[ities] ]url %string%'s size");
+        Skript.registerExpression(ExprUrlSizeBytes.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]size of url %string% in bytes", "[skutil[ities] ]url %string%'s size in bytes");
+        Skript.registerExpression(ExprUrlResponseCode.class, Integer.class, ExpressionType.PROPERTY, "[skutil[ities] ]response code of url %string%", "[skutil[ities] ]url %string%'s response code");
+        Skript.registerExpression(ExprUrlOnlineState.class, Boolean.class, ExpressionType.PROPERTY, "[skutil[ities] ]online stat(us|e) of url %string%", "[skutil[ities] ]url %string%'s online stat(us|e)");
+        Skript.registerExpression(ExprUrlLastModified.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]last modified value of url %string%", "[skutil[ities] ]url %string%'s last modified value");
+
+        Skript.registerExpression(ExprUrlSSLVerifier.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]ssl verifier of url %string%", "[skutil[ities] ]url %string%'s ssl verifier");
+        Skript.registerExpression(ExprUrlSSLSerialNumber.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]ssl serial number of url %string%", "[skutil[ities] ]url %string%'s ssl serial number");
+        Skript.registerExpression(ExprUrlSSLIssueExpire.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]ssl (0¦issue|1¦expire) value of url %string%", "[skutil[ities] ]url %string%'s ssl (0¦issue|1¦expire) value");
+        Skript.registerExpression(ExprUrlSSLAlgorithm.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]ssl algorithm of url %string%", "[skutil[ities] ]url %string%'s ssl algorithm");
+        Skript.registerExpression(ExprUrlSSLVersion.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]ssl version of url %string%", "[skutil[ities] ]url %string%'s ssl version");
+    }
+
+    static void utils() {
+        Skript.registerExpression(ExprGetTimeZone.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]time[ ]zone of server", "[skutil[ities] ]server's time[ ]zone");
+        Skript.registerExpression(ExprTimeZoneList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ][all ]time[ ]zones");
+        Skript.registerExpression(ExprTimeInTimeZone.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ][current ]time in time[ ]zone %string%", "[skutil[ities] ][current ]time[ ]zone %string%'s time");
+        Skript.registerExpression(ExprGetRegion.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]region of server", "[skutil[ities] ]server's region");
+        Skript.registerCondition(CondisTimeZone.class, "[skutil[ities] ]server is time[ ]zone %string%", "[skutil[ities] ]server is(n'| no)t time[ ]zone %string%");
+
+        Skript.registerExpression(ExprGetJsonIDS.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]content of json value(0¦ |1¦'s) %strings% from text %-string%", "[skutil[ities] ]value's %strings%'s json contents from text %-string%");
+
+        Skript.registerExpression(ExprLoaded.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦events|8¦effects|9¦expressions|10¦conditions)");
+        Skript.registerExpression(ExprLoadedList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦plugins|1¦addons) list", "[skutil[ities] ]list of (0¦plugins|1¦addons)");
+        Skript.registerExpression(ExprVersion.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]%string%'s version", "[skutil[ities] ]version of %string%");
+        Skript.registerExpression(ExprSysTime.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ][current ]system (0¦nanos[econds]|1¦millis[econds]|2¦seconds)");
+        Skript.registerExpression(ExprRam.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦free|1¦total|2¦max) (ram|memory)");
+        Skript.registerExpression(ExprCaseLength.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]number of (0¦upper|1¦lower)case char[acter]s in %string%");
+
+        Skript.registerEffect(EffPrintTag.class, "[skutil[ities] ]print (0¦info|1¦warning|2¦error) %string% to console");
+        Skript.registerEffect(EffRunOpCmd.class, "[skutil[ities] ](force|make) %player% run (cmd|command) %string% as op");
+        Skript.registerEffect(EffSkReloadAliases.class, "[skutil[ities] ]skript reload aliases");
+        Skript.registerEffect(EffReloadSkript.class, "[skutil[ities] ]reload s(k|c)ript %string%");
+        Skript.registerEffect(EffRestartServer.class, "[skutil[ities] ]re(0¦start|1¦load) server");
+
+        Skript.registerCondition(CondStartsEndsWith.class, "[skutil[ities] ]%string% (0¦starts|1¦ends) with %-string%", "[skutil[ities] ]%string% does(n't| not) (0¦start|1¦end) with %-string%");
     }
 }

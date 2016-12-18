@@ -42,10 +42,11 @@ public class skUtilities extends JavaPlugin {
             prSysI("");
         }
 
-        if (getConfig().getBoolean("loadConversions", true)) RegConvert.reg();
-        if (getConfig().getBoolean("loadFiles", true)) RegFiles.reg();
-        if (getConfig().getBoolean("loadUrls", true)) RegUrl.reg();
-        if (getConfig().getBoolean("loadUtilities", true)) RegUtil.reg();
+        if (getConfig().getBoolean("loadConversions", true)) Reg.convert();
+        if (getConfig().getBoolean("loadFiles", true)) Reg.files();
+        if (getConfig().getBoolean("loadYaml", true)) Reg.yaml();
+        if (getConfig().getBoolean("loadUrls", true)) Reg.url();
+        if (getConfig().getBoolean("loadUtilities", true)) Reg.utils();
         Skript.registerEffect(EffReloadConfig.class, "reload %string%'s config", "reload config of %string%");
 
         if (getConfig().getBoolean("checkForUpdates", true)) {
