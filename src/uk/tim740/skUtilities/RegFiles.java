@@ -35,6 +35,7 @@ class RegFiles {
 
         if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("loadYaml", true)) {
             Skript.registerExpression(SExprYaml.class, Object.class, ExpressionType.PROPERTY, "[skutil[ities] ]y[a]ml (0¦value|1¦nodes|2¦node[s with] keys|3¦list) %string% (from|of) file %-string%");
+            Skript.registerCondition(CondYamlExists.class, "[skutil[ities] ]y[a]ml[ path] %string% in file %-string% exists", "[skutil[ities] ]y[a]ml[ path] %string% in file %-string% does(n't| not) exist");
         }
 
         Skript.registerEffect(EffRunApp.class, "[skutil[ities] ]run (script|program|app[lication]|file) at %string%");

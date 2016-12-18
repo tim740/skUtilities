@@ -23,7 +23,7 @@ public class EffRunApp extends Effect {
     @Override
     protected void execute(Event e) {
         File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
-        if (Desktop.isDesktopSupported()) {
+        if (Desktop.getDesktop().isSupported(Desktop.Action.OPEN)) {
             try {
                 EvtRunApp era = new EvtRunApp(pth);
                 Bukkit.getServer().getPluginManager().callEvent(era);
@@ -35,7 +35,7 @@ public class EffRunApp extends Effect {
                     }
                 }
             } catch (IOException x) {
-                skUtilities.prSysE("'" + pth + "' isn't a valid path!", getClass().getSimpleName(), x);
+                skUtilities.prSysE("Path: '" + pth + "' isn't valid!", getClass().getSimpleName(), x);
             }
         } else {
             String p = System.getProperty("os.name").toLowerCase();
@@ -45,10 +45,8 @@ public class EffRunApp extends Effect {
             if (p.contains("linux")) gc = true;
             if (p.contains("unix")) gc = true;
             if (gc.equals(true)) {
-                skUtilities.prSysI("Looks like your using a linux based system and don't have");
-                skUtilities.prSysI("libgnome installed execute the command below in the terminal ");
-                skUtilities.prSysI("'sudo apt-get install libgnome2-0'");
-                skUtilities.prSysI("and then restart the system!");
+                skUtilities.prSysI("Looks like your using a linux based system and don't have libgnome installed execute the command below in the terminal");
+                skUtilities.prSysI("'sudo apt-get install libgnome2-0' and then restart the system!");
             } else {
                 skUtilities.prSysE("Sorry this OS ('" + p + "') isn't supported!", getClass().getSimpleName());
             }
