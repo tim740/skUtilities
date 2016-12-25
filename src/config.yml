@@ -2,11 +2,16 @@
 
 #--------------------------------[ Updates ]--------------------------------
 
-#Should this addon check for updates every 12 hours.
+#Should we check for updates every 12 hours.
+#Note: if 'checkForUpdates' is 'false' it will disable all other checks
 
 checkForUpdates: true
 downloadUpdates: false
 downloadChangelog: false
+
+#Broadcasts updates to players with the permission 'skUtilities.update'
+
+broadcastUpdates: true
 
 #-------------------------------[ Security! ]-------------------------------
 
@@ -39,9 +44,12 @@ loadUtilities: true
 
 debug: false
 
+#Broadcasts errors to players with the permission 'skUtilities.error'
+
+broadcastErrors: true
+
 #---------------------------------------------------------------------------
 
-#Version of Config, If changed this config will reset!
-#DO NOT CHANGE THIS!
+#DO NOT CHANGE THIS! (If changed this config will reset!)
 
-configVersion: 8
+configVersion: 9

@@ -26,7 +26,7 @@ public class skUtilities extends JavaPlugin {
         Skript.registerAddon(this);
         getDataFolder().mkdirs();
         saveDefaultConfig();
-        if (!(getConfig().getInt("configVersion") == 8) || !(getConfig().isSet("configVersion"))) {
+        if (!(getConfig().getInt("configVersion") == 9) || !(getConfig().isSet("configVersion"))) {
             File pth = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
             File ptho = new File(getDataFolder().getAbsolutePath() + File.separator + "config.old");
             if (ptho.exists()) {
@@ -86,12 +86,12 @@ public class skUtilities extends JavaPlugin {
                         }
                     } else {
                         prSysI("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
-                        Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!", "skUtilities.update");
+                        prSysU("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
                     }
                 } else {
                     prSysI("Download latest version here: 'https://github.com/tim740/skUtilities/releases/latest'");
                     prSysI("You should consider enabling `downloadUpdates` in the config.");
-                    Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + "You can find the latest version here: 'https://github.com/tim740/skUtilities/releases/latest'", "skUtilities.update");
+                    prSysU("Download latest version here: 'https://github.com/tim740/skUtilities/releases/latest'");
                 }
             } else {
                 prSysI("Currently using the latest version of skUtilities.");
@@ -100,10 +100,17 @@ public class skUtilities extends JavaPlugin {
             prSysE("Failed to get latest version number, you might be offline!", "Main", e);
         }
     }
+    private void prSysU(String s) {
+        if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("broadcastUpdates", true)) {
+            Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + s, "skUtilities.update");
+        }
+    }
 
     public static void prSysE(String s, String c) {
         Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s + " (" + c + ".class)");
-        Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + " (" + c + ".class)", "skUtilities.error");
+        if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("broadcastErrors", true)) {
+            Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + " (" + c + ".class)", "skUtilities.error");
+        }
     }
 
     public static void prSysE(String s, String c, Exception e) {
@@ -122,18 +129,18 @@ public class skUtilities extends JavaPlugin {
         return Bukkit.getPluginManager().getPlugin("skUtilities").getDescription().getVersion();
     }
 
-    public static String getFileSize(double s) {
+    public static String getFileSize(double i) {
         DecimalFormat df = new DecimalFormat("#.##");
-        if (s < 1024) {
-            return (s + " B").replaceFirst(".0", "");
-        } else if (s < 1048576) {
-            return df.format(s / 1024) + " KB";
-        } else if (s < 1073741824) {
-            return df.format(s / 1048576) + " MB";
-        } else if (s < 1099511627776L) {
-            return df.format(s / 1073741824) + " GB";
+        if (i < 1024) {
+            return (i + " B").replaceFirst(".0", "");
+        } else if (i < 1048576) {
+            return df.format(i / 1024) + " KB";
+        } else if (i < 1073741824) {
+            return df.format(i / 1048576) + " MB";
+        } else if (i < 1099511627776L) {
+            return df.format(i / 1073741824) + " GB";
         } else {
-            return df.format(s / 1099511627776L) + " TB";
+            return df.format(i / 1099511627776L) + " TB";
         }
     }
 
