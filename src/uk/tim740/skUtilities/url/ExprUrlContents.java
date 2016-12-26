@@ -9,7 +9,6 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
@@ -27,7 +26,7 @@ public class ExprUrlContents extends SimpleExpression<String> {
             String[] s = ur.lines().toArray(String[]::new);
             ur.close();
             return s;
-        } catch (IOException x) {
+        } catch (Exception x) {
             skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         }
         return null;

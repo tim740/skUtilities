@@ -8,7 +8,6 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -28,10 +27,8 @@ public class ExprUrlLastModified extends SimpleExpression<Number> {
             String n = String.valueOf(c.getLastModified());
             c.disconnect();
             return new Number[]{Long.valueOf(n.substring(0, 10))};
-        } catch (IOException x) {
-            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         } catch (Exception x) {
-            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         }
         return null;
     }

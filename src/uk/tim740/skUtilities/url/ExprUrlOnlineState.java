@@ -8,7 +8,6 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -28,10 +27,8 @@ public class ExprUrlOnlineState extends SimpleExpression<Boolean> {
             int r = c.getResponseCode();
             c.disconnect();
             return new Boolean[]{r == HttpURLConnection.HTTP_OK};
-        } catch (IOException x) {
-            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         } catch (Exception x) {
-            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         }
         return null;
     }

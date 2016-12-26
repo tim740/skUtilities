@@ -9,7 +9,6 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import javax.net.ssl.HttpsURLConnection;
-import java.io.IOException;
 import java.net.URL;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
@@ -34,10 +33,8 @@ public class ExprUrlSSLAlgorithm extends SimpleExpression<String> {
                     return new String[]{sc.getSigAlgName()};
                 }
             }
-        } catch (IOException x) {
-            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         } catch (Exception x) {
-            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
         }
         return null;
     }

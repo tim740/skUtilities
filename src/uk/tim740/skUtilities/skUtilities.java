@@ -8,9 +8,7 @@ import uk.tim740.skUtilities.util.EffReloadConfig;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,19 +25,23 @@ public class skUtilities extends JavaPlugin {
         getDataFolder().mkdirs();
         saveDefaultConfig();
         if (!(getConfig().getInt("configVersion") == 9) || !(getConfig().isSet("configVersion"))) {
-            File pth = new File(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
-            File ptho = new File(getDataFolder().getAbsolutePath() + File.separator + "config.old");
-            if (ptho.exists()) {
-                ptho.delete();
+            try {
+                Path pth = Paths.get(getDataFolder().getAbsolutePath() + File.separator + "config.yml");
+                Path ptho = Paths.get(getDataFolder().getAbsolutePath() + File.separator + "config.old");
+                if (Files.exists(ptho)) {
+                    Files.delete(ptho);
+                }
+                pth.toFile().renameTo(ptho.toFile());
+                saveDefaultConfig();
+                prSysI("");
+                prSysI("You where using an old version of the config!");
+                prSysI("It was copied and renamed to 'config.old'");
+                prSysI("A new config has been generated!");
+                prSysI("New config has reset to default options!");
+                prSysI("");
+            } catch (Exception x) {
+                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
             }
-            pth.renameTo(ptho);
-            saveDefaultConfig();
-            prSysI("");
-            prSysI("You where using an old version of the config!");
-            prSysI("It was copied and renamed to 'config.old'");
-            prSysI("A new config has been generated!");
-            prSysI("New config has reset to default options!");
-            prSysI("");
         }
         String ls = "";
         if (getConfig().getBoolean("loadConversions", true)) ls += "Conversions,"; Reg.convert();
@@ -58,8 +60,8 @@ public class skUtilities extends JavaPlugin {
         try {
             MetricsLite mcs = new MetricsLite(this);
             mcs.start();
-        } catch (Exception e) {
-            skUtilities.prSysE("Failed to submit stats to Metrics, MCStats could be down!", getClass().getSimpleName(), e);
+        } catch (Exception x) {
+            skUtilities.prSysE("Failed to submit stats to Metrics, MCStats could be down!", getClass().getSimpleName(), x);
         }
         prSysI("loaded modules (" + ls + ") in " + (System.currentTimeMillis() - s) + "ms");
     }
@@ -147,10 +149,8 @@ public class skUtilities extends JavaPlugin {
     public static void downloadFile(Path pth, String url) {
         try {
             Files.copy(new URL(url).openStream(), pth);
-        } catch (MalformedURLException x) {
+        } catch (Exception x) {
             skUtilities.prSysE("Error downloading from: '" + url + "' Is the site down?", "Utils", x);
-        } catch (IOException x) {
-            skUtilities.prSysE(x.getMessage(), "Utils", x);
         }
     }
 
