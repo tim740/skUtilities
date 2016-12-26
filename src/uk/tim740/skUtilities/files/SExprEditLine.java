@@ -43,7 +43,7 @@ public class SExprEditLine extends SimpleExpression<String> {
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.SET) {
             Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
-            EvtFileWrite efw = new EvtFileWrite(pth.toFile(), (String) delta[0], line.getSingle(e));
+            EvtFileWrite efw = new EvtFileWrite(pth, (String) delta[0], line.getSingle(e));
             Bukkit.getServer().getPluginManager().callEvent(efw);
             if (!efw.isCancelled()) {
                 try {

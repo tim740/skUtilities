@@ -10,7 +10,6 @@ import uk.tim740.skUtilities.files.event.EvtUnzip;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.*;
@@ -26,7 +25,7 @@ public class EffUnzip extends Effect {
 
     @Override
     protected void execute(Event e) {
-        File Fzip = new File(skUtilities.getDefaultPath(zip.getSingle(e)));
+        Path Fzip = Paths.get(skUtilities.getDefaultPath(zip.getSingle(e)));
         Path pth = Paths.get(skUtilities.getDefaultPath(file.getSingle(e)));
         EvtUnzip euz = new EvtUnzip(Fzip, pth.toString());
         Bukkit.getServer().getPluginManager().callEvent(euz);
@@ -37,7 +36,7 @@ public class EffUnzip extends Effect {
                 if (Files.notExists(pth)) {
                     Files.createDirectories(pth);
                 }
-                try (FileSystem zfs = FileSystems.newFileSystem(URI.create("jar:file:/" + Fzip.getAbsolutePath().replace("\\", "/")), env)) {
+                try (FileSystem zfs = FileSystems.newFileSystem(URI.create("jar:file:/" + Fzip.normalize().toAbsolutePath().toString().replace("\\", "/")), env)) {
                     Files.walkFileTree(zfs.getPath("/"), new SimpleFileVisitor<Path>() {
                         @Override
                         public FileVisitResult visitFile(Path ftc, BasicFileAttributes ats) throws IOException {
@@ -55,7 +54,7 @@ public class EffUnzip extends Effect {
                         }
                     });
                 }
-            } catch (IOException x) {
+            } catch (Exception x) {
                 skUtilities.prSysE("ZipFile: '" + Fzip + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), x);
             }
         }

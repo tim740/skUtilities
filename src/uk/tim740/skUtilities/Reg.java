@@ -13,7 +13,7 @@ import uk.tim740.skUtilities.url.*;
 import uk.tim740.skUtilities.util.*;
 
 import javax.annotation.Nullable;
-import java.io.File;
+import java.nio.file.Path;
 
 /**
  * Created by tim740 on 18/12/2016
@@ -84,7 +84,7 @@ class Reg {
         fileEvents();
     }
     private static void fileEvents() {
-        Skript.registerExpression(ExprFile.class, File.class, ExpressionType.SIMPLE, "[event-]file");
+        Skript.registerExpression(ExprFile.class, Path.class, ExpressionType.SIMPLE, "[event-]file");
 
         Skript.registerEvent("DownloadFile", SimpleEvent.class, EvtFileDownload.class, "[skutil[ities] ]file download");
         EventValues.registerEventValue(EvtFileDownload.class, String.class, new Getter<String, EvtFileDownload>() {
@@ -94,55 +94,55 @@ class Reg {
                 return e.getUrl();
             }
         }, 0);
-        EventValues.registerEventValue(EvtFileDownload.class, File.class, new Getter<File, EvtFileDownload>() {
+        EventValues.registerEventValue(EvtFileDownload.class, Path.class, new Getter<Path, EvtFileDownload>() {
             @Nullable
             @Override
-            public File get(EvtFileDownload e) {
+            public Path get(EvtFileDownload e) {
                 return e.getEvtFile();
             }
         }, 0);
 
         Skript.registerEvent("RunApp", SimpleEvent.class, EvtRunApp.class, "[skutil[ities] ](file|app|script) (run|execute)");
-        EventValues.registerEventValue(EvtRunApp.class, File.class, new Getter<File, EvtRunApp>() {
+        EventValues.registerEventValue(EvtRunApp.class, Path.class, new Getter<Path, EvtRunApp>() {
             @Nullable
             @Override
-            public File get(EvtRunApp e) {
+            public Path get(EvtRunApp e) {
                 return e.getApp();
             }
         }, 0);
 
         Skript.registerEvent("FileCreation", SimpleEvent.class, EvtFileCreation.class, "[skutil[ities] ]file creat(ion|e)");
-        EventValues.registerEventValue(EvtFileCreation.class, File.class, new Getter<File, EvtFileCreation>() {
+        EventValues.registerEventValue(EvtFileCreation.class, Path.class, new Getter<Path, EvtFileCreation>() {
             @Nullable
             @Override
-            public File get(EvtFileCreation e) {
+            public Path get(EvtFileCreation e) {
                 return e.getEvtFile();
             }
         }, 0);
 
         Skript.registerEvent("FileDeletion", SimpleEvent.class, EvtFileDeletion.class, "[skutil[ities] ]file delet(ion|e)");
-        EventValues.registerEventValue(EvtFileDeletion.class, File.class, new Getter<File, EvtFileDeletion>() {
+        EventValues.registerEventValue(EvtFileDeletion.class, Path.class, new Getter<Path, EvtFileDeletion>() {
             @Nullable
             @Override
-            public File get(EvtFileDeletion e) {
+            public Path get(EvtFileDeletion e) {
                 return e.getEvtFile();
             }
         }, 0);
 
         Skript.registerEvent("FileWipe", SimpleEvent.class, EvtFileWipe.class, "[skutil[ities] ]file (wipe|reset|clear)");
-        EventValues.registerEventValue(EvtFileWipe.class, File.class, new Getter<File, EvtFileWipe>() {
+        EventValues.registerEventValue(EvtFileWipe.class, Path.class, new Getter<Path, EvtFileWipe>() {
             @Nullable
             @Override
-            public File get(EvtFileWipe e) {
+            public Path get(EvtFileWipe e) {
                 return e.getEvtFile();
             }
         }, 0);
 
         Skript.registerEvent("FileMove", SimpleEvent.class, EvtFileMove.class, "[skutil[ities] ]file move");
-        EventValues.registerEventValue(EvtFileMove.class, File.class, new Getter<File, EvtFileMove>() {
+        EventValues.registerEventValue(EvtFileMove.class, Path.class, new Getter<Path, EvtFileMove>() {
             @Nullable
             @Override
-            public File get(EvtFileMove e) {
+            public Path get(EvtFileMove e) {
                 return e.getEvtFile();
             }
         }, 0);
@@ -155,10 +155,10 @@ class Reg {
         }, 0);
 
         Skript.registerEvent("FileCopy", SimpleEvent.class, EvtFileCopy.class, "[skutil[ities] ]file copy");
-        EventValues.registerEventValue(EvtFileCopy.class, File.class, new Getter<File, EvtFileCopy>() {
+        EventValues.registerEventValue(EvtFileCopy.class, Path.class, new Getter<Path, EvtFileCopy>() {
             @Nullable
             @Override
-            public File get(EvtFileCopy e) {
+            public Path get(EvtFileCopy e) {
                 return e.getEvtFile();
             }
         }, 0);
@@ -171,10 +171,10 @@ class Reg {
         }, 0);
 
         Skript.registerEvent("FileRename", SimpleEvent.class, EvtFileRename.class, "[skutil[ities] ]file rename");
-        EventValues.registerEventValue(EvtFileRename.class, File.class, new Getter<File, EvtFileRename>() {
+        EventValues.registerEventValue(EvtFileRename.class, Path.class, new Getter<Path, EvtFileRename>() {
             @Nullable
             @Override
-            public File get(EvtFileRename e) {
+            public Path get(EvtFileRename e) {
                 return e.getEvtFile();
             }
         }, 0);
@@ -187,10 +187,10 @@ class Reg {
         }, 0);
 
         Skript.registerEvent("FileWrite", SimpleEvent.class, EvtFileWrite.class, "[skutil[ities] ]file write");
-        EventValues.registerEventValue(EvtFileWrite.class, File.class, new Getter<File, EvtFileWrite>() {
+        EventValues.registerEventValue(EvtFileWrite.class, Path.class, new Getter<Path, EvtFileWrite>() {
             @Nullable
             @Override
-            public File get(EvtFileWrite e) {
+            public Path get(EvtFileWrite e) {
                 return e.getEvtFile();
             }
         }, 0);
@@ -210,10 +210,10 @@ class Reg {
         }, 0);
 
         Skript.registerEvent("Unzip", SimpleEvent.class, EvtUnzip.class, "[skutil[ities] ]unzip");
-        EventValues.registerEventValue(EvtUnzip.class, File.class, new Getter<File, EvtUnzip>() {
+        EventValues.registerEventValue(EvtUnzip.class, Path.class, new Getter<Path, EvtUnzip>() {
             @Nullable
             @Override
-            public File get(EvtUnzip e) {
+            public Path get(EvtUnzip e) {
                 return e.getEvtFile();
             }
         }, 0);
@@ -226,10 +226,10 @@ class Reg {
         }, 0);
 
         Skript.registerEvent("FileZip", SimpleEvent.class, EvtUnzip.class, "[skutil[ities] ]file zip");
-        EventValues.registerEventValue(EvtFileZip.class, File.class, new Getter<File, EvtFileZip>() {
+        EventValues.registerEventValue(EvtFileZip.class, Path.class, new Getter<Path, EvtFileZip>() {
             @Nullable
             @Override
-            public File get(EvtFileZip e) {
+            public Path get(EvtFileZip e) {
                 return e.getEvtFile();
             }
         }, 0);
@@ -285,6 +285,7 @@ class Reg {
         Skript.registerEffect(EffReloadSkript.class, "[skutil[ities] ]reload s(k|c)ript %string%");
         Skript.registerEffect(EffRestartServer.class, "[skutil[ities] ]re(0¦start|1¦load) server");
 
+        Skript.registerCondition(CondBooleanIs.class, "[skutil[ities] ]%boolean% is %-boolean%", "[skutil[ities] ]%boolean% is(n't| not) %-boolean%");
         Skript.registerCondition(CondStartsEndsWith.class, "[skutil[ities] ]%string% (0¦starts|1¦ends) with %-string%", "[skutil[ities] ]%string% does(n't| not) (0¦start|1¦end) with %-string%");
     }
 }

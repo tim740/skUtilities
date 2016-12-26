@@ -1,31 +1,33 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.util;
 
 import ch.njol.skript.lang.Condition;
 import ch.njol.skript.lang.Expression;
 import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
-import uk.tim740.skUtilities.skUtilities;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
- * Created by tim740 on 18/03/2016
+ * Created by tim740 on 26/12/2016
  */
-public class CondIsFile extends Condition {
-    private Expression<String> path;
+public class CondBooleanIs extends Condition {
+    private Expression<Boolean> boo, boov;
 
     @Override
     public boolean check(Event e) {
-        Boolean pth = !Files.isDirectory(Paths.get((skUtilities.getDefaultPath(path.getSingle(e)))));
-        return (isNegated() ? !pth : pth);
+        Boolean chk;
+        if (boov.getSingle(e).equals(true)) {
+            chk = Boolean.TRUE.equals(boo.getSingle(e));
+        } else {
+            chk = Boolean.FALSE.equals(boo.getSingle(e));
+        }
+        return (isNegated() ? !chk : chk);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
-        path = (Expression<String>) e[0];
+        boo = (Expression<Boolean>) e[0];
+        boov = (Expression<Boolean>) e[1];
         setNegated(i == 1);
         return true;
     }

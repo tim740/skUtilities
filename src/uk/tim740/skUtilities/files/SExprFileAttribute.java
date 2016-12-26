@@ -10,8 +10,6 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -35,7 +33,7 @@ public class SExprFileAttribute extends SimpleExpression<Boolean> {
             } else {
                 return new Boolean[]{Files.isHidden(pth)};
             }
-        } catch (IOException x) {
+        } catch (Exception x) {
             skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         }
         return null;
@@ -43,29 +41,29 @@ public class SExprFileAttribute extends SimpleExpression<Boolean> {
 
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
-            File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
+            Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
             try {
                 Boolean boo = (boolean) delta[0];
                 if (ty == 0) {
                     if (mode == Changer.ChangeMode.SET) {
-                        pth.setReadable(boo);
+                        pth.toFile().setReadable(boo);
                     } else {
-                        pth.setReadable(true);
+                        pth.toFile().setReadable(true);
                     }
                 } else if (ty == 1) {
                     if (mode == Changer.ChangeMode.SET) {
-                        pth.setWritable(boo);
+                        pth.toFile().setWritable(boo);
                     } else {
-                        pth.setWritable(true);
+                        pth.toFile().setWritable(true);
                     }
                 } else {
                     try {
                         if (mode == Changer.ChangeMode.SET) {
-                            Files.setAttribute(Paths.get(pth.toString()), "dos:hidden", boo);
+                            Files.setAttribute(pth, "dos:hidden", boo);
                         } else {
-                            Files.setAttribute(Paths.get(pth.toString()), "dos:hidden", false);
+                            Files.setAttribute(pth, "dos:hidden", false);
                         }
-                    } catch (IOException x) {
+                    } catch (Exception x) {
                         skUtilities.prSysE("Sorry Windows only!", getClass().getSimpleName(), x);
                     }
                 }

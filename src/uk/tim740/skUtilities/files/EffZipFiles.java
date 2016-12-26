@@ -10,7 +10,12 @@ import uk.tim740.skUtilities.files.event.EvtFileZip;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.zip.ZipEntry;
@@ -26,7 +31,7 @@ public class EffZipFiles extends Effect {
 
     @Override
     protected void execute(Event e) {
-        File Fzip = new File(skUtilities.getDefaultPath(zip.getSingle(e)));
+        Path Fzip = Paths.get(skUtilities.getDefaultPath(zip.getSingle(e)));
         ArrayList<File> cl = new ArrayList<>();
         for (String Spth : files.getAll(e)) {
             cl.add(new File(skUtilities.getDefaultPath(Spth)));
@@ -37,7 +42,7 @@ public class EffZipFiles extends Effect {
         Bukkit.getServer().getPluginManager().callEvent(efz);
         if (!efz.isCancelled()) {
             try {
-                FileOutputStream fout = new FileOutputStream(Fzip);
+                FileOutputStream fout = new FileOutputStream(Fzip.toFile());
                 ZipOutputStream zout = new ZipOutputStream(new BufferedOutputStream(fout));
                 for (File va : s) {
                     FileInputStream fin = new FileInputStream(va);
@@ -52,10 +57,8 @@ public class EffZipFiles extends Effect {
                 zout.close();
             } catch (ZipException x) {
                 skUtilities.prSysE("ZipFile: '" + Fzip + "' doesn't exist!", getClass().getSimpleName(), x);
-            } catch (FileNotFoundException x) {
+            } catch (Exception x) {
                 skUtilities.prSysE("Files: '" + Arrays.toString(s) + "' 1 or " + s.length + " Files don't exist!", getClass().getSimpleName(), x);
-            } catch (IOException x) {
-                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
             }
         }
     }

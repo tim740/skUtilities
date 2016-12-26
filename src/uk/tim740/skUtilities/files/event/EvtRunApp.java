@@ -4,7 +4,7 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import java.io.File;
+import java.nio.file.Path;
 
 /**
  * Created by tim740 on 22/03/2016
@@ -12,14 +12,14 @@ import java.io.File;
 public class EvtRunApp extends Event implements Cancellable {
     private static final HandlerList hls = new HandlerList();
     private boolean cancel = false;
-    private File app;
+    private Path app;
 
-    public EvtRunApp(File sapp) {
+    public EvtRunApp(Path sapp) {
         cancel = false;
         app = sapp;
     }
 
-    public File getApp() {
+    public Path getApp() {
         return app;
     }
 

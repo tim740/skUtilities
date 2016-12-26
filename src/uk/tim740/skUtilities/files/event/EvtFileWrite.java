@@ -4,7 +4,7 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import java.io.File;
+import java.nio.file.Path;
 
 /**
  * Created by tim740 on 23/03/2016
@@ -12,18 +12,18 @@ import java.io.File;
 public class EvtFileWrite extends Event implements Cancellable {
     private static final HandlerList hls = new HandlerList();
     private boolean cancel = false;
-    private File file;
+    private Path file;
     private String txt;
     private Number line;
 
-    public EvtFileWrite(File sfile, String stxt, Number sline) {
+    public EvtFileWrite(Path sfile, String stxt, Number sline) {
         cancel = false;
         file = sfile;
         txt = stxt;
         line = sline;
     }
 
-    public File getEvtFile() {
+    public Path getEvtFile() {
         return file;
     }
 

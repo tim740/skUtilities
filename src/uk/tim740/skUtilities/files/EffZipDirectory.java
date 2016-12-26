@@ -10,9 +10,6 @@ import uk.tim740.skUtilities.files.event.EvtFileZip;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URI;
 import java.nio.file.*;
 import java.util.HashMap;
@@ -28,14 +25,14 @@ public class EffZipDirectory extends Effect {
     @Override
     protected void execute(Event e) {
         Path Dpth = Paths.get(skUtilities.getDefaultPath(file.getSingle(e)));
-        File Fzip = new File(skUtilities.getDefaultPath(zip.getSingle(e)));
+        Path Fzip = Paths.get(skUtilities.getDefaultPath(zip.getSingle(e)));
         EvtFileZip efz = new EvtFileZip(Fzip, Dpth.toString());
         Bukkit.getServer().getPluginManager().callEvent(efz);
         if (!efz.isCancelled()) {
             try {
                 final Map<String, String> env = new HashMap<>();
                 env.put("create", "true");
-                try (final FileSystem zfs = FileSystems.newFileSystem(URI.create("jar:file:/" + Fzip.getAbsolutePath().replace("\\", "/")), env);
+                try (final FileSystem zfs = FileSystems.newFileSystem(URI.create("jar:file:/" + Fzip.normalize().toAbsolutePath().toString().replace("\\", "/")), env);
                      final Stream<Path> files = Files.walk(Dpth)) {
                     final Path rt = zfs.getPath("/");
                     files.forEach(cf -> {
@@ -46,17 +43,15 @@ public class EffZipDirectory extends Effect {
                             } else {
                                 Files.copy(cf, to);
                             }
-                        } catch (IOException x) {
+                        } catch (Exception x) {
                             skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
                         }
                     });
                 }
             } catch (FileSystemAlreadyExistsException x) {
                 skUtilities.prSysE("ZipFile: '" + Fzip + "' already exists!", getClass().getSimpleName(), x);
-            } catch (FileNotFoundException x) {
+            } catch (Exception x) {
                 skUtilities.prSysE("Directory: '" + Dpth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), x);
-            } catch (IOException x) {
-                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
             }
         }
     }

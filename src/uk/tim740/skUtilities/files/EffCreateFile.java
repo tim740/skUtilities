@@ -11,7 +11,6 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,7 +25,7 @@ public class EffCreateFile extends Effect {
     @Override
     protected void execute(Event e) {
         Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
-        EvtFileCreation efc = new EvtFileCreation(pth.toFile());
+        EvtFileCreation efc = new EvtFileCreation(pth);
         Bukkit.getServer().getPluginManager().callEvent(efc);
         if (!efc.isCancelled()) {
             if (ty == 0) {
@@ -36,13 +35,13 @@ public class EffCreateFile extends Effect {
                         Files.createDirectories(fwn);
                     }
                     Files.createFile(pth);
-                } catch (IOException x) {
+                } catch (Exception x) {
                     skUtilities.prSysE("File: '" + pth + "' already exists!", getClass().getSimpleName(), x);
                 }
             } else {
                 try {
                     Files.createDirectories(pth);
-                } catch (IOException x) {
+                } catch (Exception x) {
                     skUtilities.prSysE("Directory: '" + pth + "' already exists!", getClass().getSimpleName(), x);
                 }
             }

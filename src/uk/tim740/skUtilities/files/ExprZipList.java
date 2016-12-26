@@ -9,7 +9,6 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -30,7 +29,7 @@ public class ExprZipList extends SimpleExpression<String> {
         try (ZipFile zf = new ZipFile(pth)) {
             cl.addAll(zf.stream().collect(Collectors.toList()).stream().map((Function<ZipEntry, String>) ZipEntry::toString).collect(Collectors.toList()));
             return cl.toArray(new String[cl.size()]);
-        } catch (IOException x) {
+        } catch (Exception x) {
             skUtilities.prSysE("ZipFile: '" + pth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), x);
         }
         return null;

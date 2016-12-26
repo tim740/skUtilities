@@ -26,32 +26,32 @@ public class EffFileRenameMove extends Effect {
 
     @Override
     protected void execute(Event e) {
-        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
             if (ty == 0) {
                 EvtFileRename efn = new EvtFileRename(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efn);
                 if (!efn.isCancelled()) {
-                    pth.renameTo(new File(skUtilities.getDefaultPath(path.getSingle(e).replaceAll(pth.getName(), name.getSingle(e)))));
+                    pth.toFile().renameTo(new File(skUtilities.getDefaultPath(path.getSingle(e).replaceAll(pth.toFile().getName(), name.getSingle(e)))));
                 }
             } else if (ty == 1) {
                 EvtFileMove efm = new EvtFileMove(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efm);
                 if (!efm.isCancelled()) {
-                    Files.move(pth.toPath(), Paths.get(skUtilities.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
+                    Files.move(pth, Paths.get(skUtilities.getDefaultPath(name.getSingle(e) + File.separator + pth.toFile().getName())));
                 }
             } else if (ty == 2) {
                 EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efc);
                 if (!efc.isCancelled()) {
-                    Files.copy(pth.toPath(), Paths.get(skUtilities.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
+                    Files.copy(pth, Paths.get(skUtilities.getDefaultPath(name.getSingle(e) + File.separator + pth.toFile().getName())));
                 }
             } else if (ty == 3) {
                 EvtFileMove efm = new EvtFileMove(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efm);
                 if (!efm.isCancelled()) {
-                    copyDir(pth.toPath(), Paths.get(skUtilities.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
-                    Files.walkFileTree(pth.toPath(), new SimpleFileVisitor<Path>() {
+                    copyDir(pth, Paths.get(skUtilities.getDefaultPath(name.getSingle(e) + File.separator + pth.toFile().getName())));
+                    Files.walkFileTree(pth, new SimpleFileVisitor<Path>() {
                         @Override
                         public FileVisitResult visitFile(Path f, BasicFileAttributes attrs) throws IOException {
                             Files.delete(f);
@@ -69,13 +69,11 @@ public class EffFileRenameMove extends Effect {
                 EvtFileCopy efc = new EvtFileCopy(pth, name.getSingle(e));
                 Bukkit.getServer().getPluginManager().callEvent(efc);
                 if (!efc.isCancelled()) {
-                    copyDir(pth.toPath(), Paths.get(skUtilities.getDefaultPath(name.getSingle(e) + File.separator + pth.getName())));
+                    copyDir(pth, Paths.get(skUtilities.getDefaultPath(name.getSingle(e) + File.separator + pth.toFile().getName())));
                 }
             }
-        } catch (IOException x) {
-            skUtilities.prSysE("File/Directory: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         } catch (Exception x) {
-            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+            skUtilities.prSysE("File/Directory: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }
     }
 

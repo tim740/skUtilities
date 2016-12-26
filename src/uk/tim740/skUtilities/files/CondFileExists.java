@@ -7,7 +7,8 @@ import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
-import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * Created by tim740 on 18/03/2016
@@ -17,7 +18,7 @@ public class CondFileExists extends Condition {
 
     @Override
     public boolean check(Event e) {
-        Boolean pth = new File(skUtilities.getDefaultPath(path.getSingle(e))).exists();
+        Boolean pth = Files.exists(Paths.get(skUtilities.getDefaultPath(path.getSingle(e))));//new File(skUtilities.getDefaultPath(path.getSingle(e))).exists();
         return (isNegated() ? !pth : pth);
     }
 

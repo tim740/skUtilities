@@ -4,7 +4,7 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import java.io.File;
+import java.nio.file.Path;
 
 /**
  * Created by tim740 on 23/03/2016
@@ -12,16 +12,16 @@ import java.io.File;
 public class EvtUnzip extends Event implements Cancellable {
     private static final HandlerList hls = new HandlerList();
     private boolean cancel = false;
-    private File file;
+    private Path file;
     private String nloc;
 
-    public EvtUnzip(File sfile, String snloc) {
+    public EvtUnzip(Path sfile, String snloc) {
         cancel = false;
         file = sfile;
         nloc = snloc;
     }
 
-    public File getEvtFile() {
+    public Path getEvtFile() {
         return file;
     }
 

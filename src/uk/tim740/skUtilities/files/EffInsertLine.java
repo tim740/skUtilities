@@ -10,12 +10,11 @@ import uk.tim740.skUtilities.files.event.EvtFileWrite;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 
 /**
@@ -27,13 +26,13 @@ public class EffInsertLine extends Effect {
 
     @Override
     protected void execute(Event e) {
-        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         EvtFileWrite efw = new EvtFileWrite(pth, txt.getSingle(e), 0);
         Bukkit.getServer().getPluginManager().callEvent(efw);
         if (!efw.isCancelled()) {
             try {
                 ArrayList<String> cl = new ArrayList<>();
-                cl.addAll(Files.readAllLines(pth.toPath(), Charset.defaultCharset()));
+                cl.addAll(Files.readAllLines(pth, Charset.defaultCharset()));
                 for (Number cn : line.getAll(e)) {
                     if ((cn.intValue() -1) > cl.size()) {
                         Integer dn = ((cn.intValue() -1) -cl.size());
@@ -43,16 +42,12 @@ public class EffInsertLine extends Effect {
                     }
                     cl.add(cn.intValue() - 1, txt.getSingle(e));
                 }
-                BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
+                Files.write(pth, "".getBytes());
                 for (String aCl : cl.toArray(new String[cl.size()])) {
-                    bw.write(aCl);
-                    bw.newLine();
+                    Files.write(pth, (aCl + "\n").getBytes(), StandardOpenOption.APPEND);
                 }
-                bw.close();
-            } catch (IOException x) {
-                skUtilities.prSysE("File: '" + pth + "' doesn't exist!, or is not readable!", getClass().getSimpleName(), x);
             } catch (Exception x) {
-                skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+                skUtilities.prSysE("File: '" + pth + "' doesn't exist!, or is not readable!", getClass().getSimpleName(), x);
             }
         }
     }

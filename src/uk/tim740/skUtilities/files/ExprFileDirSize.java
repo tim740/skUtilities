@@ -9,7 +9,9 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Created by tim740 on 17/03/2016
@@ -21,12 +23,12 @@ public class ExprFileDirSize extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
             if (ty == 0) {
-                return new String[]{skUtilities.getFileSize(pth.length())};
+                return new String[]{skUtilities.getFileSize(Files.size(pth))};
             } else {
-                return new String[]{skUtilities.getFileSize(FileUtils.sizeOfDirectory(pth))};
+                return new String[]{skUtilities.getFileSize(FileUtils.sizeOfDirectory(pth.toFile()))};
             }
         } catch (Exception x) {
             skUtilities.prSysE("'" + pth + "' doesn't exist!", getClass().getSimpleName());

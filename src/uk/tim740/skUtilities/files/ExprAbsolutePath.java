@@ -8,7 +8,8 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Created by tim740 on 28/06/2016
@@ -19,9 +20,9 @@ public class ExprAbsolutePath extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
-            return new String[]{pth.getAbsolutePath()};
+            return new String[]{pth.normalize().toAbsolutePath().toString()};
         } catch (Exception x) {
             skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
         }

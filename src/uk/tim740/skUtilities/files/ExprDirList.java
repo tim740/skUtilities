@@ -8,7 +8,6 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
@@ -36,8 +35,8 @@ public class ExprDirList extends SimpleExpression<String> {
             } else {
                 Files.walkFileTree(pth, new SimpleFileVisitor<Path>(){
                     @Override
-                    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                        if(!attrs.isDirectory()){
+                    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
+                        if (!attrs.isDirectory()) {
                             cl.add(file.toAbsolutePath().toString());
                         }
                         return FileVisitResult.CONTINUE;

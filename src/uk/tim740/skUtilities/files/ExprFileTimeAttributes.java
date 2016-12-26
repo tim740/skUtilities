@@ -8,7 +8,6 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -34,7 +33,7 @@ public class ExprFileTimeAttributes extends SimpleExpression<Number> {
             } else {
                 return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).lastAccessTime().to(TimeUnit.SECONDS)};
             }
-        } catch (IOException x) {
+        } catch (Exception x) {
             skUtilities.prSysE("File: '" + pth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), x);
         }
         return null;

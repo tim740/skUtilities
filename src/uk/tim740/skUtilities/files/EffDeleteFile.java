@@ -24,13 +24,13 @@ public class EffDeleteFile extends Effect {
     @Override
     protected void execute(Event e) {
         Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
-        EvtFileDeletion efd = new EvtFileDeletion(pth.toFile());
+        EvtFileDeletion efd = new EvtFileDeletion(pth);
         Bukkit.getServer().getPluginManager().callEvent(efd);
         if (!efd.isCancelled()) {
             if (ty == 0) {
                 try {
                     Files.delete(pth);
-                } catch (IOException x) {
+                } catch (Exception x) {
                     skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
                 }
             } else {
@@ -48,7 +48,7 @@ public class EffDeleteFile extends Effect {
                             return FileVisitResult.CONTINUE;
                         }
                     });
-                } catch (IOException x) {
+                } catch (Exception x) {
                     skUtilities.prSysE("Directory: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
                 }
             }

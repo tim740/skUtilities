@@ -10,7 +10,6 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -29,7 +28,7 @@ public class SExprFileOwner extends SimpleExpression<String> {
         Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
             return new String[]{Files.getOwner(pth).getName()};
-        } catch (IOException x) {
+        } catch (Exception x) {
             skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         }
         return null;
@@ -41,7 +40,7 @@ public class SExprFileOwner extends SimpleExpression<String> {
             try {
                 UserPrincipalLookupService lookupService = FileSystems.getDefault().getUserPrincipalLookupService();
                 Files.setOwner(pth, lookupService.lookupPrincipalByName((String) delta[0]));
-            } catch (IOException x) {
+            } catch (Exception x) {
                 skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
             }
         }

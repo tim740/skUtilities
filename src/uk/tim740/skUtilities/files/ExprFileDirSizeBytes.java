@@ -9,7 +9,9 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  * Created by tim740 on 17/03/2016
@@ -21,12 +23,12 @@ public class ExprFileDirSizeBytes extends SimpleExpression<Number> {
     @Override
     @Nullable
     protected Number[] get(Event e) {
-        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
             if (ty == 0) {
-                return new Number[]{pth.length()};
+                return new Number[]{Files.size(pth)};
             } else {
-                return new Number[]{FileUtils.sizeOfDirectory(pth)};
+                return new Number[]{FileUtils.sizeOfDirectory(pth.toFile())};
             }
         } catch (Exception x) {
             skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName());

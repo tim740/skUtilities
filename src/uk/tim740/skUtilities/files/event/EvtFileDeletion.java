@@ -4,7 +4,7 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-import java.io.File;
+import java.nio.file.Path;
 
 /**
  * Created by tim740 on 22/03/2016
@@ -12,14 +12,14 @@ import java.io.File;
 public class EvtFileDeletion extends Event implements Cancellable {
     private static final HandlerList hls = new HandlerList();
     private boolean cancel = false;
-    private File file;
+    private Path file;
 
-    public EvtFileDeletion(File sfile) {
+    public EvtFileDeletion(Path sfile) {
         cancel = false;
         file = sfile;
     }
 
-    public File getEvtFile() {
+    public Path getEvtFile() {
         return file;
     }
 

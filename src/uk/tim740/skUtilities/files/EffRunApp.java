@@ -25,7 +25,7 @@ public class EffRunApp extends Effect {
         File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
         if (Desktop.getDesktop().isSupported(Desktop.Action.OPEN)) {
             try {
-                EvtRunApp era = new EvtRunApp(pth);
+                EvtRunApp era = new EvtRunApp(pth.toPath());
                 Bukkit.getServer().getPluginManager().callEvent(era);
                 if (!era.isCancelled()) {
                     if (!pth.exists()) {

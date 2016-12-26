@@ -9,20 +9,20 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.File;
+import java.nio.file.Path;
 
 /**
  * Created by tim740 on 22/03/2016
  */
-public class ExprFile extends SimpleExpression<File> {
+public class ExprFile extends SimpleExpression<Path> {
 
     @Override
-    protected File[] get(Event f) {
-        return new File[]{getFile(f)};
+    protected Path[] get(Event f) {
+        return new Path[]{getFile(f)};
     }
 
     @Nullable
-    private static File getFile(final @Nullable Event e) {
+    private static Path getFile(final @Nullable Event e) {
         if (e == null)
             return null;
         if (e instanceof EvtRunApp) {
@@ -62,8 +62,8 @@ public class ExprFile extends SimpleExpression<File> {
     }
 
     @Override
-    public Class<? extends File> getReturnType() {
-        return File.class;
+    public Class<? extends Path> getReturnType() {
+        return Path.class;
     }
 
     @Override

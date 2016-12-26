@@ -12,7 +12,12 @@ import uk.tim740.skUtilities.files.event.EvtFileWipe;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
-import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 
 /**
  * Created by tim740 on 20/03/2016
@@ -23,41 +28,34 @@ public class SExprFileContents extends SimpleExpression<String> {
     @Override
     @Nullable
     protected String[] get(Event e) {
-        File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
+        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
         try {
-            BufferedReader br = new BufferedReader(new FileReader(pth));
-            String[] s = br.lines().toArray(String[]::new);
-            br.close();
-            return s;
-        } catch (IOException x) {
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
+            ArrayList<String> cl = new ArrayList<>();
+            cl.addAll(Files.readAllLines(pth, Charset.defaultCharset()));
+            return cl.toArray(new String[cl.size()]);
         } catch (Exception x) {
-            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         }
         return null;
     }
 
     public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
         if (mode == Changer.ChangeMode.RESET || mode == Changer.ChangeMode.SET) {
-            File pth = new File(skUtilities.getDefaultPath(path.getSingle(e)));
+            Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
             try {
                 if (mode == Changer.ChangeMode.SET) {
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
+                    Files.write(pth, "".getBytes());
                     for (String aCl : (String[]) delta) {
-                        bw.write(aCl);
-                        bw.newLine();
+                        Files.write(pth, (aCl + "\n").getBytes(), StandardOpenOption.APPEND);
                     }
-                    bw.close();
                 } else {
                     EvtFileWipe efw = new EvtFileWipe(pth);
                     Bukkit.getServer().getPluginManager().callEvent(efw);
                     if (!efw.isCancelled()) {
-                        BufferedWriter bw = new BufferedWriter(new FileWriter(pth));
-                        bw.write("");
-                        bw.close();
+                        Files.write(pth, "".getBytes());
                     }
                 }
-            } catch (IOException x) {
+            } catch (Exception x) {
                 skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName());
             }
         }
