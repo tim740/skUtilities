@@ -285,7 +285,6 @@ class Reg {
         Skript.registerEffect(EffReloadSkript.class, "[skutil[ities] ]reload s(k|c)ript %string%");
         Skript.registerEffect(EffRestartServer.class, "[skutil[ities] ]re(0¦start|1¦load) server");
 
-        Skript.registerCondition(CondBooleanIs.class, "[skutil[ities] ]%boolean% is %-boolean%", "[skutil[ities] ]%boolean% is(n't| not) %-boolean%");
         Skript.registerCondition(CondStartsEndsWith.class, "[skutil[ities] ]%string% (0¦starts|1¦ends) with %-string%", "[skutil[ities] ]%string% does(n't| not) (0¦start|1¦end) with %-string%");
     }
 }

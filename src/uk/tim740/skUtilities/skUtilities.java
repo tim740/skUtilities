@@ -67,7 +67,6 @@ public class skUtilities extends JavaPlugin {
     }
 
     private void updateChk() {
-        prSysI("Checking for update now you will be notified if there is an update!");
         try {
             BufferedReader ur = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/tim740/skUtilities/master/latest.ver").openStream()));
             String v = ur.readLine();
@@ -75,28 +74,27 @@ public class skUtilities extends JavaPlugin {
             if (!Objects.equals(getVer(), v)) {
                 prSysI("A new version of the skUtilities is out v" + v);
                 if (getConfig().getBoolean("downloadUpdates", true)) {
-                    String dln = "plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar";
+                    String dln = ("plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar");
                     if (!new File(dln).exists()) {
                         prSysI("Starting download of skUtilities v" + v);
                         downloadFile(Paths.get(dln), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar");
-                        prSysI("Finished download of 'skUtilities v" + v + "' located in 'plugins/skUtilities'");
+                        prSysI("Finished download of 'skUtilities v" + v + ".jar' located in 'plugins/skUtilities'");
                         if (getConfig().getBoolean("downloadChangelog", true)) {
-                            downloadFile(Paths.get("plugins" + File.separator + "skUtilities" + File.separator + "skUtilities_v" + v + "_Changelog.sk"), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities_v" + v + "_Changelog.sk");
-                            prSysI("Finished download of 'skUtilities_v" + v + "_Changelog.sk' located in 'plugins/skUtilities'");
+                            String dlnc = ("plugins" + File.separator + "skUtilities" + File.separator + "skUtilities_v" + v + "_Changelog.sk");
+                            if (!new File(dlnc).exists()) {
+                                downloadFile(Paths.get(dlnc), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities_v" + v + "_Changelog.sk");
+                            }
+                            prSysI("View changelog for 'skUtilities_v" + v + "_Changelog.sk' in directory 'plugins/skUtilities'");
                         } else {
                             prSysI("View changelog here: 'https://github.com/tim740/skUtilities/releases/latest'");
                         }
                     } else {
-                        prSysI("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
-                        prSysU("Latest version of skUtilities (v" + v + ") is already downloaded and ready to use!");
+                        prSysU("Latest version (v" + v + ") has already been downloaded and ready to use.");
                     }
                 } else {
-                    prSysI("Download latest version here: 'https://github.com/tim740/skUtilities/releases/latest'");
-                    prSysI("You should consider enabling `downloadUpdates` in the config.");
-                    prSysU("Download latest version here: 'https://github.com/tim740/skUtilities/releases/latest'");
+                    prSysU("Download v" + v + ": 'https://github.com/tim740/skUtilities/releases/latest'");
+                    prSysI("You should consider enabling 'downloadUpdates' in the config.");
                 }
-            } else {
-                prSysI("Currently using the latest version of skUtilities.");
             }
         } catch (Exception e) {
             prSysE("Failed to get latest version number, you might be offline!", "Main", e);
@@ -106,6 +104,7 @@ public class skUtilities extends JavaPlugin {
         if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("broadcastUpdates", true)) {
             Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + s, "skUtilities.update");
         }
+        prSysI(s);
     }
 
     public static void prSysE(String s, String c) {
