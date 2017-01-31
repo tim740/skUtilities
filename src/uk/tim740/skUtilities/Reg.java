@@ -268,6 +268,7 @@ class Reg {
         Skript.registerExpression(ExprGetTimeZone.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]time[ ]zone of server", "[skutil[ities] ]server's time[ ]zone");
         Skript.registerExpression(ExprTimeZoneList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ][all ]time[ ]zones");
         Skript.registerExpression(ExprTimeInTimeZone.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ][current ]time in time[ ]zone %string%", "[skutil[ities] ][current ]time[ ]zone %string%'s time");
+        Skript.registerExpression(ExprDayOfWeek.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]day of[ the] week of %string%", "[skutil[ities] ]day of[ the] week of %string%");
         Skript.registerExpression(ExprGetRegion.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]region of server", "[skutil[ities] ]server's region");
         Skript.registerCondition(CondisTimeZone.class, "[skutil[ities] ]server is time[ ]zone %string%", "[skutil[ities] ]server is(n'| no)t time[ ]zone %string%");
 
