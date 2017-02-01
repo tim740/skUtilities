@@ -9,18 +9,26 @@ import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 
 /**
- * Created by tim740 on 30/03/2016
+ * Created by tim740 on 31/01/2017
  */
-public class ExprDateToUnix extends SimpleExpression<Number> {
-    private Expression<Date> id;
+public class ExprDateParsed extends SimpleExpression<Date> {
+    private Expression<String> id, format;
 
     @Override
     @Nullable
-    protected Number[] get(Event e) {
+    protected Date[] get(Event e) {
+        String s = id.getSingle(e);
         try {
-            return new Number[]{id.getSingle(e).getTimestamp() / 1000L};
+            String ddf = new SimpleDateFormat().toPattern();
+            if (format != null) ddf = format.getSingle(e);
+            LocalDateTime ldt = LocalDateTime.parse(s, DateTimeFormatter.ofPattern(ddf));
+            return new Date[]{new Date(ldt.toEpochSecond(ZoneOffset.ofTotalSeconds(ldt.getSecond())) * 1000L)};
         } catch (Exception x) {
             skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
@@ -30,13 +38,14 @@ public class ExprDateToUnix extends SimpleExpression<Number> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        id = (Expression<Date>) e[0];
+        id = (Expression<String>) e[0];
+        format = (Expression<String>) e[1];
         return true;
     }
 
     @Override
-    public Class<? extends Number> getReturnType() {
-        return Number.class;
+    public Class<? extends Date> getReturnType() {
+        return Date.class;
     }
 
     @Override

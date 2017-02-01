@@ -33,6 +33,7 @@ class Reg {
         Skript.registerExpression(ExprHexToRgb.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert hex %string% to rgb",  "[skutil[ities] ]hex %string% as rgb");
         Skript.registerExpression(ExprRgbToHex.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert rgb %number%, %number%, %number% to hex", "[skutil[ities] ]rgb %number%, %number%, %number% as hex");
 
+        Skript.registerExpression(ExprDateParsed.class, Date.class, ExpressionType.PROPERTY, "[skutil[ities] ]%string% parsed as date[ formatted as %-string%]");
         Skript.registerExpression(ExprDateToUnix.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert date %date% to unix[ date]", "[skutil[ities] ]date %date% as unix[ date]");
         Skript.registerExpression(ExprUnixToDate.class, Date.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert unix[ date] %number% to date", "[skutil[ities] ]unix[ date] %number% as date");
         Skript.registerExpression(ExprUnixToFormattedDate.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]convert unix[ date] %number% to date formatted as %string%", "[skutil[ities] ]unix[ date] %number% as date formatted as %string%");
@@ -265,6 +266,7 @@ class Reg {
     }
 
     static void utils() {
+        Skript.registerExpression(ExprDateInner.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦year|1¦month|2¦month name|3¦day of year|4¦day of month|5¦day of week|6¦day name|7¦hours|8¦minutes|9¦seconds) from date %date%", "[skutil[ities] ]date %date%'s (0¦year|1¦month|2¦month name|3¦day of year|4¦day of month|5¦day of week|6¦day name|7¦hours|8¦minutes|9¦seconds)");
         Skript.registerExpression(ExprGetTimeZone.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]time[ ]zone of server", "[skutil[ities] ]server's time[ ]zone");
         Skript.registerExpression(ExprTimeZoneList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ][all ]time[ ]zones");
         Skript.registerExpression(ExprTimeInTimeZone.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ][current ]time in time[ ]zone %string%", "[skutil[ities] ][current ]time[ ]zone %string%'s time");
@@ -280,7 +282,6 @@ class Reg {
         Skript.registerExpression(ExprRam.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦free|1¦total|2¦max) (ram|memory)");
         Skript.registerExpression(ExprCaseLength.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]number of (0¦upper|1¦lower)case char[acter]s in %string%");
 
-        Skript.registerEffect(EffRunOpCmd.class, "[skutil[ities] ](force|make) %player% run (cmd|command) %string% as op");
         Skript.registerEffect(EffSkReloadAliases.class, "[skutil[ities] ]skript reload aliases");
         Skript.registerEffect(EffReloadSkript.class, "[skutil[ities] ]reload s(k|c)ript %string%");
         Skript.registerEffect(EffRestartServer.class, "[skutil[ities] ]re(0¦start|1¦load) server");

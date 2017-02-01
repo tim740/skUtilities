@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -93,7 +94,7 @@ public class skUtilities extends JavaPlugin {
                     }
                 } else {
                     prSysU("Download v" + v + ": 'https://github.com/tim740/skUtilities/releases/latest'");
-                    prSysI("You should consider enabling 'downloadUpdates' in the config.");
+                    prSysI("Option: 'downloadUpdates' is disabled in the config.");
                 }
             }
         } catch (Exception e) {
@@ -110,7 +111,7 @@ public class skUtilities extends JavaPlugin {
     public static void prSysE(String s, String c) {
         Bukkit.getServer().getLogger().severe("[skUtilities] v" + getVer() + ": " + s + " (" + c + ".class)");
         if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("broadcastErrors", true)) {
-            Bukkit.broadcast(ChatColor.RED + "[skUtilities: ERROR]" + ChatColor.GRAY + " v" + getVer() + ": " + s + " (" + c + ".class)", "skUtilities.error");
+            Bukkit.broadcast(ChatColor.RED + "[skUtilities: WARN]" + ChatColor.GRAY + " v" + getVer() + ": " + s + " (" + c + ".class)", "skUtilities.error");
         }
     }
 
@@ -148,6 +149,8 @@ public class skUtilities extends JavaPlugin {
     public static void downloadFile(Path pth, String url) {
         try {
             Files.copy(new URL(url).openStream(), pth);
+        } catch (FileAlreadyExistsException x) {
+            skUtilities.prSysE("File Already Exists: '" + pth + "' cannot download into a file that already exists!", "Utils", x);
         } catch (Exception x) {
             skUtilities.prSysE("Error downloading from: '" + url + "' Is the site down?", "Utils", x);
         }
