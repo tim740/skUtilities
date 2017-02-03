@@ -18,7 +18,7 @@ public class CondFileExists extends Condition {
 
     @Override
     public boolean check(Event e) {
-        Boolean pth = Files.exists(Paths.get(skUtilities.getDefaultPath(path.getSingle(e))));//new File(skUtilities.getDefaultPath(path.getSingle(e))).exists();
+        Boolean pth = Files.exists(Paths.get(skUtilities.getDefaultPath(path.getSingle(e))));
         return (isNegated() ? !pth : pth);
     }
 

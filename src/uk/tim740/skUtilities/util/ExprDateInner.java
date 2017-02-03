@@ -27,26 +27,36 @@ public class ExprDateInner extends SimpleExpression<String> {
         Date s = id.getSingle(e);
         try {
             LocalDateTime ldt = LocalDateTime.parse(s.toString(), DateTimeFormatter.ofPattern(new SimpleDateFormat().toPattern()));
-            if (ty == 0) {
-                return new String[]{String.valueOf(ldt.getYear())};
-            } else if (ty == 1) {
-                return new String[]{String.valueOf(ldt.getMonthValue())};
-            } else if (ty == 2) {
-                return new String[]{ldt.getMonth().name()};
-            } else if (ty == 3) {
-                return new String[]{String.valueOf(ldt.getDayOfYear())};
-            } else if (ty == 4) {
-                return new String[]{String.valueOf(ldt.getDayOfMonth())};
-            } else if (ty == 5) {
-                return new String[]{String.valueOf(ldt.getDayOfWeek().getValue())};
-            } else if (ty == 6) {
-                return new String[]{ldt.getDayOfWeek().name()};
-            } else if (ty == 7) {
-                return new String[]{String.valueOf(ldt.getHour())};
-            } else if (ty == 8) {
-                return new String[]{String.valueOf(ldt.getMinute())};
-            } else if (ty == 9) {
-                return new String[]{String.valueOf((id.getSingle(e).getTimestamp() / 1000L) - (ldt.toEpochSecond(ZoneOffset.ofTotalSeconds(ldt.getSecond()))))};
+            switch (ty) {
+                case 0: {
+                    return new String[]{String.valueOf(ldt.getYear())};
+                } case 1: {
+                    return new String[]{String.valueOf(ldt.getMonthValue())};
+                } case 2: {
+                    return new String[]{ldt.getMonth().name()};
+                } case 3: {
+                    return new String[]{String.valueOf(ldt.getDayOfYear())};
+                } case 4: {
+                    return new String[]{String.valueOf(ldt.getDayOfMonth())};
+                } case 5: {
+                    return new String[]{String.valueOf(ldt.getDayOfWeek().getValue())};
+                } case 6: {
+                    return new String[]{ldt.getDayOfWeek().name()};
+                } case 7: {
+                    return new String[]{String.valueOf(ldt.getHour())};
+                } case 8: {
+                    return new String[]{String.valueOf(ldt.getMinute())};
+                } case 9: {
+                    long ul = (id.getSingle(e).getTimestamp() / 1000L) - (ldt.toEpochSecond(ZoneOffset.ofTotalSeconds(ldt.getSecond())));
+                    while (ul > 59) {
+                        if (ul > 3600) {
+                            ul = (ul - 3600);
+                        } else {
+                            ul = (ul - 900);
+                        }
+                    }
+                    return new String[]{String.valueOf(ul)};
+                }
             }
         } catch (Exception x) {
             skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);

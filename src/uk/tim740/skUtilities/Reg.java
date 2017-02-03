@@ -77,7 +77,7 @@ class Reg {
         Skript.registerEffect(EffUnzip.class, "[skutil[ities] ](unzip|extract) %string% to dir[ectory] %-string%");
         Skript.registerEffect(EffInsertLine.class, "[skutil[ities] ]write %string% at line %numbers% to file %-string%");
 
-        Skript.registerCondition(CondFileExists.class, "[skutil[ities] ](script|program|app[lication]|file|dir[ectory]) %string% exists", "[skutil[ities] ](script|program|app[lication]|file) %string% does(n't| not) exist");
+        Skript.registerCondition(CondFileExists.class, "[skutil[ities] ](script|program|app[lication]|file|dir[ectory]) %string% exists", "[skutil[ities] ](script|program|app[lication]|file|dir[ectory]) %string% does(n't| not) exist");
         Skript.registerCondition(CondIsFile.class, "[skutil[ities] ]file %string% is a file", "[skutil[ities] ]file %string% is(n'| no)t a file");
         Skript.registerCondition(CondIsSymbolic.class, "[skutil[ities] ]file %string% is (symbolic|shortcut)", "[skutil[ities] ]file %string% is(n'| no)t (symbolic|shortcut)");
         Skript.registerCondition(CondIsExecutable.class, "[skutil[ities] ]file %string% is(n't| not) exec[utable]", "[skutil[ities] ]file %string% is exec[utable]");
@@ -285,6 +285,7 @@ class Reg {
         Skript.registerEffect(EffSkReloadAliases.class, "[skutil[ities] ]skript reload aliases");
         Skript.registerEffect(EffReloadSkript.class, "[skutil[ities] ]reload s(k|c)ript %string%");
         Skript.registerEffect(EffRestartServer.class, "[skutil[ities] ]re(0¦start|1¦load) server");
+        Skript.registerEffect(EffRunOpCmd.class, "[skutil[ities] ](force|make) %player% run (cmd|command) %string% as op");
 
         Skript.registerCondition(CondStartsEndsWith.class, "[skutil[ities] ]%string% (0¦starts|1¦ends) with %-string%", "[skutil[ities] ]%string% does(n't| not) (0¦start|1¦end) with %-string%");
     }

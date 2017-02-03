@@ -28,7 +28,7 @@ public class ExprDateParsed extends SimpleExpression<Date> {
             String ddf = new SimpleDateFormat().toPattern();
             if (format != null) ddf = format.getSingle(e);
             LocalDateTime ldt = LocalDateTime.parse(s, DateTimeFormatter.ofPattern(ddf));
-            return new Date[]{new Date(ldt.toEpochSecond(ZoneOffset.ofTotalSeconds(ldt.getSecond())) * 1000L)};
+            return new Date[]{new Date((ldt.toEpochSecond(ZoneOffset.ofTotalSeconds(ldt.getSecond())) + ldt.getSecond()) * 1000)};
         } catch (Exception x) {
             skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
         }
