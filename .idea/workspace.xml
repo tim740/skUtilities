@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2f07d6-ec70-49f3-a755-152b4121a1a2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/CondIsDirectory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="skUtilities.iws" />
@@ -495,13 +494,6 @@
       <option name="presentableId" value="Default" />
       <updated>1455549243806</updated>
     </task>
-    <task id="LOCAL-00361" summary="urlSSLSerialNumber&#10;">
-      <created>1476546833835</created>
-      <option name="number" value="00361" />
-      <option name="presentableId" value="LOCAL-00361" />
-      <option name="project" value="LOCAL" />
-      <updated>1476546833835</updated>
-    </task>
     <task id="LOCAL-00362" summary="urlSSLSerialNumber&#10;">
       <created>1476547040908</created>
       <option name="number" value="00362" />
@@ -838,7 +830,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491259242402</updated>
     </task>
-    <option name="localTasksCounter" value="410" />
+    <task id="LOCAL-00410" summary="loads">
+      <created>1491259355639</created>
+      <option name="number" value="00410" />
+      <option name="presentableId" value="LOCAL-00410" />
+      <option name="project" value="LOCAL" />
+      <updated>1491259355639</updated>
+    </task>
+    <option name="localTasksCounter" value="411" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1227,7 +1226,7 @@
         <state relative-caret-position="518">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="e#453#454#0" expanded="false" />
             <element signature="e#517#518#0" expanded="false" />
             <element signature="e#653#654#0" expanded="false" />
