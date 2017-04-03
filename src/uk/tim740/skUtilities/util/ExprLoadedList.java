@@ -18,41 +18,41 @@ import java.util.stream.Collectors;
  * Created by tim740 on 09/09/2016
  */
 public class ExprLoadedList extends SimpleExpression<String> {
-    private int ty;
+  private int ty;
 
-    @Override
-    @Nullable
-    protected String[] get(Event e) {
-        ArrayList<String> cl = new ArrayList<>();
-        if (ty == 0) {
-            for (Plugin s : Bukkit.getServer().getPluginManager().getPlugins()) {
-                cl.add(s.getName());
-            }
-        } else {
-            cl.addAll(Skript.getAddons().stream().map(SkriptAddon::getName).collect(Collectors.toList()));
-        }
-        return cl.toArray(new String[cl.size()]);
+  @Override
+  @Nullable
+  protected String[] get(Event e) {
+    ArrayList<String> cl = new ArrayList<>();
+    if (ty == 0) {
+      for (Plugin s : Bukkit.getServer().getPluginManager().getPlugins()) {
+        cl.add(s.getName());
+      }
+    } else {
+      cl.addAll(Skript.getAddons().stream().map(SkriptAddon::getName).collect(Collectors.toList()));
     }
+    return cl.toArray(new String[cl.size()]);
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        ty = p.mark;
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+    ty = p.mark;
+    return true;
+  }
 
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
+  @Override
+  public Class<? extends String> getReturnType() {
+    return String.class;
+  }
 
-    @Override
-    public boolean isSingle() {
-        return false;
-    }
+  @Override
+  public boolean isSingle() {
+    return false;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

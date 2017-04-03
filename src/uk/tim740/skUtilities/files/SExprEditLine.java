@@ -24,72 +24,72 @@ import java.util.stream.Stream;
  * Created by tim740 on 18/03/2016
  */
 public class SExprEditLine extends SimpleExpression<String> {
-    private Expression<Number> line;
-    private Expression<String> path;
+  private Expression<Number> line;
+  private Expression<String> path;
 
-    @Override
-    @Nullable
-    protected String[] get(Event e) {
-        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
-        try (Stream<String> lines = Files.lines(pth, Charset.defaultCharset())) {
-            //noinspection OptionalGetWithoutIsPresent
-            return new String[]{lines.skip(Integer.parseInt(line.getSingle(e).toString()) - 1).findFirst().get()};
+  @Override
+  @Nullable
+  protected String[] get(Event e) {
+    Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
+    try (Stream<String> lines = Files.lines(pth, Charset.defaultCharset())) {
+      //noinspection OptionalGetWithoutIsPresent
+      return new String[]{lines.skip(Integer.parseInt(line.getSingle(e).toString()) - 1).findFirst().get()};
+    } catch (Exception x) {
+      skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
+    }
+    return null;
+  }
+
+  public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
+    if (mode == Changer.ChangeMode.SET) {
+      Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
+      EvtFileWrite efw = new EvtFileWrite(pth, (String) delta[0], line.getSingle(e));
+      Bukkit.getServer().getPluginManager().callEvent(efw);
+      if (!efw.isCancelled()) {
+        try {
+          ArrayList<String> cl = new ArrayList<>();
+          cl.addAll(Files.readAllLines(pth, Charset.defaultCharset()));
+          cl.set(Integer.parseInt(line.getSingle(e).toString()) - 1, (String) delta[0]);
+          Files.write(pth, "".getBytes());
+          for (String aCl : cl.toArray(new String[cl.size()])) {
+            Files.write(pth, (aCl + "\n").getBytes(), StandardOpenOption.APPEND);
+          }
         } catch (Exception x) {
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
+          skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
         }
-        return null;
+      }
     }
+  }
 
-    public void change(Event e, Object[] delta, Changer.ChangeMode mode) {
-        if (mode == Changer.ChangeMode.SET) {
-            Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
-            EvtFileWrite efw = new EvtFileWrite(pth, (String) delta[0], line.getSingle(e));
-            Bukkit.getServer().getPluginManager().callEvent(efw);
-            if (!efw.isCancelled()) {
-                try {
-                    ArrayList<String> cl = new ArrayList<>();
-                    cl.addAll(Files.readAllLines(pth, Charset.defaultCharset()));
-                    cl.set(Integer.parseInt(line.getSingle(e).toString()) - 1, (String) delta[0]);
-                    Files.write(pth, "".getBytes());
-                    for (String aCl : cl.toArray(new String[cl.size()])) {
-                        Files.write(pth, (aCl + "\n").getBytes(), StandardOpenOption.APPEND);
-                    }
-                } catch (Exception x) {
-                    skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
-                }
-            }
-        }
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+    line = (Expression<Number>) e[i];
+    path = (Expression<String>) e[1 - i];
+    return true;
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        line = (Expression<Number>) e[i];
-        path = (Expression<String>) e[1 - i];
-        return true;
+  @SuppressWarnings("unchecked")
+  @Override
+  public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
+    if (mode == Changer.ChangeMode.SET) {
+      return CollectionUtils.array(String[].class);
     }
+    return null;
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public Class<?>[] acceptChange(final Changer.ChangeMode mode) {
-        if (mode == Changer.ChangeMode.SET) {
-            return CollectionUtils.array(String[].class);
-        }
-        return null;
-    }
+  @Override
+  public Class<? extends String> getReturnType() {
+    return String.class;
+  }
 
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
+  @Override
+  public boolean isSingle() {
+    return true;
+  }
 
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
-
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

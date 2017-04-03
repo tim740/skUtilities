@@ -18,47 +18,47 @@ import java.util.concurrent.TimeUnit;
  * Created by tim740 on 21/03/2016
  */
 public class ExprFileTimeAttributes extends SimpleExpression<Number> {
-    private Expression<String> path;
-    private int ty;
+  private Expression<String> path;
+  private int ty;
 
-    @Override
-    @Nullable
-    protected Number[] get(Event e) {
-        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
-        try {
-            if (ty == 0) {
-                return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).lastModifiedTime().to(TimeUnit.SECONDS)};
-            } else if (ty == 1) {
-                return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).creationTime().to(TimeUnit.SECONDS)};
-            } else {
-                return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).lastAccessTime().to(TimeUnit.SECONDS)};
-            }
-        } catch (Exception x) {
-            skUtilities.prSysE("File: '" + pth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), x);
-        }
-        return null;
+  @Override
+  @Nullable
+  protected Number[] get(Event e) {
+    Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
+    try {
+      if (ty == 0) {
+        return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).lastModifiedTime().to(TimeUnit.SECONDS)};
+      } else if (ty == 1) {
+        return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).creationTime().to(TimeUnit.SECONDS)};
+      } else {
+        return new Number[]{Files.readAttributes(pth, BasicFileAttributes.class).lastAccessTime().to(TimeUnit.SECONDS)};
+      }
+    } catch (Exception x) {
+      skUtilities.prSysE("File: '" + pth + "' doesn't exist, or doesn't have write permission!", getClass().getSimpleName(), x);
     }
+    return null;
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        path = (Expression<String>) e[0];
-        ty = p.mark;
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+    path = (Expression<String>) e[0];
+    ty = p.mark;
+    return true;
+  }
 
-    @Override
-    public Class<? extends Number> getReturnType() {
-        return Number.class;
-    }
+  @Override
+  public Class<? extends Number> getReturnType() {
+    return Number.class;
+  }
 
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
+  @Override
+  public boolean isSingle() {
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

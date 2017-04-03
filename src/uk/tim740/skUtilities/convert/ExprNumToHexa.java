@@ -12,33 +12,33 @@ import javax.annotation.Nullable;
  * Created by tim740.
  */
 public class ExprNumToHexa extends SimpleExpression<String> {
-    private Expression<Number> n;
+  private Expression<Number> n;
 
-    @Override
-    @Nullable
-    protected String[] get(Event e) {
-        return new String[]{Integer.toHexString(n.getSingle(e).intValue())};
-    }
+  @Override
+  @Nullable
+  protected String[] get(Event e) {
+    return new String[]{Integer.toHexString(n.getSingle(e).intValue())};
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        n = (Expression<Number>) e[0];
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+    n = (Expression<Number>) e[0];
+    return true;
+  }
 
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
+  @Override
+  public Class<? extends String> getReturnType() {
+    return String.class;
+  }
 
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
+  @Override
+  public boolean isSingle() {
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

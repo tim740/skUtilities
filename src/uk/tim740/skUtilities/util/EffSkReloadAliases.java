@@ -14,19 +14,19 @@ import javax.annotation.Nullable;
  */
 public class EffSkReloadAliases extends Effect {
 
-    @Override
-    protected void execute(Event e) {
-        Aliases.clear();
-        Aliases.load();
-    }
+  @Override
+  protected void execute(Event e) {
+    Aliases.clear();
+    Aliases.load();
+  }
 
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        return true;
-    }
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

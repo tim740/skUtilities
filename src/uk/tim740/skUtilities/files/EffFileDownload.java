@@ -17,28 +17,28 @@ import java.nio.file.Paths;
  * Created by tim740 on 21/03/2016
  */
 public class EffFileDownload extends Effect {
-    private Expression<String> url, path;
+  private Expression<String> url, path;
 
-    @Override
-    protected void execute(Event e) {
-        Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
-        EvtFileDownload efd = new EvtFileDownload(url.getSingle(e), pth);
-        Bukkit.getServer().getPluginManager().callEvent(efd);
-        if (!efd.isCancelled()) {
-            skUtilities.downloadFile(pth, url.getSingle(e));
-        }
+  @Override
+  protected void execute(Event e) {
+    Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
+    EvtFileDownload efd = new EvtFileDownload(url.getSingle(e), pth);
+    Bukkit.getServer().getPluginManager().callEvent(efd);
+    if (!efd.isCancelled()) {
+      skUtilities.downloadFile(pth, url.getSingle(e));
     }
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        url = (Expression<String>) e[0];
-        path = (Expression<String>) e[1];
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+    url = (Expression<String>) e[0];
+    path = (Expression<String>) e[1];
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

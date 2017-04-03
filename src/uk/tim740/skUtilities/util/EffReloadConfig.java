@@ -14,26 +14,26 @@ import javax.annotation.Nullable;
  * Created by tim740 on 27/03/2016
  */
 public class EffReloadConfig extends Effect {
-    private Expression<String> str;
+  private Expression<String> str;
 
-    @Override
-    protected void execute(Event e) {
-        try {
-            Bukkit.getPluginManager().getPlugin(str.getSingle(e)).reloadConfig();
-        } catch (Exception x) {
-            skUtilities.prSysE("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), x);
-        }
+  @Override
+  protected void execute(Event e) {
+    try {
+      Bukkit.getPluginManager().getPlugin(str.getSingle(e)).reloadConfig();
+    } catch (Exception x) {
+      skUtilities.prSysE("'" + str + "' isn't a real plugin!", getClass().getSimpleName(), x);
     }
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
-        str = (Expression<String>) e[0];
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+    str = (Expression<String>) e[0];
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

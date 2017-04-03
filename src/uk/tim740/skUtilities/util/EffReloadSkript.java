@@ -16,84 +16,84 @@ import java.util.*;
  * Created by tim740 on 27/03/16
  */
 public class EffReloadSkript extends Effect {
-    private Expression<String> str;
-    private final static ScriptLoader.ScriptInfo loadedScripts = new ScriptLoader.ScriptInfo();
-    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
-    private final static Map<Class<? extends Event>, List<Trigger>> triggers = new HashMap<>();
-    private final static List<Trigger> selfRegisteredTriggers = new ArrayList<>();
+  private Expression<String> str;
+  private final static ScriptLoader.ScriptInfo loadedScripts = new ScriptLoader.ScriptInfo();
+  @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
+  private final static Map<Class<? extends Event>, List<Trigger>> triggers = new HashMap<>();
+  private final static List<Trigger> selfRegisteredTriggers = new ArrayList<>();
 
 
-    @Override
-    protected void execute(Event e) {
-        File f = new File("plugins" + File.separator + "Skript" + File.separator + "scripts" + File.separator + str.getSingle(e).replaceAll(".sk", "") + ".sk");
-        if (f.exists()) {
-            if (!f.isDirectory()) {
-                unloadScript(f);
-                ScriptLoader.loadScripts(new File[]{f});
-            }
-        } else {
-            skUtilities.prSysE("'" + f + "' doesn't exist!", getClass().getSimpleName());
+  @Override
+  protected void execute(Event e) {
+    File f = new File("plugins" + File.separator + "Skript" + File.separator + "scripts" + File.separator + str.getSingle(e).replaceAll(".sk", "") + ".sk");
+    if (f.exists()) {
+      if (!f.isDirectory()) {
+        unloadScript(f);
+        ScriptLoader.loadScripts(new File[]{f});
+      }
+    } else {
+      skUtilities.prSysE("'" + f + "' doesn't exist!", getClass().getSimpleName());
+    }
+  }
+
+  private static ScriptLoader.ScriptInfo unloadScript(final File script) {
+    final ScriptLoader.ScriptInfo r = unloadScript_(script);
+    Functions.validateFunctions();
+    return r;
+  }
+
+  private static ScriptLoader.ScriptInfo unloadScript_(final File script) {
+    final ScriptLoader.ScriptInfo info = removeTriggers(script);
+    synchronized (loadedScripts) {
+      loadedScripts.subtract(info);
+    }
+    return info;
+  }
+
+  private static ScriptLoader.ScriptInfo removeTriggers(final File script) {
+    final ScriptLoader.ScriptInfo info = new ScriptLoader.ScriptInfo();
+    info.files = 1;
+
+    final Iterator<List<Trigger>> triggersIter = triggers.values().iterator();
+    while (triggersIter.hasNext()) {
+      final List<Trigger> ts = triggersIter.next();
+      for (int i = 0; i < ts.size(); i++) {
+        if (script.equals(ts.get(i).getScript())) {
+          info.triggers++;
+          ts.remove(i);
+          i--;
+          if (ts.isEmpty())
+            triggersIter.remove();
         }
+      }
     }
 
-    private static ScriptLoader.ScriptInfo unloadScript(final File script) {
-        final ScriptLoader.ScriptInfo r = unloadScript_(script);
-        Functions.validateFunctions();
-        return r;
+    for (int i = 0; i < selfRegisteredTriggers.size(); i++) {
+      final Trigger t = selfRegisteredTriggers.get(i);
+      if (script.equals(t.getScript())) {
+        info.triggers++;
+        ((SelfRegisteringSkriptEvent) t.getEvent()).unregister(t);
+        selfRegisteredTriggers.remove(i);
+        i--;
+      }
     }
 
-    private static ScriptLoader.ScriptInfo unloadScript_(final File script) {
-        final ScriptLoader.ScriptInfo info = removeTriggers(script);
-        synchronized (loadedScripts) {
-            loadedScripts.subtract(info);
-        }
-        return info;
-    }
+    info.commands = Commands.unregisterCommands(script);
 
-    private static ScriptLoader.ScriptInfo removeTriggers(final File script) {
-        final ScriptLoader.ScriptInfo info = new ScriptLoader.ScriptInfo();
-        info.files = 1;
+    info.functions = Functions.clearFunctions(script);
 
-        final Iterator<List<Trigger>> triggersIter = triggers.values().iterator();
-        while (triggersIter.hasNext()) {
-            final List<Trigger> ts = triggersIter.next();
-            for (int i = 0; i < ts.size(); i++) {
-                if (script.equals(ts.get(i).getScript())) {
-                    info.triggers++;
-                    ts.remove(i);
-                    i--;
-                    if (ts.isEmpty())
-                        triggersIter.remove();
-                }
-            }
-        }
+    return info;
+  }
 
-        for (int i = 0; i < selfRegisteredTriggers.size(); i++) {
-            final Trigger t = selfRegisteredTriggers.get(i);
-            if (script.equals(t.getScript())) {
-                info.triggers++;
-                ((SelfRegisteringSkriptEvent) t.getEvent()).unregister(t);
-                selfRegisteredTriggers.remove(i);
-                i--;
-            }
-        }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+    str = (Expression<String>) e[0];
+    return true;
+  }
 
-        info.commands = Commands.unregisterCommands(script);
-
-        info.functions = Functions.clearFunctions(script);
-
-        return info;
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
-        str = (Expression<String>) e[0];
-        return true;
-    }
-
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

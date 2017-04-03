@@ -12,39 +12,39 @@ import javax.annotation.Nullable;
  * Created by tim740 on 10/03/2016
  */
 public class ExprSysTime extends SimpleExpression<Number> {
-    private int ty;
+  private int ty;
 
-    @Override
-    @Nullable
-    protected Number[] get(Event e) {
-        if (ty == 0) {
-            return new Number[]{System.nanoTime()};
-        } else if (ty == 1) {
-            return new Number[]{System.currentTimeMillis()};
-        } else {
-            return new Number[]{(System.currentTimeMillis() / 1000)};
-        }
+  @Override
+  @Nullable
+  protected Number[] get(Event e) {
+    if (ty == 0) {
+      return new Number[]{System.nanoTime()};
+    } else if (ty == 1) {
+      return new Number[]{System.currentTimeMillis()};
+    } else {
+      return new Number[]{(System.currentTimeMillis() / 1000)};
     }
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
-        ty = p.mark;
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+    ty = p.mark;
+    return true;
+  }
 
-    @Override
-    public Class<? extends Number> getReturnType() {
-        return Number.class;
-    }
+  @Override
+  public Class<? extends Number> getReturnType() {
+    return Number.class;
+  }
 
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
+  @Override
+  public boolean isSingle() {
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

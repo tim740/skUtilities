@@ -12,39 +12,39 @@ import javax.annotation.Nullable;
  * Created by tim740 on 02/04/2016
  */
 public class ExprToUpperLower extends SimpleExpression<String> {
-    private Expression<String> str;
-    private int ty;
+  private Expression<String> str;
+  private int ty;
 
-    @Override
-    @Nullable
-    protected String[] get(Event e) {
-        if (ty == 0) {
-            return new String[]{str.getSingle(e).toUpperCase()};
-        } else {
-            return new String[]{str.getSingle(e).toLowerCase()};
-        }
+  @Override
+  @Nullable
+  protected String[] get(Event e) {
+    if (ty == 0) {
+      return new String[]{str.getSingle(e).toUpperCase()};
+    } else {
+      return new String[]{str.getSingle(e).toLowerCase()};
     }
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        str = (Expression<String>) e[0];
-        ty = p.mark;
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+    str = (Expression<String>) e[0];
+    ty = p.mark;
+    return true;
+  }
 
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
+  @Override
+  public Class<? extends String> getReturnType() {
+    return String.class;
+  }
 
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
+  @Override
+  public boolean isSingle() {
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

@@ -14,38 +14,38 @@ import java.io.File;
  * Created by tim740 on 03/04/2016
  */
 public class ExprDiskSpace extends SimpleExpression<String> {
-    private int ty;
+  private int ty;
 
-    @Override
-    @Nullable
-    protected String[] get(Event e) {
-        if (ty == 0) {
-            return new String[]{skUtilities.getFileSize(new File(File.separator).getTotalSpace())};
-        } else if (ty == 1) {
-            return new String[]{skUtilities.getFileSize(new File(File.separator).getFreeSpace())};
-        } else {
-            return new String[]{skUtilities.getFileSize(new File(File.separator).getUsableSpace())};
-        }
+  @Override
+  @Nullable
+  protected String[] get(Event e) {
+    if (ty == 0) {
+      return new String[]{skUtilities.getFileSize(new File(File.separator).getTotalSpace())};
+    } else if (ty == 1) {
+      return new String[]{skUtilities.getFileSize(new File(File.separator).getFreeSpace())};
+    } else {
+      return new String[]{skUtilities.getFileSize(new File(File.separator).getUsableSpace())};
     }
+  }
 
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        ty = p.mark;
-        return true;
-    }
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+    ty = p.mark;
+    return true;
+  }
 
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
+  @Override
+  public Class<? extends String> getReturnType() {
+    return String.class;
+  }
 
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
+  @Override
+  public boolean isSingle() {
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

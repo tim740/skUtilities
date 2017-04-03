@@ -14,30 +14,30 @@ import java.time.ZoneId;
  */
 public class ExprGetRegion extends SimpleExpression<String> {
 
-    @Override
-    @Nullable
-    protected String[] get(Event e) {
-        return new String[]{ZoneId.systemDefault().toString()};
-    }
+  @Override
+  @Nullable
+  protected String[] get(Event e) {
+    return new String[]{ZoneId.systemDefault().toString()};
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+    return true;
+  }
 
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
+  @Override
+  public Class<? extends String> getReturnType() {
+    return String.class;
+  }
 
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
+  @Override
+  public boolean isSingle() {
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

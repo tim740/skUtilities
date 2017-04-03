@@ -16,41 +16,41 @@ import java.net.URL;
  * Created by tim740 on 13/09/2016
  */
 public class ExprUrlContents extends SimpleExpression<String> {
-    private Expression<String> url;
+  private Expression<String> url;
 
-    @Override
-    @Nullable
-    protected String[] get(Event e) {
-        try {
-            BufferedReader ur = new BufferedReader(new InputStreamReader(new URL(url.getSingle(e)).openStream()));
-            String[] s = ur.lines().toArray(String[]::new);
-            ur.close();
-            return s;
-        } catch (Exception x) {
-            skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
-        }
-        return null;
+  @Override
+  @Nullable
+  protected String[] get(Event e) {
+    try {
+      BufferedReader ur = new BufferedReader(new InputStreamReader(new URL(url.getSingle(e)).openStream()));
+      String[] s = ur.lines().toArray(String[]::new);
+      ur.close();
+      return s;
+    } catch (Exception x) {
+      skUtilities.prSysE("Error Reading from: '" + url.getSingle(e) + "' Is the site down?", getClass().getSimpleName(), x);
     }
+    return null;
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        url = (Expression<String>) e[0];
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+    url = (Expression<String>) e[0];
+    return true;
+  }
 
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
+  @Override
+  public Class<? extends String> getReturnType() {
+    return String.class;
+  }
 
-    @Override
-    public boolean isSingle() {
-        return false;
-    }
+  @Override
+  public boolean isSingle() {
+    return false;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

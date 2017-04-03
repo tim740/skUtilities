@@ -10,33 +10,33 @@ import java.nio.file.Path;
  * Created by tim740 on 22/03/2016
  */
 public class EvtRunApp extends Event implements Cancellable {
-    private static final HandlerList hls = new HandlerList();
-    private boolean cancel = false;
-    private Path app;
+  private static final HandlerList hls = new HandlerList();
+  private boolean cancel = false;
+  private Path app;
 
-    public EvtRunApp(Path sapp) {
-        cancel = false;
-        app = sapp;
-    }
+  public EvtRunApp(Path sapp) {
+    cancel = false;
+    app = sapp;
+  }
 
-    public Path getApp() {
-        return app;
-    }
+  public Path getApp() {
+    return app;
+  }
 
-    public boolean isCancelled() {
-        return cancel;
-    }
+  public boolean isCancelled() {
+    return cancel;
+  }
 
-    public void setCancelled(boolean c) {
-        cancel = c;
-    }
+  public void setCancelled(boolean c) {
+    cancel = c;
+  }
 
-    @Override
-    public HandlerList getHandlers() {
-        return hls;
-    }
+  @Override
+  public HandlerList getHandlers() {
+    return hls;
+  }
 
-    public static HandlerList getHandlerList() {
-        return hls;
-    }
+  public static HandlerList getHandlerList() {
+    return hls;
+  }
 }

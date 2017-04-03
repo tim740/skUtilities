@@ -17,54 +17,54 @@ import java.util.Properties;
  * Created by tim740 on 07/03/16
  */
 public class ExprFromUnicode extends SimpleExpression<String> {
-    private Expression<String> str;
-    private int ty;
+  private Expression<String> str;
+  private int ty;
 
-    @Override
-    @Nullable
-    protected String[] get(Event e) {
-        String out = "";
-        Properties p = new Properties();
-        try {
-            p.load(new StringReader("key=" + str.getSingle(e)));
-        } catch (IOException x) {
-            skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
-        }
-        if (ty == 0) {
-            out = p.getProperty("key");
+  @Override
+  @Nullable
+  protected String[] get(Event e) {
+    String out = "";
+    Properties p = new Properties();
+    try {
+      p.load(new StringReader("key=" + str.getSingle(e)));
+    } catch (IOException x) {
+      skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
+    }
+    if (ty == 0) {
+      out = p.getProperty("key");
+    } else {
+      String iout = p.getProperty("key");
+      for (String c : iout.split("")) {
+        if (Objects.equals(out, "")) {
+          out = (Integer.toString(c.charAt(0)));
         } else {
-            String iout = p.getProperty("key");
-            for (String c : iout.split("")) {
-                if (Objects.equals(out, "")) {
-                    out = (Integer.toString(c.charAt(0)));
-                } else {
-                    out += "," + Integer.toString(c.charAt(0));
-                }
-            }
+          out += "," + Integer.toString(c.charAt(0));
         }
-        return new String[]{out};
+      }
     }
+    return new String[]{out};
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-        ty = p.mark;
-        str = (Expression<String>) e[0];
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
+    ty = p.mark;
+    str = (Expression<String>) e[0];
+    return true;
+  }
 
-    @Override
-    public Class<? extends String> getReturnType() {
-        return String.class;
-    }
+  @Override
+  public Class<? extends String> getReturnType() {
+    return String.class;
+  }
 
-    @Override
-    public boolean isSingle() {
-        return true;
-    }
+  @Override
+  public boolean isSingle() {
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }

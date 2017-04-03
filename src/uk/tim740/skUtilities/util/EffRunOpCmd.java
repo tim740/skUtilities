@@ -17,40 +17,40 @@ import javax.annotation.Nullable;
  * Code by @dzikoysk, optimized by @tim740
  */
 public class EffRunOpCmd extends Effect {
-    private Expression<String> str;
-    private Expression<Player> usr;
+  private Expression<String> str;
+  private Expression<Player> usr;
 
 
-    @Override
-    protected void execute(Event e) {
-        for (String cmd : str.getArray(e)) {
-            if (cmd.startsWith("/")) cmd = cmd.substring(1);
-            if (usr == null) {
-                Skript.dispatchCommand(Bukkit.getConsoleSender(), cmd);
-            } else {
-                for (CommandSender u : usr.getArray(e)) {
-                    if (!u.isOp()) {
-                        u.setOp(true);
-                        Skript.dispatchCommand(u, cmd);
-                        u.setOp(false);
-                    } else {
-                        Skript.dispatchCommand(u, cmd);
-                    }
-                }
-            }
+  @Override
+  protected void execute(Event e) {
+    for (String cmd : str.getArray(e)) {
+      if (cmd.startsWith("/")) cmd = cmd.substring(1);
+      if (usr == null) {
+        Skript.dispatchCommand(Bukkit.getConsoleSender(), cmd);
+      } else {
+        for (CommandSender u : usr.getArray(e)) {
+          if (!u.isOp()) {
+            u.setOp(true);
+            Skript.dispatchCommand(u, cmd);
+            u.setOp(false);
+          } else {
+            Skript.dispatchCommand(u, cmd);
+          }
         }
+      }
     }
+  }
 
-    @SuppressWarnings("unchecked")
-    @Override
-    public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
-        usr = (Expression<Player>) e[0];
-        str = (Expression<String>) e[1];
-        return true;
-    }
+  @SuppressWarnings("unchecked")
+  @Override
+  public boolean init(Expression<?>[] e, int i, Kleenean k, SkriptParser.ParseResult p) {
+    usr = (Expression<Player>) e[0];
+    str = (Expression<String>) e[1];
+    return true;
+  }
 
-    @Override
-    public String toString(@Nullable Event e, boolean b) {
-        return getClass().getName();
-    }
+  @Override
+  public String toString(@Nullable Event e, boolean b) {
+    return getClass().getName();
+  }
 }
