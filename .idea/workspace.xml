@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2f07d6-ec70-49f3-a755-152b4121a1a2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffRunCmd.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetRunCodeOutput.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/event/EvtRunCode.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFilePathSeparator.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetSysProp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/skUtilities.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/skUtilities.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprDiskSpace.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprDiskSpace.java" />
     </list>
     <ignored path="skUtilities.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Reg.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Reg.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="88" column="127" lean-forward="false" selection-start-line="88" selection-start-column="127" selection-end-line="88" selection-end-column="127" />
+            <state relative-caret-position="220">
+              <caret line="87" column="127" lean-forward="false" selection-start-line="87" selection-start-column="127" selection-end-line="87" selection-end-column="127" />
               <folding>
                 <element signature="method#fileEvents#0;class#Reg#0" expanded="false" />
                 <element signature="e#10572#10729#0" expanded="true" />
@@ -103,6 +96,16 @@
                 <element signature="method#url#0;class#Reg#0" expanded="false" />
                 <element signature="method#utils#0;class#Reg#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CondFileExists.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/CondFileExists.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -669,13 +672,6 @@
       <option name="presentableId" value="Default" />
       <updated>1455549243806</updated>
     </task>
-    <task id="LOCAL-00364" summary="urlSSLVersion">
-      <created>1476556225605</created>
-      <option name="number" value="00364" />
-      <option name="presentableId" value="LOCAL-00364" />
-      <option name="project" value="LOCAL" />
-      <updated>1476556225605</updated>
-    </task>
     <task id="LOCAL-00365" summary="optimize closing">
       <created>1476558597478</created>
       <option name="number" value="00365" />
@@ -1012,12 +1008,19 @@
       <option name="project" value="LOCAL" />
       <updated>1491259770204</updated>
     </task>
-    <option name="localTasksCounter" value="413" />
+    <task id="LOCAL-00413" summary="Execute Cmd, Event for cmd Execute, Get Output, Get Sys Prop">
+      <created>1491825208170</created>
+      <option name="number" value="00413" />
+      <option name="presentableId" value="LOCAL-00413" />
+      <option name="project" value="LOCAL" />
+      <updated>1491825208172</updated>
+    </task>
+    <option name="localTasksCounter" value="414" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="24" width="1378" height="712" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1067,7 +1070,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
-    <MESSAGE value="downgrade to metricslite" />
     <MESSAGE value="move utils in to main class" />
     <MESSAGE value="reorder" />
     <MESSAGE value="fix TimeInTimeZone" />
@@ -1092,7 +1094,8 @@
     <MESSAGE value="0.8.9" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="loads" />
-    <option name="LAST_COMMIT_MESSAGE" value="loads" />
+    <MESSAGE value="Execute Cmd, Event for cmd Execute, Get Output, Get Sys Prop" />
+    <option name="LAST_COMMIT_MESSAGE" value="Execute Cmd, Event for cmd Execute, Get Output, Get Sys Prop" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1401,6 +1404,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="27" column="96" lean-forward="false" selection-start-line="27" selection-start-column="96" selection-end-line="27" selection-end-column="96" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1497,8 +1501,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="88" column="127" lean-forward="false" selection-start-line="88" selection-start-column="127" selection-end-line="88" selection-end-column="127" />
+        <state relative-caret-position="220">
+          <caret line="87" column="127" lean-forward="false" selection-start-line="87" selection-start-column="127" selection-end-line="87" selection-end-column="127" />
           <folding>
             <element signature="method#fileEvents#0;class#Reg#0" expanded="false" />
             <element signature="e#10572#10729#0" expanded="true" />
