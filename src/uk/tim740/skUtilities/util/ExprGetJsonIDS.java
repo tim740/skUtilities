@@ -37,7 +37,7 @@ public class ExprGetJsonIDS extends SimpleExpression<String> {
         return cl.toArray(new String[cl.size()]);
       }
     } catch (ParseException x) {
-      skUtilities.prSysE("Error while parsing json!", getClass().getSimpleName(), x);
+      skUtilities.prSysE("Error while parsing json, if your having issues i recommend switching to `skript-json`", getClass().getSimpleName(), x);
     }
     return null;
   }
