@@ -25,16 +25,15 @@ public class ExprGetPathASR extends SimpleExpression<String> {
     Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
     try {
       switch (ty) {
-        case 0: {
+        case 0:
           return new String[]{pth.normalize().toAbsolutePath().toString()};
-        } case 1: {
+        case 1:
           String s = pth.normalize().toAbsolutePath().toString();
           String ps = s.substring(s.lastIndexOf(File.separator));
           s = s.replace(ps, "");
           return new String[]{(s.substring(s.lastIndexOf(File.separator)) + ps).replaceFirst(File.separator, "")};
-        } case 2: {
+        case 2:
           return new String[]{Paths.get(skUtilities.getDefaultPath("")).relativize(pth).toString()};
-        }
       }
     } catch (Exception x) {
       skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
