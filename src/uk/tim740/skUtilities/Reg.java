@@ -72,7 +72,6 @@ class Reg {
     Skript.registerEffect(EffRunApp.class, "[skutil[ities] ]run (script|program|app[lication]|file) at %string%");
     Skript.registerEffect(EffRunCmd.class, "[skutil[ities] ]run (bash|batch|sh) (command|cmd) %string%");
     Skript.registerExpression(ExprGetRunCodeOutput.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ][last ]output of executed (bash|batch|sh) (command|cmd)", "[skutil[ities] ][last ]executed (bash|batch|sh) (command|cmd)'s output");
-    Skript.registerExpression(ExprGetSysProp.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]system property (0¦os arch|1¦os name|2¦os version|3¦java home|4¦user dir|5¦user home|6¦user name|7¦user lang[uage]|8¦user timezone|9¦line separator|10¦file separator|11¦path separator|12¦file encoding)");
 
     Skript.registerEffect(EffCreateFile.class, "[skutil[ities] ]create (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
     Skript.registerEffect(EffDeleteFile.class, "[skutil[ities] ]delete (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
@@ -290,6 +289,9 @@ class Reg {
     Skript.registerCondition(CondisTimeZone.class, "[skutil[ities] ]server is time[ ]zone %string%", "[skutil[ities] ]server is(n'| no)t time[ ]zone %string%");
 
     Skript.registerExpression(ExprGetJsonIDS.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]content of json value(0¦ |1¦'s) %strings% from text %-string%", "[skutil[ities] ]value's %strings%'s json contents from text %-string%");
+
+    Skript.registerExpression(ExprGetSysProp.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]system property (0¦os arch|1¦os name|2¦os version|3¦java home|4¦user dir|5¦user home|6¦user name|7¦user lang[uage]|8¦user timezone|9¦line separator|10¦file separator|11¦path separator|12¦file encoding)");
+    Skript.registerCondition(CondisOS.class, "[skutil[ities] ][system ]os is (0¦windows|1¦mac|2¦linux|3¦unix|4¦solaris|5¦sun os|6¦hp ux|7¦aix|8¦irix|9¦free bsd|10¦open bsd|11¦net bsd)", "[skutil[ities] ][system ]os is(n'| no)t (0¦windows|1¦mac|2¦linux|3¦unix|4¦solaris|5¦sun os|6¦hp ux|7¦aix|8¦irix|9¦free bsd|10¦open bsd|11¦net bsd)");
 
     Skript.registerExpression(ExprLoaded.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦events|8¦effects|9¦expressions|10¦conditions)");
     Skript.registerExpression(ExprLoadedList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦plugins|1¦addons) list", "[skutil[ities] ]list of (0¦plugins|1¦addons)");
