@@ -11,7 +11,7 @@ import javax.annotation.Nullable;
 /**
  * Created by tim740 on 10/04/2017
  */
-public class ExprGetRunCodeOutput extends SimpleExpression<String> {
+public class ExprRunCmdOutput extends SimpleExpression<String> {
 
   @Override
   @Nullable

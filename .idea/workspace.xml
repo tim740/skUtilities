@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2f07d6-ec70-49f3-a755-152b4121a1a2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/util/CondisOS.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetSysProp.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprGetSysProp.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetRunCodeOutput.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprRunCmdOutput.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java" />
     </list>
@@ -51,50 +50,50 @@
       <file leaf-file-name="Reg.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="288" column="126" lean-forward="false" selection-start-line="288" selection-start-column="126" selection-end-line="288" selection-end-column="126" />
+            <state relative-caret-position="174">
+              <caret line="289" column="0" lean-forward="true" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
               <folding>
                 <element signature="method#fileEvents#0;class#Reg#0" expanded="false" />
-                <element signature="e#10259#10416#0" expanded="true" />
-                <element signature="e#10415#10416#0" expanded="true" />
-                <element signature="e#10492#10649#0" expanded="true" />
-                <element signature="e#10648#10649#0" expanded="true" />
-                <element signature="e#10843#10984#0" expanded="true" />
-                <element signature="e#10983#10984#0" expanded="true" />
-                <element signature="e#11195#11342#0" expanded="true" />
-                <element signature="e#11341#11342#0" expanded="true" />
-                <element signature="e#11540#11697#0" expanded="true" />
-                <element signature="e#11696#11697#0" expanded="true" />
-                <element signature="e#11895#12052#0" expanded="true" />
-                <element signature="e#12051#12052#0" expanded="true" />
-                <element signature="e#12244#12393#0" expanded="true" />
-                <element signature="e#12392#12393#0" expanded="true" />
-                <element signature="e#12571#12720#0" expanded="true" />
-                <element signature="e#12719#12720#0" expanded="true" />
-                <element signature="e#12794#12948#0" expanded="true" />
-                <element signature="e#12947#12948#0" expanded="true" />
-                <element signature="e#13126#13275#0" expanded="true" />
-                <element signature="e#13274#13275#0" expanded="true" />
-                <element signature="e#13349#13503#0" expanded="true" />
-                <element signature="e#13502#13503#0" expanded="true" />
-                <element signature="e#13689#13842#0" expanded="true" />
-                <element signature="e#13841#13842#0" expanded="true" />
-                <element signature="e#13918#14079#0" expanded="true" />
-                <element signature="e#14078#14079#0" expanded="true" />
-                <element signature="e#14261#14412#0" expanded="true" />
-                <element signature="e#14411#14412#0" expanded="true" />
-                <element signature="e#14487#14645#0" expanded="true" />
-                <element signature="e#14644#14645#0" expanded="true" />
-                <element signature="e#14720#14879#0" expanded="true" />
-                <element signature="e#14878#14879#0" expanded="true" />
-                <element signature="e#15044#15187#0" expanded="true" />
-                <element signature="e#15186#15187#0" expanded="true" />
-                <element signature="e#15258#15405#0" expanded="true" />
-                <element signature="e#15404#15405#0" expanded="true" />
-                <element signature="e#15577#15724#0" expanded="true" />
-                <element signature="e#15723#15724#0" expanded="true" />
-                <element signature="e#15797#15951#0" expanded="true" />
-                <element signature="e#15950#15951#0" expanded="true" />
+                <element signature="e#10255#10412#0" expanded="true" />
+                <element signature="e#10411#10412#0" expanded="true" />
+                <element signature="e#10488#10645#0" expanded="true" />
+                <element signature="e#10644#10645#0" expanded="true" />
+                <element signature="e#10839#10980#0" expanded="true" />
+                <element signature="e#10979#10980#0" expanded="true" />
+                <element signature="e#11191#11338#0" expanded="true" />
+                <element signature="e#11337#11338#0" expanded="true" />
+                <element signature="e#11536#11693#0" expanded="true" />
+                <element signature="e#11692#11693#0" expanded="true" />
+                <element signature="e#11891#12048#0" expanded="true" />
+                <element signature="e#12047#12048#0" expanded="true" />
+                <element signature="e#12240#12389#0" expanded="true" />
+                <element signature="e#12388#12389#0" expanded="true" />
+                <element signature="e#12567#12716#0" expanded="true" />
+                <element signature="e#12715#12716#0" expanded="true" />
+                <element signature="e#12790#12944#0" expanded="true" />
+                <element signature="e#12943#12944#0" expanded="true" />
+                <element signature="e#13122#13271#0" expanded="true" />
+                <element signature="e#13270#13271#0" expanded="true" />
+                <element signature="e#13345#13499#0" expanded="true" />
+                <element signature="e#13498#13499#0" expanded="true" />
+                <element signature="e#13685#13838#0" expanded="true" />
+                <element signature="e#13837#13838#0" expanded="true" />
+                <element signature="e#13914#14075#0" expanded="true" />
+                <element signature="e#14074#14075#0" expanded="true" />
+                <element signature="e#14257#14408#0" expanded="true" />
+                <element signature="e#14407#14408#0" expanded="true" />
+                <element signature="e#14483#14641#0" expanded="true" />
+                <element signature="e#14640#14641#0" expanded="true" />
+                <element signature="e#14716#14875#0" expanded="true" />
+                <element signature="e#14874#14875#0" expanded="true" />
+                <element signature="e#15040#15183#0" expanded="true" />
+                <element signature="e#15182#15183#0" expanded="true" />
+                <element signature="e#15254#15401#0" expanded="true" />
+                <element signature="e#15400#15401#0" expanded="true" />
+                <element signature="e#15573#15720#0" expanded="true" />
+                <element signature="e#15719#15720#0" expanded="true" />
+                <element signature="e#15793#15947#0" expanded="true" />
+                <element signature="e#15946#15947#0" expanded="true" />
                 <element signature="method#yaml#0;class#Reg#0" expanded="false" />
                 <element signature="method#url#0;class#Reg#0" expanded="false" />
               </folding>
@@ -105,28 +104,8 @@
       <file leaf-file-name="CondisOS.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/CondisOS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="54" column="14" lean-forward="false" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CondFileExists.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/CondFileExists.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+            <state relative-caret-position="195">
+              <caret line="37" column="15" lean-forward="true" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -152,24 +131,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SExprFileContents.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprFileContents.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="35" column="27" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2666#2667#0" expanded="false" />
-                <element signature="e#2695#2696#0" expanded="false" />
-                <element signature="e#2738#2739#0" expanded="false" />
-                <element signature="e#2760#2761#0" expanded="false" />
-                <element signature="e#2830#2831#0" expanded="false" />
-                <element signature="e#2867#2868#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="EffRunCmd.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffRunCmd.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -184,19 +145,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExprGetRunCodeOutput.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetRunCodeOutput.java">
+      <file leaf-file-name="ExprRunCmdOutput.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprRunCmdOutput.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="34">
               <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="false" />
-                <element signature="e#698#699#0" expanded="false" />
-                <element signature="e#727#728#0" expanded="false" />
-                <element signature="e#770#771#0" expanded="false" />
-                <element signature="e#791#792#0" expanded="false" />
-                <element signature="e#861#862#0" expanded="false" />
-                <element signature="e#898#899#0" expanded="false" />
+                <element signature="e#694#695#0" expanded="false" />
+                <element signature="e#723#724#0" expanded="false" />
+                <element signature="e#766#767#0" expanded="false" />
+                <element signature="e#787#788#0" expanded="false" />
+                <element signature="e#857#858#0" expanded="false" />
+                <element signature="e#894#895#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -690,13 +651,6 @@
       <option name="presentableId" value="Default" />
       <updated>1455549243806</updated>
     </task>
-    <task id="LOCAL-00365" summary="optimize closing">
-      <created>1476558597478</created>
-      <option name="number" value="00365" />
-      <option name="presentableId" value="LOCAL-00365" />
-      <option name="project" value="LOCAL" />
-      <updated>1476558597478</updated>
-    </task>
     <task id="LOCAL-00366" summary="0.8.1">
       <created>1476565418653</created>
       <option name="number" value="00366" />
@@ -1033,7 +987,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491825208172</updated>
     </task>
-    <option name="localTasksCounter" value="414" />
+    <task id="LOCAL-00414" summary="CondisOS, Move SysProp">
+      <created>1491827035608</created>
+      <option name="number" value="00414" />
+      <option name="presentableId" value="LOCAL-00414" />
+      <option name="project" value="LOCAL" />
+      <updated>1491827035608</updated>
+    </task>
+    <option name="localTasksCounter" value="415" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1088,7 +1049,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
-    <MESSAGE value="move utils in to main class" />
     <MESSAGE value="reorder" />
     <MESSAGE value="fix TimeInTimeZone" />
     <MESSAGE value="add yaml, optimise" />
@@ -1113,7 +1073,8 @@
     <MESSAGE value="gitignore" />
     <MESSAGE value="loads" />
     <MESSAGE value="Execute Cmd, Event for cmd Execute, Get Output, Get Sys Prop" />
-    <option name="LAST_COMMIT_MESSAGE" value="Execute Cmd, Event for cmd Execute, Get Output, Get Sys Prop" />
+    <MESSAGE value="CondisOS, Move SysProp" />
+    <option name="LAST_COMMIT_MESSAGE" value="CondisOS, Move SysProp" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1375,18 +1336,18 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprRunCodej.java" />
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetRunCodeOutput.java">
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprRunCmdOutput.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#698#699#0" expanded="false" />
-            <element signature="e#727#728#0" expanded="false" />
-            <element signature="e#770#771#0" expanded="false" />
-            <element signature="e#791#792#0" expanded="false" />
-            <element signature="e#861#862#0" expanded="false" />
-            <element signature="e#898#899#0" expanded="false" />
+            <element signature="e#694#695#0" expanded="false" />
+            <element signature="e#723#724#0" expanded="false" />
+            <element signature="e#766#767#0" expanded="false" />
+            <element signature="e#787#788#0" expanded="false" />
+            <element signature="e#857#858#0" expanded="false" />
+            <element signature="e#894#895#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1445,14 +1406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffRunCmd.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1462,14 +1415,6 @@
             <element signature="e#1158#1159#0" expanded="false" />
             <element signature="e#1195#1196#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/CondFileExists.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1497,60 +1442,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/CondFileExists.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/CondisOS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="54" column="14" lean-forward="false" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+        <state relative-caret-position="195">
+          <caret line="37" column="15" lean-forward="true" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="288" column="126" lean-forward="false" selection-start-line="288" selection-start-column="126" selection-end-line="288" selection-end-column="126" />
+        <state relative-caret-position="174">
+          <caret line="289" column="0" lean-forward="true" selection-start-line="289" selection-start-column="0" selection-end-line="289" selection-end-column="0" />
           <folding>
             <element signature="method#fileEvents#0;class#Reg#0" expanded="false" />
-            <element signature="e#10259#10416#0" expanded="true" />
-            <element signature="e#10415#10416#0" expanded="true" />
-            <element signature="e#10492#10649#0" expanded="true" />
-            <element signature="e#10648#10649#0" expanded="true" />
-            <element signature="e#10843#10984#0" expanded="true" />
-            <element signature="e#10983#10984#0" expanded="true" />
-            <element signature="e#11195#11342#0" expanded="true" />
-            <element signature="e#11341#11342#0" expanded="true" />
-            <element signature="e#11540#11697#0" expanded="true" />
-            <element signature="e#11696#11697#0" expanded="true" />
-            <element signature="e#11895#12052#0" expanded="true" />
-            <element signature="e#12051#12052#0" expanded="true" />
-            <element signature="e#12244#12393#0" expanded="true" />
-            <element signature="e#12392#12393#0" expanded="true" />
-            <element signature="e#12571#12720#0" expanded="true" />
-            <element signature="e#12719#12720#0" expanded="true" />
-            <element signature="e#12794#12948#0" expanded="true" />
-            <element signature="e#12947#12948#0" expanded="true" />
-            <element signature="e#13126#13275#0" expanded="true" />
-            <element signature="e#13274#13275#0" expanded="true" />
-            <element signature="e#13349#13503#0" expanded="true" />
-            <element signature="e#13502#13503#0" expanded="true" />
-            <element signature="e#13689#13842#0" expanded="true" />
-            <element signature="e#13841#13842#0" expanded="true" />
-            <element signature="e#13918#14079#0" expanded="true" />
-            <element signature="e#14078#14079#0" expanded="true" />
-            <element signature="e#14261#14412#0" expanded="true" />
-            <element signature="e#14411#14412#0" expanded="true" />
-            <element signature="e#14487#14645#0" expanded="true" />
-            <element signature="e#14644#14645#0" expanded="true" />
-            <element signature="e#14720#14879#0" expanded="true" />
-            <element signature="e#14878#14879#0" expanded="true" />
-            <element signature="e#15044#15187#0" expanded="true" />
-            <element signature="e#15186#15187#0" expanded="true" />
-            <element signature="e#15258#15405#0" expanded="true" />
-            <element signature="e#15404#15405#0" expanded="true" />
-            <element signature="e#15577#15724#0" expanded="true" />
-            <element signature="e#15723#15724#0" expanded="true" />
-            <element signature="e#15797#15951#0" expanded="true" />
-            <element signature="e#15950#15951#0" expanded="true" />
+            <element signature="e#10255#10412#0" expanded="true" />
+            <element signature="e#10411#10412#0" expanded="true" />
+            <element signature="e#10488#10645#0" expanded="true" />
+            <element signature="e#10644#10645#0" expanded="true" />
+            <element signature="e#10839#10980#0" expanded="true" />
+            <element signature="e#10979#10980#0" expanded="true" />
+            <element signature="e#11191#11338#0" expanded="true" />
+            <element signature="e#11337#11338#0" expanded="true" />
+            <element signature="e#11536#11693#0" expanded="true" />
+            <element signature="e#11692#11693#0" expanded="true" />
+            <element signature="e#11891#12048#0" expanded="true" />
+            <element signature="e#12047#12048#0" expanded="true" />
+            <element signature="e#12240#12389#0" expanded="true" />
+            <element signature="e#12388#12389#0" expanded="true" />
+            <element signature="e#12567#12716#0" expanded="true" />
+            <element signature="e#12715#12716#0" expanded="true" />
+            <element signature="e#12790#12944#0" expanded="true" />
+            <element signature="e#12943#12944#0" expanded="true" />
+            <element signature="e#13122#13271#0" expanded="true" />
+            <element signature="e#13270#13271#0" expanded="true" />
+            <element signature="e#13345#13499#0" expanded="true" />
+            <element signature="e#13498#13499#0" expanded="true" />
+            <element signature="e#13685#13838#0" expanded="true" />
+            <element signature="e#13837#13838#0" expanded="true" />
+            <element signature="e#13914#14075#0" expanded="true" />
+            <element signature="e#14074#14075#0" expanded="true" />
+            <element signature="e#14257#14408#0" expanded="true" />
+            <element signature="e#14407#14408#0" expanded="true" />
+            <element signature="e#14483#14641#0" expanded="true" />
+            <element signature="e#14640#14641#0" expanded="true" />
+            <element signature="e#14716#14875#0" expanded="true" />
+            <element signature="e#14874#14875#0" expanded="true" />
+            <element signature="e#15040#15183#0" expanded="true" />
+            <element signature="e#15182#15183#0" expanded="true" />
+            <element signature="e#15254#15401#0" expanded="true" />
+            <element signature="e#15400#15401#0" expanded="true" />
+            <element signature="e#15573#15720#0" expanded="true" />
+            <element signature="e#15719#15720#0" expanded="true" />
+            <element signature="e#15793#15947#0" expanded="true" />
+            <element signature="e#15946#15947#0" expanded="true" />
             <element signature="method#yaml#0;class#Reg#0" expanded="false" />
             <element signature="method#url#0;class#Reg#0" expanded="false" />
           </folding>
