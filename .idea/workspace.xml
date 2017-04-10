@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1e2f07d6-ec70-49f3-a755-152b4121a1a2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprGetJsonIDS.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprGetJsonIDS.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latest.ver" afterPath="$PROJECT_DIR$/latest.ver" />
     </list>
     <ignored path="skUtilities.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,7 +33,7 @@
       <file leaf-file-name="skUtilities.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="0">
               <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="false" />
@@ -113,8 +113,8 @@
       <file leaf-file-name="ExprGetJsonIDS.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprGetJsonIDS.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="39" column="112" lean-forward="false" selection-start-line="39" selection-start-column="112" selection-end-line="39" selection-end-column="112" />
+            <state relative-caret-position="218">
+              <caret line="36" column="49" lean-forward="true" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -196,7 +196,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprFileOwner.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/url/ExprUrlContents.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/url/ExprUrlLastModified.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/url/ExprUrlLines.java" />
@@ -247,6 +246,7 @@
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetPathASR.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprYaml.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprGetJsonIDS.java" />
+        <option value="$PROJECT_DIR$/latest.ver" />
       </list>
     </option>
   </component>
@@ -355,50 +355,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="skUtilities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skUtilities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skUtilities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skUtilities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skUtilities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skUtilities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="skUtilities" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="files" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -645,13 +601,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1455549243806</updated>
-    </task>
-    <task id="LOCAL-00368" summary="0.8.1&#10;">
-      <created>1476570495391</created>
-      <option name="number" value="00368" />
-      <option name="presentableId" value="LOCAL-00368" />
-      <option name="project" value="LOCAL" />
-      <updated>1476570495391</updated>
     </task>
     <task id="LOCAL-00369" summary="optimize">
       <created>1476623824261</created>
@@ -989,7 +938,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491829346686</updated>
     </task>
-    <option name="localTasksCounter" value="417" />
+    <task id="LOCAL-00417" summary="notice">
+      <created>1491829856843</created>
+      <option name="number" value="00417" />
+      <option name="presentableId" value="LOCAL-00417" />
+      <option name="project" value="LOCAL" />
+      <updated>1491829856844</updated>
+    </task>
+    <option name="localTasksCounter" value="418" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1044,7 +1000,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
-    <MESSAGE value="reorder" />
     <MESSAGE value="fix TimeInTimeZone" />
     <MESSAGE value="add yaml, optimise" />
     <MESSAGE value="0.8.5&#10;" />
@@ -1069,7 +1024,8 @@
     <MESSAGE value="loads" />
     <MESSAGE value="Execute Cmd, Event for cmd Execute, Get Output, Get Sys Prop" />
     <MESSAGE value="CondisOS, Move SysProp" />
-    <option name="LAST_COMMIT_MESSAGE" value="CondisOS, Move SysProp" />
+    <MESSAGE value="notice" />
+    <option name="LAST_COMMIT_MESSAGE" value="notice" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1083,13 +1039,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/url/ExprUrlLastModified.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/url/ExprUrlLines.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
@@ -1286,13 +1235,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLite.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
@@ -1375,7 +1317,7 @@
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFilePathSeparator.java" />
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
+        <state relative-caret-position="0">
           <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="false" />
@@ -1503,10 +1445,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latest.ver">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprGetJsonIDS.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="39" column="112" lean-forward="false" selection-start-line="39" selection-start-column="112" selection-end-line="39" selection-end-column="112" />
+        <state relative-caret-position="218">
+          <caret line="36" column="49" lean-forward="true" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
           <folding />
         </state>
       </provider>
