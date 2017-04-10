@@ -61,7 +61,6 @@ class Reg {
     Skript.registerExpression(ExprFileDirSizeBytes.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]size of (0¦file|1¦dir[ectory]) %string% in bytes", "[skutil[ities] ](0¦file|1¦dir[ectory]) %string%'s size in bytes");
     Skript.registerExpression(ExprFileNameExt.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦name|1¦extension) of file %string%", "[skutil[ities] ]file %string%'s (0¦name|1¦extension)");
     Skript.registerExpression(ExprGetPathASR.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦(absolute|complete)|1¦short|2¦relative) path of %string%", "[skutil[ities] ]%string%'s (0¦(absolute|complete)|1¦short|2¦relative) path");
-    Skript.registerExpression(ExprFilePathSeparator.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦file|1¦path) separator");
 
     Skript.registerExpression(ExprDiskSpace.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]disk's (0¦total|1¦free|2¦usable) space", "[skutil[ities] ](0¦total|1¦free|2¦usable) space on disk");
 
@@ -71,6 +70,10 @@ class Reg {
     Skript.registerExpression(SExprEditLine.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]line %number% in file %string%", "[skutil[ities] ]file %string%'s line %number%");
 
     Skript.registerEffect(EffRunApp.class, "[skutil[ities] ]run (script|program|app[lication]|file) at %string%");
+    Skript.registerEffect(EffRunCmd.class, "[skutil[ities] ]run (bash|batch|sh) (command|cmd) %string%");
+    Skript.registerExpression(ExprGetRunCodeOutput.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ][last ]output of executed (bash|batch|sh) (command|cmd)", "[skutil[ities] ][last ]executed (bash|batch|sh) (command|cmd)'s output");
+    Skript.registerExpression(ExprGetSysProp.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]system property (0¦os arch|1¦os name|2¦os version|3¦java home|4¦user dir|5¦user home|6¦user name|7¦user lang[uage]|8¦user timezone|9¦line separator|10¦file separator|11¦path separator|12¦file encoding)");
+
     Skript.registerEffect(EffCreateFile.class, "[skutil[ities] ]create (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
     Skript.registerEffect(EffDeleteFile.class, "[skutil[ities] ]delete (0¦(script|program|app[lication]|[zip ]file)|1¦dir[ectory]) %string%");
     Skript.registerEffect(EffFileRenameMove.class, "[skutil[ities] ](0¦rename (file|dir[ectory])|1¦move file|2¦copy file|3¦move dir[ectory]|4¦copy dir[ectory]) %string% to %-string%");
@@ -113,6 +116,15 @@ class Reg {
       @Override
       public Path get(EvtRunApp e) {
         return e.getApp();
+      }
+    }, 0);
+
+    Skript.registerEvent("RunCode", SimpleEvent.class, EvtRunCode.class, "[skutil[ities] ](bash|batch|sh) (command|cmd) (run|execute)");
+    EventValues.registerEventValue(EvtRunCode.class, String.class, new Getter<String, EvtRunCode>() {
+      @Nullable
+      @Override
+      public String get(EvtRunCode e) {
+        return e.getCmd();
       }
     }, 0);
 

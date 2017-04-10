@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2f07d6-ec70-49f3-a755-152b4121a1a2" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffRunCmd.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetRunCodeOutput.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/event/EvtRunCode.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFilePathSeparator.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetSysProp.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/skUtilities.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/skUtilities.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprDiskSpace.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprDiskSpace.java" />
     </list>
     <ignored path="skUtilities.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,29 +39,166 @@
       <file leaf-file-name="skUtilities.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="106" column="105" lean-forward="true" selection-start-line="106" selection-start-column="105" selection-end-line="106" selection-end-column="105" />
-              <folding />
+            <state relative-caret-position="68">
+              <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#6103#6104#0" expanded="false" />
+                <element signature="e#6189#6190#0" expanded="false" />
+                <element signature="e#6225#6226#0" expanded="false" />
+                <element signature="e#6322#6323#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Reg.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Reg.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="247" column="3" lean-forward="true" selection-start-line="247" selection-start-column="3" selection-end-line="247" selection-end-column="3" />
+            <state relative-caret-position="237">
+              <caret line="88" column="127" lean-forward="false" selection-start-line="88" selection-start-column="127" selection-end-line="88" selection-end-column="127" />
+              <folding>
+                <element signature="method#fileEvents#0;class#Reg#0" expanded="false" />
+                <element signature="e#10572#10729#0" expanded="true" />
+                <element signature="e#10728#10729#0" expanded="true" />
+                <element signature="e#10805#10962#0" expanded="true" />
+                <element signature="e#10961#10962#0" expanded="true" />
+                <element signature="e#11156#11297#0" expanded="true" />
+                <element signature="e#11296#11297#0" expanded="true" />
+                <element signature="e#11508#11655#0" expanded="true" />
+                <element signature="e#11654#11655#0" expanded="true" />
+                <element signature="e#11853#12010#0" expanded="true" />
+                <element signature="e#12009#12010#0" expanded="true" />
+                <element signature="e#12208#12365#0" expanded="true" />
+                <element signature="e#12364#12365#0" expanded="true" />
+                <element signature="e#12557#12706#0" expanded="true" />
+                <element signature="e#12705#12706#0" expanded="true" />
+                <element signature="e#12884#13033#0" expanded="true" />
+                <element signature="e#13032#13033#0" expanded="true" />
+                <element signature="e#13107#13261#0" expanded="true" />
+                <element signature="e#13260#13261#0" expanded="true" />
+                <element signature="e#13439#13588#0" expanded="true" />
+                <element signature="e#13587#13588#0" expanded="true" />
+                <element signature="e#13662#13816#0" expanded="true" />
+                <element signature="e#13815#13816#0" expanded="true" />
+                <element signature="e#14002#14155#0" expanded="true" />
+                <element signature="e#14154#14155#0" expanded="true" />
+                <element signature="e#14231#14392#0" expanded="true" />
+                <element signature="e#14391#14392#0" expanded="true" />
+                <element signature="e#14574#14725#0" expanded="true" />
+                <element signature="e#14724#14725#0" expanded="true" />
+                <element signature="e#14800#14958#0" expanded="true" />
+                <element signature="e#14957#14958#0" expanded="true" />
+                <element signature="e#15033#15192#0" expanded="true" />
+                <element signature="e#15191#15192#0" expanded="true" />
+                <element signature="e#15357#15500#0" expanded="true" />
+                <element signature="e#15499#15500#0" expanded="true" />
+                <element signature="e#15571#15718#0" expanded="true" />
+                <element signature="e#15717#15718#0" expanded="true" />
+                <element signature="e#15890#16037#0" expanded="true" />
+                <element signature="e#16036#16037#0" expanded="true" />
+                <element signature="e#16110#16264#0" expanded="true" />
+                <element signature="e#16263#16264#0" expanded="true" />
+                <element signature="method#yaml#0;class#Reg#0" expanded="false" />
+                <element signature="method#url#0;class#Reg#0" expanded="false" />
+                <element signature="method#utils#0;class#Reg#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="646">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MetricsLiteO.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLiteO.java">
+      <file leaf-file-name="ExprGetPathASR.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetPathASR.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="107" column="57" lean-forward="true" selection-start-line="107" selection-start-column="57" selection-end-line="107" selection-end-column="57" />
-              <folding />
+            <state relative-caret-position="119">
+              <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1662#1663#0" expanded="false" />
+                <element signature="e#1691#1692#0" expanded="false" />
+                <element signature="e#1734#1735#0" expanded="false" />
+                <element signature="e#1755#1756#0" expanded="false" />
+                <element signature="e#1825#1826#0" expanded="false" />
+                <element signature="e#1862#1863#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SExprFileContents.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprFileContents.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="35" column="27" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2666#2667#0" expanded="false" />
+                <element signature="e#2695#2696#0" expanded="false" />
+                <element signature="e#2738#2739#0" expanded="false" />
+                <element signature="e#2760#2761#0" expanded="false" />
+                <element signature="e#2830#2831#0" expanded="false" />
+                <element signature="e#2867#2868#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EffRunCmd.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffRunCmd.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="15" column="3" lean-forward="false" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1158#1159#0" expanded="false" />
+                <element signature="e#1195#1196#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExprGetSysProp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetSysProp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1704#1705#0" expanded="false" />
+                <element signature="e#1733#1734#0" expanded="false" />
+                <element signature="e#1776#1777#0" expanded="false" />
+                <element signature="e#1797#1798#0" expanded="false" />
+                <element signature="e#1867#1868#0" expanded="false" />
+                <element signature="e#1904#1905#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ExprGetRunCodeOutput.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetRunCodeOutput.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#698#699#0" expanded="false" />
+                <element signature="e#727#728#0" expanded="false" />
+                <element signature="e#770#771#0" expanded="false" />
+                <element signature="e#791#792#0" expanded="false" />
+                <element signature="e#861#862#0" expanded="false" />
+                <element signature="e#898#899#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -73,6 +217,7 @@
       <find>pth.getFileName</find>
       <find />
       <find>MetricsLite</find>
+      <find>plugin</find>
     </findStrings>
     <replaceStrings>
       <replace>pth.toFile().getName</replace>
@@ -96,15 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprDiskSpace.java" />
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileDirSize.java" />
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileDirSizeBytes.java" />
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileLines.java" />
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileNameExt.java" />
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFilePathSeparator.java" />
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileTimeAttributes.java" />
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetPathASR.java" />
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprZipList.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprEditLine.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprFileAttribute.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprFileContents.java" />
@@ -144,9 +280,18 @@
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprVersion.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLite.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLiteB.java" />
-        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java" />
-        <option value="$PROJECT_DIR$/src/config.yml" />
+        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprRunCode.java" />
+        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprRunCodej.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java" />
+        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetRunCodeOutput.java" />
+        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprDiskSpace.java" />
+        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/event/EvtRunCode.java" />
+        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFilePathSeparator.java" />
+        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffRunCode.java" />
+        <option value="$PROJECT_DIR$/src/config.yml" />
+        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffRunCmd.java" />
+        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetSysProp.java" />
+        <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java" />
       </list>
     </option>
   </component>
@@ -202,6 +347,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -256,11 +403,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skUtilities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skUtilities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="skUtilities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="files" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
         <option name="show-excluded-files" value="false" />
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -292,18 +459,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="uk.tim740.skUtilities.sql" />
+      <recent name="uk.tim740.skUtilities.files.event" />
       <recent name="uk.tim740.skUtilities.files" />
       <recent name="uk.tim740.skUtilities.util" />
+      <recent name="uk.tim740.skUtilities.sql" />
       <recent name="uk.tim740.skUtilities.convert" />
-      <recent name="uk.tim740.skUtilities.files.event" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\java projects\skUtilities\src\uk\tim740\skUtilities\files" />
       <recent name="C:\Users\Admin\java projects\skUtilities\src\uk\tim740\skUtilities\util" />
       <recent name="C:\Users\Admin\java projects\skUtilities\src\uk\tim740\skUtilities" />
       <recent name="C:\Users\Admin\java projects\skUtilities\src\uk\tim740\skUtilities\convert" />
       <recent name="C:\Users\Admin\java projects\skUtilities\src" />
-      <recent name="C:\Users\Admin\java projects\skUtilities\src\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -855,7 +1022,6 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.37077826" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -879,6 +1045,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.37077826" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32724252" sideWeight="0.49632892" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -930,7 +1097,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="68" />
+      <option name="time" value="69" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -939,89 +1106,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileDirSize.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileDirSizeBytes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileLines.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="54" column="1" lean-forward="false" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileNameExt.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFilePathSeparator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileTimeAttributes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetPathASR.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprZipList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprEditLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="95" column="0" lean-forward="false" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprFileAttribute.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="107" column="1" lean-forward="false" selection-start-line="107" selection-start-column="1" selection-end-line="107" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprFileContents.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,7 +1117,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1037,9 +1124,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="152" column="0" lean-forward="true" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-          <folding>
-            <element signature="e#1696#1726#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1047,7 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1055,7 +1138,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1063,7 +1145,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1071,7 +1152,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1079,7 +1159,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,7 +1166,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1095,7 +1173,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1103,7 +1180,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="60" column="0" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1111,7 +1187,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1119,7 +1194,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1127,7 +1201,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1135,7 +1208,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1143,7 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="63" column="0" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1151,7 +1222,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="40" column="1" lean-forward="false" selection-start-line="40" selection-start-column="1" selection-end-line="40" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1159,7 +1229,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="39" column="3" lean-forward="false" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1167,7 +1236,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="38" column="1" lean-forward="false" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1175,9 +1243,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="98" column="0" lean-forward="false" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding>
-            <element signature="e#587#644#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1185,7 +1250,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="36" column="1" lean-forward="false" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1193,7 +1257,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="55" column="1" lean-forward="false" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,7 +1264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1209,7 +1271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1217,7 +1278,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,7 +1285,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,19 +1292,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#453#454#0" expanded="false" />
-            <element signature="e#517#518#0" expanded="false" />
-            <element signature="e#653#654#0" expanded="false" />
-            <element signature="e#674#675#0" expanded="false" />
-            <element signature="e#738#739#0" expanded="false" />
-            <element signature="e#767#768#0" expanded="false" />
-            <element signature="e#810#811#0" expanded="false" />
-            <element signature="e#831#832#0" expanded="false" />
-            <element signature="e#901#902#0" expanded="false" />
-            <element signature="e#938#939#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1253,7 +1299,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1261,7 +1306,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1269,7 +1313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1277,7 +1320,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1285,7 +1327,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1293,7 +1334,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
           <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1301,15 +1341,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprVersion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="67" column="0" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1317,7 +1348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1325,41 +1355,196 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="203">
           <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLiteO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="105" column="42" lean-forward="false" selection-start-line="105" selection-start-column="42" selection-end-line="105" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprEditLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprRunCodej.java" />
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetRunCodeOutput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#698#699#0" expanded="false" />
+            <element signature="e#727#728#0" expanded="false" />
+            <element signature="e#770#771#0" expanded="false" />
+            <element signature="e#791#792#0" expanded="false" />
+            <element signature="e#861#862#0" expanded="false" />
+            <element signature="e#898#899#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprVersion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprDiskSpace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="27" column="96" lean-forward="false" selection-start-line="27" selection-start-column="96" selection-end-line="27" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprFileContents.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="35" column="27" lean-forward="false" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2666#2667#0" expanded="false" />
+            <element signature="e#2695#2696#0" expanded="false" />
+            <element signature="e#2738#2739#0" expanded="false" />
+            <element signature="e#2760#2761#0" expanded="false" />
+            <element signature="e#2830#2831#0" expanded="false" />
+            <element signature="e#2867#2868#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/event/EvtRunCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="4" column="36" lean-forward="false" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFilePathSeparator.java" />
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="19" column="45" lean-forward="false" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#6103#6104#0" expanded="false" />
+            <element signature="e#6189#6190#0" expanded="false" />
+            <element signature="e#6225#6226#0" expanded="false" />
+            <element signature="e#6322#6323#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="39" column="30" lean-forward="false" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
+        <state relative-caret-position="646">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java">
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffRunCmd.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="106" column="105" lean-forward="true" selection-start-line="106" selection-start-column="105" selection-end-line="106" selection-end-column="105" />
-          <folding />
+        <state relative-caret-position="102">
+          <caret line="15" column="3" lean-forward="false" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1158#1159#0" expanded="false" />
+            <element signature="e#1195#1196#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetSysProp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="20" column="17" lean-forward="false" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1704#1705#0" expanded="false" />
+            <element signature="e#1733#1734#0" expanded="false" />
+            <element signature="e#1776#1777#0" expanded="false" />
+            <element signature="e#1797#1798#0" expanded="false" />
+            <element signature="e#1867#1868#0" expanded="false" />
+            <element signature="e#1904#1905#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprGetPathASR.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1662#1663#0" expanded="false" />
+            <element signature="e#1691#1692#0" expanded="false" />
+            <element signature="e#1734#1735#0" expanded="false" />
+            <element signature="e#1755#1756#0" expanded="false" />
+            <element signature="e#1825#1826#0" expanded="false" />
+            <element signature="e#1862#1863#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="247" column="3" lean-forward="true" selection-start-line="247" selection-start-column="3" selection-end-line="247" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLiteO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="107" column="57" lean-forward="true" selection-start-line="107" selection-start-column="57" selection-end-line="107" selection-end-column="57" />
-          <folding />
+        <state relative-caret-position="237">
+          <caret line="88" column="127" lean-forward="false" selection-start-line="88" selection-start-column="127" selection-end-line="88" selection-end-column="127" />
+          <folding>
+            <element signature="method#fileEvents#0;class#Reg#0" expanded="false" />
+            <element signature="e#10572#10729#0" expanded="true" />
+            <element signature="e#10728#10729#0" expanded="true" />
+            <element signature="e#10805#10962#0" expanded="true" />
+            <element signature="e#10961#10962#0" expanded="true" />
+            <element signature="e#11156#11297#0" expanded="true" />
+            <element signature="e#11296#11297#0" expanded="true" />
+            <element signature="e#11508#11655#0" expanded="true" />
+            <element signature="e#11654#11655#0" expanded="true" />
+            <element signature="e#11853#12010#0" expanded="true" />
+            <element signature="e#12009#12010#0" expanded="true" />
+            <element signature="e#12208#12365#0" expanded="true" />
+            <element signature="e#12364#12365#0" expanded="true" />
+            <element signature="e#12557#12706#0" expanded="true" />
+            <element signature="e#12705#12706#0" expanded="true" />
+            <element signature="e#12884#13033#0" expanded="true" />
+            <element signature="e#13032#13033#0" expanded="true" />
+            <element signature="e#13107#13261#0" expanded="true" />
+            <element signature="e#13260#13261#0" expanded="true" />
+            <element signature="e#13439#13588#0" expanded="true" />
+            <element signature="e#13587#13588#0" expanded="true" />
+            <element signature="e#13662#13816#0" expanded="true" />
+            <element signature="e#13815#13816#0" expanded="true" />
+            <element signature="e#14002#14155#0" expanded="true" />
+            <element signature="e#14154#14155#0" expanded="true" />
+            <element signature="e#14231#14392#0" expanded="true" />
+            <element signature="e#14391#14392#0" expanded="true" />
+            <element signature="e#14574#14725#0" expanded="true" />
+            <element signature="e#14724#14725#0" expanded="true" />
+            <element signature="e#14800#14958#0" expanded="true" />
+            <element signature="e#14957#14958#0" expanded="true" />
+            <element signature="e#15033#15192#0" expanded="true" />
+            <element signature="e#15191#15192#0" expanded="true" />
+            <element signature="e#15357#15500#0" expanded="true" />
+            <element signature="e#15499#15500#0" expanded="true" />
+            <element signature="e#15571#15718#0" expanded="true" />
+            <element signature="e#15717#15718#0" expanded="true" />
+            <element signature="e#15890#16037#0" expanded="true" />
+            <element signature="e#16036#16037#0" expanded="true" />
+            <element signature="e#16110#16264#0" expanded="true" />
+            <element signature="e#16263#16264#0" expanded="true" />
+            <element signature="method#yaml#0;class#Reg#0" expanded="false" />
+            <element signature="method#url#0;class#Reg#0" expanded="false" />
+            <element signature="method#utils#0;class#Reg#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

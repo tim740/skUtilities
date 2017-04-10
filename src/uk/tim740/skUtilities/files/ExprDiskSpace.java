@@ -19,13 +19,15 @@ public class ExprDiskSpace extends SimpleExpression<String> {
   @Override
   @Nullable
   protected String[] get(Event e) {
-    if (ty == 0) {
-      return new String[]{skUtilities.getFileSize(new File(File.separator).getTotalSpace())};
-    } else if (ty == 1) {
-      return new String[]{skUtilities.getFileSize(new File(File.separator).getFreeSpace())};
-    } else {
-      return new String[]{skUtilities.getFileSize(new File(File.separator).getUsableSpace())};
+    switch (ty) {
+      case 0:
+        return new String[]{skUtilities.getFileSize(new File(File.separator).getTotalSpace())};
+      case 1:
+        return new String[]{skUtilities.getFileSize(new File(File.separator).getFreeSpace())};
+      case 2:
+        return new String[]{skUtilities.getFileSize(new File(File.separator).getUsableSpace())};
     }
+    return null;
   }
 
   @Override

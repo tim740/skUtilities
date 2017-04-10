@@ -7,28 +7,21 @@ import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 
 import javax.annotation.Nullable;
-import java.io.File;
 
 /**
- * Created by tim740 on 15/02/2017
+ * Created by tim740 on 10/04/2017
  */
-public class ExprFilePathSeparator extends SimpleExpression<String> {
-  private int ty;
+public class ExprGetRunCodeOutput extends SimpleExpression<String> {
 
   @Override
   @Nullable
   protected String[] get(Event e) {
-    if (ty == 0) {
-      return new String[]{File.separator};
-    } else {
-      return new String[]{File.pathSeparator};
-    }
+    return new String[]{EffRunCmd.o};
   }
 
   @SuppressWarnings("unchecked")
   @Override
   public boolean init(Expression<?>[] e, int i, Kleenean k, ParseResult p) {
-    ty = p.mark;
     return true;
   }
 
