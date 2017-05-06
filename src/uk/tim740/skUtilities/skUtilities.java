@@ -49,7 +49,6 @@ public class skUtilities extends JavaPlugin {
       if (getConfig().getBoolean("loadConversions", true)) {
         ls += "Conversions,";
         Reg.convert();
-
       }
       if (getConfig().getBoolean("loadFiles", true)) {
         ls += " Files,";

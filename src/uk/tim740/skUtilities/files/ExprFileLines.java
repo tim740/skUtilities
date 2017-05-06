@@ -9,9 +9,7 @@ import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.file.*;
 
 /**
  * Created by tim740 on 17/03/2016
@@ -25,8 +23,12 @@ public class ExprFileLines extends SimpleExpression<Number> {
     Path pth = Paths.get(skUtilities.getDefaultPath(path.getSingle(e)));
     try {
       return new Number[]{Files.lines(pth, Charset.defaultCharset()).count()};
+    } catch (NoSuchFileException x) {
+      skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
+    } catch (AccessDeniedException x) {
+      skUtilities.prSysE("File: '" + pth + "' is read only!", getClass().getSimpleName(), x);
     } catch (Exception x) {
-      skUtilities.prSysE("File: '" + pth + "' doesn't exist, or is not readable!", getClass().getSimpleName(), x);
+      skUtilities.prSysE("File: '" + pth + "' " + x.getMessage(), getClass().getSimpleName(), x);
     }
     return null;
   }

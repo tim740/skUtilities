@@ -10,11 +10,9 @@ import uk.tim740.skUtilities.files.event.EvtFileWrite;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
+import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.nio.file.*;
 import java.util.ArrayList;
 
 /**
@@ -46,8 +44,18 @@ public class EffInsertLine extends Effect {
         for (String aCl : cl.toArray(new String[cl.size()])) {
           Files.write(pth, (aCl + "\n").getBytes(), StandardOpenOption.APPEND);
         }
+      } catch (NoSuchFileException x) {
+        skUtilities.prSysE("File: '" + pth + "' doesn't exist!", getClass().getSimpleName(), x);
+      } catch (AccessDeniedException x) {
+        skUtilities.prSysE("File: '" + pth + "' is read only!", getClass().getSimpleName(), x);
+      } catch (IndexOutOfBoundsException x) {
+        try {
+          skUtilities.prSysE("File: '" + pth + "' only contain's" + Files.lines(pth, Charset.defaultCharset()).count() + "lines!", getClass().getSimpleName(), x);
+        } catch (IOException x1) {
+          skUtilities.prSysE("File: '" + pth + "' " + x.getMessage(), getClass().getSimpleName(), x1);
+        }
       } catch (Exception x) {
-        skUtilities.prSysE("File: '" + pth + "' doesn't exist!, or is not readable!", getClass().getSimpleName(), x);
+        skUtilities.prSysE("File: '" + pth + "' " + x.getMessage(), getClass().getSimpleName(), x);
       }
     }
   }
