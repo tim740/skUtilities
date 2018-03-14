@@ -1,21 +1,21 @@
 package uk.tim740.skUtilities;
 
-import ch.njol.skript.Skript;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.plugin.java.JavaPlugin;
-import uk.tim740.skUtilities.util.EffReloadConfig;
-
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
-import java.util.Objects;
+import java.time.Duration;
+
+import ch.njol.skript.Skript;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import uk.tim740.skUtilities.util.EffReloadConfig;
 
 public class skUtilities extends JavaPlugin {
 
@@ -73,7 +73,16 @@ public class skUtilities extends JavaPlugin {
     Skript.registerEffect(EffReloadConfig.class, "reload %string%'s config", "reload config of %string%");
 
     if (getConfig().getBoolean("checkForUpdates", true)) {
-      Bukkit.getScheduler().scheduleSyncRepeatingTask(this, this::updateChk, 1L, 864000L);
+      Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
+        // fetch the configuration options on every run to ignore out of date values
+        boolean downloadUpdates = getConfig().getBoolean("downloadUpdates", false);
+        boolean downloadChangelog = getConfig().getBoolean("downloadChangelog", false);
+        boolean broadcastUpdates = getConfig().getBoolean("broadcastUpdates", true);
+
+        // download the file async because of the IO block calls and copy all non-thread-safe values in there
+        UpdateChecker task = new UpdateChecker(this, downloadUpdates, downloadChangelog, broadcastUpdates);
+        Bukkit.getScheduler().runTaskAsynchronously(this, task);
+      }, 1L, Duration.ofMinutes(72).getSeconds() * 20L);
     } else {
       prSysI("Checking for updates is disabled, you should consider enabling it again!");
     }
@@ -90,47 +99,6 @@ public class skUtilities extends JavaPlugin {
       skUtilities.prSysE("Failed to submit stats to bStats, bStats could be down!", getClass().getSimpleName(), x);
     }
     prSysI("loaded modules (" + ls + ") in " + (System.currentTimeMillis() - s) + "ms");
-  }
-
-  private void updateChk() {
-    try {
-      BufferedReader ur = new BufferedReader(new InputStreamReader(new URL("https://raw.githubusercontent.com/tim740/skUtilities/master/latest.ver").openStream()));
-      String v = ur.readLine();
-      ur.close();
-      if (!Objects.equals(getVer(), v)) {
-        prSysI("A new version of the skUtilities is out v" + v);
-        if (getConfig().getBoolean("downloadUpdates", true)) {
-          String dln = ("plugins" + File.separator + "skUtilities" + File.separator + "skUtilities.v" + v + ".jar");
-          if (!new File(dln).exists()) {
-            prSysI("Starting download of skUtilities v" + v);
-            downloadFile(Paths.get(dln), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities.v" + v + ".jar");
-            prSysI("Finished download of 'skUtilities v" + v + ".jar' located in 'plugins/skUtilities'");
-            if (getConfig().getBoolean("downloadChangelog", true)) {
-              String dlnc = ("plugins" + File.separator + "skUtilities" + File.separator + "skUtilities_v" + v + "_Changelog.sk");
-              if (!new File(dlnc).exists()) {
-                downloadFile(Paths.get(dlnc), "https://github.com/tim740/skUtilities/releases/download/v" + v + "/skUtilities_v" + v + "_Changelog.sk");
-              }
-              prSysI("View changelog for 'skUtilities_v" + v + "_Changelog.sk' in directory 'plugins/skUtilities'");
-            } else {
-              prSysI("View changelog here: 'https://github.com/tim740/skUtilities/releases/latest'");
-            }
-          } else {
-            prSysU("Latest version (v" + v + ") has already been downloaded and ready to use.");
-          }
-        } else {
-          prSysU("Download v" + v + ": 'https://github.com/tim740/skUtilities/releases/latest'");
-          prSysI("Option: 'downloadUpdates' is disabled in the config.");
-        }
-      }
-    } catch (Exception e) {
-      prSysE("Failed to get latest version number, you might be offline!", "Main", e);
-    }
-  }
-  private void prSysU(String s) {
-    if (Bukkit.getPluginManager().getPlugin("skUtilities").getConfig().getBoolean("broadcastUpdates", true)) {
-      Bukkit.broadcast(ChatColor.AQUA + "[skUtilities: Update] " + ChatColor.GRAY + s, "skUtilities.update");
-    }
-    prSysI(s);
   }
 
   public static void prSysE(String s, String c) {
