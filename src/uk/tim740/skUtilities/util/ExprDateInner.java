@@ -24,9 +24,9 @@ public class ExprDateInner extends SimpleExpression<String> {
   @Override
   @Nullable
   protected String[] get(Event e) {
-    Date s = id.getSingle(e);
+    Date d = new Date(id.getSingle(e).getTimestamp() * 1000L);
     try {
-      LocalDateTime ldt = LocalDateTime.parse(s.toString(), DateTimeFormatter.ofPattern(new SimpleDateFormat().toPattern()));
+      LocalDateTime ldt = LocalDateTime.parse(d.toString(), DateTimeFormatter.ofPattern(new SimpleDateFormat().toPattern()));
       switch (ty) {
         case 0: {
           return new String[]{String.valueOf(ldt.getYear())};

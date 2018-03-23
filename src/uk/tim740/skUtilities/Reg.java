@@ -11,11 +11,11 @@ import uk.tim740.skUtilities.files.*;
 import uk.tim740.skUtilities.files.event.*;
 import uk.tim740.skUtilities.url.*;
 import uk.tim740.skUtilities.util.*;
+import uk.tim740.skUtilities.yaml.CondYamlExists;
+import uk.tim740.skUtilities.yaml.SExprYaml;
 
 import javax.annotation.Nullable;
 import java.nio.file.Path;
-
-//import uk.tim740.skUtilities.sql.*;
 
 /**
  * Created by tim740 on 18/12/2016
@@ -292,6 +292,9 @@ class Reg {
 
     Skript.registerExpression(ExprGetSysProp.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ]system property (0¦os arch|1¦os name|2¦os version|3¦java home|4¦user dir|5¦user home|6¦user name|7¦user lang[uage]|8¦user timezone|9¦line separator|10¦file separator|11¦path separator|12¦file encoding)");
     Skript.registerCondition(CondisOS.class, "[skutil[ities] ](operating system|os) is (0¦windows|1¦mac|2¦linux|3¦unix|4¦solaris|5¦sun os|6¦hp ux|7¦aix|8¦irix|9¦free bsd|10¦open bsd|11¦net bsd)", "[skutil[ities] ](operating system|os) is(n'| no)t (0¦windows|1¦mac|2¦linux|3¦unix|4¦solaris|5¦sun os|6¦hp ux|7¦aix|8¦irix|9¦free bsd|10¦open bsd|11¦net bsd)");
+
+    Skript.registerExpression(ExprCpuCores.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]number of (cpu|processor) cores", "[skutil[ities] ](cpu|processor) core count");
+    Skript.registerExpression(ExprCpuSpec.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦name|1¦arch[itecture]) of (cpu|processor)", "[skutil[ities] ](cpu|processor) (0¦name|1¦arch[itecture])");
 
     Skript.registerExpression(ExprLoaded.class, Number.class, ExpressionType.PROPERTY, "[skutil[ities] ]number of[ loaded] (0¦(commands|cmds)|1¦functions|2¦s(c|k)ripts|3¦triggers|4¦statements|5¦variables|6¦aliases|7¦events|8¦effects|9¦expressions|10¦conditions)");
     Skript.registerExpression(ExprLoadedList.class, String.class, ExpressionType.PROPERTY, "[skutil[ities] ](0¦plugins|1¦addons) list", "[skutil[ities] ]list of (0¦plugins|1¦addons)");

@@ -1,4 +1,4 @@
-package uk.tim740.skUtilities.files;
+package uk.tim740.skUtilities.yaml;
 
 import ch.njol.skript.classes.Changer;
 import ch.njol.skript.lang.Expression;

@@ -12,6 +12,7 @@ import uk.tim740.skUtilities.skUtilities;
 import javax.annotation.Nullable;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.UnmappableCharacterException;
 import java.nio.file.*;
 import java.util.ArrayList;
 
@@ -54,8 +55,10 @@ public class EffInsertLine extends Effect {
         } catch (IOException x1) {
           skUtilities.prSysE("File: '" + pth + "' " + x.getMessage(), getClass().getSimpleName(), x1);
         }
+      } catch (UnmappableCharacterException x){
+        skUtilities.prSysE("Unmappable Character: '" +  x.getMessage() + "' in file: '" + pth + "'", getClass().getSimpleName(), x);
       } catch (Exception x) {
-        skUtilities.prSysE("File: '" + pth + "' " + x.getMessage(), getClass().getSimpleName(), x);
+        skUtilities.prSysE("File: '" + pth + "' " + x.getMessage() + " (" + x.getClass().getSimpleName() + ")", getClass().getSimpleName(), x);
       }
     }
   }
