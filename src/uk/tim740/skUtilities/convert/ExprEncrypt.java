@@ -5,8 +5,6 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 import uk.tim740.skUtilities.skUtilities;
 
 import javax.annotation.Nullable;
@@ -15,9 +13,9 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
 /**
  * Created by tim740 on 23/02/2016
@@ -33,11 +31,11 @@ public class ExprEncrypt extends SimpleExpression<String> {
       Cipher c = Cipher.getInstance(cipher.getSingle(e).toUpperCase());
       c.init(ty, new SecretKeySpec(key.getSingle(e).getBytes(), cipher.getSingle(e).toUpperCase()));
       if (ty == Cipher.ENCRYPT_MODE) {
-        return new String[]{new BASE64Encoder().encode(c.doFinal(str.getSingle(e).getBytes()))};
+        return new String[]{Base64.getEncoder().encodeToString(c.doFinal(str.getSingle(e).getBytes()))};
       } else {
-        return new String[]{new String(c.doFinal(new BASE64Decoder().decodeBuffer(str.getSingle(e))))};
+        return new String[]{new String(c.doFinal(Base64.getDecoder().decode(str.getSingle(e))))};
       }
-    } catch (NoSuchPaddingException | BadPaddingException | IOException | IllegalBlockSizeException x) {
+    } catch (NoSuchPaddingException | BadPaddingException | IllegalBlockSizeException x) {
       skUtilities.prSysE(x.getMessage(), getClass().getSimpleName(), x);
     } catch (NoSuchAlgorithmException x) {
       skUtilities.prSysE(x.getMessage() + " '" + cipher.getSingle(e).toUpperCase() + "'", getClass().getSimpleName(), x);
