@@ -1,5 +1,11 @@
 package uk.tim740.skUtilities;
 
+import ch.njol.skript.Skript;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.plugin.java.JavaPlugin;
+import uk.tim740.skUtilities.util.EffReloadConfig;
+
 import java.io.File;
 import java.net.URL;
 import java.nio.file.FileAlreadyExistsException;
@@ -8,14 +14,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.DecimalFormat;
 import java.time.Duration;
-
-import ch.njol.skript.Skript;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.plugin.java.JavaPlugin;
-
-import uk.tim740.skUtilities.util.EffReloadConfig;
 
 public class skUtilities extends JavaPlugin {
 
@@ -73,19 +71,15 @@ public class skUtilities extends JavaPlugin {
 
     if (getConfig().getBoolean("checkForUpdates", true)) {
       Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
-        // fetch the configuration options on every run to ignore out of date values
         boolean downloadUpdates = getConfig().getBoolean("downloadUpdates", false);
         boolean downloadChangelog = getConfig().getBoolean("downloadChangelog", false);
         boolean broadcastUpdates = getConfig().getBoolean("broadcastUpdates", true);
-
-        // download the file async because of the IO block calls and copy all non-thread-safe values in there
-        UpdateChecker task = new UpdateChecker(this, downloadUpdates, downloadChangelog, broadcastUpdates);
+        UpdateChecker task = new UpdateChecker(this, broadcastUpdates, downloadUpdates, downloadChangelog);
         Bukkit.getScheduler().runTaskAsynchronously(this, task);
-      }, 1L, Duration.ofMinutes(72).getSeconds() * 20L);
+      }, 1L, Duration.ofHours(12).getSeconds());
     } else {
       prSysI("Checking for updates is disabled, you should consider enabling it again!");
     }
-
     try {
       MetricsLiteO mcs = new MetricsLiteO(this);
       mcs.start();

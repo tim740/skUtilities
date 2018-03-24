@@ -1,14 +1,15 @@
 package uk.tim740.skUtilities;
 
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 
 public class UpdateChecker implements Runnable {
 
@@ -23,9 +24,8 @@ public class UpdateChecker implements Runnable {
     private final boolean downloadUpdates;
     private final boolean downloadChangelog;
 
-    public UpdateChecker(skUtilities plugin, boolean broadcast, boolean downloadUpdates, boolean downloadChangelog) {
+    UpdateChecker(skUtilities plugin, boolean broadcast, boolean downloadUpdates, boolean downloadChangelog) {
         this.plugin = plugin;
-
         this.broadcastUpdates = broadcast;
         this.downloadUpdates = downloadUpdates;
         this.downloadChangelog = downloadChangelog;
@@ -33,39 +33,38 @@ public class UpdateChecker implements Runnable {
 
     @Override
     public void run() {
+      System.out.print("broadcast " + broadcastUpdates);
+      System.out.print("downloadUpdates" + downloadUpdates);
+      System.out.print("downloadChangelog" + downloadChangelog);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new URL(UPDATE_URL).openStream()))) {
             String remoteVersion = reader.readLine();
             if (Objects.equals(plugin.getDescription().getVersion(), remoteVersion)) {
-                // we are already up to date
                 return;
             }
-
-            // notify about the new version
             skUtilities.prSysI("A new version of v" + remoteVersion + " is out.");
-
             String versionUrlPrefix = DOWNLOAD_URL + remoteVersion + '/';
-            if (downloadUpdates) {
+            if (Objects.equals(downloadUpdates, true)) {
+              if (!new File(String.valueOf(plugin.getDataFolder().toPath().resolve(buildFilePrefix(remoteVersion, '.') + ".jar"))).exists()) {
                 downloadUpdate(versionUrlPrefix, buildFilePrefix(remoteVersion, '.'));
+              }
             } else {
                 prSysU("Download v" + remoteVersion + ": " + LATEST_RELEASE);
                 skUtilities.prSysI("Option: 'downloadUpdates' is disabled in the config.");
             }
-
-            // check for the changelog downloads outside of downloadUpdates in case the user only
-            // wants to see the changelog
-            if (downloadChangelog) {
+            if (Objects.equals(downloadChangelog, true)) {
+              if (!new File(String.valueOf(plugin.getDataFolder().toPath().resolve(buildFilePrefix(remoteVersion, '_') + "_Changelog.sk"))).exists()) {
                 downloadChangelog(versionUrlPrefix, buildFilePrefix(remoteVersion, '_'));
+              }
             } else {
                 skUtilities.prSysI("View changelog here: " + LATEST_RELEASE);
             }
         } catch (Exception e) {
-            skUtilities.prSysE("Failed to get latest version number, you might be offline!", "Main", e);
+            skUtilities.prSysE("Failed to get latest version number!", "Main", e);
         }
     }
 
     private void downloadUpdate(String urlPrefix, String filePrefix) {
         String pluginFileName = filePrefix + ".jar";
-
         Path pluginJar = plugin.getDataFolder().toPath().resolve(pluginFileName);
         if (Files.notExists(pluginJar)) {
             skUtilities.prSysI("Starting download of " + pluginJar);
@@ -76,12 +75,10 @@ public class UpdateChecker implements Runnable {
 
     private void downloadChangelog(String urlPrefix, String filePrefix) {
         String changelogFileName = filePrefix + "_Changelog.sk";
-
         Path changelogFile = plugin.getDataFolder().toPath().resolve(changelogFileName);
         if (Files.notExists(changelogFile)) {
             skUtilities.downloadFile(changelogFile, urlPrefix + changelogFileName);
         }
-
         skUtilities.prSysI("View changelog for '" + changelogFile);
     }
 
@@ -91,11 +88,9 @@ public class UpdateChecker implements Runnable {
 
     private void prSysU(String s) {
         if (broadcastUpdates) {
-            //broadcast to all players that are allowed to see the message
             String message = ChatColor.AQUA + "[" + plugin.getName() + ": Update] " + ChatColor.GRAY + s;
             Bukkit.broadcast(message, plugin.getName() + ".update");
         }
-
         skUtilities.prSysI(s);
     }
 }
