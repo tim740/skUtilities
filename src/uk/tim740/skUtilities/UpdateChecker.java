@@ -33,9 +33,6 @@ public class UpdateChecker implements Runnable {
 
     @Override
     public void run() {
-      System.out.print("broadcast " + broadcastUpdates);
-      System.out.print("downloadUpdates" + downloadUpdates);
-      System.out.print("downloadChangelog" + downloadChangelog);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new URL(UPDATE_URL).openStream()))) {
             String remoteVersion = reader.readLine();
             if (Objects.equals(plugin.getDescription().getVersion(), remoteVersion)) {

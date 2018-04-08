@@ -78,18 +78,12 @@ public class skUtilities extends JavaPlugin {
         Bukkit.getScheduler().runTaskAsynchronously(this, task);
       }, 1L, Duration.ofHours(12).getSeconds());
     } else {
-      prSysI("Checking for updates is disabled, you should consider enabling it again!");
-    }
-    try {
-      MetricsLiteO mcs = new MetricsLiteO(this);
-      mcs.start();
-    } catch (Exception x) {
-      skUtilities.prSysE("Failed to submit stats to Metrics, MCStats could be down!", getClass().getSimpleName(), x);
+      prSysI("Updater is disabled, you should consider enabling it again!");
     }
     try {
       new MetricsLite(this);
     } catch (Exception x) {
-      skUtilities.prSysE("Failed to submit stats to bStats, bStats could be down!", getClass().getSimpleName(), x);
+      skUtilities.prSysE("Failed to submit stats to bStats, bStats could be offline!", getClass().getSimpleName(), x);
     }
     prSysI("loaded modules (" + ls + ") in " + (System.currentTimeMillis() - s) + "ms");
   }

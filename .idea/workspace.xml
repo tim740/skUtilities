@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e2f07d6-ec70-49f3-a755-152b4121a1a2" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLiteO.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/skUtilities.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/skUtilities.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/latest.ver" afterPath="$PROJECT_DIR$/latest.ver" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/plugin.yml" afterPath="$PROJECT_DIR$/src/plugin.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/UpdateChecker.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/UpdateChecker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java" afterPath="$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java" />
     </list>
@@ -33,150 +35,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Reg.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="299" column="125" lean-forward="false" selection-start-line="299" selection-start-column="125" selection-end-line="299" selection-end-column="125" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="method#convert#0;class#Reg#0" expanded="false" />
-                <element signature="method#files#0;class#Reg#0" expanded="false" />
-                <element signature="method#fileEvents#0;class#Reg#0" expanded="false" />
-                <element signature="e#10311#10468#0" expanded="true" />
-                <element signature="e#10467#10468#0" expanded="true" />
-                <element signature="e#10544#10701#0" expanded="true" />
-                <element signature="e#10700#10701#0" expanded="true" />
-                <element signature="e#10895#11036#0" expanded="true" />
-                <element signature="e#11035#11036#0" expanded="true" />
-                <element signature="e#11247#11394#0" expanded="true" />
-                <element signature="e#11393#11394#0" expanded="true" />
-                <element signature="e#11592#11749#0" expanded="true" />
-                <element signature="e#11748#11749#0" expanded="true" />
-                <element signature="e#11947#12104#0" expanded="true" />
-                <element signature="e#12103#12104#0" expanded="true" />
-                <element signature="e#12296#12445#0" expanded="true" />
-                <element signature="e#12444#12445#0" expanded="true" />
-                <element signature="e#12623#12772#0" expanded="true" />
-                <element signature="e#12771#12772#0" expanded="true" />
-                <element signature="e#12846#13000#0" expanded="true" />
-                <element signature="e#12999#13000#0" expanded="true" />
-                <element signature="e#13178#13327#0" expanded="true" />
-                <element signature="e#13326#13327#0" expanded="true" />
-                <element signature="e#13401#13555#0" expanded="true" />
-                <element signature="e#13554#13555#0" expanded="true" />
-                <element signature="e#13741#13894#0" expanded="true" />
-                <element signature="e#13893#13894#0" expanded="true" />
-                <element signature="e#13970#14131#0" expanded="true" />
-                <element signature="e#14130#14131#0" expanded="true" />
-                <element signature="e#14313#14464#0" expanded="true" />
-                <element signature="e#14463#14464#0" expanded="true" />
-                <element signature="e#14539#14697#0" expanded="true" />
-                <element signature="e#14696#14697#0" expanded="true" />
-                <element signature="e#14772#14931#0" expanded="true" />
-                <element signature="e#14930#14931#0" expanded="true" />
-                <element signature="e#15096#15239#0" expanded="true" />
-                <element signature="e#15238#15239#0" expanded="true" />
-                <element signature="e#15310#15457#0" expanded="true" />
-                <element signature="e#15456#15457#0" expanded="true" />
-                <element signature="e#15629#15776#0" expanded="true" />
-                <element signature="e#15775#15776#0" expanded="true" />
-                <element signature="e#15849#16003#0" expanded="true" />
-                <element signature="e#16002#16003#0" expanded="true" />
-                <element signature="method#yaml#0;class#Reg#0" expanded="false" />
-                <element signature="method#url#0;class#Reg#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EffInsertLine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffInsertLine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="51" column="22" lean-forward="false" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2970#2971#0" expanded="false" />
-                <element signature="e#3007#3008#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExprDateInner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprDateInner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UpdateChecker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/UpdateChecker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="89" column="31" lean-forward="false" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
-              <folding>
-                <element signature="e#3904#3905#0" expanded="true" />
-                <element signature="e#3984#3985#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="skUtilities.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="skUtilities.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="907">
-              <caret line="77" column="84" lean-forward="false" selection-start-line="77" selection-start-column="84" selection-end-line="77" selection-end-column="84" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="latest.ver" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/latest.ver">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExprCpuCores.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprCpuCores.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+            <state relative-caret-position="32">
+              <caret line="82" column="9" lean-forward="true" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#prSysE#0;class#skUtilities#0" expanded="false" />
+                <element signature="method#prSysE#1;class#skUtilities#0" expanded="false" />
+                <element signature="e#3954#3955#0" expanded="true" />
+                <element signature="e#4040#4041#0" expanded="true" />
+                <element signature="method#getFileSize#0;class#skUtilities#0" expanded="false" />
+                <element signature="method#downloadFile#0;class#skUtilities#0" expanded="false" />
+                <element signature="method#getDefaultPath#0;class#skUtilities#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ExprCpuSpec.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprCpuSpec.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-              <folding>
-                <element signature="method#init#0;class#ExprCpuSpec#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/config.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -256,7 +128,6 @@
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileLines.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprFileContents.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/files/SExprEditLine.java" />
-        <option value="$PROJECT_DIR$/src/plugin.yml" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/yaml/SExprYaml.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/yaml/CondYamlExists.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/yaml/YamlSerializer.java" />
@@ -267,8 +138,9 @@
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/convert/ExprImageBase64.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprCpuSpec.java" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java" />
-        <option value="$PROJECT_DIR$/latest.ver" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/UpdateChecker.java" />
+        <option value="$PROJECT_DIR$/latest.ver" />
+        <option value="$PROJECT_DIR$/src/plugin.yml" />
         <option value="$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java" />
       </list>
     </option>
@@ -325,7 +197,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -383,6 +254,7 @@
         </subPane>
         <option name="show-excluded-files" value="false" />
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="Scratches" />
     </panes>
@@ -636,13 +508,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1455549243806</updated>
-    </task>
-    <task id="LOCAL-00372" summary="0.8.2">
-      <created>1476996417912</created>
-      <option name="number" value="00372" />
-      <option name="presentableId" value="LOCAL-00372" />
-      <option name="project" value="LOCAL" />
-      <updated>1476996417912</updated>
     </task>
     <task id="LOCAL-00373" summary="fix line count&#10;">
       <created>1478015190632</created>
@@ -980,7 +845,14 @@
       <option name="project" value="LOCAL" />
       <updated>1521848951914</updated>
     </task>
-    <option name="localTasksCounter" value="421" />
+    <task id="LOCAL-00421" summary="v0.9.1">
+      <created>1521855048391</created>
+      <option name="number" value="00421" />
+      <option name="presentableId" value="LOCAL-00421" />
+      <option name="project" value="LOCAL" />
+      <updated>1521855048391</updated>
+    </task>
+    <option name="localTasksCounter" value="422" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1034,7 +906,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="allow yaml to disable" />
     <MESSAGE value="prefix events" />
     <MESSAGE value="made yaml error better" />
     <MESSAGE value="config edits" />
@@ -1059,12 +930,13 @@
     <MESSAGE value="0.9.0" />
     <MESSAGE value="Better errors" />
     <MESSAGE value="Cpu Exprs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cpu Exprs" />
+    <MESSAGE value="v0.9.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="v0.9.1" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="73" />
+      <option name="time" value="75" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1073,20 +945,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/EffRunOpCmd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="55" column="1" lean-forward="false" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/EffSkReloadAliases.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprCaseLength.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="518">
@@ -1140,20 +998,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLite.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLiteO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="105" column="42" lean-forward="false" selection-start-line="105" selection-start-column="42" selection-end-line="105" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1279,13 +1123,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/plugin.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/ExprFileLines.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1329,88 +1166,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/convert/ExprImageBase64.java" />
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffInsertLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="51" column="22" lean-forward="false" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2970#2971#0" expanded="false" />
-            <element signature="e#3007#3008#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprLoadedList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="299" column="125" lean-forward="false" selection-start-line="299" selection-start-column="125" selection-end-line="299" selection-end-column="125" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#convert#0;class#Reg#0" expanded="false" />
-            <element signature="method#files#0;class#Reg#0" expanded="false" />
-            <element signature="method#fileEvents#0;class#Reg#0" expanded="false" />
-            <element signature="e#10311#10468#0" expanded="true" />
-            <element signature="e#10467#10468#0" expanded="true" />
-            <element signature="e#10544#10701#0" expanded="true" />
-            <element signature="e#10700#10701#0" expanded="true" />
-            <element signature="e#10895#11036#0" expanded="true" />
-            <element signature="e#11035#11036#0" expanded="true" />
-            <element signature="e#11247#11394#0" expanded="true" />
-            <element signature="e#11393#11394#0" expanded="true" />
-            <element signature="e#11592#11749#0" expanded="true" />
-            <element signature="e#11748#11749#0" expanded="true" />
-            <element signature="e#11947#12104#0" expanded="true" />
-            <element signature="e#12103#12104#0" expanded="true" />
-            <element signature="e#12296#12445#0" expanded="true" />
-            <element signature="e#12444#12445#0" expanded="true" />
-            <element signature="e#12623#12772#0" expanded="true" />
-            <element signature="e#12771#12772#0" expanded="true" />
-            <element signature="e#12846#13000#0" expanded="true" />
-            <element signature="e#12999#13000#0" expanded="true" />
-            <element signature="e#13178#13327#0" expanded="true" />
-            <element signature="e#13326#13327#0" expanded="true" />
-            <element signature="e#13401#13555#0" expanded="true" />
-            <element signature="e#13554#13555#0" expanded="true" />
-            <element signature="e#13741#13894#0" expanded="true" />
-            <element signature="e#13893#13894#0" expanded="true" />
-            <element signature="e#13970#14131#0" expanded="true" />
-            <element signature="e#14130#14131#0" expanded="true" />
-            <element signature="e#14313#14464#0" expanded="true" />
-            <element signature="e#14463#14464#0" expanded="true" />
-            <element signature="e#14539#14697#0" expanded="true" />
-            <element signature="e#14696#14697#0" expanded="true" />
-            <element signature="e#14772#14931#0" expanded="true" />
-            <element signature="e#14930#14931#0" expanded="true" />
-            <element signature="e#15096#15239#0" expanded="true" />
-            <element signature="e#15238#15239#0" expanded="true" />
-            <element signature="e#15310#15457#0" expanded="true" />
-            <element signature="e#15456#15457#0" expanded="true" />
-            <element signature="e#15629#15776#0" expanded="true" />
-            <element signature="e#15775#15776#0" expanded="true" />
-            <element signature="e#15849#16003#0" expanded="true" />
-            <element signature="e#16002#16003#0" expanded="true" />
-            <element signature="method#yaml#0;class#Reg#0" expanded="false" />
-            <element signature="method#url#0;class#Reg#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprCpuSpec.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="17" lean-forward="true" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding>
-            <element signature="method#init#0;class#ExprCpuSpec#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1418,60 +1177,123 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffInsertLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="51" column="22" lean-forward="false" selection-start-line="51" selection-start-column="22" selection-end-line="51" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprDateInner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-          <folding />
+          <caret line="18" column="3" lean-forward="false" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.yml">
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffZipFiles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="36" lean-forward="false" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="119">
+          <caret line="27" column="13" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/files/EffZipDirectory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="29" column="57" lean-forward="false" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="57" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprCpuCores.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="27" column="11" lean-forward="false" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/util/ExprCpuSpec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLiteO.java" />
+    <entry file="file://$PROJECT_DIR$/src/plugin.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="31" column="57" lean-forward="true" selection-start-line="31" selection-start-column="57" selection-end-line="31" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/MetricsLite.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="27" column="24" lean-forward="false" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/UpdateChecker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="89" column="31" lean-forward="false" selection-start-line="89" selection-start-column="31" selection-end-line="89" selection-end-column="31" />
+        <state relative-caret-position="373">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
-            <element signature="e#3904#3905#0" expanded="true" />
-            <element signature="e#3984#3985#0" expanded="true" />
+            <element signature="method#UpdateChecker#0;class#UpdateChecker#0" expanded="false" />
+            <element signature="method#run#0;class#UpdateChecker#0" expanded="false" />
+            <element signature="method#downloadUpdate#0;class#UpdateChecker#0" expanded="false" />
+            <element signature="method#downloadChangelog#0;class#UpdateChecker#0" expanded="false" />
+            <element signature="method#prSysU#0;class#UpdateChecker#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java">
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/Reg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="907">
-          <caret line="77" column="84" lean-forward="false" selection-start-line="77" selection-start-column="84" selection-end-line="77" selection-end-column="84" />
-          <folding />
+        <state relative-caret-position="214">
+          <caret line="299" column="125" lean-forward="false" selection-start-line="299" selection-start-column="125" selection-end-line="299" selection-end-column="125" />
+          <folding>
+            <element signature="method#convert#0;class#Reg#0" expanded="false" />
+            <element signature="method#files#0;class#Reg#0" expanded="false" />
+            <element signature="method#fileEvents#0;class#Reg#0" expanded="false" />
+            <element signature="method#yaml#0;class#Reg#0" expanded="false" />
+            <element signature="method#url#0;class#Reg#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/latest.ver">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="true" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/uk/tim740/skUtilities/skUtilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32">
+          <caret line="82" column="9" lean-forward="true" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+          <folding>
+            <element signature="method#prSysE#0;class#skUtilities#0" expanded="false" />
+            <element signature="method#prSysE#1;class#skUtilities#0" expanded="false" />
+            <element signature="e#3954#3955#0" expanded="true" />
+            <element signature="e#4040#4041#0" expanded="true" />
+            <element signature="method#getFileSize#0;class#skUtilities#0" expanded="false" />
+            <element signature="method#downloadFile#0;class#skUtilities#0" expanded="false" />
+            <element signature="method#getDefaultPath#0;class#skUtilities#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
