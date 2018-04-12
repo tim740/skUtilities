@@ -21,8 +21,10 @@ public class ExprRam extends SimpleExpression<Number> {
       return new Number[]{Runtime.getRuntime().freeMemory() / 1000000L};
     } else if (ty == 1) {
       return new Number[]{Runtime.getRuntime().totalMemory() / 1000000L};
-    } else {
+    } else if (ty == 2) {
       return new Number[]{Runtime.getRuntime().maxMemory() / 1000000L};
+    } else {
+      return new Number[]{Runtime.getRuntime().gc() / 1000000L};
     }
   }
 
