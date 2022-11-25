@@ -6,10 +6,10 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.Nullable;
 import uk.tim740.skUtilities.files.event.EvtRunApp;
 import uk.tim740.skUtilities.skUtilities;
 
-import javax.annotation.Nullable;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;

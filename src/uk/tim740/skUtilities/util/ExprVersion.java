@@ -8,7 +8,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
-import javax.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -20,7 +19,6 @@ public class ExprVersion extends SimpleExpression<String> {
   private Expression<String> str;
 
   @Override
-  @Nullable
   protected String[] get(Event e) {
     String s = str.getSingle(e);
     if (s.equalsIgnoreCase("aliases")) {
@@ -61,7 +59,7 @@ public class ExprVersion extends SimpleExpression<String> {
   }
 
   @Override
-  public String toString(@Nullable Event e, boolean b) {
+  public String toString(Event e, boolean b) {
     return getClass().getName();
   }
 }

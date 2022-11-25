@@ -9,9 +9,9 @@ import ch.njol.util.coll.CollectionUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.Nullable;
 import uk.tim740.skUtilities.skUtilities;
 
-import javax.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

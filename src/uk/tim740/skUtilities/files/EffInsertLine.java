@@ -6,10 +6,10 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.Nullable;
 import uk.tim740.skUtilities.files.event.EvtFileWrite;
 import uk.tim740.skUtilities.skUtilities;
 
-import javax.annotation.Nullable;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.UnmappableCharacterException;

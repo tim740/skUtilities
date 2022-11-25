@@ -7,7 +7,7 @@
       <src_folder value="file://$MODULE_DIR$/src" expected_position="0" />
     </src_description>
   </component>
-  <component name="NewModuleRootManager" inherit-compiler-output="false">
+  <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/bin" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -15,7 +15,22 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
-    <orderEntry type="library" name="Skript 2.2 Fixes V8b" level="project" />
-    <orderEntry type="library" name="spigot-1.10.2" level="project" />
+    <orderEntry type="library" name="Skript-2.6.4" level="project" />
+    <orderEntry type="library" name="paper" level="project" />
+    <orderEntry type="library" name="paper-api-1.19.2-R0.1-20221125.071142-172" level="project" />
+    <orderEntry type="library" name="commons-lang3-3.12.0" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/20.1.0/annotations-20.1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" name="commons-io-2.11.0" level="project" />
+    <orderEntry type="library" name="spigot-1.19.2" level="project" />
+    <orderEntry type="library" name="guava-31.1-jre" level="project" />
   </component>
 </module>

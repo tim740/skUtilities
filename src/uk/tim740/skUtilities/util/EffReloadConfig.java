@@ -6,9 +6,8 @@ import ch.njol.skript.lang.SkriptParser;
 import ch.njol.util.Kleenean;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.Nullable;
 import uk.tim740.skUtilities.skUtilities;
-
-import javax.annotation.Nullable;
 
 /**
  * Created by tim740 on 27/03/2016

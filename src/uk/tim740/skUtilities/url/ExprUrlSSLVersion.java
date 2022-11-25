@@ -5,13 +5,15 @@ import ch.njol.skript.lang.SkriptParser.ParseResult;
 import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.Nullable;
 import uk.tim740.skUtilities.skUtilities;
 
-import javax.annotation.Nullable;
 import javax.net.ssl.HttpsURLConnection;
 import java.net.URL;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+
+;
 
 /**
  * Created by tim740 on 15/10/2016

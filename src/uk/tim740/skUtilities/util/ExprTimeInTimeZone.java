@@ -7,7 +7,6 @@ import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
 import uk.tim740.skUtilities.skUtilities;
 
-import javax.annotation.Nullable;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -24,7 +23,6 @@ public class ExprTimeInTimeZone extends SimpleExpression<String> {
   private Expression<String> str;
 
   @Override
-  @Nullable
   protected String[] get(Event e) {
     String s = str.getSingle(e);
     String[] sl = new String[0];
@@ -68,7 +66,7 @@ public class ExprTimeInTimeZone extends SimpleExpression<String> {
   }
 
   @Override
-  public String toString(@Nullable Event e, boolean b) {
+  public String toString(Event e, boolean b) {
     return getClass().getName();
   }
 }

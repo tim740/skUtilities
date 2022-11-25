@@ -9,8 +9,8 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.skript.variables.Variables;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.Iterator;
 
 /**
@@ -37,7 +37,7 @@ public class ExprLoaded extends SimpleExpression<Number> {
         return new Number[]{Variables.numVariables()};
       } case 6: {
         //System.out.println("aliases loaded " + (ScriptLoader.getScriptAliases()).getClass());
-        return new Number[]{ScriptLoader.getScriptAliases().size()};
+        return new Number[]{0};
       } case 7: {
         return new Number[]{Skript.getEvents().size()};
       } case 8: {

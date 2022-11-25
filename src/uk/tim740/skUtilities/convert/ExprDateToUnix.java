@@ -6,9 +6,8 @@ import ch.njol.skript.lang.util.SimpleExpression;
 import ch.njol.skript.util.Date;
 import ch.njol.util.Kleenean;
 import org.bukkit.event.Event;
+import org.jetbrains.annotations.Nullable;
 import uk.tim740.skUtilities.skUtilities;
-
-import javax.annotation.Nullable;
 
 /**
  * Created by tim740 on 30/03/2016
